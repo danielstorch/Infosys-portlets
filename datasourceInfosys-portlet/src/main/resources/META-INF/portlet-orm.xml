@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="statusbricht_id" />
+			<basic name="probleme_risiken" />
+			<basic name="massnahmen" />
+			<basic name="situation" />
+			<basic name="gruende" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="student_id" />
+			<basic name="feedback_runden_nr" />
+			<basic name="eigenbewertung" />
+			<basic name="kommentar_kompetenzen" />
+			<basic name="kommentar_beitrag" />
+			<basic name="beitrag" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.Geplante_arbeitModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="statusbericht_id" />
+			<basic name="verantwortlicher" />
+			<basic name="arbeit" />
+			<basic name="bis_wann">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.ProjectModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="name" />
+			<basic name="projecthskaId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="project_id" />
+			<basic name="datum">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="kalenderwoche" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.StatusueberblickModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="statusbericht_id" />
+			<basic name="qualitaet_status" />
+			<basic name="qualitaet_text" />
+			<basic name="kosten_text" />
+			<basic name="kosten_status" />
+			<basic name="aufwand_status" />
+			<basic name="aufwand_text" />
+			<basic name="termine_status" />
+			<basic name="termine_text" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.StudentModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="firstName" />
+			<basic name="lastName" />
+			<basic name="project_id" />
+			<basic name="studenthskaId" />
+			<basic name="matnr" />
+			<basic name="role" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="feedback_id" />
+			<basic name="note" />
+			<basic name="kategorie" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl" name="Allgemeines">
+		<table name="datasourceInfosys_Allgemeines" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.FeedbackImpl" name="Feedback">
+		<table name="datasourceInfosys_Feedback" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.Geplante_arbeitImpl" name="Geplante_arbeit">
+		<table name="datasourceInfosys_Geplante_arbeit" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.ProjectImpl" name="Project">
+		<table name="datasourceInfosys_Project" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl" name="Statusberichte">
+		<table name="datasourceInfosys_Statusberichte" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.StatusueberblickImpl" name="Statusueberblick">
+		<table name="datasourceInfosys_Statusueberblick" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.StudentImpl" name="Student">
+		<table name="datasourceInfosys_Student" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteImpl" name="Teilnote">
+		<table name="datasourceInfosys_Teilnote" />
+		<attributes />
+	</entity>
+</entity-mappings>

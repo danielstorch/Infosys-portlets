@@ -1,0 +1,73 @@
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="de.hska.wi.awp.datasource.infosys">
+	<author>Daniel Storch</author>
+	<namespace>datasourceInfosys</namespace>
+    <entity name="Student" local-service="true">
+        <column name="firstName" type="String"></column>
+        <column name="lastName" type="String"></column>
+        <column name="id" type="long" primary="true"></column>
+        <column name="project_id" type="long"></column>
+        <column name="studenthskaId" type="String"></column>
+        <column name="matnr" type="long"></column>
+        <column name="role" type="long"></column>
+        <!-- Finder methods -->
+        <finder name="Project_id" return-type="Collection">
+          	<finder-column name="project_id"/>
+        </finder>
+        
+    </entity>
+    <entity name="Project" local-service="true">
+        <column name="name" type="String"></column>
+        <column name="projecthskaId" type="String"></column>
+        <column name="id" type="long" primary="true"></column>
+    </entity>
+    <entity name="Statusberichte" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="project_id" type="long"></column>
+        <column name="datum" type="Date"></column>
+        <column name="kalenderwoche" type="int"></column>
+    </entity>
+    <entity name="Statusueberblick" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="statusbericht_id" type="long"></column>
+        <column name="qualitaet_status" type="String"></column>
+        <column name="qualitaet_text" type="String"></column>
+        <column name="kosten_text" type="String"></column>
+        <column name="kosten_status" type="String"></column>
+        <column name="aufwand_status" type="String"></column>
+        <column name="aufwand_text" type="String"></column>
+        <column name="termine_status" type="String"></column>
+        <column name="termine_text" type="String"></column>
+    </entity>
+    <entity name="Allgemeines" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="statusbricht_id" type="long"></column>
+        <column name="probleme_risiken" type="String"></column>
+        <column name="massnahmen" type="String"></column>
+        <column name="situation" type="String"></column>
+        <column name="gruende" type="String"></column>
+    </entity>
+    <entity name="Geplante_arbeit" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="statusbericht_id" type="long"></column>
+        <column name="verantwortlicher" type="long"></column>
+        <column name="arbeit" type="String"></column>
+        <column name="bis_wann" type="Date"></column>
+    </entity>
+    <entity name="Feedback" local-service="true">
+        <column name="id" type="long" primary="true"></column>
+        <column name="student_id" type="long"></column>
+        <column name="feedback_runden_nr" type="int"></column>
+        <column name="eigenbewertung" type="String"></column>
+        <column name="kommentar_kompetenzen" type="String"></column>
+        <column name="kommentar_beitrag" type="String"></column>
+        <column name="beitrag" type="int"></column>
+    </entity>
+    <entity name="Teilnote" local-service="true">
+        <column name="id" primary="true" type="long"></column>
+        <column name="feedback_id" type="long"></column>
+        <column name="note" type="int"></column>
+        <column name="kategorie" type="long"></column>
+    </entity>
+</service-builder>

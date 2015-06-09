@@ -1,0 +1,147 @@
+{
+  "Projects": [
+    {
+      "name": "HSKA WI - Bewertung",
+      "projecthskaId": "Be",
+      "statusberichte": [
+        {
+          "group": "1",
+          "date": "23.3.2015",
+          "kalenderwoche": "12",
+          "statusueberblick": {
+            "qualitaet_status": "im_plan",
+            "qualitaet_text": "noch keine Aussage möglich",
+            "kosten_status": "im_plan",
+            "kosten_text": "-",
+            "aufwand_status": "im_plan",
+            "aufwand_text": "Besprechung im Team (8 Stunden)",
+            "termine_status": "kritisch",
+            "termine_text": "keine Rückmeldung"
+          },
+          "allgemeines": {
+            "probleme_risiken": "soweit noch keine Probleme",
+            "massnahmen": "Kontaktaufnahme",
+            "situation": "alle Teammitglieder waren an der Kickoff Veranstaltung am letzten Donnerstag anwesend",
+            "gruende": "-"
+          },
+          "geplante_arbeit": [{
+            "student_nachname": "Hämmerle",
+            "student_vorname": "Simon",
+            "arbeit": "Anforderungsdefinition",
+            "bis_wann": "25.05.2015"
+          }]
+        },
+        {
+          "group": "1",
+          "date": "30.3.2015",
+          "kalenderwoche": "13",
+          "statusueberblick": {
+            "qualitaet_status": "im_plan",
+            "qualitaet_text": "noch keine Aussage möglich",
+            "kosten_status": "im_plan",
+            "kosten_text": "-",
+            "aufwand_status": "im_plan",
+            "aufwand_text": "Besprechung im Team (8 Stunden)",
+            "termine_status": "kritisch",
+            "termine_text": "keine Rückmeldung"
+          },
+          "allgemeines": {
+            "probleme_risiken": "soweit noch keine Probleme",
+            "massnahmen": "Kontaktaufnahme",
+            "situation": "alle Teammitglieder waren an der Kickoff Veranstaltung am letzten Donnerstag anwesend",
+            "gruende": "-"
+          },
+          "geplante_arbeit": [{
+            "student_nachname": "Hämmerle",
+            "student_vorname": "Simon",
+            "arbeit": "Anforderungsdefinition",
+            "bis_wann": "25.05.2015"
+          },{
+            "student_nachname": "Storch",
+            "student_vorname": "Daniel",
+            "arbeit": "Anforderungsdefinition",
+            "bis_wann": "25.05.2015"
+          }]
+        }
+      ],
+      "Students": [
+        {
+          "firstName": "Marc",
+          "lastName": "Weisenburger",
+          "studenthskaId": "wema1034",
+          "matnr": 0,
+          "role": 1
+        },
+        {
+          "firstName": "Simon",
+          "lastName": "Haemmerle",
+          "studenthskaId": "",
+          "matnr": 0,
+          "role": 2
+        },
+        {
+          "firstName": "Mihai",
+          "lastName": "Sava",
+          "studenthskaId": "",
+          "matnr": 0,
+          "role": 3
+        },
+        {
+          "firstName": "Chris",
+          "lastName": "Ramroth",
+          "studenthskaId": "",
+          "matnr": 0,
+          "role": 0
+        },
+        {
+          "firstName": "Michael",
+          "lastName": "Lautenschläger",
+          "studenthskaId": "",
+          "matnr": 0,
+          "role": 0
+        },
+        {
+          "firstName": "Daniel",
+          "lastName": "Storch",
+          "studenthskaId": "stda1024",
+          "matnr": 38914,
+          "role": 0
+        }
+      ]
+    },
+    {
+      "name": "Kollaborationsplattform",
+      "projecthskaId": "MobCo",
+      "Students": [
+        {
+          "firstName": "Philipp",
+          "lastName": "Steinberg",
+          "studenthskaId": "stph1011",
+          "matnr": 29130,
+          "role": 1
+        },
+        {
+          "firstName": "Daniel",
+          "lastName": "Kutik",
+          "studenthskaId": "kuda0011",
+          "matnr": 26294,
+          "role": 2
+        },
+        {
+          "firstName": "Aziz",
+          "lastName": "Atabekov",
+          "studenthskaId": "ataz1011",
+          "matnr": 12345,
+          "role": 3
+        },
+        {
+          "firstName": "Dmitrij",
+          "lastName": "Klinkmann",
+          "studenthskaId": "kldm1011",
+          "matnr": 54321,
+          "role": 0
+        }
+      ]
+    }
+  ]
+}

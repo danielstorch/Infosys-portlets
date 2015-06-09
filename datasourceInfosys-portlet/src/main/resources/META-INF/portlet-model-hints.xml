@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Allgemeines">
+		<field name="id" type="long" />
+		<field name="statusbricht_id" type="long" />
+		<field name="probleme_risiken" type="String" />
+		<field name="massnahmen" type="String" />
+		<field name="situation" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="gruende" type="String" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Feedback">
+		<field name="id" type="long" />
+		<field name="student_id" type="long" />
+		<field name="feedback_runden_nr" type="int" />
+		<field name="eigenbewertung" type="String" />
+		<field name="kommentar_kompetenzen" type="String" />
+		<field name="kommentar_beitrag" type="String" />
+		<field name="beitrag" type="int" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit">
+		<field name="id" type="long" />
+		<field name="statusbericht_id" type="long" />
+		<field name="verantwortlicher" type="long" />
+		<field name="arbeit" type="String" />
+		<field name="bis_wann" type="Date" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Project">
+		<field name="name" type="String" />
+		<field name="projecthskaId" type="String" />
+		<field name="id" type="long" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusberichte">
+		<field name="id" type="long" />
+		<field name="project_id" type="long" />
+		<field name="datum" type="Date" />
+		<field name="kalenderwoche" type="int" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusueberblick">
+		<field name="id" type="long" />
+		<field name="statusbericht_id" type="long" />
+		<field name="qualitaet_status" type="String" />
+		<field name="qualitaet_text" type="String" />
+		<field name="kosten_text" type="String" />
+		<field name="kosten_status" type="String" />
+		<field name="aufwand_status" type="String" />
+		<field name="aufwand_text" type="String" />
+		<field name="termine_status" type="String" />
+		<field name="termine_text" type="String" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Student">
+		<field name="firstName" type="String" />
+		<field name="lastName" type="String" />
+		<field name="id" type="long" />
+		<field name="project_id" type="long" />
+		<field name="studenthskaId" type="String" />
+		<field name="matnr" type="long" />
+		<field name="role" type="long" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Teilnote">
+		<field name="id" type="long" />
+		<field name="feedback_id" type="long" />
+		<field name="note" type="int" />
+		<field name="kategorie" type="long" />
+	</model>
+</model-hints>
