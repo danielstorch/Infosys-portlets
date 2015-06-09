@@ -104,7 +104,7 @@ public class MockData {
 		if(StudentLocalServiceUtil.getStudentsCount() == 0 && ProjectLocalServiceUtil.getProjectsCount() == 0) {
 			
 			// Der pfad muss hier angegeben werden.
-			String privatePath = "/Users/danielstorch/Documents/Develop/workspace/datasourceInfosys";
+			String privatePath = "/Users/Marc/Documents/workspace/liferay/Infosys-portlets";
 			String pathToFile = privatePath + "/datasourceInfosys-portlet/src/main/java/de/hska/wi/awp/datasource/infosys/util/mock/infosysMockData2"; 
 			
 	        InputStream is = new FileInputStream(pathToFile);

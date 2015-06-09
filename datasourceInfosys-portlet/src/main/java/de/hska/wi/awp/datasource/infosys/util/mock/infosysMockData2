@@ -3,7 +3,7 @@
     {
       "id": "100",
       "name": "HSKA WI - Bewertung",
-      "projecthskaId": "Be",
+      "projecthskaId": "HWB",
       "Statusberichte": [
         {
           "id": "100",
@@ -338,7 +338,7 @@
           "firstName": "Marc",
           "lastName": "Weisenburger",
           "studenthskaId": "wema1034",
-          "matnr": 0,
+          "matnr": 40383,
           "role": 101
         },
         {
