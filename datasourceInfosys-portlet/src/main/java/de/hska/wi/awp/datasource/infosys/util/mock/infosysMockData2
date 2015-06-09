@@ -703,7 +703,7 @@
           },
           "Geplante_arbeit": [
             {
-              "id": "103",
+              "id": "104",
               "statusbericht_id": "101",
               "verantwortlicher": "106",
               "arbeit": "Anforderungsdefinition",

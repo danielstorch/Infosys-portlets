@@ -61,32 +61,32 @@ public class MockData {
 		
 		for(int zl = 0; zl < allFeedback.size(); zl++) {
 			System.out.println("Delete Feedback ID: " +allFeedback.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allFeedback.get(zl).getPrimaryKey());
+			FeedbackLocalServiceUtil.deleteFeedback(allFeedback.get(zl).getPrimaryKey());
 		}
 		
 		for(int zl = 0; zl < allTeilnote.size(); zl++) {
 			System.out.println("Delete Teilnote ID: " +allTeilnote.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allTeilnote.get(zl).getPrimaryKey());
+			TeilnoteLocalServiceUtil.deleteTeilnote(allTeilnote.get(zl).getPrimaryKey());
 		}
 		
 		for(int zl = 0; zl < allStatusberichte.size(); zl++) {
 			System.out.println("Delete Statusbericht ID: " +allStatusberichte.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allStatusberichte.get(zl).getPrimaryKey());
+			StatusberichteLocalServiceUtil.deleteStatusberichte(allStatusberichte.get(zl).getPrimaryKey());
 		}
 		
 		for(int zl = 0; zl < allStatusueberblick.size(); zl++) {
 			System.out.println("Delete Statusueberblick ID: " +allStatusueberblick.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allStatusueberblick.get(zl).getPrimaryKey());
+			StatusueberblickLocalServiceUtil.deleteStatusueberblick(allStatusueberblick.get(zl).getPrimaryKey());
 		}
 		
 		for(int zl = 0; zl < allAllgemeines.size(); zl++) {
 			System.out.println("Delete Allgemeines ID: " +allAllgemeines.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allAllgemeines.get(zl).getPrimaryKey());
+			AllgemeinesLocalServiceUtil.deleteAllgemeines(allAllgemeines.get(zl).getPrimaryKey());
 		}
 		
 		for(int zl = 0; zl < allGeplante_arbeit.size(); zl++) {
 			System.out.println("Delete Geplante_arbeit ID: " +allGeplante_arbeit.get(zl).getPrimaryKey());
-			StudentLocalServiceUtil.deleteStudent(allGeplante_arbeit.get(zl).getPrimaryKey());
+			Geplante_arbeitLocalServiceUtil.deleteGeplante_arbeit(allGeplante_arbeit.get(zl).getPrimaryKey());
 		}
 		
 		System.out.println("Amount of projects after delete: "+ProjectLocalServiceUtil.getProjectsCount());
@@ -124,21 +124,20 @@ public class MockData {
 			JSONArray projectsJsonArray = jsonObject.getJSONArray("Projects");
 			
 			for (int i = 0; i < projectsJsonArray.length(); i++) {
+				System.out.println("count projectsJsonArray: " + projectsJsonArray.length());
 				
 				JSONObject projectJSONObject = projectsJsonArray.getJSONObject(i);
-				
 				Project project = ProjectLocalServiceUtil.createProject(projectJSONObject.getLong("id"));
 				project.setName(projectJSONObject.getString("name"));
 				project.setProjecthskaId(projectJSONObject.getString("projecthskaId"));
-				
 				ProjectLocalServiceUtil.addProject(project);
 			
 				JSONArray studentsJsonArray = projectJSONObject.getJSONArray("Students");
 				
 				for(int j = 0; j < studentsJsonArray.length(); j++) {
+					System.out.println("count studentsJsonArray: " + studentsJsonArray.length());
 					
 					JSONObject studentJSONObject = studentsJsonArray.getJSONObject(j);
-					
 					Student student = StudentLocalServiceUtil.createStudent(studentJSONObject.getLong("id"));
 					student.setFirstName(studentJSONObject.getString("firstName"));
 					student.setLastName(studentJSONObject.getString("lastName"));
@@ -146,15 +145,15 @@ public class MockData {
 					student.setMatnr(studentJSONObject.getInt("matnr"));
 					student.setRole(studentJSONObject.getInt("role"));
 					student.setProject_id(studentJSONObject.getLong("project_id"));
-					
 					StudentLocalServiceUtil.addStudent(student);
 					
-					if(projectJSONObject.has("Feedback")) {
+					if(studentJSONObject.has("Feedback")) {
 					JSONArray feedbackJsonArray = studentJSONObject.getJSONArray("Feedback");
 					
 					for(int y = 0; y < feedbackJsonArray.length(); y++) {
-						JSONObject feedbackJSONObject = feedbackJsonArray.getJSONObject(y);
+						System.out.println("count feedbackJsonArray: " + feedbackJsonArray.length());
 						
+						JSONObject feedbackJSONObject = feedbackJsonArray.getJSONObject(y);
 						Feedback feedback = FeedbackLocalServiceUtil.createFeedback(feedbackJSONObject.getLong("id"));
 						feedback.setStudent_id(feedbackJSONObject.getLong("student_id"));
 						feedback.setEigenbewertung(feedbackJSONObject.getString("eigenbewertung"));
@@ -162,19 +161,18 @@ public class MockData {
 						feedback.setKommentar_beitrag(feedbackJSONObject.getString("kommentar_beitrag"));
 						feedback.setFeedback_runden_nr(feedbackJSONObject.getInt("feedback_runden_nr"));
 						feedback.setBeitrag(feedbackJSONObject.getInt("beitrag"));
-						
 						FeedbackLocalServiceUtil.addFeedback(feedback);
 						
 						JSONArray teilnoteJsonArray = feedbackJSONObject.getJSONArray("Teilnote");
 						
-						for(int x = 0; x < feedbackJsonArray.length(); x++) {
-							JSONObject teilnoteJSONObject = teilnoteJsonArray.getJSONObject(x);
+						for(int x = 0; x < teilnoteJsonArray.length(); x++) {
+							System.out.println("count teilnoteJsonArray: " + teilnoteJsonArray.length());
 							
+							JSONObject teilnoteJSONObject = teilnoteJsonArray.getJSONObject(x);
 							Teilnote teilnote = TeilnoteLocalServiceUtil.createTeilnote(teilnoteJSONObject.getLong("id"));
 							teilnote.setFeedback_id(teilnoteJSONObject.getLong("feedback_id"));
 							teilnote.setNote(teilnoteJSONObject.getInt("note"));
 							teilnote.setKategorie(teilnoteJSONObject.getLong("kategorie"));
-							
 							TeilnoteLocalServiceUtil.addTeilnote(teilnote);
 						}
 					}
@@ -219,14 +217,13 @@ public class MockData {
 					
 					for (int y = 0; y < geplante_arbeitJsonArray.length(); y++) {
 						System.out.println("count geplante_arbeit: " + geplante_arbeitJsonArray.length());
-						JSONObject geplante_arbeitJSONObject = geplante_arbeitJsonArray.getJSONObject(y);
 						
+						JSONObject geplante_arbeitJSONObject = geplante_arbeitJsonArray.getJSONObject(y);
 						Geplante_arbeit geplante_arbeit = Geplante_arbeitLocalServiceUtil.createGeplante_arbeit(geplante_arbeitJSONObject.getLong("id"));
 						geplante_arbeit.setStatusbericht_id(geplante_arbeitJSONObject.getLong("statusbericht_id"));
 						geplante_arbeit.setVerantwortlicher(geplante_arbeitJSONObject.getLong("verantwortlicher"));
 						geplante_arbeit.setArbeit(geplante_arbeitJSONObject.getString("arbeit"));
 						//geplante_arbeit.setBis_wann(geplante_arbeitJSONObject.getString("bis_wann"));
-						
 						Geplante_arbeitLocalServiceUtil.addGeplante_arbeit(geplante_arbeit);
 					}
 				}
