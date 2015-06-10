@@ -21,7 +21,7 @@ import java.util.Map;
 public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
     implements Allgemeines {
     private long _id;
-    private long _statusbricht_id;
+    private long _statusbericht_id;
     private String _probleme_risiken;
     private String _massnahmen;
     private String _situation;
@@ -67,7 +67,7 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
         Map<String, Object> attributes = new HashMap<String, Object>();
 
         attributes.put("id", getId());
-        attributes.put("statusbricht_id", getStatusbricht_id());
+        attributes.put("statusbericht_id", getStatusbericht_id());
         attributes.put("probleme_risiken", getProbleme_risiken());
         attributes.put("massnahmen", getMassnahmen());
         attributes.put("situation", getSituation());
@@ -84,10 +84,10 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
             setId(id);
         }
 
-        Long statusbricht_id = (Long) attributes.get("statusbricht_id");
+        Long statusbericht_id = (Long) attributes.get("statusbericht_id");
 
-        if (statusbricht_id != null) {
-            setStatusbricht_id(statusbricht_id);
+        if (statusbericht_id != null) {
+            setStatusbericht_id(statusbericht_id);
         }
 
         String probleme_risiken = (String) attributes.get("probleme_risiken");
@@ -138,21 +138,22 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
     }
 
     @Override
-    public long getStatusbricht_id() {
-        return _statusbricht_id;
+    public long getStatusbericht_id() {
+        return _statusbericht_id;
     }
 
     @Override
-    public void setStatusbricht_id(long statusbricht_id) {
-        _statusbricht_id = statusbricht_id;
+    public void setStatusbericht_id(long statusbericht_id) {
+        _statusbericht_id = statusbericht_id;
 
         if (_allgemeinesRemoteModel != null) {
             try {
                 Class<?> clazz = _allgemeinesRemoteModel.getClass();
 
-                Method method = clazz.getMethod("setStatusbricht_id", long.class);
+                Method method = clazz.getMethod("setStatusbericht_id",
+                        long.class);
 
-                method.invoke(_allgemeinesRemoteModel, statusbricht_id);
+                method.invoke(_allgemeinesRemoteModel, statusbericht_id);
             } catch (Exception e) {
                 throw new UnsupportedOperationException(e);
             }
@@ -316,7 +317,7 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
         AllgemeinesClp clone = new AllgemeinesClp();
 
         clone.setId(getId());
-        clone.setStatusbricht_id(getStatusbricht_id());
+        clone.setStatusbericht_id(getStatusbericht_id());
         clone.setProbleme_risiken(getProbleme_risiken());
         clone.setMassnahmen(getMassnahmen());
         clone.setSituation(getSituation());
@@ -374,8 +375,8 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
 
         sb.append("{id=");
         sb.append(getId());
-        sb.append(", statusbricht_id=");
-        sb.append(getStatusbricht_id());
+        sb.append(", statusbericht_id=");
+        sb.append(getStatusbericht_id());
         sb.append(", probleme_risiken=");
         sb.append(getProbleme_risiken());
         sb.append(", massnahmen=");
@@ -402,8 +403,8 @@ public class AllgemeinesClp extends BaseModelImpl<Allgemeines>
         sb.append(getId());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>statusbricht_id</column-name><column-value><![CDATA[");
-        sb.append(getStatusbricht_id());
+            "<column><column-name>statusbericht_id</column-name><column-value><![CDATA[");
+        sb.append(getStatusbericht_id());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>probleme_risiken</column-name><column-value><![CDATA[");

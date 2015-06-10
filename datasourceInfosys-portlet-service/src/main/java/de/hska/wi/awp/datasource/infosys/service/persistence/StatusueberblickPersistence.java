@@ -24,6 +24,64 @@ public interface StatusueberblickPersistence extends BasePersistence<Statusueber
      */
 
     /**
+    * Returns the statusueberblick where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException} if it could not be found.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching statusueberblick
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException if a matching statusueberblick could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusueberblick findByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException;
+
+    /**
+    * Returns the statusueberblick where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching statusueberblick, or <code>null</code> if a matching statusueberblick could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusueberblick fetchByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the statusueberblick where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param retrieveFromCache whether to use the finder cache
+    * @return the matching statusueberblick, or <code>null</code> if a matching statusueberblick could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusueberblick fetchByStatusbericht_id(
+        long statusbericht_id, boolean retrieveFromCache)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Removes the statusueberblick where statusbericht_id = &#63; from the database.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the statusueberblick that was removed
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusueberblick removeByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException;
+
+    /**
+    * Returns the number of statusueberblicks where statusbericht_id = &#63;.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the number of matching statusueberblicks
+    * @throws SystemException if a system exception occurred
+    */
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
     * Caches the statusueberblick in the entity cache if it is enabled.
     *
     * @param statusueberblick the statusueberblick

@@ -24,6 +24,64 @@ public interface Geplante_arbeitPersistence extends BasePersistence<Geplante_arb
      */
 
     /**
+    * Returns the geplante_arbeit where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException} if it could not be found.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching geplante_arbeit
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException if a matching geplante_arbeit could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit findByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException;
+
+    /**
+    * Returns the geplante_arbeit where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching geplante_arbeit, or <code>null</code> if a matching geplante_arbeit could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit fetchByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the geplante_arbeit where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param retrieveFromCache whether to use the finder cache
+    * @return the matching geplante_arbeit, or <code>null</code> if a matching geplante_arbeit could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit fetchByStatusbericht_id(
+        long statusbericht_id, boolean retrieveFromCache)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Removes the geplante_arbeit where statusbericht_id = &#63; from the database.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the geplante_arbeit that was removed
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit removeByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException;
+
+    /**
+    * Returns the number of geplante_arbeits where statusbericht_id = &#63;.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the number of matching geplante_arbeits
+    * @throws SystemException if a system exception occurred
+    */
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
     * Caches the geplante_arbeit in the entity cache if it is enabled.
     *
     * @param geplante_arbeit the geplante_arbeit

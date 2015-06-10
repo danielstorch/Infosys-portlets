@@ -69,7 +69,11 @@ public class Geplante_arbeitModelImpl extends BaseModelImpl<Geplante_arbeit>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit"),
+            true);
+    public static long STATUSBERICHT_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit"));
     private static ClassLoader _classLoader = Geplante_arbeit.class.getClassLoader();
@@ -78,9 +82,12 @@ public class Geplante_arbeitModelImpl extends BaseModelImpl<Geplante_arbeit>
         };
     private long _id;
     private long _statusbericht_id;
+    private long _originalStatusbericht_id;
+    private boolean _setOriginalStatusbericht_id;
     private long _verantwortlicher;
     private String _arbeit;
     private Date _bis_wann;
+    private long _columnBitmask;
     private Geplante_arbeit _escapedModel;
 
     public Geplante_arbeitModelImpl() {
@@ -224,7 +231,19 @@ public class Geplante_arbeitModelImpl extends BaseModelImpl<Geplante_arbeit>
 
     @Override
     public void setStatusbericht_id(long statusbericht_id) {
+        _columnBitmask |= STATUSBERICHT_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalStatusbericht_id) {
+            _setOriginalStatusbericht_id = true;
+
+            _originalStatusbericht_id = _statusbericht_id;
+        }
+
         _statusbericht_id = statusbericht_id;
+    }
+
+    public long getOriginalStatusbericht_id() {
+        return _originalStatusbericht_id;
     }
 
     @JSON
@@ -262,6 +281,10 @@ public class Geplante_arbeitModelImpl extends BaseModelImpl<Geplante_arbeit>
     @Override
     public void setBis_wann(Date bis_wann) {
         _bis_wann = bis_wann;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
     }
 
     @Override
@@ -343,6 +366,13 @@ public class Geplante_arbeitModelImpl extends BaseModelImpl<Geplante_arbeit>
 
     @Override
     public void resetOriginalValues() {
+        Geplante_arbeitModelImpl geplante_arbeitModelImpl = this;
+
+        geplante_arbeitModelImpl._originalStatusbericht_id = geplante_arbeitModelImpl._statusbericht_id;
+
+        geplante_arbeitModelImpl._setOriginalStatusbericht_id = false;
+
+        geplante_arbeitModelImpl._columnBitmask = 0;
     }
 
     @Override

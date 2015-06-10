@@ -15,7 +15,6 @@
         <finder name="Project_id" return-type="Collection">
           	<finder-column name="project_id"/>
         </finder>
-        
     </entity>
     <entity name="Project" local-service="true">
         <column name="name" type="String"></column>
@@ -27,6 +26,9 @@
         <column name="project_id" type="long"></column>
         <column name="datum" type="Date"></column>
         <column name="kalenderwoche" type="int"></column>
+        <finder name="Project_id" return-type="Collection">
+          	<finder-column name="project_id"/>
+        </finder>
     </entity>
     <entity name="Statusueberblick" local-service="true">
         <column name="id" type="long" primary="true"></column>
@@ -39,14 +41,20 @@
         <column name="aufwand_text" type="String"></column>
         <column name="termine_status" type="String"></column>
         <column name="termine_text" type="String"></column>
+        <finder name="Statusbericht_id" return-type="Statusueberblick">
+          	<finder-column name="statusbericht_id"/>
+        </finder>
     </entity>
     <entity name="Allgemeines" local-service="true">
         <column name="id" type="long" primary="true"></column>
-        <column name="statusbricht_id" type="long"></column>
+        <column name="statusbericht_id" type="long"></column>
         <column name="probleme_risiken" type="String"></column>
         <column name="massnahmen" type="String"></column>
         <column name="situation" type="String"></column>
         <column name="gruende" type="String"></column>
+        <finder name="Statusbericht_id" return-type="Allgemeines">
+          	<finder-column name="statusbericht_id"/>
+        </finder>
     </entity>
     <entity name="Geplante_arbeit" local-service="true">
         <column name="id" type="long" primary="true"></column>
@@ -54,6 +62,9 @@
         <column name="verantwortlicher" type="long"></column>
         <column name="arbeit" type="String"></column>
         <column name="bis_wann" type="Date"></column>
+        <finder name="Statusbericht_id" return-type="Allgemeines">
+          	<finder-column name="statusbericht_id"/>
+        </finder>
     </entity>
     <entity name="Feedback" local-service="true">
         <column name="id" type="long" primary="true"></column>
@@ -63,11 +74,17 @@
         <column name="kommentar_kompetenzen" type="String"></column>
         <column name="kommentar_beitrag" type="String"></column>
         <column name="beitrag" type="int"></column>
+        <finder name="Student_id" return-type="Collection">
+          	<finder-column name="student_id"/>
+        </finder>
     </entity>
     <entity name="Teilnote" local-service="true">
         <column name="id" primary="true" type="long"></column>
         <column name="feedback_id" type="long"></column>
         <column name="note" type="int"></column>
         <column name="kategorie" type="long"></column>
+        <finder name="Feedback_id" return-type="Collection">
+          	<finder-column name="feedback_id"/>
+        </finder>
     </entity>
 </service-builder>

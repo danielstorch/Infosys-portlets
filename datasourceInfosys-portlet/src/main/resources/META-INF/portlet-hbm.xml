@@ -15,7 +15,7 @@
 		<id name="id" column="id_" type="long">
 			<generator class="assigned" />
 		</id>
-		<property name="statusbricht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="probleme_risiken" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="massnahmen" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="situation" type="com.liferay.portal.dao.orm.hibernate.StringType" />

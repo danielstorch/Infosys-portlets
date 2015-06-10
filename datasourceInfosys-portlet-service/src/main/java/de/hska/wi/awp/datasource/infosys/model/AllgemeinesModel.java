@@ -58,18 +58,18 @@ public interface AllgemeinesModel extends BaseModel<Allgemeines> {
     public void setId(long id);
 
     /**
-     * Returns the statusbricht_id of this allgemeines.
+     * Returns the statusbericht_id of this allgemeines.
      *
-     * @return the statusbricht_id of this allgemeines
+     * @return the statusbericht_id of this allgemeines
      */
-    public long getStatusbricht_id();
+    public long getStatusbericht_id();
 
     /**
-     * Sets the statusbricht_id of this allgemeines.
+     * Sets the statusbericht_id of this allgemeines.
      *
-     * @param statusbricht_id the statusbricht_id of this allgemeines
+     * @param statusbericht_id the statusbericht_id of this allgemeines
      */
-    public void setStatusbricht_id(long statusbricht_id);
+    public void setStatusbericht_id(long statusbericht_id);
 
     /**
      * Returns the probleme_risiken of this allgemeines.

@@ -50,13 +50,13 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
     public static final String TABLE_NAME = "datasourceInfosys_Allgemeines";
     public static final Object[][] TABLE_COLUMNS = {
             { "id_", Types.BIGINT },
-            { "statusbricht_id", Types.BIGINT },
+            { "statusbericht_id", Types.BIGINT },
             { "probleme_risiken", Types.VARCHAR },
             { "massnahmen", Types.VARCHAR },
             { "situation", Types.VARCHAR },
             { "gruende", Types.VARCHAR }
         };
-    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Allgemeines (id_ LONG not null primary key,statusbricht_id LONG,probleme_risiken VARCHAR(75) null,massnahmen VARCHAR(75) null,situation VARCHAR(500) null,gruende VARCHAR(75) null)";
+    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Allgemeines (id_ LONG not null primary key,statusbericht_id LONG,probleme_risiken VARCHAR(75) null,massnahmen VARCHAR(75) null,situation VARCHAR(500) null,gruende VARCHAR(75) null)";
     public static final String TABLE_SQL_DROP = "drop table datasourceInfosys_Allgemeines";
     public static final String ORDER_BY_JPQL = " ORDER BY allgemeines.id ASC";
     public static final String ORDER_BY_SQL = " ORDER BY datasourceInfosys_Allgemeines.id_ ASC";
@@ -69,7 +69,11 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Allgemeines"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Allgemeines"),
+            true);
+    public static long STATUSBERICHT_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Allgemeines"));
     private static ClassLoader _classLoader = Allgemeines.class.getClassLoader();
@@ -77,11 +81,14 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
             Allgemeines.class
         };
     private long _id;
-    private long _statusbricht_id;
+    private long _statusbericht_id;
+    private long _originalStatusbericht_id;
+    private boolean _setOriginalStatusbericht_id;
     private String _probleme_risiken;
     private String _massnahmen;
     private String _situation;
     private String _gruende;
+    private long _columnBitmask;
     private Allgemeines _escapedModel;
 
     public AllgemeinesModelImpl() {
@@ -101,7 +108,7 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
         Allgemeines model = new AllgemeinesImpl();
 
         model.setId(soapModel.getId());
-        model.setStatusbricht_id(soapModel.getStatusbricht_id());
+        model.setStatusbericht_id(soapModel.getStatusbericht_id());
         model.setProbleme_risiken(soapModel.getProbleme_risiken());
         model.setMassnahmen(soapModel.getMassnahmen());
         model.setSituation(soapModel.getSituation());
@@ -165,7 +172,7 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
         Map<String, Object> attributes = new HashMap<String, Object>();
 
         attributes.put("id", getId());
-        attributes.put("statusbricht_id", getStatusbricht_id());
+        attributes.put("statusbericht_id", getStatusbericht_id());
         attributes.put("probleme_risiken", getProbleme_risiken());
         attributes.put("massnahmen", getMassnahmen());
         attributes.put("situation", getSituation());
@@ -182,10 +189,10 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
             setId(id);
         }
 
-        Long statusbricht_id = (Long) attributes.get("statusbricht_id");
+        Long statusbericht_id = (Long) attributes.get("statusbericht_id");
 
-        if (statusbricht_id != null) {
-            setStatusbricht_id(statusbricht_id);
+        if (statusbericht_id != null) {
+            setStatusbericht_id(statusbericht_id);
         }
 
         String probleme_risiken = (String) attributes.get("probleme_risiken");
@@ -226,13 +233,25 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
 
     @JSON
     @Override
-    public long getStatusbricht_id() {
-        return _statusbricht_id;
+    public long getStatusbericht_id() {
+        return _statusbericht_id;
     }
 
     @Override
-    public void setStatusbricht_id(long statusbricht_id) {
-        _statusbricht_id = statusbricht_id;
+    public void setStatusbericht_id(long statusbericht_id) {
+        _columnBitmask |= STATUSBERICHT_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalStatusbericht_id) {
+            _setOriginalStatusbericht_id = true;
+
+            _originalStatusbericht_id = _statusbericht_id;
+        }
+
+        _statusbericht_id = statusbericht_id;
+    }
+
+    public long getOriginalStatusbericht_id() {
+        return _originalStatusbericht_id;
     }
 
     @JSON
@@ -295,6 +314,10 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
         _gruende = gruende;
     }
 
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
+
     @Override
     public ExpandoBridge getExpandoBridge() {
         return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
@@ -323,7 +346,7 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
         AllgemeinesImpl allgemeinesImpl = new AllgemeinesImpl();
 
         allgemeinesImpl.setId(getId());
-        allgemeinesImpl.setStatusbricht_id(getStatusbricht_id());
+        allgemeinesImpl.setStatusbericht_id(getStatusbericht_id());
         allgemeinesImpl.setProbleme_risiken(getProbleme_risiken());
         allgemeinesImpl.setMassnahmen(getMassnahmen());
         allgemeinesImpl.setSituation(getSituation());
@@ -375,6 +398,13 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
 
     @Override
     public void resetOriginalValues() {
+        AllgemeinesModelImpl allgemeinesModelImpl = this;
+
+        allgemeinesModelImpl._originalStatusbericht_id = allgemeinesModelImpl._statusbericht_id;
+
+        allgemeinesModelImpl._setOriginalStatusbericht_id = false;
+
+        allgemeinesModelImpl._columnBitmask = 0;
     }
 
     @Override
@@ -383,7 +413,7 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
 
         allgemeinesCacheModel.id = getId();
 
-        allgemeinesCacheModel.statusbricht_id = getStatusbricht_id();
+        allgemeinesCacheModel.statusbericht_id = getStatusbericht_id();
 
         allgemeinesCacheModel.probleme_risiken = getProbleme_risiken();
 
@@ -426,8 +456,8 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
 
         sb.append("{id=");
         sb.append(getId());
-        sb.append(", statusbricht_id=");
-        sb.append(getStatusbricht_id());
+        sb.append(", statusbericht_id=");
+        sb.append(getStatusbericht_id());
         sb.append(", probleme_risiken=");
         sb.append(getProbleme_risiken());
         sb.append(", massnahmen=");
@@ -454,8 +484,8 @@ public class AllgemeinesModelImpl extends BaseModelImpl<Allgemeines>
         sb.append(getId());
         sb.append("]]></column-value></column>");
         sb.append(
-            "<column><column-name>statusbricht_id</column-name><column-value><![CDATA[");
-        sb.append(getStatusbricht_id());
+            "<column><column-name>statusbericht_id</column-name><column-value><![CDATA[");
+        sb.append(getStatusbericht_id());
         sb.append("]]></column-value></column>");
         sb.append(
             "<column><column-name>probleme_risiken</column-name><column-value><![CDATA[");

@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
 import com.liferay.portal.kernel.dao.orm.Query;
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -17,6 +18,7 @@ import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
 import com.liferay.portal.model.CacheModel;
@@ -71,10 +73,24 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
             Geplante_arbeitModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+    public static final FinderPath FINDER_PATH_FETCH_BY_STATUSBERICHT_ID = new FinderPath(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
+            Geplante_arbeitModelImpl.FINDER_CACHE_ENABLED,
+            Geplante_arbeitImpl.class, FINDER_CLASS_NAME_ENTITY,
+            "fetchByStatusbericht_id", new String[] { Long.class.getName() },
+            Geplante_arbeitModelImpl.STATUSBERICHT_ID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_STATUSBERICHT_ID = new FinderPath(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
+            Geplante_arbeitModelImpl.FINDER_CACHE_ENABLED, Long.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "countByStatusbericht_id", new String[] { Long.class.getName() });
+    private static final String _FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2 =
+        "geplante_arbeit.statusbericht_id = ?";
     private static final String _SQL_SELECT_GEPLANTE_ARBEIT = "SELECT geplante_arbeit FROM Geplante_arbeit geplante_arbeit";
+    private static final String _SQL_SELECT_GEPLANTE_ARBEIT_WHERE = "SELECT geplante_arbeit FROM Geplante_arbeit geplante_arbeit WHERE ";
     private static final String _SQL_COUNT_GEPLANTE_ARBEIT = "SELECT COUNT(geplante_arbeit) FROM Geplante_arbeit geplante_arbeit";
+    private static final String _SQL_COUNT_GEPLANTE_ARBEIT_WHERE = "SELECT COUNT(geplante_arbeit) FROM Geplante_arbeit geplante_arbeit WHERE ";
     private static final String _ORDER_BY_ENTITY_ALIAS = "geplante_arbeit.";
     private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Geplante_arbeit exists with the primary key ";
+    private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Geplante_arbeit exists with the key {";
     private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
                 PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
     private static Log _log = LogFactoryUtil.getLog(Geplante_arbeitPersistenceImpl.class);
@@ -105,6 +121,208 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
     }
 
     /**
+     * Returns the geplante_arbeit where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException} if it could not be found.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching geplante_arbeit
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException if a matching geplante_arbeit could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Geplante_arbeit findByStatusbericht_id(long statusbericht_id)
+        throws NoSuchGeplante_arbeitException, SystemException {
+        Geplante_arbeit geplante_arbeit = fetchByStatusbericht_id(statusbericht_id);
+
+        if (geplante_arbeit == null) {
+            StringBundler msg = new StringBundler(4);
+
+            msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+            msg.append("statusbericht_id=");
+            msg.append(statusbericht_id);
+
+            msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+            if (_log.isWarnEnabled()) {
+                _log.warn(msg.toString());
+            }
+
+            throw new NoSuchGeplante_arbeitException(msg.toString());
+        }
+
+        return geplante_arbeit;
+    }
+
+    /**
+     * Returns the geplante_arbeit where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching geplante_arbeit, or <code>null</code> if a matching geplante_arbeit could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Geplante_arbeit fetchByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        return fetchByStatusbericht_id(statusbericht_id, true);
+    }
+
+    /**
+     * Returns the geplante_arbeit where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @param retrieveFromCache whether to use the finder cache
+     * @return the matching geplante_arbeit, or <code>null</code> if a matching geplante_arbeit could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Geplante_arbeit fetchByStatusbericht_id(long statusbericht_id,
+        boolean retrieveFromCache) throws SystemException {
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Object result = null;
+
+        if (retrieveFromCache) {
+            result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs, this);
+        }
+
+        if (result instanceof Geplante_arbeit) {
+            Geplante_arbeit geplante_arbeit = (Geplante_arbeit) result;
+
+            if ((statusbericht_id != geplante_arbeit.getStatusbericht_id())) {
+                result = null;
+            }
+        }
+
+        if (result == null) {
+            StringBundler query = new StringBundler(3);
+
+            query.append(_SQL_SELECT_GEPLANTE_ARBEIT_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                List<Geplante_arbeit> list = q.list();
+
+                if (list.isEmpty()) {
+                    FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                        finderArgs, list);
+                } else {
+                    if ((list.size() > 1) && _log.isWarnEnabled()) {
+                        _log.warn(
+                            "Geplante_arbeitPersistenceImpl.fetchByStatusbericht_id(long, boolean) with parameters (" +
+                            StringUtil.merge(finderArgs) +
+                            ") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+                    }
+
+                    Geplante_arbeit geplante_arbeit = list.get(0);
+
+                    result = geplante_arbeit;
+
+                    cacheResult(geplante_arbeit);
+
+                    if ((geplante_arbeit.getStatusbericht_id() != statusbericht_id)) {
+                        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                            finderArgs, geplante_arbeit);
+                    }
+                }
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        if (result instanceof List<?>) {
+            return null;
+        } else {
+            return (Geplante_arbeit) result;
+        }
+    }
+
+    /**
+     * Removes the geplante_arbeit where statusbericht_id = &#63; from the database.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the geplante_arbeit that was removed
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Geplante_arbeit removeByStatusbericht_id(long statusbericht_id)
+        throws NoSuchGeplante_arbeitException, SystemException {
+        Geplante_arbeit geplante_arbeit = findByStatusbericht_id(statusbericht_id);
+
+        return remove(geplante_arbeit);
+    }
+
+    /**
+     * Returns the number of geplante_arbeits where statusbericht_id = &#63;.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the number of matching geplante_arbeits
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_STATUSBERICHT_ID;
+
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
+                this);
+
+        if (count == null) {
+            StringBundler query = new StringBundler(2);
+
+            query.append(_SQL_COUNT_GEPLANTE_ARBEIT_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                count = (Long) q.uniqueResult();
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, count);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return count.intValue();
+    }
+
+    /**
      * Caches the geplante_arbeit in the entity cache if it is enabled.
      *
      * @param geplante_arbeit the geplante_arbeit
@@ -113,6 +331,10 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
     public void cacheResult(Geplante_arbeit geplante_arbeit) {
         EntityCacheUtil.putResult(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
             Geplante_arbeitImpl.class, geplante_arbeit.getPrimaryKey(),
+            geplante_arbeit);
+
+        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+            new Object[] { geplante_arbeit.getStatusbericht_id() },
             geplante_arbeit);
 
         geplante_arbeit.resetOriginalValues();
@@ -171,6 +393,8 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+        clearUniqueFindersCache(geplante_arbeit);
     }
 
     @Override
@@ -181,6 +405,54 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
         for (Geplante_arbeit geplante_arbeit : geplante_arbeits) {
             EntityCacheUtil.removeResult(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
                 Geplante_arbeitImpl.class, geplante_arbeit.getPrimaryKey());
+
+            clearUniqueFindersCache(geplante_arbeit);
+        }
+    }
+
+    protected void cacheUniqueFindersCache(Geplante_arbeit geplante_arbeit) {
+        if (geplante_arbeit.isNew()) {
+            Object[] args = new Object[] { geplante_arbeit.getStatusbericht_id() };
+
+            FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args, Long.valueOf(1));
+            FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args, geplante_arbeit);
+        } else {
+            Geplante_arbeitModelImpl geplante_arbeitModelImpl = (Geplante_arbeitModelImpl) geplante_arbeit;
+
+            if ((geplante_arbeitModelImpl.getColumnBitmask() &
+                    FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] {
+                        geplante_arbeit.getStatusbericht_id()
+                    };
+
+                FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                    args, Long.valueOf(1));
+                FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    args, geplante_arbeit);
+            }
+        }
+    }
+
+    protected void clearUniqueFindersCache(Geplante_arbeit geplante_arbeit) {
+        Geplante_arbeitModelImpl geplante_arbeitModelImpl = (Geplante_arbeitModelImpl) geplante_arbeit;
+
+        Object[] args = new Object[] { geplante_arbeit.getStatusbericht_id() };
+
+        FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID, args);
+        FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID, args);
+
+        if ((geplante_arbeitModelImpl.getColumnBitmask() &
+                FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+            args = new Object[] {
+                    geplante_arbeitModelImpl.getOriginalStatusbericht_id()
+                };
+
+            FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args);
+            FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args);
         }
     }
 
@@ -311,13 +583,16 @@ public class Geplante_arbeitPersistenceImpl extends BasePersistenceImpl<Geplante
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-        if (isNew) {
+        if (isNew || !Geplante_arbeitModelImpl.COLUMN_BITMASK_ENABLED) {
             FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
         }
 
         EntityCacheUtil.putResult(Geplante_arbeitModelImpl.ENTITY_CACHE_ENABLED,
             Geplante_arbeitImpl.class, geplante_arbeit.getPrimaryKey(),
             geplante_arbeit);
+
+        clearUniqueFindersCache(geplante_arbeit);
+        cacheUniqueFindersCache(geplante_arbeit);
 
         return geplante_arbeit;
     }

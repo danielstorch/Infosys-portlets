@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
 import com.liferay.portal.kernel.dao.orm.Query;
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -17,6 +18,7 @@ import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
 import com.liferay.portal.model.CacheModel;
@@ -69,10 +71,24 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
             AllgemeinesModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+    public static final FinderPath FINDER_PATH_FETCH_BY_STATUSBERICHT_ID = new FinderPath(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
+            AllgemeinesModelImpl.FINDER_CACHE_ENABLED, AllgemeinesImpl.class,
+            FINDER_CLASS_NAME_ENTITY, "fetchByStatusbericht_id",
+            new String[] { Long.class.getName() },
+            AllgemeinesModelImpl.STATUSBERICHT_ID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_STATUSBERICHT_ID = new FinderPath(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
+            AllgemeinesModelImpl.FINDER_CACHE_ENABLED, Long.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "countByStatusbericht_id", new String[] { Long.class.getName() });
+    private static final String _FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2 =
+        "allgemeines.statusbericht_id = ?";
     private static final String _SQL_SELECT_ALLGEMEINES = "SELECT allgemeines FROM Allgemeines allgemeines";
+    private static final String _SQL_SELECT_ALLGEMEINES_WHERE = "SELECT allgemeines FROM Allgemeines allgemeines WHERE ";
     private static final String _SQL_COUNT_ALLGEMEINES = "SELECT COUNT(allgemeines) FROM Allgemeines allgemeines";
+    private static final String _SQL_COUNT_ALLGEMEINES_WHERE = "SELECT COUNT(allgemeines) FROM Allgemeines allgemeines WHERE ";
     private static final String _ORDER_BY_ENTITY_ALIAS = "allgemeines.";
     private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Allgemeines exists with the primary key ";
+    private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Allgemeines exists with the key {";
     private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
                 PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
     private static Log _log = LogFactoryUtil.getLog(AllgemeinesPersistenceImpl.class);
@@ -103,6 +119,208 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
     }
 
     /**
+     * Returns the allgemeines where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException} if it could not be found.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching allgemeines
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException if a matching allgemeines could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Allgemeines findByStatusbericht_id(long statusbericht_id)
+        throws NoSuchAllgemeinesException, SystemException {
+        Allgemeines allgemeines = fetchByStatusbericht_id(statusbericht_id);
+
+        if (allgemeines == null) {
+            StringBundler msg = new StringBundler(4);
+
+            msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+            msg.append("statusbericht_id=");
+            msg.append(statusbericht_id);
+
+            msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+            if (_log.isWarnEnabled()) {
+                _log.warn(msg.toString());
+            }
+
+            throw new NoSuchAllgemeinesException(msg.toString());
+        }
+
+        return allgemeines;
+    }
+
+    /**
+     * Returns the allgemeines where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching allgemeines, or <code>null</code> if a matching allgemeines could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Allgemeines fetchByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        return fetchByStatusbericht_id(statusbericht_id, true);
+    }
+
+    /**
+     * Returns the allgemeines where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @param retrieveFromCache whether to use the finder cache
+     * @return the matching allgemeines, or <code>null</code> if a matching allgemeines could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Allgemeines fetchByStatusbericht_id(long statusbericht_id,
+        boolean retrieveFromCache) throws SystemException {
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Object result = null;
+
+        if (retrieveFromCache) {
+            result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs, this);
+        }
+
+        if (result instanceof Allgemeines) {
+            Allgemeines allgemeines = (Allgemeines) result;
+
+            if ((statusbericht_id != allgemeines.getStatusbericht_id())) {
+                result = null;
+            }
+        }
+
+        if (result == null) {
+            StringBundler query = new StringBundler(3);
+
+            query.append(_SQL_SELECT_ALLGEMEINES_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                List<Allgemeines> list = q.list();
+
+                if (list.isEmpty()) {
+                    FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                        finderArgs, list);
+                } else {
+                    if ((list.size() > 1) && _log.isWarnEnabled()) {
+                        _log.warn(
+                            "AllgemeinesPersistenceImpl.fetchByStatusbericht_id(long, boolean) with parameters (" +
+                            StringUtil.merge(finderArgs) +
+                            ") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+                    }
+
+                    Allgemeines allgemeines = list.get(0);
+
+                    result = allgemeines;
+
+                    cacheResult(allgemeines);
+
+                    if ((allgemeines.getStatusbericht_id() != statusbericht_id)) {
+                        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                            finderArgs, allgemeines);
+                    }
+                }
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        if (result instanceof List<?>) {
+            return null;
+        } else {
+            return (Allgemeines) result;
+        }
+    }
+
+    /**
+     * Removes the allgemeines where statusbericht_id = &#63; from the database.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the allgemeines that was removed
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Allgemeines removeByStatusbericht_id(long statusbericht_id)
+        throws NoSuchAllgemeinesException, SystemException {
+        Allgemeines allgemeines = findByStatusbericht_id(statusbericht_id);
+
+        return remove(allgemeines);
+    }
+
+    /**
+     * Returns the number of allgemeineses where statusbericht_id = &#63;.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the number of matching allgemeineses
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_STATUSBERICHT_ID;
+
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
+                this);
+
+        if (count == null) {
+            StringBundler query = new StringBundler(2);
+
+            query.append(_SQL_COUNT_ALLGEMEINES_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                count = (Long) q.uniqueResult();
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, count);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return count.intValue();
+    }
+
+    /**
      * Caches the allgemeines in the entity cache if it is enabled.
      *
      * @param allgemeines the allgemeines
@@ -111,6 +329,9 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
     public void cacheResult(Allgemeines allgemeines) {
         EntityCacheUtil.putResult(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
             AllgemeinesImpl.class, allgemeines.getPrimaryKey(), allgemeines);
+
+        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+            new Object[] { allgemeines.getStatusbericht_id() }, allgemeines);
 
         allgemeines.resetOriginalValues();
     }
@@ -167,6 +388,8 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+        clearUniqueFindersCache(allgemeines);
     }
 
     @Override
@@ -177,6 +400,52 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
         for (Allgemeines allgemeines : allgemeineses) {
             EntityCacheUtil.removeResult(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
                 AllgemeinesImpl.class, allgemeines.getPrimaryKey());
+
+            clearUniqueFindersCache(allgemeines);
+        }
+    }
+
+    protected void cacheUniqueFindersCache(Allgemeines allgemeines) {
+        if (allgemeines.isNew()) {
+            Object[] args = new Object[] { allgemeines.getStatusbericht_id() };
+
+            FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args, Long.valueOf(1));
+            FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args, allgemeines);
+        } else {
+            AllgemeinesModelImpl allgemeinesModelImpl = (AllgemeinesModelImpl) allgemeines;
+
+            if ((allgemeinesModelImpl.getColumnBitmask() &
+                    FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] { allgemeines.getStatusbericht_id() };
+
+                FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                    args, Long.valueOf(1));
+                FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    args, allgemeines);
+            }
+        }
+    }
+
+    protected void clearUniqueFindersCache(Allgemeines allgemeines) {
+        AllgemeinesModelImpl allgemeinesModelImpl = (AllgemeinesModelImpl) allgemeines;
+
+        Object[] args = new Object[] { allgemeines.getStatusbericht_id() };
+
+        FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID, args);
+        FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID, args);
+
+        if ((allgemeinesModelImpl.getColumnBitmask() &
+                FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+            args = new Object[] {
+                    allgemeinesModelImpl.getOriginalStatusbericht_id()
+                };
+
+            FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args);
+            FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args);
         }
     }
 
@@ -307,12 +576,15 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-        if (isNew) {
+        if (isNew || !AllgemeinesModelImpl.COLUMN_BITMASK_ENABLED) {
             FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
         }
 
         EntityCacheUtil.putResult(AllgemeinesModelImpl.ENTITY_CACHE_ENABLED,
             AllgemeinesImpl.class, allgemeines.getPrimaryKey(), allgemeines);
+
+        clearUniqueFindersCache(allgemeines);
+        cacheUniqueFindersCache(allgemeines);
 
         return allgemeines;
     }
@@ -328,7 +600,7 @@ public class AllgemeinesPersistenceImpl extends BasePersistenceImpl<Allgemeines>
         allgemeinesImpl.setPrimaryKey(allgemeines.getPrimaryKey());
 
         allgemeinesImpl.setId(allgemeines.getId());
-        allgemeinesImpl.setStatusbricht_id(allgemeines.getStatusbricht_id());
+        allgemeinesImpl.setStatusbericht_id(allgemeines.getStatusbericht_id());
         allgemeinesImpl.setProbleme_risiken(allgemeines.getProbleme_risiken());
         allgemeinesImpl.setMassnahmen(allgemeines.getMassnahmen());
         allgemeinesImpl.setSituation(allgemeines.getSituation());

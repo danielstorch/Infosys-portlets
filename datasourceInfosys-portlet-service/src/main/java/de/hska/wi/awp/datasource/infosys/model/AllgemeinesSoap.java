@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class AllgemeinesSoap implements Serializable {
     private long _id;
-    private long _statusbricht_id;
+    private long _statusbericht_id;
     private String _probleme_risiken;
     private String _massnahmen;
     private String _situation;
@@ -27,7 +27,7 @@ public class AllgemeinesSoap implements Serializable {
         AllgemeinesSoap soapModel = new AllgemeinesSoap();
 
         soapModel.setId(model.getId());
-        soapModel.setStatusbricht_id(model.getStatusbricht_id());
+        soapModel.setStatusbericht_id(model.getStatusbericht_id());
         soapModel.setProbleme_risiken(model.getProbleme_risiken());
         soapModel.setMassnahmen(model.getMassnahmen());
         soapModel.setSituation(model.getSituation());
@@ -88,12 +88,12 @@ public class AllgemeinesSoap implements Serializable {
         _id = id;
     }
 
-    public long getStatusbricht_id() {
-        return _statusbricht_id;
+    public long getStatusbericht_id() {
+        return _statusbericht_id;
     }
 
-    public void setStatusbricht_id(long statusbricht_id) {
-        _statusbricht_id = statusbricht_id;
+    public void setStatusbericht_id(long statusbericht_id) {
+        _statusbericht_id = statusbericht_id;
     }
 
     public String getProbleme_risiken() {

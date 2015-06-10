@@ -3,7 +3,7 @@
 <model-hints>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Allgemeines">
 		<field name="id" type="long" />
-		<field name="statusbricht_id" type="long" />
+		<field name="statusbericht_id" type="long" />
 		<field name="probleme_risiken" type="String" />
 		<field name="massnahmen" type="String" />
 		<field name="situation" type="String">

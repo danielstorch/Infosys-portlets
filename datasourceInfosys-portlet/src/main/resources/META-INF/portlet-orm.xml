@@ -12,7 +12,7 @@
 			<id name="id">
 				<column name="ID_" />
 			</id>
-			<basic name="statusbricht_id" />
+			<basic name="statusbericht_id" />
 			<basic name="probleme_risiken" />
 			<basic name="massnahmen" />
 			<basic name="situation" />

@@ -21,7 +21,7 @@ import java.io.ObjectOutput;
 public class AllgemeinesCacheModel implements CacheModel<Allgemeines>,
     Externalizable {
     public long id;
-    public long statusbricht_id;
+    public long statusbericht_id;
     public String probleme_risiken;
     public String massnahmen;
     public String situation;
@@ -33,8 +33,8 @@ public class AllgemeinesCacheModel implements CacheModel<Allgemeines>,
 
         sb.append("{id=");
         sb.append(id);
-        sb.append(", statusbricht_id=");
-        sb.append(statusbricht_id);
+        sb.append(", statusbericht_id=");
+        sb.append(statusbericht_id);
         sb.append(", probleme_risiken=");
         sb.append(probleme_risiken);
         sb.append(", massnahmen=");
@@ -53,7 +53,7 @@ public class AllgemeinesCacheModel implements CacheModel<Allgemeines>,
         AllgemeinesImpl allgemeinesImpl = new AllgemeinesImpl();
 
         allgemeinesImpl.setId(id);
-        allgemeinesImpl.setStatusbricht_id(statusbricht_id);
+        allgemeinesImpl.setStatusbericht_id(statusbericht_id);
 
         if (probleme_risiken == null) {
             allgemeinesImpl.setProbleme_risiken(StringPool.BLANK);
@@ -87,7 +87,7 @@ public class AllgemeinesCacheModel implements CacheModel<Allgemeines>,
     @Override
     public void readExternal(ObjectInput objectInput) throws IOException {
         id = objectInput.readLong();
-        statusbricht_id = objectInput.readLong();
+        statusbericht_id = objectInput.readLong();
         probleme_risiken = objectInput.readUTF();
         massnahmen = objectInput.readUTF();
         situation = objectInput.readUTF();
@@ -98,7 +98,7 @@ public class AllgemeinesCacheModel implements CacheModel<Allgemeines>,
     public void writeExternal(ObjectOutput objectOutput)
         throws IOException {
         objectOutput.writeLong(id);
-        objectOutput.writeLong(statusbricht_id);
+        objectOutput.writeLong(statusbericht_id);
 
         if (probleme_risiken == null) {
             objectOutput.writeUTF(StringPool.BLANK);

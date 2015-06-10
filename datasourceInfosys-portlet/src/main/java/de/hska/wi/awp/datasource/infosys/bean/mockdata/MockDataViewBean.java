@@ -17,15 +17,6 @@ import de.hska.wi.awp.datasource.infosys.util.mock.MockData;
 @RequestScoped
 public class MockDataViewBean {
 	
-	public void getStudentsByProjectId() {
-		List<Student> students = new ArrayList<Student>();
-		students = StudentLocalServiceUtil.findByProjectId(1);
-		
-		for(int zl = 0; zl < students.size(); zl++) {
-			System.out.println(students.get(zl).getFirstName());
-		}
-	}
-	
     public void deleteMockData() throws SystemException, PortalException {
     	System.out.println("Delete MockData Pressed");
     	MockData.DeleteAllMockData();

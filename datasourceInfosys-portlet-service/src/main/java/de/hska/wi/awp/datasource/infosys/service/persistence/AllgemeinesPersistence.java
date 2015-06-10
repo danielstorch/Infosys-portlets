@@ -24,6 +24,64 @@ public interface AllgemeinesPersistence extends BasePersistence<Allgemeines> {
      */
 
     /**
+    * Returns the allgemeines where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException} if it could not be found.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching allgemeines
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException if a matching allgemeines could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Allgemeines findByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException;
+
+    /**
+    * Returns the allgemeines where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the matching allgemeines, or <code>null</code> if a matching allgemeines could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Allgemeines fetchByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the allgemeines where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param retrieveFromCache whether to use the finder cache
+    * @return the matching allgemeines, or <code>null</code> if a matching allgemeines could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Allgemeines fetchByStatusbericht_id(
+        long statusbericht_id, boolean retrieveFromCache)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Removes the allgemeines where statusbericht_id = &#63; from the database.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the allgemeines that was removed
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Allgemeines removeByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException;
+
+    /**
+    * Returns the number of allgemeineses where statusbericht_id = &#63;.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @return the number of matching allgemeineses
+    * @throws SystemException if a system exception occurred
+    */
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
     * Caches the allgemeines in the entity cache if it is enabled.
     *
     * @param allgemeines the allgemeines

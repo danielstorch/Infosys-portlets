@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
 import com.liferay.portal.kernel.dao.orm.Query;
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -17,6 +18,7 @@ import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
 import com.liferay.portal.model.CacheModel;
@@ -69,10 +71,34 @@ public class TeilnotePersistenceImpl extends BasePersistenceImpl<Teilnote>
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(TeilnoteModelImpl.ENTITY_CACHE_ENABLED,
             TeilnoteModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FEEDBACK_ID =
+        new FinderPath(TeilnoteModelImpl.ENTITY_CACHE_ENABLED,
+            TeilnoteModelImpl.FINDER_CACHE_ENABLED, TeilnoteImpl.class,
+            FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByFeedback_id",
+            new String[] {
+                Long.class.getName(),
+                
+            Integer.class.getName(), Integer.class.getName(),
+                OrderByComparator.class.getName()
+            });
+    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID =
+        new FinderPath(TeilnoteModelImpl.ENTITY_CACHE_ENABLED,
+            TeilnoteModelImpl.FINDER_CACHE_ENABLED, TeilnoteImpl.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByFeedback_id",
+            new String[] { Long.class.getName() },
+            TeilnoteModelImpl.FEEDBACK_ID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_FEEDBACK_ID = new FinderPath(TeilnoteModelImpl.ENTITY_CACHE_ENABLED,
+            TeilnoteModelImpl.FINDER_CACHE_ENABLED, Long.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFeedback_id",
+            new String[] { Long.class.getName() });
+    private static final String _FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2 = "teilnote.feedback_id = ?";
     private static final String _SQL_SELECT_TEILNOTE = "SELECT teilnote FROM Teilnote teilnote";
+    private static final String _SQL_SELECT_TEILNOTE_WHERE = "SELECT teilnote FROM Teilnote teilnote WHERE ";
     private static final String _SQL_COUNT_TEILNOTE = "SELECT COUNT(teilnote) FROM Teilnote teilnote";
+    private static final String _SQL_COUNT_TEILNOTE_WHERE = "SELECT COUNT(teilnote) FROM Teilnote teilnote WHERE ";
     private static final String _ORDER_BY_ENTITY_ALIAS = "teilnote.";
     private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Teilnote exists with the primary key ";
+    private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Teilnote exists with the key {";
     private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
                 PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
     private static Log _log = LogFactoryUtil.getLog(TeilnotePersistenceImpl.class);
@@ -100,6 +126,457 @@ public class TeilnotePersistenceImpl extends BasePersistenceImpl<Teilnote>
 
     public TeilnotePersistenceImpl() {
         setModelClass(Teilnote.class);
+    }
+
+    /**
+     * Returns all the teilnotes where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @return the matching teilnotes
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<Teilnote> findByFeedback_id(long feedback_id)
+        throws SystemException {
+        return findByFeedback_id(feedback_id, QueryUtil.ALL_POS,
+            QueryUtil.ALL_POS, null);
+    }
+
+    /**
+     * Returns a range of all the teilnotes where feedback_id = &#63;.
+     *
+     * <p>
+     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+     * </p>
+     *
+     * @param feedback_id the feedback_id
+     * @param start the lower bound of the range of teilnotes
+     * @param end the upper bound of the range of teilnotes (not inclusive)
+     * @return the range of matching teilnotes
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<Teilnote> findByFeedback_id(long feedback_id, int start, int end)
+        throws SystemException {
+        return findByFeedback_id(feedback_id, start, end, null);
+    }
+
+    /**
+     * Returns an ordered range of all the teilnotes where feedback_id = &#63;.
+     *
+     * <p>
+     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+     * </p>
+     *
+     * @param feedback_id the feedback_id
+     * @param start the lower bound of the range of teilnotes
+     * @param end the upper bound of the range of teilnotes (not inclusive)
+     * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+     * @return the ordered range of matching teilnotes
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public List<Teilnote> findByFeedback_id(long feedback_id, int start,
+        int end, OrderByComparator orderByComparator) throws SystemException {
+        boolean pagination = true;
+        FinderPath finderPath = null;
+        Object[] finderArgs = null;
+
+        if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
+                (orderByComparator == null)) {
+            pagination = false;
+            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID;
+            finderArgs = new Object[] { feedback_id };
+        } else {
+            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FEEDBACK_ID;
+            finderArgs = new Object[] { feedback_id, start, end, orderByComparator };
+        }
+
+        List<Teilnote> list = (List<Teilnote>) FinderCacheUtil.getResult(finderPath,
+                finderArgs, this);
+
+        if ((list != null) && !list.isEmpty()) {
+            for (Teilnote teilnote : list) {
+                if ((feedback_id != teilnote.getFeedback_id())) {
+                    list = null;
+
+                    break;
+                }
+            }
+        }
+
+        if (list == null) {
+            StringBundler query = null;
+
+            if (orderByComparator != null) {
+                query = new StringBundler(3 +
+                        (orderByComparator.getOrderByFields().length * 3));
+            } else {
+                query = new StringBundler(3);
+            }
+
+            query.append(_SQL_SELECT_TEILNOTE_WHERE);
+
+            query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
+
+            if (orderByComparator != null) {
+                appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
+                    orderByComparator);
+            } else
+             if (pagination) {
+                query.append(TeilnoteModelImpl.ORDER_BY_JPQL);
+            }
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(feedback_id);
+
+                if (!pagination) {
+                    list = (List<Teilnote>) QueryUtil.list(q, getDialect(),
+                            start, end, false);
+
+                    Collections.sort(list);
+
+                    list = new UnmodifiableList<Teilnote>(list);
+                } else {
+                    list = (List<Teilnote>) QueryUtil.list(q, getDialect(),
+                            start, end);
+                }
+
+                cacheResult(list);
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, list);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return list;
+    }
+
+    /**
+     * Returns the first teilnote in the ordered set where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the first matching teilnote
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a matching teilnote could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Teilnote findByFeedback_id_First(long feedback_id,
+        OrderByComparator orderByComparator)
+        throws NoSuchTeilnoteException, SystemException {
+        Teilnote teilnote = fetchByFeedback_id_First(feedback_id,
+                orderByComparator);
+
+        if (teilnote != null) {
+            return teilnote;
+        }
+
+        StringBundler msg = new StringBundler(4);
+
+        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+        msg.append("feedback_id=");
+        msg.append(feedback_id);
+
+        msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+        throw new NoSuchTeilnoteException(msg.toString());
+    }
+
+    /**
+     * Returns the first teilnote in the ordered set where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the first matching teilnote, or <code>null</code> if a matching teilnote could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Teilnote fetchByFeedback_id_First(long feedback_id,
+        OrderByComparator orderByComparator) throws SystemException {
+        List<Teilnote> list = findByFeedback_id(feedback_id, 0, 1,
+                orderByComparator);
+
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the last teilnote in the ordered set where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the last matching teilnote
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a matching teilnote could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Teilnote findByFeedback_id_Last(long feedback_id,
+        OrderByComparator orderByComparator)
+        throws NoSuchTeilnoteException, SystemException {
+        Teilnote teilnote = fetchByFeedback_id_Last(feedback_id,
+                orderByComparator);
+
+        if (teilnote != null) {
+            return teilnote;
+        }
+
+        StringBundler msg = new StringBundler(4);
+
+        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+        msg.append("feedback_id=");
+        msg.append(feedback_id);
+
+        msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+        throw new NoSuchTeilnoteException(msg.toString());
+    }
+
+    /**
+     * Returns the last teilnote in the ordered set where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the last matching teilnote, or <code>null</code> if a matching teilnote could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Teilnote fetchByFeedback_id_Last(long feedback_id,
+        OrderByComparator orderByComparator) throws SystemException {
+        int count = countByFeedback_id(feedback_id);
+
+        if (count == 0) {
+            return null;
+        }
+
+        List<Teilnote> list = findByFeedback_id(feedback_id, count - 1, count,
+                orderByComparator);
+
+        if (!list.isEmpty()) {
+            return list.get(0);
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the teilnotes before and after the current teilnote in the ordered set where feedback_id = &#63;.
+     *
+     * @param id the primary key of the current teilnote
+     * @param feedback_id the feedback_id
+     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+     * @return the previous, current, and next teilnote
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a teilnote with the primary key could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Teilnote[] findByFeedback_id_PrevAndNext(long id, long feedback_id,
+        OrderByComparator orderByComparator)
+        throws NoSuchTeilnoteException, SystemException {
+        Teilnote teilnote = findByPrimaryKey(id);
+
+        Session session = null;
+
+        try {
+            session = openSession();
+
+            Teilnote[] array = new TeilnoteImpl[3];
+
+            array[0] = getByFeedback_id_PrevAndNext(session, teilnote,
+                    feedback_id, orderByComparator, true);
+
+            array[1] = teilnote;
+
+            array[2] = getByFeedback_id_PrevAndNext(session, teilnote,
+                    feedback_id, orderByComparator, false);
+
+            return array;
+        } catch (Exception e) {
+            throw processException(e);
+        } finally {
+            closeSession(session);
+        }
+    }
+
+    protected Teilnote getByFeedback_id_PrevAndNext(Session session,
+        Teilnote teilnote, long feedback_id,
+        OrderByComparator orderByComparator, boolean previous) {
+        StringBundler query = null;
+
+        if (orderByComparator != null) {
+            query = new StringBundler(6 +
+                    (orderByComparator.getOrderByFields().length * 6));
+        } else {
+            query = new StringBundler(3);
+        }
+
+        query.append(_SQL_SELECT_TEILNOTE_WHERE);
+
+        query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
+
+        if (orderByComparator != null) {
+            String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
+
+            if (orderByConditionFields.length > 0) {
+                query.append(WHERE_AND);
+            }
+
+            for (int i = 0; i < orderByConditionFields.length; i++) {
+                query.append(_ORDER_BY_ENTITY_ALIAS);
+                query.append(orderByConditionFields[i]);
+
+                if ((i + 1) < orderByConditionFields.length) {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(WHERE_GREATER_THAN_HAS_NEXT);
+                    } else {
+                        query.append(WHERE_LESSER_THAN_HAS_NEXT);
+                    }
+                } else {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(WHERE_GREATER_THAN);
+                    } else {
+                        query.append(WHERE_LESSER_THAN);
+                    }
+                }
+            }
+
+            query.append(ORDER_BY_CLAUSE);
+
+            String[] orderByFields = orderByComparator.getOrderByFields();
+
+            for (int i = 0; i < orderByFields.length; i++) {
+                query.append(_ORDER_BY_ENTITY_ALIAS);
+                query.append(orderByFields[i]);
+
+                if ((i + 1) < orderByFields.length) {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(ORDER_BY_ASC_HAS_NEXT);
+                    } else {
+                        query.append(ORDER_BY_DESC_HAS_NEXT);
+                    }
+                } else {
+                    if (orderByComparator.isAscending() ^ previous) {
+                        query.append(ORDER_BY_ASC);
+                    } else {
+                        query.append(ORDER_BY_DESC);
+                    }
+                }
+            }
+        } else {
+            query.append(TeilnoteModelImpl.ORDER_BY_JPQL);
+        }
+
+        String sql = query.toString();
+
+        Query q = session.createQuery(sql);
+
+        q.setFirstResult(0);
+        q.setMaxResults(2);
+
+        QueryPos qPos = QueryPos.getInstance(q);
+
+        qPos.add(feedback_id);
+
+        if (orderByComparator != null) {
+            Object[] values = orderByComparator.getOrderByConditionValues(teilnote);
+
+            for (Object value : values) {
+                qPos.add(value);
+            }
+        }
+
+        List<Teilnote> list = q.list();
+
+        if (list.size() == 2) {
+            return list.get(1);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Removes all the teilnotes where feedback_id = &#63; from the database.
+     *
+     * @param feedback_id the feedback_id
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public void removeByFeedback_id(long feedback_id) throws SystemException {
+        for (Teilnote teilnote : findByFeedback_id(feedback_id,
+                QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+            remove(teilnote);
+        }
+    }
+
+    /**
+     * Returns the number of teilnotes where feedback_id = &#63;.
+     *
+     * @param feedback_id the feedback_id
+     * @return the number of matching teilnotes
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public int countByFeedback_id(long feedback_id) throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_FEEDBACK_ID;
+
+        Object[] finderArgs = new Object[] { feedback_id };
+
+        Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
+                this);
+
+        if (count == null) {
+            StringBundler query = new StringBundler(2);
+
+            query.append(_SQL_COUNT_TEILNOTE_WHERE);
+
+            query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(feedback_id);
+
+                count = (Long) q.uniqueResult();
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, count);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return count.intValue();
     }
 
     /**
@@ -286,6 +763,8 @@ public class TeilnotePersistenceImpl extends BasePersistenceImpl<Teilnote>
 
         boolean isNew = teilnote.isNew();
 
+        TeilnoteModelImpl teilnoteModelImpl = (TeilnoteModelImpl) teilnote;
+
         Session session = null;
 
         try {
@@ -306,8 +785,28 @@ public class TeilnotePersistenceImpl extends BasePersistenceImpl<Teilnote>
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-        if (isNew) {
+        if (isNew || !TeilnoteModelImpl.COLUMN_BITMASK_ENABLED) {
             FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+        }
+        else {
+            if ((teilnoteModelImpl.getColumnBitmask() &
+                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] {
+                        teilnoteModelImpl.getOriginalFeedback_id()
+                    };
+
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_ID,
+                    args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID,
+                    args);
+
+                args = new Object[] { teilnoteModelImpl.getFeedback_id() };
+
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_ID,
+                    args);
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID,
+                    args);
+            }
         }
 
         EntityCacheUtil.putResult(TeilnoteModelImpl.ENTITY_CACHE_ENABLED,

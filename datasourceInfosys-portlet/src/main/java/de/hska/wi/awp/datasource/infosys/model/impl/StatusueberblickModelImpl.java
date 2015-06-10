@@ -73,7 +73,11 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Statusueberblick"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Statusueberblick"),
+            true);
+    public static long STATUSBERICHT_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Statusueberblick"));
     private static ClassLoader _classLoader = Statusueberblick.class.getClassLoader();
@@ -82,6 +86,8 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
         };
     private long _id;
     private long _statusbericht_id;
+    private long _originalStatusbericht_id;
+    private boolean _setOriginalStatusbericht_id;
     private String _qualitaet_status;
     private String _qualitaet_text;
     private String _kosten_text;
@@ -90,6 +96,7 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
     private String _aufwand_text;
     private String _termine_status;
     private String _termine_text;
+    private long _columnBitmask;
     private Statusueberblick _escapedModel;
 
     public StatusueberblickModelImpl() {
@@ -273,7 +280,19 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
 
     @Override
     public void setStatusbericht_id(long statusbericht_id) {
+        _columnBitmask |= STATUSBERICHT_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalStatusbericht_id) {
+            _setOriginalStatusbericht_id = true;
+
+            _originalStatusbericht_id = _statusbericht_id;
+        }
+
         _statusbericht_id = statusbericht_id;
+    }
+
+    public long getOriginalStatusbericht_id() {
+        return _originalStatusbericht_id;
     }
 
     @JSON
@@ -396,6 +415,10 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
         _termine_text = termine_text;
     }
 
+    public long getColumnBitmask() {
+        return _columnBitmask;
+    }
+
     @Override
     public ExpandoBridge getExpandoBridge() {
         return ExpandoBridgeFactoryUtil.getExpandoBridge(0,
@@ -480,6 +503,13 @@ public class StatusueberblickModelImpl extends BaseModelImpl<Statusueberblick>
 
     @Override
     public void resetOriginalValues() {
+        StatusueberblickModelImpl statusueberblickModelImpl = this;
+
+        statusueberblickModelImpl._originalStatusbericht_id = statusueberblickModelImpl._statusbericht_id;
+
+        statusueberblickModelImpl._setOriginalStatusbericht_id = false;
+
+        statusueberblickModelImpl._columnBitmask = 0;
     }
 
     @Override

@@ -70,7 +70,11 @@ public class FeedbackModelImpl extends BaseModelImpl<Feedback>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Feedback"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Feedback"),
+            true);
+    public static long STUDENT_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Feedback"));
     private static ClassLoader _classLoader = Feedback.class.getClassLoader();
@@ -79,11 +83,14 @@ public class FeedbackModelImpl extends BaseModelImpl<Feedback>
         };
     private long _id;
     private long _student_id;
+    private long _originalStudent_id;
+    private boolean _setOriginalStudent_id;
     private int _feedback_runden_nr;
     private String _eigenbewertung;
     private String _kommentar_kompetenzen;
     private String _kommentar_beitrag;
     private int _beitrag;
+    private long _columnBitmask;
     private Feedback _escapedModel;
 
     public FeedbackModelImpl() {
@@ -244,7 +251,19 @@ public class FeedbackModelImpl extends BaseModelImpl<Feedback>
 
     @Override
     public void setStudent_id(long student_id) {
+        _columnBitmask |= STUDENT_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalStudent_id) {
+            _setOriginalStudent_id = true;
+
+            _originalStudent_id = _student_id;
+        }
+
         _student_id = student_id;
+    }
+
+    public long getOriginalStudent_id() {
+        return _originalStudent_id;
     }
 
     @JSON
@@ -312,6 +331,10 @@ public class FeedbackModelImpl extends BaseModelImpl<Feedback>
     @Override
     public void setBeitrag(int beitrag) {
         _beitrag = beitrag;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
     }
 
     @Override
@@ -395,6 +418,13 @@ public class FeedbackModelImpl extends BaseModelImpl<Feedback>
 
     @Override
     public void resetOriginalValues() {
+        FeedbackModelImpl feedbackModelImpl = this;
+
+        feedbackModelImpl._originalStudent_id = feedbackModelImpl._student_id;
+
+        feedbackModelImpl._setOriginalStudent_id = false;
+
+        feedbackModelImpl._columnBitmask = 0;
     }
 
     @Override

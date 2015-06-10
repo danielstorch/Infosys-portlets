@@ -5,6 +5,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderPath;
 import com.liferay.portal.kernel.dao.orm.Query;
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -17,6 +18,7 @@ import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnmodifiableList;
 import com.liferay.portal.model.CacheModel;
@@ -71,10 +73,24 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
             StatusueberblickModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
+    public static final FinderPath FINDER_PATH_FETCH_BY_STATUSBERICHT_ID = new FinderPath(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
+            StatusueberblickModelImpl.FINDER_CACHE_ENABLED,
+            StatusueberblickImpl.class, FINDER_CLASS_NAME_ENTITY,
+            "fetchByStatusbericht_id", new String[] { Long.class.getName() },
+            StatusueberblickModelImpl.STATUSBERICHT_ID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_STATUSBERICHT_ID = new FinderPath(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
+            StatusueberblickModelImpl.FINDER_CACHE_ENABLED, Long.class,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "countByStatusbericht_id", new String[] { Long.class.getName() });
+    private static final String _FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2 =
+        "statusueberblick.statusbericht_id = ?";
     private static final String _SQL_SELECT_STATUSUEBERBLICK = "SELECT statusueberblick FROM Statusueberblick statusueberblick";
+    private static final String _SQL_SELECT_STATUSUEBERBLICK_WHERE = "SELECT statusueberblick FROM Statusueberblick statusueberblick WHERE ";
     private static final String _SQL_COUNT_STATUSUEBERBLICK = "SELECT COUNT(statusueberblick) FROM Statusueberblick statusueberblick";
+    private static final String _SQL_COUNT_STATUSUEBERBLICK_WHERE = "SELECT COUNT(statusueberblick) FROM Statusueberblick statusueberblick WHERE ";
     private static final String _ORDER_BY_ENTITY_ALIAS = "statusueberblick.";
     private static final String _NO_SUCH_ENTITY_WITH_PRIMARY_KEY = "No Statusueberblick exists with the primary key ";
+    private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Statusueberblick exists with the key {";
     private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
                 PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
     private static Log _log = LogFactoryUtil.getLog(StatusueberblickPersistenceImpl.class);
@@ -105,6 +121,208 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
     }
 
     /**
+     * Returns the statusueberblick where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException} if it could not be found.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching statusueberblick
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException if a matching statusueberblick could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Statusueberblick findByStatusbericht_id(long statusbericht_id)
+        throws NoSuchStatusueberblickException, SystemException {
+        Statusueberblick statusueberblick = fetchByStatusbericht_id(statusbericht_id);
+
+        if (statusueberblick == null) {
+            StringBundler msg = new StringBundler(4);
+
+            msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+            msg.append("statusbericht_id=");
+            msg.append(statusbericht_id);
+
+            msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+            if (_log.isWarnEnabled()) {
+                _log.warn(msg.toString());
+            }
+
+            throw new NoSuchStatusueberblickException(msg.toString());
+        }
+
+        return statusueberblick;
+    }
+
+    /**
+     * Returns the statusueberblick where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the matching statusueberblick, or <code>null</code> if a matching statusueberblick could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Statusueberblick fetchByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        return fetchByStatusbericht_id(statusbericht_id, true);
+    }
+
+    /**
+     * Returns the statusueberblick where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @param retrieveFromCache whether to use the finder cache
+     * @return the matching statusueberblick, or <code>null</code> if a matching statusueberblick could not be found
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Statusueberblick fetchByStatusbericht_id(long statusbericht_id,
+        boolean retrieveFromCache) throws SystemException {
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Object result = null;
+
+        if (retrieveFromCache) {
+            result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs, this);
+        }
+
+        if (result instanceof Statusueberblick) {
+            Statusueberblick statusueberblick = (Statusueberblick) result;
+
+            if ((statusbericht_id != statusueberblick.getStatusbericht_id())) {
+                result = null;
+            }
+        }
+
+        if (result == null) {
+            StringBundler query = new StringBundler(3);
+
+            query.append(_SQL_SELECT_STATUSUEBERBLICK_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                List<Statusueberblick> list = q.list();
+
+                if (list.isEmpty()) {
+                    FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                        finderArgs, list);
+                } else {
+                    if ((list.size() > 1) && _log.isWarnEnabled()) {
+                        _log.warn(
+                            "StatusueberblickPersistenceImpl.fetchByStatusbericht_id(long, boolean) with parameters (" +
+                            StringUtil.merge(finderArgs) +
+                            ") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+                    }
+
+                    Statusueberblick statusueberblick = list.get(0);
+
+                    result = statusueberblick;
+
+                    cacheResult(statusueberblick);
+
+                    if ((statusueberblick.getStatusbericht_id() != statusbericht_id)) {
+                        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                            finderArgs, statusueberblick);
+                    }
+                }
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        if (result instanceof List<?>) {
+            return null;
+        } else {
+            return (Statusueberblick) result;
+        }
+    }
+
+    /**
+     * Removes the statusueberblick where statusbericht_id = &#63; from the database.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the statusueberblick that was removed
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public Statusueberblick removeByStatusbericht_id(long statusbericht_id)
+        throws NoSuchStatusueberblickException, SystemException {
+        Statusueberblick statusueberblick = findByStatusbericht_id(statusbericht_id);
+
+        return remove(statusueberblick);
+    }
+
+    /**
+     * Returns the number of statusueberblicks where statusbericht_id = &#63;.
+     *
+     * @param statusbericht_id the statusbericht_id
+     * @return the number of matching statusueberblicks
+     * @throws SystemException if a system exception occurred
+     */
+    @Override
+    public int countByStatusbericht_id(long statusbericht_id)
+        throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_STATUSBERICHT_ID;
+
+        Object[] finderArgs = new Object[] { statusbericht_id };
+
+        Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
+                this);
+
+        if (count == null) {
+            StringBundler query = new StringBundler(2);
+
+            query.append(_SQL_COUNT_STATUSUEBERBLICK_WHERE);
+
+            query.append(_FINDER_COLUMN_STATUSBERICHT_ID_STATUSBERICHT_ID_2);
+
+            String sql = query.toString();
+
+            Session session = null;
+
+            try {
+                session = openSession();
+
+                Query q = session.createQuery(sql);
+
+                QueryPos qPos = QueryPos.getInstance(q);
+
+                qPos.add(statusbericht_id);
+
+                count = (Long) q.uniqueResult();
+
+                FinderCacheUtil.putResult(finderPath, finderArgs, count);
+            } catch (Exception e) {
+                FinderCacheUtil.removeResult(finderPath, finderArgs);
+
+                throw processException(e);
+            } finally {
+                closeSession(session);
+            }
+        }
+
+        return count.intValue();
+    }
+
+    /**
      * Caches the statusueberblick in the entity cache if it is enabled.
      *
      * @param statusueberblick the statusueberblick
@@ -113,6 +331,10 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
     public void cacheResult(Statusueberblick statusueberblick) {
         EntityCacheUtil.putResult(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
             StatusueberblickImpl.class, statusueberblick.getPrimaryKey(),
+            statusueberblick);
+
+        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+            new Object[] { statusueberblick.getStatusbericht_id() },
             statusueberblick);
 
         statusueberblick.resetOriginalValues();
@@ -171,6 +393,8 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+        clearUniqueFindersCache(statusueberblick);
     }
 
     @Override
@@ -181,6 +405,54 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
         for (Statusueberblick statusueberblick : statusueberblicks) {
             EntityCacheUtil.removeResult(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
                 StatusueberblickImpl.class, statusueberblick.getPrimaryKey());
+
+            clearUniqueFindersCache(statusueberblick);
+        }
+    }
+
+    protected void cacheUniqueFindersCache(Statusueberblick statusueberblick) {
+        if (statusueberblick.isNew()) {
+            Object[] args = new Object[] { statusueberblick.getStatusbericht_id() };
+
+            FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args, Long.valueOf(1));
+            FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args, statusueberblick);
+        } else {
+            StatusueberblickModelImpl statusueberblickModelImpl = (StatusueberblickModelImpl) statusueberblick;
+
+            if ((statusueberblickModelImpl.getColumnBitmask() &
+                    FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] {
+                        statusueberblick.getStatusbericht_id()
+                    };
+
+                FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                    args, Long.valueOf(1));
+                FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                    args, statusueberblick);
+            }
+        }
+    }
+
+    protected void clearUniqueFindersCache(Statusueberblick statusueberblick) {
+        StatusueberblickModelImpl statusueberblickModelImpl = (StatusueberblickModelImpl) statusueberblick;
+
+        Object[] args = new Object[] { statusueberblick.getStatusbericht_id() };
+
+        FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID, args);
+        FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID, args);
+
+        if ((statusueberblickModelImpl.getColumnBitmask() &
+                FINDER_PATH_FETCH_BY_STATUSBERICHT_ID.getColumnBitmask()) != 0) {
+            args = new Object[] {
+                    statusueberblickModelImpl.getOriginalStatusbericht_id()
+                };
+
+            FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STATUSBERICHT_ID,
+                args);
+            FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_STATUSBERICHT_ID,
+                args);
         }
     }
 
@@ -311,13 +583,16 @@ public class StatusueberblickPersistenceImpl extends BasePersistenceImpl<Statusu
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
 
-        if (isNew) {
+        if (isNew || !StatusueberblickModelImpl.COLUMN_BITMASK_ENABLED) {
             FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
         }
 
         EntityCacheUtil.putResult(StatusueberblickModelImpl.ENTITY_CACHE_ENABLED,
             StatusueberblickImpl.class, statusueberblick.getPrimaryKey(),
             statusueberblick);
+
+        clearUniqueFindersCache(statusueberblick);
+        cacheUniqueFindersCache(statusueberblick);
 
         return statusueberblick;
     }

@@ -1,6 +1,6 @@
 create table datasourceInfosys_Allgemeines (
 	id_ LONG not null primary key,
-	statusbricht_id LONG,
+	statusbericht_id LONG,
 	probleme_risiken VARCHAR(75) null,
 	massnahmen VARCHAR(75) null,
 	situation VARCHAR(500) null,

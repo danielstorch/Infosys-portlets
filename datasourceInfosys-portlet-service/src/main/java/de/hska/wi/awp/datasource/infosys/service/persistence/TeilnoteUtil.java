@@ -98,6 +98,171 @@ public class TeilnoteUtil {
     }
 
     /**
+    * Returns all the teilnotes where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @return the matching teilnotes
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote> findByFeedback_id(
+        long feedback_id)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().findByFeedback_id(feedback_id);
+    }
+
+    /**
+    * Returns a range of all the teilnotes where feedback_id = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param feedback_id the feedback_id
+    * @param start the lower bound of the range of teilnotes
+    * @param end the upper bound of the range of teilnotes (not inclusive)
+    * @return the range of matching teilnotes
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote> findByFeedback_id(
+        long feedback_id, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().findByFeedback_id(feedback_id, start, end);
+    }
+
+    /**
+    * Returns an ordered range of all the teilnotes where feedback_id = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param feedback_id the feedback_id
+    * @param start the lower bound of the range of teilnotes
+    * @param end the upper bound of the range of teilnotes (not inclusive)
+    * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+    * @return the ordered range of matching teilnotes
+    * @throws SystemException if a system exception occurred
+    */
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote> findByFeedback_id(
+        long feedback_id, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .findByFeedback_id(feedback_id, start, end, orderByComparator);
+    }
+
+    /**
+    * Returns the first teilnote in the ordered set where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching teilnote
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a matching teilnote could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote findByFeedback_id_First(
+        long feedback_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException {
+        return getPersistence()
+                   .findByFeedback_id_First(feedback_id, orderByComparator);
+    }
+
+    /**
+    * Returns the first teilnote in the ordered set where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching teilnote, or <code>null</code> if a matching teilnote could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote fetchByFeedback_id_First(
+        long feedback_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByFeedback_id_First(feedback_id, orderByComparator);
+    }
+
+    /**
+    * Returns the last teilnote in the ordered set where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching teilnote
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a matching teilnote could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote findByFeedback_id_Last(
+        long feedback_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException {
+        return getPersistence()
+                   .findByFeedback_id_Last(feedback_id, orderByComparator);
+    }
+
+    /**
+    * Returns the last teilnote in the ordered set where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching teilnote, or <code>null</code> if a matching teilnote could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote fetchByFeedback_id_Last(
+        long feedback_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByFeedback_id_Last(feedback_id, orderByComparator);
+    }
+
+    /**
+    * Returns the teilnotes before and after the current teilnote in the ordered set where feedback_id = &#63;.
+    *
+    * @param id the primary key of the current teilnote
+    * @param feedback_id the feedback_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the previous, current, and next teilnote
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException if a teilnote with the primary key could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote[] findByFeedback_id_PrevAndNext(
+        long id, long feedback_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException {
+        return getPersistence()
+                   .findByFeedback_id_PrevAndNext(id, feedback_id,
+            orderByComparator);
+    }
+
+    /**
+    * Removes all the teilnotes where feedback_id = &#63; from the database.
+    *
+    * @param feedback_id the feedback_id
+    * @throws SystemException if a system exception occurred
+    */
+    public static void removeByFeedback_id(long feedback_id)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        getPersistence().removeByFeedback_id(feedback_id);
+    }
+
+    /**
+    * Returns the number of teilnotes where feedback_id = &#63;.
+    *
+    * @param feedback_id the feedback_id
+    * @return the number of matching teilnotes
+    * @throws SystemException if a system exception occurred
+    */
+    public static int countByFeedback_id(long feedback_id)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().countByFeedback_id(feedback_id);
+    }
+
+    /**
     * Caches the teilnote in the entity cache if it is enabled.
     *
     * @param teilnote the teilnote

@@ -38,7 +38,7 @@ public class AllgemeinesWrapper implements Allgemeines,
         Map<String, Object> attributes = new HashMap<String, Object>();
 
         attributes.put("id", getId());
-        attributes.put("statusbricht_id", getStatusbricht_id());
+        attributes.put("statusbericht_id", getStatusbericht_id());
         attributes.put("probleme_risiken", getProbleme_risiken());
         attributes.put("massnahmen", getMassnahmen());
         attributes.put("situation", getSituation());
@@ -55,10 +55,10 @@ public class AllgemeinesWrapper implements Allgemeines,
             setId(id);
         }
 
-        Long statusbricht_id = (Long) attributes.get("statusbricht_id");
+        Long statusbericht_id = (Long) attributes.get("statusbericht_id");
 
-        if (statusbricht_id != null) {
-            setStatusbricht_id(statusbricht_id);
+        if (statusbericht_id != null) {
+            setStatusbericht_id(statusbericht_id);
         }
 
         String probleme_risiken = (String) attributes.get("probleme_risiken");
@@ -127,23 +127,23 @@ public class AllgemeinesWrapper implements Allgemeines,
     }
 
     /**
-    * Returns the statusbricht_id of this allgemeines.
+    * Returns the statusbericht_id of this allgemeines.
     *
-    * @return the statusbricht_id of this allgemeines
+    * @return the statusbericht_id of this allgemeines
     */
     @Override
-    public long getStatusbricht_id() {
-        return _allgemeines.getStatusbricht_id();
+    public long getStatusbericht_id() {
+        return _allgemeines.getStatusbericht_id();
     }
 
     /**
-    * Sets the statusbricht_id of this allgemeines.
+    * Sets the statusbericht_id of this allgemeines.
     *
-    * @param statusbricht_id the statusbricht_id of this allgemeines
+    * @param statusbericht_id the statusbericht_id of this allgemeines
     */
     @Override
-    public void setStatusbricht_id(long statusbricht_id) {
-        _allgemeines.setStatusbricht_id(statusbricht_id);
+    public void setStatusbericht_id(long statusbericht_id) {
+        _allgemeines.setStatusbericht_id(statusbericht_id);
     }
 
     /**

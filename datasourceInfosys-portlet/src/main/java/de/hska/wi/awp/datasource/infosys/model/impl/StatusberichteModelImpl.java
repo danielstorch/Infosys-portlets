@@ -67,7 +67,11 @@ public class StatusberichteModelImpl extends BaseModelImpl<Statusberichte>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Statusberichte"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Statusberichte"),
+            true);
+    public static long PROJECT_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Statusberichte"));
     private static ClassLoader _classLoader = Statusberichte.class.getClassLoader();
@@ -76,8 +80,11 @@ public class StatusberichteModelImpl extends BaseModelImpl<Statusberichte>
         };
     private long _id;
     private long _project_id;
+    private long _originalProject_id;
+    private boolean _setOriginalProject_id;
     private Date _datum;
     private int _kalenderwoche;
+    private long _columnBitmask;
     private Statusberichte _escapedModel;
 
     public StatusberichteModelImpl() {
@@ -212,7 +219,19 @@ public class StatusberichteModelImpl extends BaseModelImpl<Statusberichte>
 
     @Override
     public void setProject_id(long project_id) {
+        _columnBitmask |= PROJECT_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalProject_id) {
+            _setOriginalProject_id = true;
+
+            _originalProject_id = _project_id;
+        }
+
         _project_id = project_id;
+    }
+
+    public long getOriginalProject_id() {
+        return _originalProject_id;
     }
 
     @JSON
@@ -235,6 +254,10 @@ public class StatusberichteModelImpl extends BaseModelImpl<Statusberichte>
     @Override
     public void setKalenderwoche(int kalenderwoche) {
         _kalenderwoche = kalenderwoche;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
     }
 
     @Override
@@ -315,6 +338,13 @@ public class StatusberichteModelImpl extends BaseModelImpl<Statusberichte>
 
     @Override
     public void resetOriginalValues() {
+        StatusberichteModelImpl statusberichteModelImpl = this;
+
+        statusberichteModelImpl._originalProject_id = statusberichteModelImpl._project_id;
+
+        statusberichteModelImpl._setOriginalProject_id = false;
+
+        statusberichteModelImpl._columnBitmask = 0;
     }
 
     @Override

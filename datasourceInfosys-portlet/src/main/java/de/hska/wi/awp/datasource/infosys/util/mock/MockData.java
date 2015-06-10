@@ -105,7 +105,7 @@ public class MockData {
 			
 			// Der pfad muss hier angegeben werden.
 			String privatePath = "/Users/Marc/Documents/workspace/liferay/Infosys-portlets";
-			String pathToFile = privatePath + "/datasourceInfosys-portlet/src/main/java/de/hska/wi/awp/datasource/infosys/util/mock/infosysMockData2"; 
+			String pathToFile = privatePath + "/datasourceInfosys-portlet/src/main/java/de/hska/wi/awp/datasource/infosys/util/mock/infosysMockData"; 
 			
 	        InputStream is = new FileInputStream(pathToFile);
 	        String jsonString = IOUtils.toString(is);
@@ -206,7 +206,7 @@ public class MockData {
 					
 					JSONObject allgemeinesJSONObject = statusberichtJSONObject.getJSONObject("Allgemeines");
 					Allgemeines allgemeines = AllgemeinesLocalServiceUtil.createAllgemeines(allgemeinesJSONObject.getLong("id"));
-					allgemeines.setStatusbricht_id(allgemeinesJSONObject.getLong("statusbericht_id"));
+					allgemeines.setStatusbericht_id(allgemeinesJSONObject.getLong("statusbericht_id"));
 					allgemeines.setProbleme_risiken(allgemeinesJSONObject.getString("probleme_risiken"));
 					allgemeines.setMassnahmen(allgemeinesJSONObject.getString("massnahmen"));
 					allgemeines.setSituation(allgemeinesJSONObject.getString("situation"));

@@ -66,7 +66,11 @@ public class TeilnoteModelImpl extends BaseModelImpl<Teilnote>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Teilnote"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Teilnote"),
+            true);
+    public static long FEEDBACK_ID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Teilnote"));
     private static ClassLoader _classLoader = Teilnote.class.getClassLoader();
@@ -75,8 +79,11 @@ public class TeilnoteModelImpl extends BaseModelImpl<Teilnote>
         };
     private long _id;
     private long _feedback_id;
+    private long _originalFeedback_id;
+    private boolean _setOriginalFeedback_id;
     private int _note;
     private long _kategorie;
+    private long _columnBitmask;
     private Teilnote _escapedModel;
 
     public TeilnoteModelImpl() {
@@ -211,7 +218,19 @@ public class TeilnoteModelImpl extends BaseModelImpl<Teilnote>
 
     @Override
     public void setFeedback_id(long feedback_id) {
+        _columnBitmask |= FEEDBACK_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalFeedback_id) {
+            _setOriginalFeedback_id = true;
+
+            _originalFeedback_id = _feedback_id;
+        }
+
         _feedback_id = feedback_id;
+    }
+
+    public long getOriginalFeedback_id() {
+        return _originalFeedback_id;
     }
 
     @JSON
@@ -234,6 +253,10 @@ public class TeilnoteModelImpl extends BaseModelImpl<Teilnote>
     @Override
     public void setKategorie(long kategorie) {
         _kategorie = kategorie;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
     }
 
     @Override
@@ -314,6 +337,13 @@ public class TeilnoteModelImpl extends BaseModelImpl<Teilnote>
 
     @Override
     public void resetOriginalValues() {
+        TeilnoteModelImpl teilnoteModelImpl = this;
+
+        teilnoteModelImpl._originalFeedback_id = teilnoteModelImpl._feedback_id;
+
+        teilnoteModelImpl._setOriginalFeedback_id = false;
+
+        teilnoteModelImpl._columnBitmask = 0;
     }
 
     @Override
