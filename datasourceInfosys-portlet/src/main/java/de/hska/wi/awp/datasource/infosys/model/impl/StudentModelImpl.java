@@ -74,7 +74,8 @@ public class StudentModelImpl extends BaseModelImpl<Student>
                 "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Student"),
             true);
     public static long PROJECT_ID_COLUMN_BITMASK = 1L;
-    public static long ID_COLUMN_BITMASK = 2L;
+    public static long STUDENTHSKAID_COLUMN_BITMASK = 2L;
+    public static long ID_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Student"));
     private static ClassLoader _classLoader = Student.class.getClassLoader();
@@ -88,6 +89,7 @@ public class StudentModelImpl extends BaseModelImpl<Student>
     private long _originalProject_id;
     private boolean _setOriginalProject_id;
     private String _studenthskaId;
+    private String _originalStudenthskaId;
     private long _matnr;
     private long _role;
     private long _columnBitmask;
@@ -306,7 +308,17 @@ public class StudentModelImpl extends BaseModelImpl<Student>
 
     @Override
     public void setStudenthskaId(String studenthskaId) {
+        _columnBitmask |= STUDENTHSKAID_COLUMN_BITMASK;
+
+        if (_originalStudenthskaId == null) {
+            _originalStudenthskaId = _studenthskaId;
+        }
+
         _studenthskaId = studenthskaId;
+    }
+
+    public String getOriginalStudenthskaId() {
+        return GetterUtil.getString(_originalStudenthskaId);
     }
 
     @JSON
@@ -421,6 +433,8 @@ public class StudentModelImpl extends BaseModelImpl<Student>
         studentModelImpl._originalProject_id = studentModelImpl._project_id;
 
         studentModelImpl._setOriginalProject_id = false;
+
+        studentModelImpl._originalStudenthskaId = studentModelImpl._studenthskaId;
 
         studentModelImpl._columnBitmask = 0;
     }

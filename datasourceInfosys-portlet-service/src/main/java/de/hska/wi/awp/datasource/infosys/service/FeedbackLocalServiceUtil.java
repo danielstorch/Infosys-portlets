@@ -262,6 +262,11 @@ public class FeedbackLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
+        long student_id) {
+        return getService().findByStudent_id(student_id);
+    }
+
     public static void clearService() {
         _service = null;
     }

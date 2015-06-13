@@ -22,7 +22,7 @@
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StudentLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.StudentLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StudentService" class="de.hska.wi.awp.datasource.infosys.service.impl.StudentServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistenceImpl" parent="basePersistence" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.TeilnoteLocalServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.TeilnoteService" class="de.hska.wi.awp.datasource.infosys.service.impl.TeilnoteServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.TeilnotePersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.TeilnotePersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Teilnote_feedbackLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackService" class="de.hska.wi.awp.datasource.infosys.service.impl.Teilnote_feedbackServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Teilnote_feedbackPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Teilnote_feedbackPersistenceImpl" parent="basePersistence" />
 </beans>

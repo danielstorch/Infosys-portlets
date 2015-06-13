@@ -116,14 +116,14 @@
 			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
-	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteModelImpl">
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackModelImpl">
 		<attributes>
 			<id name="id">
 				<column name="ID_" />
 			</id>
 			<basic name="feedback_id" />
 			<basic name="note" />
-			<basic name="kategorie" />
+			<basic name="bewertungskriterium_id" />
 			<transient name="modelAttributes" />
 			<transient name="primaryKey" />
 			<transient name="primaryKeyObj" />
@@ -157,8 +157,8 @@
 		<table name="datasourceInfosys_Student" />
 		<attributes />
 	</entity>
-	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteImpl" name="Teilnote">
-		<table name="datasourceInfosys_Teilnote" />
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackImpl" name="Teilnote_feedback">
+		<table name="datasourceInfosys_Teilnote_feedback" />
 		<attributes />
 	</entity>
 </entity-mappings>

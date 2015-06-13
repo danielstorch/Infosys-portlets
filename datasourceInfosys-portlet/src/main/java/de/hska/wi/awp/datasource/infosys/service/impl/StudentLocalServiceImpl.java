@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
+import de.hska.wi.awp.datasource.infosys.NoSuchStudentException;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.base.StudentLocalServiceBaseImpl;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StudentUtil;
@@ -39,5 +40,21 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 			e.printStackTrace();
 		}
 		return students;
+	}
+	
+	public Student findByStudenthskaId(String studenthskaId) {
+		Student student = null;
+		
+		try {
+			student = StudentUtil.findByStudenthskaId(studenthskaId);
+		} catch (NoSuchStudentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return student;
 	}
 }

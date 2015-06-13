@@ -10,6 +10,28 @@
 >
 	<h:head />
 	<h:body>
-		<h:outputText value="#{receivedFeedbackModelBean.studenthskaId}" />
+		<p:toolbar>
+	        <f:facet name="left">
+	            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" styleClass="vertAlign"/> 
+	            
+	            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" style= "vertical-align: middle"/> 
+	           
+	            <span class="ui-separator">
+	                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+	            </span>
+	        </f:facet>
+	 
+	        <f:facet name="right">
+	            <p:selectOneMenu id="feedbackRunde" style="width:100px">
+	            	<f:selectItem itemLabel="Runde 1" itemValue="1" />
+	            	<f:selectItem itemLabel="Runde 2" itemValue="2" />
+	       	 </p:selectOneMenu>
+	        </f:facet>
+		</p:toolbar>
+		 <p:dataTable value="#{receivedFeedbackBackingBean.getAllFeedbackOfStudent()}" var="feedback">
+		    <p:column headerText="Id">
+		        <h:outputText value="#{feedback.id}" />
+		    </p:column>
+		</p:dataTable>
 	</h:body>
 </f:view>

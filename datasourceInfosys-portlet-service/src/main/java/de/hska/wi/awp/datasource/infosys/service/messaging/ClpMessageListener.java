@@ -18,8 +18,8 @@ import de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalServiceUti
 import de.hska.wi.awp.datasource.infosys.service.StatusueberblickServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.TeilnoteServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackServiceUtil;
 
 
 public class ClpMessageListener extends BaseMessageListener {
@@ -55,9 +55,9 @@ public class ClpMessageListener extends BaseMessageListener {
             StudentLocalServiceUtil.clearService();
 
             StudentServiceUtil.clearService();
-            TeilnoteLocalServiceUtil.clearService();
+            Teilnote_feedbackLocalServiceUtil.clearService();
 
-            TeilnoteServiceUtil.clearService();
+            Teilnote_feedbackServiceUtil.clearService();
         }
     }
 }

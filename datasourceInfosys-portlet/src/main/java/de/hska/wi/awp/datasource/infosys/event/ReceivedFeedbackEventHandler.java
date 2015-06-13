@@ -1,6 +1,7 @@
 package de.hska.wi.awp.datasource.infosys.event;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.el.ELContext;
 import javax.el.ValueExpression;
@@ -14,7 +15,10 @@ import com.liferay.faces.bridge.event.EventPayloadWrapper;
 
 import de.hska.wi.awp.datasource.infosys.bean.navigation.NavigationBackingBean;
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackBackingBean;
-import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackModelBean;
+import de.hska.wi.awp.datasource.infosys.model.Feedback;
+import de.hska.wi.awp.datasource.infosys.model.Student;
+import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 
 public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
 
@@ -28,15 +32,14 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
              
              Serializable value = event.getValue();
              
-
-             
             if (value instanceof EventPayloadWrapper) {
  				value = ((EventPayloadWrapper) value).getWrapped();
  			}
 
  			String hskaId = (String) value;
- 			ReceivedFeedbackModelBean receivedFeedbackModelBean = getReceivedFeedbackModelBean(facesContext);
- 			receivedFeedbackModelBean.setStudenthskaId(hskaId);
+ 			ReceivedFeedbackBackingBean receivedFeedbackBackingBean = getReceivedFeedbackBackingBean(facesContext);
+ 			receivedFeedbackBackingBean.setStudenthskaId(hskaId);
+ 			//receivedFeedbackBackingBean.setAllFeedbacksOfStudent(getAllFeedbackOfStudent(hskaId));
 
  			String fromAction = null;
  			String outcome = "ipc.customerSelected";
@@ -51,12 +54,12 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
          return eventNavigationResult;
 	}
 	
-	protected ReceivedFeedbackModelBean getReceivedFeedbackModelBean(FacesContext facesContext) {
-		String elExpression = "#{receivedFeedbackModelBean}";
+	protected ReceivedFeedbackBackingBean getReceivedFeedbackBackingBean(FacesContext facesContext) {
+		String elExpression = "#{receivedFeedbackBackingBean}";
 		ELContext elContext = facesContext.getELContext();
 		ValueExpression valueExpression = facesContext.getApplication().getExpressionFactory().createValueExpression(
-				elContext, elExpression, ReceivedFeedbackModelBean.class);
+				elContext, elExpression, ReceivedFeedbackBackingBean.class);
 
-		return (ReceivedFeedbackModelBean) valueExpression.getValue(elContext);
+		return (ReceivedFeedbackBackingBean) valueExpression.getValue(elContext);
 	}
 }

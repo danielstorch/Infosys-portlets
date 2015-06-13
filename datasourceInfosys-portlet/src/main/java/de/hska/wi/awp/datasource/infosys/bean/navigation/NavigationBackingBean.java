@@ -51,7 +51,6 @@ public class NavigationBackingBean implements Serializable{
      */
 	private static final Logger logger = LoggerFactory.getLogger(NavigationBackingBean.class);
 	
-	//TODO logger einbauen
 	/**
      * Menu model
      */

@@ -1,0 +1,14 @@
+{
+  "Project": [
+    {
+      "id": "100",
+      "name": "HSKA WI - Bewertung",
+      "projecthskaId": "Be"
+    },
+    {
+      "id": "101",
+      "name": "Kollaborationsplattform",
+      "projecthskaId": "MobCo"
+    }
+  ]
+}

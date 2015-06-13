@@ -98,6 +98,75 @@ public class StudentUtil {
     }
 
     /**
+    * Returns the student where studenthskaId = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchStudentException} if it could not be found.
+    *
+    * @param studenthskaId the studenthska ID
+    * @return the matching student
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchStudentException if a matching student could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
+        java.lang.String studenthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchStudentException {
+        return getPersistence().findByStudenthskaId(studenthskaId);
+    }
+
+    /**
+    * Returns the student where studenthskaId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    *
+    * @param studenthskaId the studenthska ID
+    * @return the matching student, or <code>null</code> if a matching student could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Student fetchByStudenthskaId(
+        java.lang.String studenthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().fetchByStudenthskaId(studenthskaId);
+    }
+
+    /**
+    * Returns the student where studenthskaId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    *
+    * @param studenthskaId the studenthska ID
+    * @param retrieveFromCache whether to use the finder cache
+    * @return the matching student, or <code>null</code> if a matching student could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Student fetchByStudenthskaId(
+        java.lang.String studenthskaId, boolean retrieveFromCache)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByStudenthskaId(studenthskaId, retrieveFromCache);
+    }
+
+    /**
+    * Removes the student where studenthskaId = &#63; from the database.
+    *
+    * @param studenthskaId the studenthska ID
+    * @return the student that was removed
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Student removeByStudenthskaId(
+        java.lang.String studenthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchStudentException {
+        return getPersistence().removeByStudenthskaId(studenthskaId);
+    }
+
+    /**
+    * Returns the number of students where studenthskaId = &#63;.
+    *
+    * @param studenthskaId the studenthska ID
+    * @return the number of matching students
+    * @throws SystemException if a system exception occurred
+    */
+    public static int countByStudenthskaId(java.lang.String studenthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().countByStudenthskaId(studenthskaId);
+    }
+
+    /**
     * Returns all the students where project_id = &#63;.
     *
     * @param project_id the project_id

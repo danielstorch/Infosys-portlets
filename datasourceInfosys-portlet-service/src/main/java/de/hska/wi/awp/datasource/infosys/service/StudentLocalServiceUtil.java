@@ -267,6 +267,11 @@ public class StudentLocalServiceUtil {
         return getService().findByProjectId(project_id);
     }
 
+    public static de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
+        java.lang.String studenthskaId) {
+        return getService().findByStudenthskaId(studenthskaId);
+    }
+
     public static void clearService() {
         _service = null;
     }

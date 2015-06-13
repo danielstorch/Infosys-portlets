@@ -59,10 +59,10 @@
 		<field name="matnr" type="long" />
 		<field name="role" type="long" />
 	</model>
-	<model name="de.hska.wi.awp.datasource.infosys.model.Teilnote">
+	<model name="de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback">
 		<field name="id" type="long" />
 		<field name="feedback_id" type="long" />
 		<field name="note" type="int" />
-		<field name="kategorie" type="long" />
+		<field name="bewertungskriterium_id" type="long" />
 	</model>
 </model-hints>

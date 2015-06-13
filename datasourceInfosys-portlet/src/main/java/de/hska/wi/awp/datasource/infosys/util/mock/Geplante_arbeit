@@ -1,0 +1,39 @@
+{
+  "Geplante_arbeit": [
+    {
+      "id": "100",
+      "statusbericht_id": "100",
+      "verantwortlicher": "100",
+      "arbeit": "Anforderungsdefinition",
+      "bis_wann": "25.05.2015"
+    },
+    {
+      "id": "101",
+      "statusbericht_id": "100",
+      "verantwortlicher": "100",
+      "arbeit": "Anforderungsdefinition",
+      "bis_wann": "25.05.2015"
+    },
+    {
+      "id": "102",
+      "statusbericht_id": "100",
+      "verantwortlicher": "101",
+      "arbeit": "Anforderungsdefinition",
+      "bis_wann": "25.05.2015"
+    },
+    {
+      "id": "103",
+      "statusbericht_id": "101",
+      "verantwortlicher": "106",
+      "arbeit": "Anforderungsdefinition",
+      "bis_wann": "25.05.2015"
+    },
+    {
+      "id": "104",
+      "statusbericht_id": "101",
+      "verantwortlicher": "106",
+      "arbeit": "Anforderungsdefinition",
+      "bis_wann": "30.05.2015"
+    }
+  ]
+}

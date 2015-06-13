@@ -45,6 +45,8 @@ public class FeedbackLocalServiceClpInvoker {
     private String[] _methodParameterTypes76;
     private String _methodName77;
     private String[] _methodParameterTypes77;
+    private String _methodName82;
+    private String[] _methodParameterTypes82;
 
     public FeedbackLocalServiceClpInvoker() {
         _methodName0 = "addFeedback";
@@ -136,6 +138,10 @@ public class FeedbackLocalServiceClpInvoker {
         _methodName77 = "setBeanIdentifier";
 
         _methodParameterTypes77 = new String[] { "java.lang.String" };
+
+        _methodName82 = "findByStudent_id";
+
+        _methodParameterTypes82 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -237,6 +243,11 @@ public class FeedbackLocalServiceClpInvoker {
             FeedbackLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
+        }
+
+        if (_methodName82.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+            return FeedbackLocalServiceUtil.findByStudent_id(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

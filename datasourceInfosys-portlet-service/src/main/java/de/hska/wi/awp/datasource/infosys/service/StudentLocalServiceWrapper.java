@@ -276,6 +276,12 @@ public class StudentLocalServiceWrapper implements StudentLocalService,
         return _studentLocalService.findByProjectId(project_id);
     }
 
+    @Override
+    public de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
+        java.lang.String studenthskaId) {
+        return _studentLocalService.findByStudenthskaId(studenthskaId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

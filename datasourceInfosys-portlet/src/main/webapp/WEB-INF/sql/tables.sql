@@ -73,3 +73,10 @@ create table datasourceInfosys_Teilnote (
 	note INTEGER,
 	kategorie LONG
 );
+
+create table datasourceInfosys_Teilnote_feedback (
+	id_ LONG not null primary key,
+	feedback_id LONG,
+	note INTEGER,
+	bewertungskriterium_id LONG
+);

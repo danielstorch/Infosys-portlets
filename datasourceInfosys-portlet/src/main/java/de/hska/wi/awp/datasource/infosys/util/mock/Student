@@ -1,0 +1,94 @@
+{
+  "Student": [
+    {
+      "id": "100",
+      "project_id": "100",
+      "firstName": "Marc",
+      "lastName": "Weisenburger",
+      "studenthskaId": "wema1043",
+      "matnr": 0,
+      "role": 101
+    },
+    {
+      "id": "101",
+      "project_id": "100",
+      "firstName": "Simon",
+      "lastName": "Haemmerle",
+      "studenthskaId": "hasi1013",
+      "matnr": 0,
+      "role": 100
+    },
+    {
+      "id": "102",
+      "project_id": "100",
+      "firstName": "Mihai",
+      "lastName": "Sava",
+      "studenthskaId": "saio1011",
+      "matnr": 0,
+      "role": 102
+    },
+    {
+      "id": "103",
+      "project_id": "100",
+      "firstName": "Chris",
+      "lastName": "Ramroth",
+      "studenthskaId": "rach1013",
+      "matnr": 0,
+      "role": 0
+    },
+    {
+      "id": "104",
+      "project_id": "100",
+      "firstName": "Michael",
+      "lastName": "Lautenschläger",
+      "studenthskaId": "lami1014",
+      "matnr": 0,
+      "role": 0
+    },
+    {
+      "id": "105",
+      "project_id": "100",
+      "firstName": "Daniel",
+      "lastName": "Storch",
+      "studenthskaId": "stda1024",
+      "matnr": 38914,
+      "role": 0
+    },
+    {
+      "id": "106",
+      "project_id": "101",
+      "firstName": "Philipp",
+      "lastName": "Steinberg",
+      "studenthskaId": "stph1011",
+      "matnr": 29130,
+      "role": 101
+    },
+    {
+      "id": "107",
+      "project_id": "101",
+      "firstName": "Daniel",
+      "lastName": "Kutik",
+      "studenthskaId": "kuda0011",
+      "matnr": 26294,
+      "role": 102
+    },
+    {
+      "id": "108",
+      "project_id": "101",
+      "firstName": "Aziz",
+      "lastName": "Atabekov",
+      "studenthskaId": "ataz1011",
+      "matnr": 12345,
+      "role": 100
+    },
+    {
+      "id": "109",
+      "project_id": "101",
+      "firstName": "Dmitrij",
+      "lastName": "Klinkmann",
+      "studenthskaId": "kldm1011",
+      "matnr": 54321,
+      "role": 0
+    }
+  ]
+}

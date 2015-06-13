@@ -1,0 +1,52 @@
+{
+  "Statusueberblick": [
+    {
+      "id": "100",
+      "statusbericht_id": "100",
+      "qualitaet_status": "im_plan",
+      "qualitaet_text": "noch keine Aussage möglich",
+      "kosten_status": "im_plan",
+      "kosten_text": "-",
+      "aufwand_status": "im_plan",
+      "aufwand_text": "Besprechung im Team (8 Stunden)",
+      "termine_status": "kritisch",
+      "termine_text": "keine Rückmeldung"
+    },
+    {
+      "id": "101",
+      "statusbericht_id": "100",
+      "qualitaet_status": "im_plan",
+      "qualitaet_text": "noch keine Aussage möglich",
+      "kosten_status": "im_plan",
+      "kosten_text": "-",
+      "aufwand_status": "im_plan",
+      "aufwand_text": "Besprechung im Team (8 Stunden)",
+      "termine_status": "kritisch",
+      "termine_text": "keine Rückmeldung"
+    },
+    {
+      "id": "102",
+      "statusbericht_id": "101",
+      "qualitaet_status": "im_plan",
+      "qualitaet_text": "noch keine Aussage möglich",
+      "kosten_status": "im_plan",
+      "kosten_text": "-",
+      "aufwand_status": "im_plan",
+      "aufwand_text": "Besprechung im Team (8 Stunden)",
+      "termine_status": "kritisch",
+      "termine_text": "keine Rückmeldung"
+    },
+    {
+      "id": "103",
+      "statusbericht_id": "101",
+      "qualitaet_status": "im_plan",
+      "qualitaet_text": "noch keine Aussage möglich",
+      "kosten_status": "im_plan",
+      "kosten_text": "-",
+      "aufwand_status": "im_plan",
+      "aufwand_text": "Besprechung im Team (8 Stunden)",
+      "termine_status": "kritisch",
+      "termine_text": "keine Rückmeldung"
+    }
+  ]
+}

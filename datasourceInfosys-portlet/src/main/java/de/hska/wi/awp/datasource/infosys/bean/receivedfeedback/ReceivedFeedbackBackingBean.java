@@ -1,28 +1,22 @@
 package de.hska.wi.awp.datasource.infosys.bean.receivedfeedback;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
+import javax.faces.bean.SessionScoped;
 
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.portal.kernel.exception.SystemException;
 
-import de.hska.wi.awp.datasource.infosys.bean.navigation.NavigationBackingBean;
-import de.hska.wi.awp.datasource.infosys.model.Project;
+import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.model.Student;
-import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil;
 
 /**
  * 
@@ -43,18 +37,37 @@ public class ReceivedFeedbackBackingBean implements Serializable{
      */	
 	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackBackingBean.class);
 	
+	private List<Feedback> allFeedbacksOfStudent;
+	private String studenthskaId;
 
-	// Injections
-	@ManagedProperty(name = "receivedFeedbackModelBean", value = "#{receivedFeedbackModelBean}")
-	private ReceivedFeedbackModelBean receivedFeedbackModelBean;
 	
-	/**
-     * This method generates the menu.
-     * setCommand and setParam are there to retrieve information when an menuItem got clicked
-     */
-	@PostConstruct
-    public void init() {
-		
-		
+	
+	public List<Feedback> getAllFeedbackOfStudent(){
+		if(getStudenthskaId() != null) {
+			Student student = StudentLocalServiceUtil.findByStudenthskaId(getStudenthskaId());
+			List<Feedback> allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_id(student.getPrimaryKey());
+			return allFeedbacksOfStudent;
+		}
+		return null;
+	}
+	
+	public List<Teilnote_feedback> getAllTeilnoteOfFeedback(long feedback_id){
+		return Teilnote_feedbackLocalServiceUtil.findByFeedback_id(feedback_id);
+	}
+	
+	public String getStudenthskaId() {
+		return studenthskaId;
+	}
+
+	public void setStudenthskaId(String studenthskaId) {
+		this.studenthskaId = studenthskaId;
+	}
+
+	public List<Feedback> getAllFeedbacksOfStudent() {
+		return allFeedbacksOfStudent;
+	}
+
+	public void setAllFeedbacksOfStudent(List<Feedback> allFeedbacksOfStudent) {
+		this.allFeedbacksOfStudent = allFeedbacksOfStudent;
 	}
 }

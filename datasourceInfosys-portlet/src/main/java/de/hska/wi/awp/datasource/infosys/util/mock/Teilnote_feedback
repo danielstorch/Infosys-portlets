@@ -1,0 +1,184 @@
+{
+  "Teilnote_feedback": [
+    {
+      "id": "100",
+      "feedback_id": "100",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "101",
+      "feedback_id": "100",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "102",
+      "feedback_id": "100",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "103",
+      "feedback_id": "100",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "104",
+      "feedback_id": "100",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    },
+    {
+      "id": "105",
+      "feedback_id": "101",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "106",
+      "feedback_id": "101",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "107",
+      "feedback_id": "101",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "108",
+      "feedback_id": "101",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "109",
+      "feedback_id": "101",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    },
+    {
+      "id": "110",
+      "feedback_id": "102",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "111",
+      "feedback_id": "102",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "112",
+      "feedback_id": "102",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "113",
+      "feedback_id": "102",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "114",
+      "feedback_id": "102",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    },
+    {
+      "id": "115",
+      "feedback_id": "103",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "116",
+      "feedback_id": "103",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "117",
+      "feedback_id": "103",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "118",
+      "feedback_id": "103",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "119",
+      "feedback_id": "103",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    },
+    {
+      "id": "120",
+      "feedback_id": "104",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "121",
+      "feedback_id": "104",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "122",
+      "feedback_id": "104",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "123",
+      "feedback_id": "104",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "124",
+      "feedback_id": "104",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    },
+    {
+      "id": "125",
+      "feedback_id": "105",
+      "note": "1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "126",
+      "feedback_id": "105",
+      "note": "-1",
+      "bewertungskriterium_id": "100"
+    },
+    {
+      "id": "127",
+      "feedback_id": "105",
+      "note": "0",
+      "bewertungskriterium_id": "102"
+    },
+    {
+      "id": "128",
+      "feedback_id": "105",
+      "note": "1",
+      "bewertungskriterium_id": "103"
+    },
+    {
+      "id": "129",
+      "feedback_id": "105",
+      "note": "1",
+      "bewertungskriterium_id": "104"
+    }
+  ]
+}

@@ -46,6 +46,8 @@ public class StudentLocalServiceClp implements StudentLocalService {
     private String[] _methodParameterTypes17;
     private String _methodName19;
     private String[] _methodParameterTypes19;
+    private String _methodName20;
+    private String[] _methodParameterTypes20;
 
     public StudentLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -143,6 +145,10 @@ public class StudentLocalServiceClp implements StudentLocalService {
         _methodName19 = "findByProjectId";
 
         _methodParameterTypes19 = new String[] { "long" };
+
+        _methodName20 = "findByStudenthskaId";
+
+        _methodParameterTypes20 = new String[] { "java.lang.String" };
     }
 
     @Override
@@ -677,5 +683,28 @@ public class StudentLocalServiceClp implements StudentLocalService {
         }
 
         return (java.util.List<de.hska.wi.awp.datasource.infosys.model.Student>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
+        java.lang.String studenthskaId) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName20,
+                    _methodParameterTypes20,
+                    new Object[] { ClpSerializer.translateInput(studenthskaId) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (de.hska.wi.awp.datasource.infosys.model.Student) ClpSerializer.translateOutput(returnObj);
     }
 }

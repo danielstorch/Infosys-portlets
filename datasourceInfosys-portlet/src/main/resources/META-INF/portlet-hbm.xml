@@ -9,7 +9,7 @@
 	<import class="de.hska.wi.awp.datasource.infosys.model.Statusberichte" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Statusueberblick" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Student" />
-	<import class="de.hska.wi.awp.datasource.infosys.model.Teilnote" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback" />
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl" table="datasourceInfosys_Allgemeines">
 		<cache usage="read-write" />
 		<id name="id" column="id_" type="long">
@@ -87,13 +87,13 @@
 		<property name="matnr" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="role" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
-	<class name="de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteImpl" table="datasourceInfosys_Teilnote">
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackImpl" table="datasourceInfosys_Teilnote_feedback">
 		<cache usage="read-write" />
 		<id name="id" column="id_" type="long">
 			<generator class="assigned" />
 		</id>
 		<property name="feedback_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="note" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-		<property name="kategorie" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="bewertungskriterium_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 	</class>
 </hibernate-mapping>

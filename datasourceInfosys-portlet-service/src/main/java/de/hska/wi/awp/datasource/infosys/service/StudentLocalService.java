@@ -241,4 +241,7 @@ public interface StudentLocalService extends BaseLocalService,
 
     public java.util.List<de.hska.wi.awp.datasource.infosys.model.Student> findByProjectId(
         long project_id);
+
+    public de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
+        java.lang.String studenthskaId);
 }

@@ -47,6 +47,8 @@ public class StudentLocalServiceClpInvoker {
     private String[] _methodParameterTypes77;
     private String _methodName82;
     private String[] _methodParameterTypes82;
+    private String _methodName83;
+    private String[] _methodParameterTypes83;
 
     public StudentLocalServiceClpInvoker() {
         _methodName0 = "addStudent";
@@ -142,6 +144,10 @@ public class StudentLocalServiceClpInvoker {
         _methodName82 = "findByProjectId";
 
         _methodParameterTypes82 = new String[] { "long" };
+
+        _methodName83 = "findByStudenthskaId";
+
+        _methodParameterTypes83 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -248,6 +254,11 @@ public class StudentLocalServiceClpInvoker {
         if (_methodName82.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
             return StudentLocalServiceUtil.findByProjectId(((Long) arguments[0]).longValue());
+        }
+
+        if (_methodName83.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+            return StudentLocalServiceUtil.findByStudenthskaId((java.lang.String) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

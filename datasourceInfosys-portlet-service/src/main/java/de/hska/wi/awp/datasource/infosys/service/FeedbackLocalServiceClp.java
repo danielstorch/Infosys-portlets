@@ -44,6 +44,8 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
     private String[] _methodParameterTypes16;
     private String _methodName17;
     private String[] _methodParameterTypes17;
+    private String _methodName19;
+    private String[] _methodParameterTypes19;
 
     public FeedbackLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -137,6 +139,10 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
         _methodName17 = "setBeanIdentifier";
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
+
+        _methodName19 = "findByStudent_id";
+
+        _methodParameterTypes19 = new String[] { "long" };
     }
 
     @Override
@@ -649,5 +655,27 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
+        long student_id) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] { student_id });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback>) ClpSerializer.translateOutput(returnObj);
     }
 }

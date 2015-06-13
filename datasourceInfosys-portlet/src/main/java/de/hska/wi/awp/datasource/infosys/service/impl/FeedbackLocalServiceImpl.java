@@ -1,6 +1,13 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.SystemException;
+
+import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.service.base.FeedbackLocalServiceBaseImpl;
+import de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackUtil;
 
 /**
  * The implementation of the feedback local service.
@@ -22,4 +29,15 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil} to access the feedback local service.
      */
+	public List<Feedback> findByStudent_id(long student_id) {
+		List<Feedback> feedbacks = new ArrayList<Feedback>();
+		
+		try {
+			feedbacks = FeedbackUtil.findByStudent_id(student_id);
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return feedbacks;
+	}
 }

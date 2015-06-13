@@ -18,7 +18,7 @@ import de.hska.wi.awp.datasource.infosys.model.ProjectClp;
 import de.hska.wi.awp.datasource.infosys.model.StatusberichteClp;
 import de.hska.wi.awp.datasource.infosys.model.StatusueberblickClp;
 import de.hska.wi.awp.datasource.infosys.model.StudentClp;
-import de.hska.wi.awp.datasource.infosys.model.TeilnoteClp;
+import de.hska.wi.awp.datasource.infosys.model.Teilnote_feedbackClp;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -123,8 +123,8 @@ public class ClpSerializer {
             return translateInputStudent(oldModel);
         }
 
-        if (oldModelClassName.equals(TeilnoteClp.class.getName())) {
-            return translateInputTeilnote(oldModel);
+        if (oldModelClassName.equals(Teilnote_feedbackClp.class.getName())) {
+            return translateInputTeilnote_feedback(oldModel);
         }
 
         return oldModel;
@@ -212,10 +212,10 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateInputTeilnote(BaseModel<?> oldModel) {
-        TeilnoteClp oldClpModel = (TeilnoteClp) oldModel;
+    public static Object translateInputTeilnote_feedback(BaseModel<?> oldModel) {
+        Teilnote_feedbackClp oldClpModel = (Teilnote_feedbackClp) oldModel;
 
-        BaseModel<?> newModel = oldClpModel.getTeilnoteRemoteModel();
+        BaseModel<?> newModel = oldClpModel.getTeilnote_feedbackRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -483,8 +483,8 @@ public class ClpSerializer {
         }
 
         if (oldModelClassName.equals(
-                    "de.hska.wi.awp.datasource.infosys.model.impl.TeilnoteImpl")) {
-            return translateOutputTeilnote(oldModel);
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackImpl")) {
+            return translateOutputTeilnote_feedback(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -629,8 +629,8 @@ public class ClpSerializer {
         }
 
         if (className.equals(
-                    "de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException")) {
-            return new de.hska.wi.awp.datasource.infosys.NoSuchTeilnoteException();
+                    "de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException();
         }
 
         return throwable;
@@ -706,12 +706,12 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateOutputTeilnote(BaseModel<?> oldModel) {
-        TeilnoteClp newModel = new TeilnoteClp();
+    public static Object translateOutputTeilnote_feedback(BaseModel<?> oldModel) {
+        Teilnote_feedbackClp newModel = new Teilnote_feedbackClp();
 
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
-        newModel.setTeilnoteRemoteModel(oldModel);
+        newModel.setTeilnote_feedbackRemoteModel(oldModel);
 
         return newModel;
     }

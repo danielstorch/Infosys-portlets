@@ -17,7 +17,7 @@ import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StatusueberblickPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistence;
-import de.hska.wi.awp.datasource.infosys.service.persistence.TeilnotePersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Teilnote_feedbackPersistence;
 
 import javax.sql.DataSource;
 
@@ -77,12 +77,12 @@ public abstract class StatusberichteServiceBaseImpl extends BaseServiceImpl
     protected de.hska.wi.awp.datasource.infosys.service.StudentService studentService;
     @BeanReference(type = StudentPersistence.class)
     protected StudentPersistence studentPersistence;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalService teilnoteLocalService;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.TeilnoteService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.TeilnoteService teilnoteService;
-    @BeanReference(type = TeilnotePersistence.class)
-    protected TeilnotePersistence teilnotePersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalService teilnote_feedbackLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackService teilnote_feedbackService;
+    @BeanReference(type = Teilnote_feedbackPersistence.class)
+    protected Teilnote_feedbackPersistence teilnote_feedbackPersistence;
     @BeanReference(type = com.liferay.counter.service.CounterLocalService.class)
     protected com.liferay.counter.service.CounterLocalService counterLocalService;
     @BeanReference(type = com.liferay.portal.service.ResourceLocalService.class)
@@ -500,59 +500,60 @@ public abstract class StatusberichteServiceBaseImpl extends BaseServiceImpl
     }
 
     /**
-     * Returns the teilnote local service.
+     * Returns the teilnote_feedback local service.
      *
-     * @return the teilnote local service
+     * @return the teilnote_feedback local service
      */
-    public de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalService getTeilnoteLocalService() {
-        return teilnoteLocalService;
+    public de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalService getTeilnote_feedbackLocalService() {
+        return teilnote_feedbackLocalService;
     }
 
     /**
-     * Sets the teilnote local service.
+     * Sets the teilnote_feedback local service.
      *
-     * @param teilnoteLocalService the teilnote local service
+     * @param teilnote_feedbackLocalService the teilnote_feedback local service
      */
-    public void setTeilnoteLocalService(
-        de.hska.wi.awp.datasource.infosys.service.TeilnoteLocalService teilnoteLocalService) {
-        this.teilnoteLocalService = teilnoteLocalService;
+    public void setTeilnote_feedbackLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalService teilnote_feedbackLocalService) {
+        this.teilnote_feedbackLocalService = teilnote_feedbackLocalService;
     }
 
     /**
-     * Returns the teilnote remote service.
+     * Returns the teilnote_feedback remote service.
      *
-     * @return the teilnote remote service
+     * @return the teilnote_feedback remote service
      */
-    public de.hska.wi.awp.datasource.infosys.service.TeilnoteService getTeilnoteService() {
-        return teilnoteService;
+    public de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackService getTeilnote_feedbackService() {
+        return teilnote_feedbackService;
     }
 
     /**
-     * Sets the teilnote remote service.
+     * Sets the teilnote_feedback remote service.
      *
-     * @param teilnoteService the teilnote remote service
+     * @param teilnote_feedbackService the teilnote_feedback remote service
      */
-    public void setTeilnoteService(
-        de.hska.wi.awp.datasource.infosys.service.TeilnoteService teilnoteService) {
-        this.teilnoteService = teilnoteService;
+    public void setTeilnote_feedbackService(
+        de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackService teilnote_feedbackService) {
+        this.teilnote_feedbackService = teilnote_feedbackService;
     }
 
     /**
-     * Returns the teilnote persistence.
+     * Returns the teilnote_feedback persistence.
      *
-     * @return the teilnote persistence
+     * @return the teilnote_feedback persistence
      */
-    public TeilnotePersistence getTeilnotePersistence() {
-        return teilnotePersistence;
+    public Teilnote_feedbackPersistence getTeilnote_feedbackPersistence() {
+        return teilnote_feedbackPersistence;
     }
 
     /**
-     * Sets the teilnote persistence.
+     * Sets the teilnote_feedback persistence.
      *
-     * @param teilnotePersistence the teilnote persistence
+     * @param teilnote_feedbackPersistence the teilnote_feedback persistence
      */
-    public void setTeilnotePersistence(TeilnotePersistence teilnotePersistence) {
-        this.teilnotePersistence = teilnotePersistence;
+    public void setTeilnote_feedbackPersistence(
+        Teilnote_feedbackPersistence teilnote_feedbackPersistence) {
+        this.teilnote_feedbackPersistence = teilnote_feedbackPersistence;
     }
 
     /**
