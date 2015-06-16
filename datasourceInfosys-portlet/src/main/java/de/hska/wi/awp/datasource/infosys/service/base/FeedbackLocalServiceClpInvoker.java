@@ -41,12 +41,12 @@ public class FeedbackLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName76;
-    private String[] _methodParameterTypes76;
-    private String _methodName77;
-    private String[] _methodParameterTypes77;
     private String _methodName82;
     private String[] _methodParameterTypes82;
+    private String _methodName83;
+    private String[] _methodParameterTypes83;
+    private String _methodName88;
+    private String[] _methodParameterTypes88;
 
     public FeedbackLocalServiceClpInvoker() {
         _methodName0 = "addFeedback";
@@ -131,17 +131,17 @@ public class FeedbackLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Feedback"
             };
 
-        _methodName76 = "getBeanIdentifier";
+        _methodName82 = "getBeanIdentifier";
 
-        _methodParameterTypes76 = new String[] {  };
+        _methodParameterTypes82 = new String[] {  };
 
-        _methodName77 = "setBeanIdentifier";
+        _methodName83 = "setBeanIdentifier";
 
-        _methodParameterTypes77 = new String[] { "java.lang.String" };
+        _methodParameterTypes83 = new String[] { "java.lang.String" };
 
-        _methodName82 = "findByStudent_id";
+        _methodName88 = "findByStudent_idAndFeedback_runden_nr";
 
-        _methodParameterTypes82 = new String[] { "long" };
+        _methodParameterTypes88 = new String[] { "long", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -233,21 +233,22 @@ public class FeedbackLocalServiceClpInvoker {
             return FeedbackLocalServiceUtil.updateFeedback((de.hska.wi.awp.datasource.infosys.model.Feedback) arguments[0]);
         }
 
-        if (_methodName76.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+        if (_methodName82.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
             return FeedbackLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName77.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+        if (_methodName83.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
             FeedbackLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
-            return FeedbackLocalServiceUtil.findByStudent_id(((Long) arguments[0]).longValue());
+        if (_methodName88.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+            return FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(((Long) arguments[0]).longValue(),
+                ((Integer) arguments[1]).intValue());
         }
 
         throw new UnsupportedOperationException();

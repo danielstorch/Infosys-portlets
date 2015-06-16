@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="de.hska.wi.awp.datasource.infosys.model.Allgemeines" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Feedback" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Project" />
@@ -20,6 +21,15 @@
 		<property name="massnahmen" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="situation" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="gruende" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumImpl" table="datasourceInfosys_Bewertungskriterium">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="beschreibung" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="gewichtung" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.FeedbackImpl" table="datasourceInfosys_Feedback">
 		<cache usage="read-write" />

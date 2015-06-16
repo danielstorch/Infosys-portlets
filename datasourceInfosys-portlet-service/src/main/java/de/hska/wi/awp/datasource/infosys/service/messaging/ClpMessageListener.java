@@ -5,6 +5,8 @@ import com.liferay.portal.kernel.messaging.Message;
 
 import de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.AllgemeinesServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.ClpSerializer;
 import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.FeedbackServiceUtil;
@@ -37,6 +39,9 @@ public class ClpMessageListener extends BaseMessageListener {
             AllgemeinesLocalServiceUtil.clearService();
 
             AllgemeinesServiceUtil.clearService();
+            BewertungskriteriumLocalServiceUtil.clearService();
+
+            BewertungskriteriumServiceUtil.clearService();
             FeedbackLocalServiceUtil.clearService();
 
             FeedbackServiceUtil.clearService();

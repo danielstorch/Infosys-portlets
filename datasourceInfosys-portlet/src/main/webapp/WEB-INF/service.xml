@@ -82,8 +82,9 @@
         <column name="kommentar_beitrag" type="String"></column>
         <column name="beitrag" type="int"></column>
         <!-- Finder methods -->
-        <finder name="Student_id" return-type="Collection">
+        <finder name="Student_idAndFeedback_runden_nr" return-type="Collection">
           	<finder-column name="student_id"/>
+          	<finder-column name="feedback_runden_nr"/>
         </finder>
     </entity>
     <entity name="Teilnote_feedback" local-service="true">
@@ -92,8 +93,15 @@
         <column name="note" type="int"></column>
         <column name="bewertungskriterium_id" type="long"></column>
         <!-- Finder methods -->
-        <finder name="Feedback_id" return-type="Collection">
+        <finder name="Feedback_idAndBewertungskriterium_id" return-type="Teilnote_feedback">
           	<finder-column name="feedback_id"/>
+          	<finder-column name="bewertungskriterium_id"/>
         </finder>
+    </entity>
+    <entity name="Bewertungskriterium" local-service="true">
+        <column name="bewertungskriterium_id" type="long" primary="true"></column>
+        <column name="name" type="String"></column>
+        <column name="beschreibung" type="String"></column>
+        <column name="gewichtung" type="int"></column>
     </entity>
 </service-builder>

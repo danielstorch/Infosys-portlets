@@ -69,8 +69,9 @@ public class Teilnote_feedbackModelImpl extends BaseModelImpl<Teilnote_feedback>
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback"),
             true);
-    public static long FEEDBACK_ID_COLUMN_BITMASK = 1L;
-    public static long ID_COLUMN_BITMASK = 2L;
+    public static long BEWERTUNGSKRITERIUM_ID_COLUMN_BITMASK = 1L;
+    public static long FEEDBACK_ID_COLUMN_BITMASK = 2L;
+    public static long ID_COLUMN_BITMASK = 4L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback"));
     private static ClassLoader _classLoader = Teilnote_feedback.class.getClassLoader();
@@ -83,6 +84,8 @@ public class Teilnote_feedbackModelImpl extends BaseModelImpl<Teilnote_feedback>
     private boolean _setOriginalFeedback_id;
     private int _note;
     private long _bewertungskriterium_id;
+    private long _originalBewertungskriterium_id;
+    private boolean _setOriginalBewertungskriterium_id;
     private long _columnBitmask;
     private Teilnote_feedback _escapedModel;
 
@@ -254,7 +257,19 @@ public class Teilnote_feedbackModelImpl extends BaseModelImpl<Teilnote_feedback>
 
     @Override
     public void setBewertungskriterium_id(long bewertungskriterium_id) {
+        _columnBitmask |= BEWERTUNGSKRITERIUM_ID_COLUMN_BITMASK;
+
+        if (!_setOriginalBewertungskriterium_id) {
+            _setOriginalBewertungskriterium_id = true;
+
+            _originalBewertungskriterium_id = _bewertungskriterium_id;
+        }
+
         _bewertungskriterium_id = bewertungskriterium_id;
+    }
+
+    public long getOriginalBewertungskriterium_id() {
+        return _originalBewertungskriterium_id;
     }
 
     public long getColumnBitmask() {
@@ -344,6 +359,10 @@ public class Teilnote_feedbackModelImpl extends BaseModelImpl<Teilnote_feedback>
         teilnote_feedbackModelImpl._originalFeedback_id = teilnote_feedbackModelImpl._feedback_id;
 
         teilnote_feedbackModelImpl._setOriginalFeedback_id = false;
+
+        teilnote_feedbackModelImpl._originalBewertungskriterium_id = teilnote_feedbackModelImpl._bewertungskriterium_id;
+
+        teilnote_feedbackModelImpl._setOriginalBewertungskriterium_id = false;
 
         teilnote_feedbackModelImpl._columnBitmask = 0;
     }

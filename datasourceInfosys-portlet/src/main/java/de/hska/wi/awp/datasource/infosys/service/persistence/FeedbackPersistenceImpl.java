@@ -71,27 +71,35 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(FeedbackModelImpl.ENTITY_CACHE_ENABLED,
             FeedbackModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
-    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STUDENT_ID =
+    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR =
         new FinderPath(FeedbackModelImpl.ENTITY_CACHE_ENABLED,
             FeedbackModelImpl.FINDER_CACHE_ENABLED, FeedbackImpl.class,
-            FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByStudent_id",
+            FINDER_CLASS_NAME_LIST_WITH_PAGINATION,
+            "findByStudent_idAndFeedback_runden_nr",
             new String[] {
-                Long.class.getName(),
+                Long.class.getName(), Integer.class.getName(),
                 
             Integer.class.getName(), Integer.class.getName(),
                 OrderByComparator.class.getName()
             });
-    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_ID =
+    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR =
         new FinderPath(FeedbackModelImpl.ENTITY_CACHE_ENABLED,
             FeedbackModelImpl.FINDER_CACHE_ENABLED, FeedbackImpl.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByStudent_id",
-            new String[] { Long.class.getName() },
-            FeedbackModelImpl.STUDENT_ID_COLUMN_BITMASK);
-    public static final FinderPath FINDER_PATH_COUNT_BY_STUDENT_ID = new FinderPath(FeedbackModelImpl.ENTITY_CACHE_ENABLED,
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "findByStudent_idAndFeedback_runden_nr",
+            new String[] { Long.class.getName(), Integer.class.getName() },
+            FeedbackModelImpl.STUDENT_ID_COLUMN_BITMASK |
+            FeedbackModelImpl.FEEDBACK_RUNDEN_NR_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR =
+        new FinderPath(FeedbackModelImpl.ENTITY_CACHE_ENABLED,
             FeedbackModelImpl.FINDER_CACHE_ENABLED, Long.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByStudent_id",
-            new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_STUDENT_ID_STUDENT_ID_2 = "feedback.student_id = ?";
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "countByStudent_idAndFeedback_runden_nr",
+            new String[] { Long.class.getName(), Integer.class.getName() });
+    private static final String _FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_STUDENT_ID_2 =
+        "feedback.student_id = ? AND ";
+    private static final String _FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_FEEDBACK_RUNDEN_NR_2 =
+        "feedback.feedback_runden_nr = ?";
     private static final String _SQL_SELECT_FEEDBACK = "SELECT feedback FROM Feedback feedback";
     private static final String _SQL_SELECT_FEEDBACK_WHERE = "SELECT feedback FROM Feedback feedback WHERE ";
     private static final String _SQL_COUNT_FEEDBACK = "SELECT COUNT(feedback) FROM Feedback feedback";
@@ -129,46 +137,51 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns all the feedbacks where student_id = &#63;.
+     * Returns all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @return the matching feedbacks
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Feedback> findByStudent_id(long student_id)
-        throws SystemException {
-        return findByStudent_id(student_id, QueryUtil.ALL_POS,
-            QueryUtil.ALL_POS, null);
+    public List<Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr) throws SystemException {
+        return findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null);
     }
 
     /**
-     * Returns a range of all the feedbacks where student_id = &#63;.
+     * Returns a range of all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param start the lower bound of the range of feedbacks
      * @param end the upper bound of the range of feedbacks (not inclusive)
      * @return the range of matching feedbacks
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Feedback> findByStudent_id(long student_id, int start, int end)
+    public List<Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr, int start, int end)
         throws SystemException {
-        return findByStudent_id(student_id, start, end, null);
+        return findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr, start, end, null);
     }
 
     /**
-     * Returns an ordered range of all the feedbacks where student_id = &#63;.
+     * Returns an ordered range of all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * <p>
      * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
      * </p>
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param start the lower bound of the range of feedbacks
      * @param end the upper bound of the range of feedbacks (not inclusive)
      * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
@@ -176,7 +189,8 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Feedback> findByStudent_id(long student_id, int start, int end,
+    public List<Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr, int start, int end,
         OrderByComparator orderByComparator) throws SystemException {
         boolean pagination = true;
         FinderPath finderPath = null;
@@ -185,11 +199,15 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
         if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
                 (orderByComparator == null)) {
             pagination = false;
-            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_ID;
-            finderArgs = new Object[] { student_id };
+            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR;
+            finderArgs = new Object[] { student_id, feedback_runden_nr };
         } else {
-            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_STUDENT_ID;
-            finderArgs = new Object[] { student_id, start, end, orderByComparator };
+            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR;
+            finderArgs = new Object[] {
+                    student_id, feedback_runden_nr,
+                    
+                    start, end, orderByComparator
+                };
         }
 
         List<Feedback> list = (List<Feedback>) FinderCacheUtil.getResult(finderPath,
@@ -197,7 +215,8 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
 
         if ((list != null) && !list.isEmpty()) {
             for (Feedback feedback : list) {
-                if ((student_id != feedback.getStudent_id())) {
+                if ((student_id != feedback.getStudent_id()) ||
+                        (feedback_runden_nr != feedback.getFeedback_runden_nr())) {
                     list = null;
 
                     break;
@@ -209,15 +228,17 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
             StringBundler query = null;
 
             if (orderByComparator != null) {
-                query = new StringBundler(3 +
+                query = new StringBundler(4 +
                         (orderByComparator.getOrderByFields().length * 3));
             } else {
-                query = new StringBundler(3);
+                query = new StringBundler(4);
             }
 
             query.append(_SQL_SELECT_FEEDBACK_WHERE);
 
-            query.append(_FINDER_COLUMN_STUDENT_ID_STUDENT_ID_2);
+            query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_STUDENT_ID_2);
+
+            query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_FEEDBACK_RUNDEN_NR_2);
 
             if (orderByComparator != null) {
                 appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
@@ -239,6 +260,8 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
                 QueryPos qPos = QueryPos.getInstance(q);
 
                 qPos.add(student_id);
+
+                qPos.add(feedback_runden_nr);
 
                 if (!pagination) {
                     list = (List<Feedback>) QueryUtil.list(q, getDialect(),
@@ -268,31 +291,36 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns the first feedback in the ordered set where student_id = &#63;.
+     * Returns the first feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching feedback
      * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a matching feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Feedback findByStudent_id_First(long student_id,
+    public Feedback findByStudent_idAndFeedback_runden_nr_First(
+        long student_id, int feedback_runden_nr,
         OrderByComparator orderByComparator)
         throws NoSuchFeedbackException, SystemException {
-        Feedback feedback = fetchByStudent_id_First(student_id,
-                orderByComparator);
+        Feedback feedback = fetchByStudent_idAndFeedback_runden_nr_First(student_id,
+                feedback_runden_nr, orderByComparator);
 
         if (feedback != null) {
             return feedback;
         }
 
-        StringBundler msg = new StringBundler(4);
+        StringBundler msg = new StringBundler(6);
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
         msg.append("student_id=");
         msg.append(student_id);
+
+        msg.append(", feedback_runden_nr=");
+        msg.append(feedback_runden_nr);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -300,18 +328,20 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns the first feedback in the ordered set where student_id = &#63;.
+     * Returns the first feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the first matching feedback, or <code>null</code> if a matching feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Feedback fetchByStudent_id_First(long student_id,
+    public Feedback fetchByStudent_idAndFeedback_runden_nr_First(
+        long student_id, int feedback_runden_nr,
         OrderByComparator orderByComparator) throws SystemException {
-        List<Feedback> list = findByStudent_id(student_id, 0, 1,
-                orderByComparator);
+        List<Feedback> list = findByStudent_idAndFeedback_runden_nr(student_id,
+                feedback_runden_nr, 0, 1, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -321,30 +351,36 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns the last feedback in the ordered set where student_id = &#63;.
+     * Returns the last feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching feedback
      * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a matching feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Feedback findByStudent_id_Last(long student_id,
+    public Feedback findByStudent_idAndFeedback_runden_nr_Last(
+        long student_id, int feedback_runden_nr,
         OrderByComparator orderByComparator)
         throws NoSuchFeedbackException, SystemException {
-        Feedback feedback = fetchByStudent_id_Last(student_id, orderByComparator);
+        Feedback feedback = fetchByStudent_idAndFeedback_runden_nr_Last(student_id,
+                feedback_runden_nr, orderByComparator);
 
         if (feedback != null) {
             return feedback;
         }
 
-        StringBundler msg = new StringBundler(4);
+        StringBundler msg = new StringBundler(6);
 
         msg.append(_NO_SUCH_ENTITY_WITH_KEY);
 
         msg.append("student_id=");
         msg.append(student_id);
+
+        msg.append(", feedback_runden_nr=");
+        msg.append(feedback_runden_nr);
 
         msg.append(StringPool.CLOSE_CURLY_BRACE);
 
@@ -352,24 +388,27 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns the last feedback in the ordered set where student_id = &#63;.
+     * Returns the last feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the last matching feedback, or <code>null</code> if a matching feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Feedback fetchByStudent_id_Last(long student_id,
+    public Feedback fetchByStudent_idAndFeedback_runden_nr_Last(
+        long student_id, int feedback_runden_nr,
         OrderByComparator orderByComparator) throws SystemException {
-        int count = countByStudent_id(student_id);
+        int count = countByStudent_idAndFeedback_runden_nr(student_id,
+                feedback_runden_nr);
 
         if (count == 0) {
             return null;
         }
 
-        List<Feedback> list = findByStudent_id(student_id, count - 1, count,
-                orderByComparator);
+        List<Feedback> list = findByStudent_idAndFeedback_runden_nr(student_id,
+                feedback_runden_nr, count - 1, count, orderByComparator);
 
         if (!list.isEmpty()) {
             return list.get(0);
@@ -379,17 +418,19 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Returns the feedbacks before and after the current feedback in the ordered set where student_id = &#63;.
+     * Returns the feedbacks before and after the current feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param id the primary key of the current feedback
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
      * @return the previous, current, and next feedback
      * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a feedback with the primary key could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Feedback[] findByStudent_id_PrevAndNext(long id, long student_id,
+    public Feedback[] findByStudent_idAndFeedback_runden_nr_PrevAndNext(
+        long id, long student_id, int feedback_runden_nr,
         OrderByComparator orderByComparator)
         throws NoSuchFeedbackException, SystemException {
         Feedback feedback = findByPrimaryKey(id);
@@ -401,13 +442,15 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
 
             Feedback[] array = new FeedbackImpl[3];
 
-            array[0] = getByStudent_id_PrevAndNext(session, feedback,
-                    student_id, orderByComparator, true);
+            array[0] = getByStudent_idAndFeedback_runden_nr_PrevAndNext(session,
+                    feedback, student_id, feedback_runden_nr,
+                    orderByComparator, true);
 
             array[1] = feedback;
 
-            array[2] = getByStudent_id_PrevAndNext(session, feedback,
-                    student_id, orderByComparator, false);
+            array[2] = getByStudent_idAndFeedback_runden_nr_PrevAndNext(session,
+                    feedback, student_id, feedback_runden_nr,
+                    orderByComparator, false);
 
             return array;
         } catch (Exception e) {
@@ -417,9 +460,10 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
         }
     }
 
-    protected Feedback getByStudent_id_PrevAndNext(Session session,
-        Feedback feedback, long student_id,
-        OrderByComparator orderByComparator, boolean previous) {
+    protected Feedback getByStudent_idAndFeedback_runden_nr_PrevAndNext(
+        Session session, Feedback feedback, long student_id,
+        int feedback_runden_nr, OrderByComparator orderByComparator,
+        boolean previous) {
         StringBundler query = null;
 
         if (orderByComparator != null) {
@@ -431,7 +475,9 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
 
         query.append(_SQL_SELECT_FEEDBACK_WHERE);
 
-        query.append(_FINDER_COLUMN_STUDENT_ID_STUDENT_ID_2);
+        query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_STUDENT_ID_2);
+
+        query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_FEEDBACK_RUNDEN_NR_2);
 
         if (orderByComparator != null) {
             String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
@@ -496,6 +542,8 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
 
         qPos.add(student_id);
 
+        qPos.add(feedback_runden_nr);
+
         if (orderByComparator != null) {
             Object[] values = orderByComparator.getOrderByConditionValues(feedback);
 
@@ -514,41 +562,48 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
     }
 
     /**
-     * Removes all the feedbacks where student_id = &#63; from the database.
+     * Removes all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63; from the database.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public void removeByStudent_id(long student_id) throws SystemException {
-        for (Feedback feedback : findByStudent_id(student_id,
-                QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
+    public void removeByStudent_idAndFeedback_runden_nr(long student_id,
+        int feedback_runden_nr) throws SystemException {
+        for (Feedback feedback : findByStudent_idAndFeedback_runden_nr(
+                student_id, feedback_runden_nr, QueryUtil.ALL_POS,
+                QueryUtil.ALL_POS, null)) {
             remove(feedback);
         }
     }
 
     /**
-     * Returns the number of feedbacks where student_id = &#63;.
+     * Returns the number of feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
      *
      * @param student_id the student_id
+     * @param feedback_runden_nr the feedback_runden_nr
      * @return the number of matching feedbacks
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByStudent_id(long student_id) throws SystemException {
-        FinderPath finderPath = FINDER_PATH_COUNT_BY_STUDENT_ID;
+    public int countByStudent_idAndFeedback_runden_nr(long student_id,
+        int feedback_runden_nr) throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR;
 
-        Object[] finderArgs = new Object[] { student_id };
+        Object[] finderArgs = new Object[] { student_id, feedback_runden_nr };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
 
         if (count == null) {
-            StringBundler query = new StringBundler(2);
+            StringBundler query = new StringBundler(3);
 
             query.append(_SQL_COUNT_FEEDBACK_WHERE);
 
-            query.append(_FINDER_COLUMN_STUDENT_ID_STUDENT_ID_2);
+            query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_STUDENT_ID_2);
+
+            query.append(_FINDER_COLUMN_STUDENT_IDANDFEEDBACK_RUNDEN_NR_FEEDBACK_RUNDEN_NR_2);
 
             String sql = query.toString();
 
@@ -562,6 +617,8 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
                 QueryPos qPos = QueryPos.getInstance(q);
 
                 qPos.add(student_id);
+
+                qPos.add(feedback_runden_nr);
 
                 count = (Long) q.uniqueResult();
 
@@ -789,21 +846,25 @@ public class FeedbackPersistenceImpl extends BasePersistenceImpl<Feedback>
         }
         else {
             if ((feedbackModelImpl.getColumnBitmask() &
-                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_ID.getColumnBitmask()) != 0) {
+                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR.getColumnBitmask()) != 0) {
                 Object[] args = new Object[] {
-                        feedbackModelImpl.getOriginalStudent_id()
+                        feedbackModelImpl.getOriginalStudent_id(),
+                        feedbackModelImpl.getOriginalFeedback_runden_nr()
                     };
 
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STUDENT_ID,
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR,
                     args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_ID,
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR,
                     args);
 
-                args = new Object[] { feedbackModelImpl.getStudent_id() };
+                args = new Object[] {
+                        feedbackModelImpl.getStudent_id(),
+                        feedbackModelImpl.getFeedback_runden_nr()
+                    };
 
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STUDENT_ID,
+                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR,
                     args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_ID,
+                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_STUDENT_IDANDFEEDBACK_RUNDEN_NR,
                     args);
             }
         }

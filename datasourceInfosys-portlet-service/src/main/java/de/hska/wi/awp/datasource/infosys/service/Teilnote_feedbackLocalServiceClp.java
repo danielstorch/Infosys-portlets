@@ -142,9 +142,9 @@ public class Teilnote_feedbackLocalServiceClp
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "findByFeedback_id";
+        _methodName19 = "findByFeedback_idAndBewertungskriterium_id";
 
-        _methodParameterTypes19 = new String[] { "long" };
+        _methodParameterTypes19 = new String[] { "long", "int" };
     }
 
     @Override
@@ -664,13 +664,14 @@ public class Teilnote_feedbackLocalServiceClp
     }
 
     @Override
-    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback> findByFeedback_id(
-        long feedback_id) {
+    public de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, int bewertungskriterium_id) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19, new Object[] { feedback_id });
+                    _methodParameterTypes19,
+                    new Object[] { feedback_id, bewertungskriterium_id });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -682,6 +683,6 @@ public class Teilnote_feedbackLocalServiceClp
             }
         }
 
-        return (java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback>) ClpSerializer.translateOutput(returnObj);
+        return (de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback) ClpSerializer.translateOutput(returnObj);
     }
 }

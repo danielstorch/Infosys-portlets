@@ -22,6 +22,19 @@
 			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="name" />
+			<basic name="beschreibung" />
+			<basic name="gewichtung" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
 	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl">
 		<attributes>
 			<id name="id">
@@ -131,6 +144,10 @@
 	</mapped-superclass>
 	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl" name="Allgemeines">
 		<table name="datasourceInfosys_Allgemeines" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumImpl" name="Bewertungskriterium">
+		<table name="datasourceInfosys_Bewertungskriterium" />
 		<attributes />
 	</entity>
 	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.FeedbackImpl" name="Feedback">

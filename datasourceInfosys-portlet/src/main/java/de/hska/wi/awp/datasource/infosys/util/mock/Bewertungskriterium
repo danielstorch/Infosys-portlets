@@ -1,0 +1,34 @@
+{
+  "Bewertungskriterium": [
+    {
+      "id": "100",
+      "beschreibung": "Einsatz, Arbeitsleistung und Interesse",
+      "gewichtung": 1,
+      "name": "Engagement"
+    },
+    {
+      "id": "102",
+      "beschreibung": "Alles was das Fachliche angeht",
+      "gewichtung": 1,
+      "name": "Fachliche Kompetenz"
+    },
+    {
+      "id": "104",
+      "beschreibung": "Alles was das Technische angeht",
+      "gewichtung": 1,
+      "name": "Technische  Kompetenz"
+    },
+    {
+      "id": "106",
+      "beschreibung": "Zusammenarbeit mit Teammitgliedern",
+      "gewichtung": 1,
+      "name": "Teamfaehigkeit"
+    },
+    {
+      "id": "108",
+      "beschreibung": "Kommunikation mit Kunden und Teammitgliedern",
+      "gewichtung": 1,
+      "name": "Kommunikationsfaehigkeit"
+    }
+  ]
+}

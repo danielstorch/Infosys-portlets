@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
+import de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException;
+import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback;
 import de.hska.wi.awp.datasource.infosys.service.base.Teilnote_feedbackLocalServiceBaseImpl;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Teilnote_feedbackUtil;
@@ -30,12 +32,14 @@ public class Teilnote_feedbackLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil} to access the teilnote_feedback local service.
      */
-	public List<Teilnote_feedback> findByFeedback_id(long feedback_id) {
-		List<Teilnote_feedback> teilnote_feedback = new ArrayList<Teilnote_feedback>();
-		
+	public Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(long feedback_id, int bewertungskriterium_id) {
+		Teilnote_feedback teilnote_feedback = null;
 		try {
-			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_id(feedback_id);
+			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
 		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchTeilnote_feedbackException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

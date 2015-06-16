@@ -29,11 +29,11 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil} to access the feedback local service.
      */
-	public List<Feedback> findByStudent_id(long student_id) {
+	public List<Feedback> findByStudent_idAndFeedback_runden_nr(long student_id, int feedback_runden_nr) {
 		List<Feedback> feedbacks = new ArrayList<Feedback>();
 		
 		try {
-			feedbacks = FeedbackUtil.findByStudent_id(student_id);
+			feedbacks = FeedbackUtil.findByStudent_idAndFeedback_runden_nr(student_id, feedback_runden_nr);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

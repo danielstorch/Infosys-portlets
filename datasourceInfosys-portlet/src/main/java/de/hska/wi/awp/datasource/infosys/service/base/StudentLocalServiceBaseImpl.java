@@ -20,6 +20,7 @@ import com.liferay.portal.service.persistence.UserPersistence;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalService;
 import de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Geplante_arbeitPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence;
@@ -54,6 +55,12 @@ public abstract class StudentLocalServiceBaseImpl extends BaseLocalServiceImpl
     protected de.hska.wi.awp.datasource.infosys.service.AllgemeinesService allgemeinesService;
     @BeanReference(type = AllgemeinesPersistence.class)
     protected AllgemeinesPersistence allgemeinesPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService bewertungskriteriumLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService bewertungskriteriumService;
+    @BeanReference(type = BewertungskriteriumPersistence.class)
+    protected BewertungskriteriumPersistence bewertungskriteriumPersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.FeedbackLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.FeedbackLocalService feedbackLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.FeedbackService.class)
@@ -382,6 +389,63 @@ public abstract class StudentLocalServiceBaseImpl extends BaseLocalServiceImpl
     public void setAllgemeinesPersistence(
         AllgemeinesPersistence allgemeinesPersistence) {
         this.allgemeinesPersistence = allgemeinesPersistence;
+    }
+
+    /**
+     * Returns the bewertungskriterium local service.
+     *
+     * @return the bewertungskriterium local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService getBewertungskriteriumLocalService() {
+        return bewertungskriteriumLocalService;
+    }
+
+    /**
+     * Sets the bewertungskriterium local service.
+     *
+     * @param bewertungskriteriumLocalService the bewertungskriterium local service
+     */
+    public void setBewertungskriteriumLocalService(
+        de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService bewertungskriteriumLocalService) {
+        this.bewertungskriteriumLocalService = bewertungskriteriumLocalService;
+    }
+
+    /**
+     * Returns the bewertungskriterium remote service.
+     *
+     * @return the bewertungskriterium remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService getBewertungskriteriumService() {
+        return bewertungskriteriumService;
+    }
+
+    /**
+     * Sets the bewertungskriterium remote service.
+     *
+     * @param bewertungskriteriumService the bewertungskriterium remote service
+     */
+    public void setBewertungskriteriumService(
+        de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService bewertungskriteriumService) {
+        this.bewertungskriteriumService = bewertungskriteriumService;
+    }
+
+    /**
+     * Returns the bewertungskriterium persistence.
+     *
+     * @return the bewertungskriterium persistence
+     */
+    public BewertungskriteriumPersistence getBewertungskriteriumPersistence() {
+        return bewertungskriteriumPersistence;
+    }
+
+    /**
+     * Sets the bewertungskriterium persistence.
+     *
+     * @param bewertungskriteriumPersistence the bewertungskriterium persistence
+     */
+    public void setBewertungskriteriumPersistence(
+        BewertungskriteriumPersistence bewertungskriteriumPersistence) {
+        this.bewertungskriteriumPersistence = bewertungskriteriumPersistence;
     }
 
     /**

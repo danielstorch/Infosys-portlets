@@ -140,9 +140,9 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "findByStudent_id";
+        _methodName19 = "findByStudent_idAndFeedback_runden_nr";
 
-        _methodParameterTypes19 = new String[] { "long" };
+        _methodParameterTypes19 = new String[] { "long", "int" };
     }
 
     @Override
@@ -658,13 +658,14 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
     }
 
     @Override
-    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id) {
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr) {
         Object returnObj = null;
 
         try {
             returnObj = _invokableLocalService.invokeMethod(_methodName19,
-                    _methodParameterTypes19, new Object[] { student_id });
+                    _methodParameterTypes19,
+                    new Object[] { student_id, feedback_runden_nr });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 

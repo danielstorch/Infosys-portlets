@@ -10,28 +10,50 @@
 >
 	<h:head />
 	<h:body>
-		<p:toolbar>
-	        <f:facet name="left">
-	            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" styleClass="vertAlign"/> 
-	            
-	            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" style= "vertical-align: middle"/> 
-	           
-	            <span class="ui-separator">
-	                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-	            </span>
-	        </f:facet>
-	 
-	        <f:facet name="right">
-	            <p:selectOneMenu id="feedbackRunde" style="width:100px">
-	            	<f:selectItem itemLabel="Runde 1" itemValue="1" />
-	            	<f:selectItem itemLabel="Runde 2" itemValue="2" />
-	       	 </p:selectOneMenu>
-	        </f:facet>
-		</p:toolbar>
-		 <p:dataTable value="#{receivedFeedbackBackingBean.getAllFeedbackOfStudent()}" var="feedback">
-		    <p:column headerText="Id">
-		        <h:outputText value="#{feedback.id}" />
-		    </p:column>
-		</p:dataTable>
+		<h:form id="f1">
+			<p:toolbar>
+		        <f:facet name="left">
+		            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" style="text-align:center;"/> 
+		            <p:outputPanel style="text-align:center;">
+	             				<h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" />
+	        		</p:outputPanel>
+		            <span class="ui-separator">
+		                <span class="ui-icon ui-icon-grip-dotted-vertical" />
+		            </span>
+		        </f:facet>
+		        <f:facet name="right">
+		            <p:selectOneMenu id="feedbackRunde" style="width:100px">
+		            	<f:selectItem itemLabel="Runde 1" itemValue="1" />
+		            	<f:selectItem itemLabel="Runde 2" itemValue="2" />
+		       	 </p:selectOneMenu>
+		        </f:facet>
+			</p:toolbar>
+			 <p:dataTable value="#{receivedFeedbackBackingBean.getAllFeedbackOfStudent()}" var="feedback">
+			    <p:column headerText="Eigenbewertung" style="text-align: center">
+			        <h:outputText value="#{feedback.eigenbewertung}" />
+			    </p:column>
+			    <p:column headerText="Beitrag" style="text-align: center">
+			        <h:outputText value="#{feedback.beitrag}" />
+			    </p:column>
+			    <c:forEach items="#{receivedFeedbackBackingBean.getAllBewrtungskriterium()}" var="bewrtungskriterium">
+	    			<p:column headerText="#{bewrtungskriterium.name}" style="text-align: center">
+	        			<h:outputText value="#{receivedFeedbackBackingBean.getTeilnoteOfFeedback(feedback.id, bewrtungskriterium.id)}"></h:outputText>
+	    			</p:column> 
+				</c:forEach>
+			     <p:column headerText="Beitrag Kommentar" style="text-align: center">
+	             	<p:commandButton update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_beitrag}">
+	             		<f:setPropertyActionListener value="#{feedback.kommentar_beitrag}" target="#{receivedFeedbackBackingBean.selectedFeedbackComment}" />
+					</p:commandButton>
+	       		</p:column>
+	            <p:column headerText="Kompetenz Kommentar" style="text-align: center">
+	            	<p:commandButton update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_kompetenzen}">
+	             		<f:setPropertyActionListener value="#{feedback.kommentar_kompetenzen}" target="#{receivedFeedbackBackingBean.selectedFeedbackComment}" />
+					</p:commandButton>
+			    </p:column>
+			</p:dataTable>
+			<p:dialog header="Kommentar" widgetVar="kommentarDialog" resizable="false" width="250" showEffect="fade" hideEffect="fade">  
+	              <h:outputText id="kommentarText" value="#{receivedFeedbackBackingBean.selectedFeedbackComment}" /> 
+	    	</p:dialog>
+    	</h:form>
 	</h:body>
 </f:view>

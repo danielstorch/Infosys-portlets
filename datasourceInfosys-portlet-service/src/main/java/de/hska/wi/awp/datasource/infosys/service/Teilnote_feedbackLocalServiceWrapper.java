@@ -277,9 +277,10 @@ public class Teilnote_feedbackLocalServiceWrapper
     }
 
     @Override
-    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback> findByFeedback_id(
-        long feedback_id) {
-        return _teilnote_feedbackLocalService.findByFeedback_id(feedback_id);
+    public de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, int bewertungskriterium_id) {
+        return _teilnote_feedbackLocalService.findByFeedback_idAndBewertungskriterium_id(feedback_id,
+            bewertungskriterium_id);
     }
 
     /**

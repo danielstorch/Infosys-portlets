@@ -262,9 +262,11 @@ public class Teilnote_feedbackLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback> findByFeedback_id(
-        long feedback_id) {
-        return getService().findByFeedback_id(feedback_id);
+    public static de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, int bewertungskriterium_id) {
+        return getService()
+                   .findByFeedback_idAndBewertungskriterium_id(feedback_id,
+            bewertungskriterium_id);
     }
 
     public static void clearService() {

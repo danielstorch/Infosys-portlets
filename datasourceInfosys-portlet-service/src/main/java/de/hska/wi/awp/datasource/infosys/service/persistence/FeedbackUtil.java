@@ -98,168 +98,193 @@ public class FeedbackUtil {
     }
 
     /**
-    * Returns all the feedbacks where student_id = &#63;.
+    * Returns all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @return the matching feedbacks
     * @throws SystemException if a system exception occurred
     */
-    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id)
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().findByStudent_id(student_id);
+        return getPersistence()
+                   .findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr);
     }
 
     /**
-    * Returns a range of all the feedbacks where student_id = &#63;.
+    * Returns a range of all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * <p>
     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
     * </p>
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param start the lower bound of the range of feedbacks
     * @param end the upper bound of the range of feedbacks (not inclusive)
     * @return the range of matching feedbacks
     * @throws SystemException if a system exception occurred
     */
-    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id, int start, int end)
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr, int start, int end)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().findByStudent_id(student_id, start, end);
+        return getPersistence()
+                   .findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr, start, end);
     }
 
     /**
-    * Returns an ordered range of all the feedbacks where student_id = &#63;.
+    * Returns an ordered range of all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * <p>
     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.FeedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
     * </p>
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param start the lower bound of the range of feedbacks
     * @param end the upper bound of the range of feedbacks (not inclusive)
     * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
     * @return the ordered range of matching feedbacks
     * @throws SystemException if a system exception occurred
     */
-    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id, int start, int end,
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr, int start, int end,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence()
-                   .findByStudent_id(student_id, start, end, orderByComparator);
+                   .findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr, start, end, orderByComparator);
     }
 
     /**
-    * Returns the first feedback in the ordered set where student_id = &#63;.
+    * Returns the first feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the first matching feedback
     * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a matching feedback could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static de.hska.wi.awp.datasource.infosys.model.Feedback findByStudent_id_First(
-        long student_id,
+    public static de.hska.wi.awp.datasource.infosys.model.Feedback findByStudent_idAndFeedback_runden_nr_First(
+        long student_id, int feedback_runden_nr,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException {
         return getPersistence()
-                   .findByStudent_id_First(student_id, orderByComparator);
+                   .findByStudent_idAndFeedback_runden_nr_First(student_id,
+            feedback_runden_nr, orderByComparator);
     }
 
     /**
-    * Returns the first feedback in the ordered set where student_id = &#63;.
+    * Returns the first feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the first matching feedback, or <code>null</code> if a matching feedback could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static de.hska.wi.awp.datasource.infosys.model.Feedback fetchByStudent_id_First(
-        long student_id,
+    public static de.hska.wi.awp.datasource.infosys.model.Feedback fetchByStudent_idAndFeedback_runden_nr_First(
+        long student_id, int feedback_runden_nr,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence()
-                   .fetchByStudent_id_First(student_id, orderByComparator);
+                   .fetchByStudent_idAndFeedback_runden_nr_First(student_id,
+            feedback_runden_nr, orderByComparator);
     }
 
     /**
-    * Returns the last feedback in the ordered set where student_id = &#63;.
+    * Returns the last feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the last matching feedback
     * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a matching feedback could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static de.hska.wi.awp.datasource.infosys.model.Feedback findByStudent_id_Last(
-        long student_id,
+    public static de.hska.wi.awp.datasource.infosys.model.Feedback findByStudent_idAndFeedback_runden_nr_Last(
+        long student_id, int feedback_runden_nr,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException {
         return getPersistence()
-                   .findByStudent_id_Last(student_id, orderByComparator);
+                   .findByStudent_idAndFeedback_runden_nr_Last(student_id,
+            feedback_runden_nr, orderByComparator);
     }
 
     /**
-    * Returns the last feedback in the ordered set where student_id = &#63;.
+    * Returns the last feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the last matching feedback, or <code>null</code> if a matching feedback could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static de.hska.wi.awp.datasource.infosys.model.Feedback fetchByStudent_id_Last(
-        long student_id,
+    public static de.hska.wi.awp.datasource.infosys.model.Feedback fetchByStudent_idAndFeedback_runden_nr_Last(
+        long student_id, int feedback_runden_nr,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException {
         return getPersistence()
-                   .fetchByStudent_id_Last(student_id, orderByComparator);
+                   .fetchByStudent_idAndFeedback_runden_nr_Last(student_id,
+            feedback_runden_nr, orderByComparator);
     }
 
     /**
-    * Returns the feedbacks before and after the current feedback in the ordered set where student_id = &#63;.
+    * Returns the feedbacks before and after the current feedback in the ordered set where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param id the primary key of the current feedback
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
     * @return the previous, current, and next feedback
     * @throws de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException if a feedback with the primary key could not be found
     * @throws SystemException if a system exception occurred
     */
-    public static de.hska.wi.awp.datasource.infosys.model.Feedback[] findByStudent_id_PrevAndNext(
-        long id, long student_id,
+    public static de.hska.wi.awp.datasource.infosys.model.Feedback[] findByStudent_idAndFeedback_runden_nr_PrevAndNext(
+        long id, long student_id, int feedback_runden_nr,
         com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException {
         return getPersistence()
-                   .findByStudent_id_PrevAndNext(id, student_id,
-            orderByComparator);
+                   .findByStudent_idAndFeedback_runden_nr_PrevAndNext(id,
+            student_id, feedback_runden_nr, orderByComparator);
     }
 
     /**
-    * Removes all the feedbacks where student_id = &#63; from the database.
+    * Removes all the feedbacks where student_id = &#63; and feedback_runden_nr = &#63; from the database.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @throws SystemException if a system exception occurred
     */
-    public static void removeByStudent_id(long student_id)
+    public static void removeByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr)
         throws com.liferay.portal.kernel.exception.SystemException {
-        getPersistence().removeByStudent_id(student_id);
+        getPersistence()
+            .removeByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr);
     }
 
     /**
-    * Returns the number of feedbacks where student_id = &#63;.
+    * Returns the number of feedbacks where student_id = &#63; and feedback_runden_nr = &#63;.
     *
     * @param student_id the student_id
+    * @param feedback_runden_nr the feedback_runden_nr
     * @return the number of matching feedbacks
     * @throws SystemException if a system exception occurred
     */
-    public static int countByStudent_id(long student_id)
+    public static int countByStudent_idAndFeedback_runden_nr(long student_id,
+        int feedback_runden_nr)
         throws com.liferay.portal.kernel.exception.SystemException {
-        return getPersistence().countByStudent_id(student_id);
+        return getPersistence()
+                   .countByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr);
     }
 
     /**

@@ -5,8 +5,8 @@
       "student_id": "100",
       "feedback_runden_nr": "1",
       "eigenbewertung": "r",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "",
+      "kommentar_beitrag": "nichts!!",
       "beitrag": "100"
     },
     {
@@ -23,8 +23,8 @@
       "student_id": "100",
       "feedback_runden_nr": "1",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "sehr cool",
+      "kommentar_beitrag": "macht kaum was",
       "beitrag": "100"
     },
     {
@@ -41,8 +41,8 @@
       "student_id": "100",
       "feedback_runden_nr": "1",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "doch besonderes gut in programmieren",
+      "kommentar_beitrag": "ist immer noch sehr faul",
       "beitrag": "100"
     },
     {
@@ -50,23 +50,23 @@
       "student_id": "100",
       "feedback_runden_nr": "1",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "kann nix",
+      "kommentar_beitrag": "",
       "beitrag": "100"
     },
     {
       "id": "106",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "gut in doku schreiben",
+      "kommentar_beitrag": "macht fast alles",
       "beitrag": "100"
     },
     {
       "id": "107",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "r",
       "kommentar_kompetenzen": "nichts besonderes",
       "kommentar_beitrag": "ist sehr faul",
@@ -74,26 +74,26 @@
     },
     {
       "id": "108",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
-      "kommentar_beitrag": "ist sehr faul",
+      "kommentar_kompetenzen": "programmiert und präsentiert sehr gut",
+      "kommentar_beitrag": "alles",
       "beitrag": "100"
     },
     {
       "id": "109",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "f",
-      "kommentar_kompetenzen": "nichts besonderes",
+      "kommentar_kompetenzen": "besonderes",
       "kommentar_beitrag": "ist sehr faul",
       "beitrag": "100"
     },
     {
       "id": "110",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "f",
       "kommentar_kompetenzen": "nichts besonderes",
       "kommentar_beitrag": "ist sehr faul",
@@ -101,8 +101,8 @@
     },
     {
       "id": "111",
-      "student_id": "101",
-      "feedback_runden_nr": "1",
+      "student_id": "100",
+      "feedback_runden_nr": "2",
       "eigenbewertung": "f",
       "kommentar_kompetenzen": "nichts besonderes",
       "kommentar_beitrag": "ist sehr faul",

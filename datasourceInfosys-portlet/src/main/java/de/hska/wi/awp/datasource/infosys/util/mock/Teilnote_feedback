@@ -10,25 +10,25 @@
       "id": "101",
       "feedback_id": "100",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "102",
       "feedback_id": "100",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "103",
       "feedback_id": "100",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "104",
       "feedback_id": "100",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     },
     {
       "id": "105",
@@ -40,25 +40,25 @@
       "id": "106",
       "feedback_id": "101",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "107",
       "feedback_id": "101",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "108",
       "feedback_id": "101",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "109",
       "feedback_id": "101",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     },
     {
       "id": "110",
@@ -70,25 +70,25 @@
       "id": "111",
       "feedback_id": "102",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "112",
       "feedback_id": "102",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "113",
       "feedback_id": "102",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "114",
       "feedback_id": "102",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     },
     {
       "id": "115",
@@ -100,25 +100,25 @@
       "id": "116",
       "feedback_id": "103",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "117",
       "feedback_id": "103",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "118",
       "feedback_id": "103",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "119",
       "feedback_id": "103",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     },
     {
       "id": "120",
@@ -130,25 +130,25 @@
       "id": "121",
       "feedback_id": "104",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "122",
       "feedback_id": "104",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "123",
       "feedback_id": "104",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "124",
       "feedback_id": "104",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     },
     {
       "id": "125",
@@ -160,25 +160,25 @@
       "id": "126",
       "feedback_id": "105",
       "note": "-1",
-      "bewertungskriterium_id": "100"
+      "bewertungskriterium_id": "102"
     },
     {
       "id": "127",
       "feedback_id": "105",
       "note": "0",
-      "bewertungskriterium_id": "102"
+      "bewertungskriterium_id": "104"
     },
     {
       "id": "128",
       "feedback_id": "105",
       "note": "1",
-      "bewertungskriterium_id": "103"
+      "bewertungskriterium_id": "106"
     },
     {
       "id": "129",
       "feedback_id": "105",
       "note": "1",
-      "bewertungskriterium_id": "104"
+      "bewertungskriterium_id": "108"
     }
   ]
 }

@@ -4,6 +4,9 @@
 	<bean id="de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.AllgemeinesLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.AllgemeinesService" class="de.hska.wi.awp.datasource.infosys.service.impl.AllgemeinesServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.BewertungskriteriumLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService" class="de.hska.wi.awp.datasource.infosys.service.impl.BewertungskriteriumServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.FeedbackLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.FeedbackLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.FeedbackService" class="de.hska.wi.awp.datasource.infosys.service.impl.FeedbackServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistenceImpl" parent="basePersistence" />

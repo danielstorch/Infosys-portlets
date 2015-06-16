@@ -41,10 +41,10 @@ public class ProjectLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName76;
-    private String[] _methodParameterTypes76;
-    private String _methodName77;
-    private String[] _methodParameterTypes77;
+    private String _methodName82;
+    private String[] _methodParameterTypes82;
+    private String _methodName83;
+    private String[] _methodParameterTypes83;
 
     public ProjectLocalServiceClpInvoker() {
         _methodName0 = "addProject";
@@ -129,13 +129,13 @@ public class ProjectLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Project"
             };
 
-        _methodName76 = "getBeanIdentifier";
+        _methodName82 = "getBeanIdentifier";
 
-        _methodParameterTypes76 = new String[] {  };
+        _methodParameterTypes82 = new String[] {  };
 
-        _methodName77 = "setBeanIdentifier";
+        _methodName83 = "setBeanIdentifier";
 
-        _methodParameterTypes77 = new String[] { "java.lang.String" };
+        _methodParameterTypes83 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -227,13 +227,13 @@ public class ProjectLocalServiceClpInvoker {
             return ProjectLocalServiceUtil.updateProject((de.hska.wi.awp.datasource.infosys.model.Project) arguments[0]);
         }
 
-        if (_methodName76.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes76, parameterTypes)) {
+        if (_methodName82.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
             return ProjectLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName77.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes77, parameterTypes)) {
+        if (_methodName83.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
             ProjectLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;

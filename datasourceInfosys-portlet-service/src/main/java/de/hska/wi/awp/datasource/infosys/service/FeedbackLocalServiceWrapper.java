@@ -273,9 +273,10 @@ public class FeedbackLocalServiceWrapper implements FeedbackLocalService,
     }
 
     @Override
-    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id) {
-        return _feedbackLocalService.findByStudent_id(student_id);
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr) {
+        return _feedbackLocalService.findByStudent_idAndFeedback_runden_nr(student_id,
+            feedback_runden_nr);
     }
 
     /**

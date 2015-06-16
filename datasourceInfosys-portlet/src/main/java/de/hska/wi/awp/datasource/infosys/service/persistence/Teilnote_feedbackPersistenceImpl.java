@@ -73,29 +73,24 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
     public static final FinderPath FINDER_PATH_COUNT_ALL = new FinderPath(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
             Teilnote_feedbackModelImpl.FINDER_CACHE_ENABLED, Long.class,
             FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countAll", new String[0]);
-    public static final FinderPath FINDER_PATH_WITH_PAGINATION_FIND_BY_FEEDBACK_ID =
+    public static final FinderPath FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID =
         new FinderPath(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
             Teilnote_feedbackModelImpl.FINDER_CACHE_ENABLED,
-            Teilnote_feedbackImpl.class,
-            FINDER_CLASS_NAME_LIST_WITH_PAGINATION, "findByFeedback_id",
-            new String[] {
-                Long.class.getName(),
-                
-            Integer.class.getName(), Integer.class.getName(),
-                OrderByComparator.class.getName()
-            });
-    public static final FinderPath FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID =
+            Teilnote_feedbackImpl.class, FINDER_CLASS_NAME_ENTITY,
+            "fetchByFeedback_idAndBewertungskriterium_id",
+            new String[] { Long.class.getName(), Long.class.getName() },
+            Teilnote_feedbackModelImpl.FEEDBACK_ID_COLUMN_BITMASK |
+            Teilnote_feedbackModelImpl.BEWERTUNGSKRITERIUM_ID_COLUMN_BITMASK);
+    public static final FinderPath FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID =
         new FinderPath(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
-            Teilnote_feedbackModelImpl.FINDER_CACHE_ENABLED,
-            Teilnote_feedbackImpl.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "findByFeedback_id",
-            new String[] { Long.class.getName() },
-            Teilnote_feedbackModelImpl.FEEDBACK_ID_COLUMN_BITMASK);
-    public static final FinderPath FINDER_PATH_COUNT_BY_FEEDBACK_ID = new FinderPath(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
             Teilnote_feedbackModelImpl.FINDER_CACHE_ENABLED, Long.class,
-            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION, "countByFeedback_id",
-            new String[] { Long.class.getName() });
-    private static final String _FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2 = "teilnote_feedback.feedback_id = ?";
+            FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION,
+            "countByFeedback_idAndBewertungskriterium_id",
+            new String[] { Long.class.getName(), Long.class.getName() });
+    private static final String _FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_FEEDBACK_ID_2 =
+        "teilnote_feedback.feedback_id = ? AND ";
+    private static final String _FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_BEWERTUNGSKRITERIUM_ID_2 =
+        "teilnote_feedback.bewertungskriterium_id = ?";
     private static final String _SQL_SELECT_TEILNOTE_FEEDBACK = "SELECT teilnote_feedback FROM Teilnote_feedback teilnote_feedback";
     private static final String _SQL_SELECT_TEILNOTE_FEEDBACK_WHERE = "SELECT teilnote_feedback FROM Teilnote_feedback teilnote_feedback WHERE ";
     private static final String _SQL_COUNT_TEILNOTE_FEEDBACK = "SELECT COUNT(teilnote_feedback) FROM Teilnote_feedback teilnote_feedback";
@@ -134,104 +129,99 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
     }
 
     /**
-     * Returns all the teilnote_feedbacks where feedback_id = &#63;.
+     * Returns the teilnote_feedback where feedback_id = &#63; and bewertungskriterium_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException} if it could not be found.
      *
      * @param feedback_id the feedback_id
-     * @return the matching teilnote_feedbacks
+     * @param bewertungskriterium_id the bewertungskriterium_id
+     * @return the matching teilnote_feedback
+     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException if a matching teilnote_feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Teilnote_feedback> findByFeedback_id(long feedback_id)
-        throws SystemException {
-        return findByFeedback_id(feedback_id, QueryUtil.ALL_POS,
-            QueryUtil.ALL_POS, null);
+    public Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, long bewertungskriterium_id)
+        throws NoSuchTeilnote_feedbackException, SystemException {
+        Teilnote_feedback teilnote_feedback = fetchByFeedback_idAndBewertungskriterium_id(feedback_id,
+                bewertungskriterium_id);
+
+        if (teilnote_feedback == null) {
+            StringBundler msg = new StringBundler(6);
+
+            msg.append(_NO_SUCH_ENTITY_WITH_KEY);
+
+            msg.append("feedback_id=");
+            msg.append(feedback_id);
+
+            msg.append(", bewertungskriterium_id=");
+            msg.append(bewertungskriterium_id);
+
+            msg.append(StringPool.CLOSE_CURLY_BRACE);
+
+            if (_log.isWarnEnabled()) {
+                _log.warn(msg.toString());
+            }
+
+            throw new NoSuchTeilnote_feedbackException(msg.toString());
+        }
+
+        return teilnote_feedback;
     }
 
     /**
-     * Returns a range of all the teilnote_feedbacks where feedback_id = &#63;.
-     *
-     * <p>
-     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-     * </p>
+     * Returns the teilnote_feedback where feedback_id = &#63; and bewertungskriterium_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
      *
      * @param feedback_id the feedback_id
-     * @param start the lower bound of the range of teilnote_feedbacks
-     * @param end the upper bound of the range of teilnote_feedbacks (not inclusive)
-     * @return the range of matching teilnote_feedbacks
+     * @param bewertungskriterium_id the bewertungskriterium_id
+     * @return the matching teilnote_feedback, or <code>null</code> if a matching teilnote_feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Teilnote_feedback> findByFeedback_id(long feedback_id,
-        int start, int end) throws SystemException {
-        return findByFeedback_id(feedback_id, start, end, null);
+    public Teilnote_feedback fetchByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, long bewertungskriterium_id)
+        throws SystemException {
+        return fetchByFeedback_idAndBewertungskriterium_id(feedback_id,
+            bewertungskriterium_id, true);
     }
 
     /**
-     * Returns an ordered range of all the teilnote_feedbacks where feedback_id = &#63;.
-     *
-     * <p>
-     * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.Teilnote_feedbackModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
-     * </p>
+     * Returns the teilnote_feedback where feedback_id = &#63; and bewertungskriterium_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
      *
      * @param feedback_id the feedback_id
-     * @param start the lower bound of the range of teilnote_feedbacks
-     * @param end the upper bound of the range of teilnote_feedbacks (not inclusive)
-     * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
-     * @return the ordered range of matching teilnote_feedbacks
+     * @param bewertungskriterium_id the bewertungskriterium_id
+     * @param retrieveFromCache whether to use the finder cache
+     * @return the matching teilnote_feedback, or <code>null</code> if a matching teilnote_feedback could not be found
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public List<Teilnote_feedback> findByFeedback_id(long feedback_id,
-        int start, int end, OrderByComparator orderByComparator)
+    public Teilnote_feedback fetchByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, long bewertungskriterium_id, boolean retrieveFromCache)
         throws SystemException {
-        boolean pagination = true;
-        FinderPath finderPath = null;
-        Object[] finderArgs = null;
+        Object[] finderArgs = new Object[] { feedback_id, bewertungskriterium_id };
 
-        if ((start == QueryUtil.ALL_POS) && (end == QueryUtil.ALL_POS) &&
-                (orderByComparator == null)) {
-            pagination = false;
-            finderPath = FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID;
-            finderArgs = new Object[] { feedback_id };
-        } else {
-            finderPath = FINDER_PATH_WITH_PAGINATION_FIND_BY_FEEDBACK_ID;
-            finderArgs = new Object[] { feedback_id, start, end, orderByComparator };
+        Object result = null;
+
+        if (retrieveFromCache) {
+            result = FinderCacheUtil.getResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                    finderArgs, this);
         }
 
-        List<Teilnote_feedback> list = (List<Teilnote_feedback>) FinderCacheUtil.getResult(finderPath,
-                finderArgs, this);
+        if (result instanceof Teilnote_feedback) {
+            Teilnote_feedback teilnote_feedback = (Teilnote_feedback) result;
 
-        if ((list != null) && !list.isEmpty()) {
-            for (Teilnote_feedback teilnote_feedback : list) {
-                if ((feedback_id != teilnote_feedback.getFeedback_id())) {
-                    list = null;
-
-                    break;
-                }
+            if ((feedback_id != teilnote_feedback.getFeedback_id()) ||
+                    (bewertungskriterium_id != teilnote_feedback.getBewertungskriterium_id())) {
+                result = null;
             }
         }
 
-        if (list == null) {
-            StringBundler query = null;
-
-            if (orderByComparator != null) {
-                query = new StringBundler(3 +
-                        (orderByComparator.getOrderByFields().length * 3));
-            } else {
-                query = new StringBundler(3);
-            }
+        if (result == null) {
+            StringBundler query = new StringBundler(4);
 
             query.append(_SQL_SELECT_TEILNOTE_FEEDBACK_WHERE);
 
-            query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
+            query.append(_FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_FEEDBACK_ID_2);
 
-            if (orderByComparator != null) {
-                appendOrderByComparator(query, _ORDER_BY_ENTITY_ALIAS,
-                    orderByComparator);
-            } else
-             if (pagination) {
-                query.append(Teilnote_feedbackModelImpl.ORDER_BY_JPQL);
-            }
+            query.append(_FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_BEWERTUNGSKRITERIUM_ID_2);
 
             String sql = query.toString();
 
@@ -246,23 +236,36 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
 
                 qPos.add(feedback_id);
 
-                if (!pagination) {
-                    list = (List<Teilnote_feedback>) QueryUtil.list(q,
-                            getDialect(), start, end, false);
+                qPos.add(bewertungskriterium_id);
 
-                    Collections.sort(list);
+                List<Teilnote_feedback> list = q.list();
 
-                    list = new UnmodifiableList<Teilnote_feedback>(list);
+                if (list.isEmpty()) {
+                    FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                        finderArgs, list);
                 } else {
-                    list = (List<Teilnote_feedback>) QueryUtil.list(q,
-                            getDialect(), start, end);
+                    if ((list.size() > 1) && _log.isWarnEnabled()) {
+                        _log.warn(
+                            "Teilnote_feedbackPersistenceImpl.fetchByFeedback_idAndBewertungskriterium_id(long, long, boolean) with parameters (" +
+                            StringUtil.merge(finderArgs) +
+                            ") yields a result set with more than 1 result. This violates the logical unique restriction. There is no order guarantee on which result is returned by this finder.");
+                    }
+
+                    Teilnote_feedback teilnote_feedback = list.get(0);
+
+                    result = teilnote_feedback;
+
+                    cacheResult(teilnote_feedback);
+
+                    if ((teilnote_feedback.getFeedback_id() != feedback_id) ||
+                            (teilnote_feedback.getBewertungskriterium_id() != bewertungskriterium_id)) {
+                        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                            finderArgs, teilnote_feedback);
+                    }
                 }
-
-                cacheResult(list);
-
-                FinderCacheUtil.putResult(finderPath, finderArgs, list);
             } catch (Exception e) {
-                FinderCacheUtil.removeResult(finderPath, finderArgs);
+                FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                    finderArgs);
 
                 throw processException(e);
             } finally {
@@ -270,292 +273,57 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
             }
         }
 
-        return list;
-    }
-
-    /**
-     * Returns the first teilnote_feedback in the ordered set where feedback_id = &#63;.
-     *
-     * @param feedback_id the feedback_id
-     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-     * @return the first matching teilnote_feedback
-     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException if a matching teilnote_feedback could not be found
-     * @throws SystemException if a system exception occurred
-     */
-    @Override
-    public Teilnote_feedback findByFeedback_id_First(long feedback_id,
-        OrderByComparator orderByComparator)
-        throws NoSuchTeilnote_feedbackException, SystemException {
-        Teilnote_feedback teilnote_feedback = fetchByFeedback_id_First(feedback_id,
-                orderByComparator);
-
-        if (teilnote_feedback != null) {
-            return teilnote_feedback;
-        }
-
-        StringBundler msg = new StringBundler(4);
-
-        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-        msg.append("feedback_id=");
-        msg.append(feedback_id);
-
-        msg.append(StringPool.CLOSE_CURLY_BRACE);
-
-        throw new NoSuchTeilnote_feedbackException(msg.toString());
-    }
-
-    /**
-     * Returns the first teilnote_feedback in the ordered set where feedback_id = &#63;.
-     *
-     * @param feedback_id the feedback_id
-     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-     * @return the first matching teilnote_feedback, or <code>null</code> if a matching teilnote_feedback could not be found
-     * @throws SystemException if a system exception occurred
-     */
-    @Override
-    public Teilnote_feedback fetchByFeedback_id_First(long feedback_id,
-        OrderByComparator orderByComparator) throws SystemException {
-        List<Teilnote_feedback> list = findByFeedback_id(feedback_id, 0, 1,
-                orderByComparator);
-
-        if (!list.isEmpty()) {
-            return list.get(0);
-        }
-
-        return null;
-    }
-
-    /**
-     * Returns the last teilnote_feedback in the ordered set where feedback_id = &#63;.
-     *
-     * @param feedback_id the feedback_id
-     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-     * @return the last matching teilnote_feedback
-     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException if a matching teilnote_feedback could not be found
-     * @throws SystemException if a system exception occurred
-     */
-    @Override
-    public Teilnote_feedback findByFeedback_id_Last(long feedback_id,
-        OrderByComparator orderByComparator)
-        throws NoSuchTeilnote_feedbackException, SystemException {
-        Teilnote_feedback teilnote_feedback = fetchByFeedback_id_Last(feedback_id,
-                orderByComparator);
-
-        if (teilnote_feedback != null) {
-            return teilnote_feedback;
-        }
-
-        StringBundler msg = new StringBundler(4);
-
-        msg.append(_NO_SUCH_ENTITY_WITH_KEY);
-
-        msg.append("feedback_id=");
-        msg.append(feedback_id);
-
-        msg.append(StringPool.CLOSE_CURLY_BRACE);
-
-        throw new NoSuchTeilnote_feedbackException(msg.toString());
-    }
-
-    /**
-     * Returns the last teilnote_feedback in the ordered set where feedback_id = &#63;.
-     *
-     * @param feedback_id the feedback_id
-     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-     * @return the last matching teilnote_feedback, or <code>null</code> if a matching teilnote_feedback could not be found
-     * @throws SystemException if a system exception occurred
-     */
-    @Override
-    public Teilnote_feedback fetchByFeedback_id_Last(long feedback_id,
-        OrderByComparator orderByComparator) throws SystemException {
-        int count = countByFeedback_id(feedback_id);
-
-        if (count == 0) {
+        if (result instanceof List<?>) {
             return null;
+        } else {
+            return (Teilnote_feedback) result;
         }
-
-        List<Teilnote_feedback> list = findByFeedback_id(feedback_id,
-                count - 1, count, orderByComparator);
-
-        if (!list.isEmpty()) {
-            return list.get(0);
-        }
-
-        return null;
     }
 
     /**
-     * Returns the teilnote_feedbacks before and after the current teilnote_feedback in the ordered set where feedback_id = &#63;.
+     * Removes the teilnote_feedback where feedback_id = &#63; and bewertungskriterium_id = &#63; from the database.
      *
-     * @param id the primary key of the current teilnote_feedback
      * @param feedback_id the feedback_id
-     * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
-     * @return the previous, current, and next teilnote_feedback
-     * @throws de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException if a teilnote_feedback with the primary key could not be found
+     * @param bewertungskriterium_id the bewertungskriterium_id
+     * @return the teilnote_feedback that was removed
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public Teilnote_feedback[] findByFeedback_id_PrevAndNext(long id,
-        long feedback_id, OrderByComparator orderByComparator)
+    public Teilnote_feedback removeByFeedback_idAndBewertungskriterium_id(
+        long feedback_id, long bewertungskriterium_id)
         throws NoSuchTeilnote_feedbackException, SystemException {
-        Teilnote_feedback teilnote_feedback = findByPrimaryKey(id);
+        Teilnote_feedback teilnote_feedback = findByFeedback_idAndBewertungskriterium_id(feedback_id,
+                bewertungskriterium_id);
 
-        Session session = null;
-
-        try {
-            session = openSession();
-
-            Teilnote_feedback[] array = new Teilnote_feedbackImpl[3];
-
-            array[0] = getByFeedback_id_PrevAndNext(session, teilnote_feedback,
-                    feedback_id, orderByComparator, true);
-
-            array[1] = teilnote_feedback;
-
-            array[2] = getByFeedback_id_PrevAndNext(session, teilnote_feedback,
-                    feedback_id, orderByComparator, false);
-
-            return array;
-        } catch (Exception e) {
-            throw processException(e);
-        } finally {
-            closeSession(session);
-        }
-    }
-
-    protected Teilnote_feedback getByFeedback_id_PrevAndNext(Session session,
-        Teilnote_feedback teilnote_feedback, long feedback_id,
-        OrderByComparator orderByComparator, boolean previous) {
-        StringBundler query = null;
-
-        if (orderByComparator != null) {
-            query = new StringBundler(6 +
-                    (orderByComparator.getOrderByFields().length * 6));
-        } else {
-            query = new StringBundler(3);
-        }
-
-        query.append(_SQL_SELECT_TEILNOTE_FEEDBACK_WHERE);
-
-        query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
-
-        if (orderByComparator != null) {
-            String[] orderByConditionFields = orderByComparator.getOrderByConditionFields();
-
-            if (orderByConditionFields.length > 0) {
-                query.append(WHERE_AND);
-            }
-
-            for (int i = 0; i < orderByConditionFields.length; i++) {
-                query.append(_ORDER_BY_ENTITY_ALIAS);
-                query.append(orderByConditionFields[i]);
-
-                if ((i + 1) < orderByConditionFields.length) {
-                    if (orderByComparator.isAscending() ^ previous) {
-                        query.append(WHERE_GREATER_THAN_HAS_NEXT);
-                    } else {
-                        query.append(WHERE_LESSER_THAN_HAS_NEXT);
-                    }
-                } else {
-                    if (orderByComparator.isAscending() ^ previous) {
-                        query.append(WHERE_GREATER_THAN);
-                    } else {
-                        query.append(WHERE_LESSER_THAN);
-                    }
-                }
-            }
-
-            query.append(ORDER_BY_CLAUSE);
-
-            String[] orderByFields = orderByComparator.getOrderByFields();
-
-            for (int i = 0; i < orderByFields.length; i++) {
-                query.append(_ORDER_BY_ENTITY_ALIAS);
-                query.append(orderByFields[i]);
-
-                if ((i + 1) < orderByFields.length) {
-                    if (orderByComparator.isAscending() ^ previous) {
-                        query.append(ORDER_BY_ASC_HAS_NEXT);
-                    } else {
-                        query.append(ORDER_BY_DESC_HAS_NEXT);
-                    }
-                } else {
-                    if (orderByComparator.isAscending() ^ previous) {
-                        query.append(ORDER_BY_ASC);
-                    } else {
-                        query.append(ORDER_BY_DESC);
-                    }
-                }
-            }
-        } else {
-            query.append(Teilnote_feedbackModelImpl.ORDER_BY_JPQL);
-        }
-
-        String sql = query.toString();
-
-        Query q = session.createQuery(sql);
-
-        q.setFirstResult(0);
-        q.setMaxResults(2);
-
-        QueryPos qPos = QueryPos.getInstance(q);
-
-        qPos.add(feedback_id);
-
-        if (orderByComparator != null) {
-            Object[] values = orderByComparator.getOrderByConditionValues(teilnote_feedback);
-
-            for (Object value : values) {
-                qPos.add(value);
-            }
-        }
-
-        List<Teilnote_feedback> list = q.list();
-
-        if (list.size() == 2) {
-            return list.get(1);
-        } else {
-            return null;
-        }
+        return remove(teilnote_feedback);
     }
 
     /**
-     * Removes all the teilnote_feedbacks where feedback_id = &#63; from the database.
+     * Returns the number of teilnote_feedbacks where feedback_id = &#63; and bewertungskriterium_id = &#63;.
      *
      * @param feedback_id the feedback_id
-     * @throws SystemException if a system exception occurred
-     */
-    @Override
-    public void removeByFeedback_id(long feedback_id) throws SystemException {
-        for (Teilnote_feedback teilnote_feedback : findByFeedback_id(
-                feedback_id, QueryUtil.ALL_POS, QueryUtil.ALL_POS, null)) {
-            remove(teilnote_feedback);
-        }
-    }
-
-    /**
-     * Returns the number of teilnote_feedbacks where feedback_id = &#63;.
-     *
-     * @param feedback_id the feedback_id
+     * @param bewertungskriterium_id the bewertungskriterium_id
      * @return the number of matching teilnote_feedbacks
      * @throws SystemException if a system exception occurred
      */
     @Override
-    public int countByFeedback_id(long feedback_id) throws SystemException {
-        FinderPath finderPath = FINDER_PATH_COUNT_BY_FEEDBACK_ID;
+    public int countByFeedback_idAndBewertungskriterium_id(long feedback_id,
+        long bewertungskriterium_id) throws SystemException {
+        FinderPath finderPath = FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID;
 
-        Object[] finderArgs = new Object[] { feedback_id };
+        Object[] finderArgs = new Object[] { feedback_id, bewertungskriterium_id };
 
         Long count = (Long) FinderCacheUtil.getResult(finderPath, finderArgs,
                 this);
 
         if (count == null) {
-            StringBundler query = new StringBundler(2);
+            StringBundler query = new StringBundler(3);
 
             query.append(_SQL_COUNT_TEILNOTE_FEEDBACK_WHERE);
 
-            query.append(_FINDER_COLUMN_FEEDBACK_ID_FEEDBACK_ID_2);
+            query.append(_FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_FEEDBACK_ID_2);
+
+            query.append(_FINDER_COLUMN_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID_BEWERTUNGSKRITERIUM_ID_2);
 
             String sql = query.toString();
 
@@ -569,6 +337,8 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
                 QueryPos qPos = QueryPos.getInstance(q);
 
                 qPos.add(feedback_id);
+
+                qPos.add(bewertungskriterium_id);
 
                 count = (Long) q.uniqueResult();
 
@@ -595,6 +365,12 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
         EntityCacheUtil.putResult(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
             Teilnote_feedbackImpl.class, teilnote_feedback.getPrimaryKey(),
             teilnote_feedback);
+
+        FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+            new Object[] {
+                teilnote_feedback.getFeedback_id(),
+                teilnote_feedback.getBewertungskriterium_id()
+            }, teilnote_feedback);
 
         teilnote_feedback.resetOriginalValues();
     }
@@ -652,6 +428,8 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
 
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITH_PAGINATION);
         FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
+
+        clearUniqueFindersCache(teilnote_feedback);
     }
 
     @Override
@@ -662,6 +440,64 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
         for (Teilnote_feedback teilnote_feedback : teilnote_feedbacks) {
             EntityCacheUtil.removeResult(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
                 Teilnote_feedbackImpl.class, teilnote_feedback.getPrimaryKey());
+
+            clearUniqueFindersCache(teilnote_feedback);
+        }
+    }
+
+    protected void cacheUniqueFindersCache(Teilnote_feedback teilnote_feedback) {
+        if (teilnote_feedback.isNew()) {
+            Object[] args = new Object[] {
+                    teilnote_feedback.getFeedback_id(),
+                    teilnote_feedback.getBewertungskriterium_id()
+                };
+
+            FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                args, Long.valueOf(1));
+            FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                args, teilnote_feedback);
+        } else {
+            Teilnote_feedbackModelImpl teilnote_feedbackModelImpl = (Teilnote_feedbackModelImpl) teilnote_feedback;
+
+            if ((teilnote_feedbackModelImpl.getColumnBitmask() &
+                    FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID.getColumnBitmask()) != 0) {
+                Object[] args = new Object[] {
+                        teilnote_feedback.getFeedback_id(),
+                        teilnote_feedback.getBewertungskriterium_id()
+                    };
+
+                FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                    args, Long.valueOf(1));
+                FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                    args, teilnote_feedback);
+            }
+        }
+    }
+
+    protected void clearUniqueFindersCache(Teilnote_feedback teilnote_feedback) {
+        Teilnote_feedbackModelImpl teilnote_feedbackModelImpl = (Teilnote_feedbackModelImpl) teilnote_feedback;
+
+        Object[] args = new Object[] {
+                teilnote_feedback.getFeedback_id(),
+                teilnote_feedback.getBewertungskriterium_id()
+            };
+
+        FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+            args);
+        FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+            args);
+
+        if ((teilnote_feedbackModelImpl.getColumnBitmask() &
+                FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID.getColumnBitmask()) != 0) {
+            args = new Object[] {
+                    teilnote_feedbackModelImpl.getOriginalFeedback_id(),
+                    teilnote_feedbackModelImpl.getOriginalBewertungskriterium_id()
+                };
+
+            FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                args);
+            FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_FEEDBACK_IDANDBEWERTUNGSKRITERIUM_ID,
+                args);
         }
     }
 
@@ -772,8 +608,6 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
 
         boolean isNew = teilnote_feedback.isNew();
 
-        Teilnote_feedbackModelImpl teilnote_feedbackModelImpl = (Teilnote_feedbackModelImpl) teilnote_feedback;
-
         Session session = null;
 
         try {
@@ -797,30 +631,13 @@ public class Teilnote_feedbackPersistenceImpl extends BasePersistenceImpl<Teilno
         if (isNew || !Teilnote_feedbackModelImpl.COLUMN_BITMASK_ENABLED) {
             FinderCacheUtil.clearCache(FINDER_CLASS_NAME_LIST_WITHOUT_PAGINATION);
         }
-        else {
-            if ((teilnote_feedbackModelImpl.getColumnBitmask() &
-                    FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID.getColumnBitmask()) != 0) {
-                Object[] args = new Object[] {
-                        teilnote_feedbackModelImpl.getOriginalFeedback_id()
-                    };
-
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_ID,
-                    args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID,
-                    args);
-
-                args = new Object[] { teilnote_feedbackModelImpl.getFeedback_id() };
-
-                FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_FEEDBACK_ID,
-                    args);
-                FinderCacheUtil.removeResult(FINDER_PATH_WITHOUT_PAGINATION_FIND_BY_FEEDBACK_ID,
-                    args);
-            }
-        }
 
         EntityCacheUtil.putResult(Teilnote_feedbackModelImpl.ENTITY_CACHE_ENABLED,
             Teilnote_feedbackImpl.class, teilnote_feedback.getPrimaryKey(),
             teilnote_feedback);
+
+        clearUniqueFindersCache(teilnote_feedback);
+        cacheUniqueFindersCache(teilnote_feedback);
 
         return teilnote_feedback;
     }

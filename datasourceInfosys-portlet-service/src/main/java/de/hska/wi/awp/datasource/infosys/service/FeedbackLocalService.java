@@ -239,6 +239,6 @@ public interface FeedbackLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_id(
-        long student_id);
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
+        long student_id, int feedback_runden_nr);
 }

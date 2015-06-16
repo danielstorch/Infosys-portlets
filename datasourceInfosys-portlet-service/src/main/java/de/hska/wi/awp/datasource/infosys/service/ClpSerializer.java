@@ -12,6 +12,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
 import de.hska.wi.awp.datasource.infosys.model.AllgemeinesClp;
+import de.hska.wi.awp.datasource.infosys.model.BewertungskriteriumClp;
 import de.hska.wi.awp.datasource.infosys.model.FeedbackClp;
 import de.hska.wi.awp.datasource.infosys.model.Geplante_arbeitClp;
 import de.hska.wi.awp.datasource.infosys.model.ProjectClp;
@@ -99,6 +100,10 @@ public class ClpSerializer {
             return translateInputAllgemeines(oldModel);
         }
 
+        if (oldModelClassName.equals(BewertungskriteriumClp.class.getName())) {
+            return translateInputBewertungskriterium(oldModel);
+        }
+
         if (oldModelClassName.equals(FeedbackClp.class.getName())) {
             return translateInputFeedback(oldModel);
         }
@@ -146,6 +151,17 @@ public class ClpSerializer {
         AllgemeinesClp oldClpModel = (AllgemeinesClp) oldModel;
 
         BaseModel<?> newModel = oldClpModel.getAllgemeinesRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputBewertungskriterium(
+        BaseModel<?> oldModel) {
+        BewertungskriteriumClp oldClpModel = (BewertungskriteriumClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getBewertungskriteriumRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -240,6 +256,41 @@ public class ClpSerializer {
         if (oldModelClassName.equals(
                     "de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl")) {
             return translateOutputAllgemeines(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumImpl")) {
+            return translateOutputBewertungskriterium(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -599,6 +650,11 @@ public class ClpSerializer {
         }
 
         if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchBewertungskriteriumException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchBewertungskriteriumException();
+        }
+
+        if (className.equals(
                     "de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException")) {
             return new de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException();
         }
@@ -642,6 +698,17 @@ public class ClpSerializer {
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
         newModel.setAllgemeinesRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputBewertungskriterium(
+        BaseModel<?> oldModel) {
+        BewertungskriteriumClp newModel = new BewertungskriteriumClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setBewertungskriteriumRemoteModel(oldModel);
 
         return newModel;
     }

@@ -1,6 +1,7 @@
 create index IX_3DE322F6 on datasourceInfosys_Allgemeines (statusbericht_id);
 
 create index IX_D0D1E483 on datasourceInfosys_Feedback (student_id);
+create index IX_D07760FE on datasourceInfosys_Feedback (student_id, feedback_runden_nr);
 
 create index IX_F5BE8712 on datasourceInfosys_Geplante_arbeit (statusbericht_id);
 
@@ -18,3 +19,4 @@ create index IX_79568F44 on datasourceInfosys_Students_Projects (studentId);
 create index IX_EC75BCF4 on datasourceInfosys_Teilnote (feedback_id);
 
 create index IX_9F9E5746 on datasourceInfosys_Teilnote_feedback (feedback_id);
+create index IX_2B4D37EA on datasourceInfosys_Teilnote_feedback (feedback_id, bewertungskriterium_id);

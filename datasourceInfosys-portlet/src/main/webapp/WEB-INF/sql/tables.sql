@@ -7,6 +7,13 @@ create table datasourceInfosys_Allgemeines (
 	gruende VARCHAR(75) null
 );
 
+create table datasourceInfosys_Bewertungskriterium (
+	id_ LONG not null primary key,
+	name VARCHAR(75) null,
+	beschreibung VARCHAR(75) null,
+	gewichtung INTEGER
+);
+
 create table datasourceInfosys_Feedback (
 	id_ LONG not null primary key,
 	student_id LONG,
