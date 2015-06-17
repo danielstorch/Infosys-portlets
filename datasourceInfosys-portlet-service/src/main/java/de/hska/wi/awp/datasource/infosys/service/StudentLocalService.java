@@ -244,4 +244,8 @@ public interface StudentLocalService extends BaseLocalService,
 
     public de.hska.wi.awp.datasource.infosys.model.Student findByStudenthskaId(
         java.lang.String studenthskaId);
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.lang.String getStudentNameByStudenthskaId(
+        java.lang.String studenthskaId);
 }

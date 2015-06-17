@@ -11,14 +11,20 @@ import org.apache.commons.io.IOUtils;
 import org.primefaces.json.JSONArray;
 import org.primefaces.json.JSONObject;
 
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.Role;
+import com.liferay.portal.service.RoleLocalServiceUtil;
 
+import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackModelBean;
 import de.hska.wi.awp.datasource.infosys.model.Allgemeines;
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit;
 import de.hska.wi.awp.datasource.infosys.model.Project;
+import de.hska.wi.awp.datasource.infosys.model.Rolle;
 import de.hska.wi.awp.datasource.infosys.model.Statusberichte;
 import de.hska.wi.awp.datasource.infosys.model.Statusueberblick;
 import de.hska.wi.awp.datasource.infosys.model.Student;
@@ -28,12 +34,18 @@ import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService
 import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.RolleLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil;
 
 public class MockData {
+	
+	/**
+     * Logger Util
+     */	
+	private static final Logger logger = LoggerFactory.getLogger(MockData.class);
 	
 	public static void DeleteAllMockData() throws SystemException, PortalException {
 		deleteProjectMockData();
@@ -45,6 +57,7 @@ public class MockData {
 		deleteAllgemeinesMockData();
 		deleteGeplante_arbeitMockData();
 		deleteBewertungskriteriumMockData();	
+		deleteRolleMockData();
 	}
 	
 	public static void SaveAllMockData() throws Exception {
@@ -57,6 +70,19 @@ public class MockData {
 		addAllgemeinsMockData();
 		addGeplante_arbeitMockData();
 		addBewertungskriteriumMockData();
+		addRolleMockData();
+	}
+	
+	public static void deleteRolleMockData() throws SystemException, PortalException {
+		System.out.println("Amount of rolle before delete: "+RolleLocalServiceUtil.getRollesCount());
+		List<Rolle> allRolle = RolleLocalServiceUtil.getRolles(0, RolleLocalServiceUtil.getRollesCount());
+		
+		for(int zl = 0; zl < allRolle.size(); zl++) {
+			System.out.println("Delete Rolle ID: " +allRolle.get(zl).getPrimaryKey());
+			RolleLocalServiceUtil.deleteRolle(allRolle.get(zl).getPrimaryKey());
+		}
+		
+		System.out.println("Amount of rolle after delete: "+RolleLocalServiceUtil.getRollesCount());
 	}
 	
 	public static void deleteBewertungskriteriumMockData() throws SystemException, PortalException {
@@ -165,6 +191,34 @@ public class MockData {
 		}
 		
 		System.out.println("Amount of projects after delete: "+ProjectLocalServiceUtil.getProjectsCount());
+	}
+	
+	public static void addRolleMockData() throws Exception{
+		if(RolleLocalServiceUtil.getRollesCount() == 0) {
+			InputStream is = MockData.class.getResourceAsStream("Rolle");
+	        String jsonString = IOUtils.toString(is);
+	        
+	        JSONObject jsonObject = null;
+	        
+			try {
+				jsonObject = new JSONObject(jsonString);
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new Exception ("Daten können nicht geladen werden");
+			}
+
+			JSONArray rolleJsonArray = jsonObject.getJSONArray("Rolle");		
+			System.out.println("count rolle: " + rolleJsonArray.length());
+			
+			for (int j = 0; j < rolleJsonArray.length(); j++) {
+
+				JSONObject roleJSONObject = rolleJsonArray.getJSONObject(j);
+				Rolle rolle = RolleLocalServiceUtil.createRolle(roleJSONObject.getLong("id"));
+				rolle.setName(roleJSONObject.getString("name"));
+				rolle.setShortName(roleJSONObject.getString("kuerzel"));
+				RolleLocalServiceUtil.addRolle(rolle);
+			}	
+		}
 	}
 	
 	public static void addBewertungskriteriumMockData() throws Exception{

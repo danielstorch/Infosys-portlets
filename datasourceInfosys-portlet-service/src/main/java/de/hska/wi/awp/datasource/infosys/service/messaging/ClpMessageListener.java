@@ -14,6 +14,8 @@ import de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalServiceUtil
 import de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.ProjectServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.RolleLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.RolleServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StatusberichteServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalServiceUtil;
@@ -51,6 +53,9 @@ public class ClpMessageListener extends BaseMessageListener {
             ProjectLocalServiceUtil.clearService();
 
             ProjectServiceUtil.clearService();
+            RolleLocalServiceUtil.clearService();
+
+            RolleServiceUtil.clearService();
             StatusberichteLocalServiceUtil.clearService();
 
             StatusberichteServiceUtil.clearService();

@@ -272,6 +272,11 @@ public class StudentLocalServiceUtil {
         return getService().findByStudenthskaId(studenthskaId);
     }
 
+    public static java.lang.String getStudentNameByStudenthskaId(
+        java.lang.String studenthskaId) {
+        return getService().getStudentNameByStudenthskaId(studenthskaId);
+    }
+
     public static void clearService() {
         _service = null;
     }

@@ -7,6 +7,7 @@
 	<import class="de.hska.wi.awp.datasource.infosys.model.Feedback" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Project" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Rolle" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Statusberichte" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Statusueberblick" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Student" />
@@ -60,6 +61,14 @@
 		</id>
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="projecthskaId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.RolleImpl" table="datasourceInfosys_Rolle">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="shortName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl" table="datasourceInfosys_Statusberichte">
 		<cache usage="read-write" />

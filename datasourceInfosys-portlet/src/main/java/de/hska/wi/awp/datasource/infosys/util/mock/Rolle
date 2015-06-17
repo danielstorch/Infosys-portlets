@@ -1,0 +1,19 @@
+{
+  "Rolle": [
+    {
+      "id": "100",
+      "kuerzel": "BA",
+      "name": "Business Analyst"
+    },
+    {
+      "id": "101",
+      "kuerzel": "PL",
+      "name": "Projekt Leiter"
+    },
+    {
+      "id": "102",
+      "kuerzel": "QM",
+      "name": "Quality Manager"
+    }
+  ]
+}

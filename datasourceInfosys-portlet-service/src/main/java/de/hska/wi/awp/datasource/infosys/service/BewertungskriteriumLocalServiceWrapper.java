@@ -277,6 +277,11 @@ public class BewertungskriteriumLocalServiceWrapper
             parameterTypes, arguments);
     }
 
+    @Override
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium> getAllBewertungskriterium() {
+        return _bewertungskriteriumLocalService.getAllBewertungskriterium();
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

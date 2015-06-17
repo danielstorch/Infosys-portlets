@@ -38,6 +38,11 @@
 		<field name="projecthskaId" type="String" />
 		<field name="id" type="long" />
 	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Rolle">
+		<field name="id" type="long" />
+		<field name="shortName" type="String" />
+		<field name="name" type="String" />
+	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Statusberichte">
 		<field name="id" type="long" />
 		<field name="project_id" type="long" />

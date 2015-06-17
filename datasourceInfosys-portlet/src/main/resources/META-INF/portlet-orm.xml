@@ -79,6 +79,18 @@
 			<transient name="primaryKeyObj" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.RolleModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="shortName" />
+			<basic name="name" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
 	<mapped-superclass class="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteModelImpl">
 		<attributes>
 			<id name="id">
@@ -160,6 +172,10 @@
 	</entity>
 	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.ProjectImpl" name="Project">
 		<table name="datasourceInfosys_Project" />
+		<attributes />
+	</entity>
+	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.RolleImpl" name="Rolle">
+		<table name="datasourceInfosys_Rolle" />
 		<attributes />
 	</entity>
 	<entity class="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl" name="Statusberichte">

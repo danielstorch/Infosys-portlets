@@ -282,6 +282,12 @@ public class StudentLocalServiceWrapper implements StudentLocalService,
         return _studentLocalService.findByStudenthskaId(studenthskaId);
     }
 
+    @Override
+    public java.lang.String getStudentNameByStudenthskaId(
+        java.lang.String studenthskaId) {
+        return _studentLocalService.getStudentNameByStudenthskaId(studenthskaId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

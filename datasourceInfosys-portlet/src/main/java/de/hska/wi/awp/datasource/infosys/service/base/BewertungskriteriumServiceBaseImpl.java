@@ -15,6 +15,7 @@ import de.hska.wi.awp.datasource.infosys.service.persistence.Bewertungskriterium
 import de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Geplante_arbeitPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StatusueberblickPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistence;
@@ -66,6 +67,12 @@ public abstract class BewertungskriteriumServiceBaseImpl extends BaseServiceImpl
     protected de.hska.wi.awp.datasource.infosys.service.ProjectService projectService;
     @BeanReference(type = ProjectPersistence.class)
     protected ProjectPersistence projectPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.RolleLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.RolleLocalService rolleLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.RolleService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.RolleService rolleService;
+    @BeanReference(type = RollePersistence.class)
+    protected RollePersistence rollePersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService statusberichteLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusberichteService.class)
@@ -391,6 +398,62 @@ public abstract class BewertungskriteriumServiceBaseImpl extends BaseServiceImpl
      */
     public void setProjectPersistence(ProjectPersistence projectPersistence) {
         this.projectPersistence = projectPersistence;
+    }
+
+    /**
+     * Returns the rolle local service.
+     *
+     * @return the rolle local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.RolleLocalService getRolleLocalService() {
+        return rolleLocalService;
+    }
+
+    /**
+     * Sets the rolle local service.
+     *
+     * @param rolleLocalService the rolle local service
+     */
+    public void setRolleLocalService(
+        de.hska.wi.awp.datasource.infosys.service.RolleLocalService rolleLocalService) {
+        this.rolleLocalService = rolleLocalService;
+    }
+
+    /**
+     * Returns the rolle remote service.
+     *
+     * @return the rolle remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.RolleService getRolleService() {
+        return rolleService;
+    }
+
+    /**
+     * Sets the rolle remote service.
+     *
+     * @param rolleService the rolle remote service
+     */
+    public void setRolleService(
+        de.hska.wi.awp.datasource.infosys.service.RolleService rolleService) {
+        this.rolleService = rolleService;
+    }
+
+    /**
+     * Returns the rolle persistence.
+     *
+     * @return the rolle persistence
+     */
+    public RollePersistence getRollePersistence() {
+        return rollePersistence;
+    }
+
+    /**
+     * Sets the rolle persistence.
+     *
+     * @param rollePersistence the rolle persistence
+     */
+    public void setRollePersistence(RollePersistence rollePersistence) {
+        this.rollePersistence = rollePersistence;
     }
 
     /**

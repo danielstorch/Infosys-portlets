@@ -269,6 +269,11 @@ public class FeedbackLocalServiceUtil {
             feedback_runden_nr);
     }
 
+    public static int averageContribution(long student_id,
+        int feedback_runden_nr) {
+        return getService().averageContribution(student_id, feedback_runden_nr);
+    }
+
     public static void clearService() {
         _service = null;
     }

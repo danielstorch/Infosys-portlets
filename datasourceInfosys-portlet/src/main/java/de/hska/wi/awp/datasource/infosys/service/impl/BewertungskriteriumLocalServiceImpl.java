@@ -1,5 +1,12 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.SystemException;
+
+import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
+import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.base.BewertungskriteriumLocalServiceBaseImpl;
 
 /**
@@ -23,4 +30,14 @@ public class BewertungskriteriumLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil} to access the bewertungskriterium local service.
      */
+	public List<Bewertungskriterium> getAllBewertungskriterium(){
+		List<Bewertungskriterium> allBewertungskriterium = new ArrayList<Bewertungskriterium>();
+		try {
+			allBewertungskriterium = BewertungskriteriumLocalServiceUtil.getBewertungskriteriums(0, BewertungskriteriumLocalServiceUtil.getBewertungskriteriumsCount());
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return allBewertungskriterium;
+	}
 }

@@ -262,6 +262,10 @@ public class BewertungskriteriumLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium> getAllBewertungskriterium() {
+        return getService().getAllBewertungskriterium();
+    }
+
     public static void clearService() {
         _service = null;
     }

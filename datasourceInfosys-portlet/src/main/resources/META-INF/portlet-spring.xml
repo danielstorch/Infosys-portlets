@@ -16,6 +16,9 @@
 	<bean id="de.hska.wi.awp.datasource.infosys.service.ProjectLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.ProjectLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.ProjectService" class="de.hska.wi.awp.datasource.infosys.service.impl.ProjectServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.RolleLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.RolleLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.RolleService" class="de.hska.wi.awp.datasource.infosys.service.impl.RolleServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusberichteLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusberichteService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusberichteServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistenceImpl" parent="basePersistence" />

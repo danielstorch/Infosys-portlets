@@ -11,48 +11,39 @@
 	<h:head />
 	<h:body>
 		<h:form id="f1">
-			<p:toolbar>
+			<p:toolbar style="height:30px">
 		        <f:facet name="left">
-		            <h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" style="text-align:center;"/> 
-		            <p:outputPanel style="text-align:center;">
-	             				<h:outputText value="#{receivedFeedbackBackingBean.studenthskaId}" />
-	        		</p:outputPanel>
-		            <span class="ui-separator">
-		                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-		            </span>
+		            <h:outputText value="Durchschnittlicher Beitrag: #{receivedFeedbackModelBean.averageContribution()}" rendered="#{receivedFeedbackModelBean.averageContribution() != -1}" Style="text-align: center"/> 
 		        </f:facet>
 		        <f:facet name="right">
-		            <p:selectOneMenu id="feedbackRunde" style="width:100px">
+		            <p:selectOneMenu id="feedbackRunde" value="#{receivedFeedbackModelBean.feedbackRoundNr}" style="width:100px">
 		            	<f:selectItem itemLabel="Runde 1" itemValue="1" />
 		            	<f:selectItem itemLabel="Runde 2" itemValue="2" />
 		       	 </p:selectOneMenu>
 		        </f:facet>
 			</p:toolbar>
-			 <p:dataTable value="#{receivedFeedbackBackingBean.getAllFeedbackOfStudent()}" var="feedback">
+			 <p:dataTable id="feedbackDataTable" value="#{receivedFeedbackModelBean.getAllFeedbackOfStudent()}" var="feedback" tableStyle="width:auto">
 			    <p:column headerText="Eigenbewertung" style="text-align: center">
-			        <h:outputText value="#{feedback.eigenbewertung}" />
+			        <h:outputText value="ja" rendered="#{feedback.eigenbewertung == 'r'}"/>
+			        <h:outputText value="nein" rendered="#{feedback.eigenbewertung == 'f'}"/>
 			    </p:column>
 			    <p:column headerText="Beitrag" style="text-align: center">
 			        <h:outputText value="#{feedback.beitrag}" />
 			    </p:column>
-			    <c:forEach items="#{receivedFeedbackBackingBean.getAllBewrtungskriterium()}" var="bewrtungskriterium">
+			    <c:forEach items="#{receivedFeedbackModelBean.allBewrtungskriterium}" var="bewrtungskriterium">
 	    			<p:column headerText="#{bewrtungskriterium.name}" style="text-align: center">
-	        			<h:outputText value="#{receivedFeedbackBackingBean.getTeilnoteOfFeedback(feedback.id, bewrtungskriterium.id)}"></h:outputText>
+	        			<h:outputText value="#{receivedFeedbackModelBean.getTeilnoteOfFeedback(feedback.id, bewrtungskriterium.id)}"></h:outputText>
 	    			</p:column> 
 				</c:forEach>
 			     <p:column headerText="Beitrag Kommentar" style="text-align: center">
-	             	<p:commandButton update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_beitrag}">
-	             		<f:setPropertyActionListener value="#{feedback.kommentar_beitrag}" target="#{receivedFeedbackBackingBean.selectedFeedbackComment}" />
-					</p:commandButton>
+	             	<p:commandButton actionListener="#{receivedFeedbackBackingBean.selectedFeedbackComment(feedback.kommentar_beitrag)}" update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_beitrag}"/>
 	       		</p:column>
 	            <p:column headerText="Kompetenz Kommentar" style="text-align: center">
-	            	<p:commandButton update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_kompetenzen}">
-	             		<f:setPropertyActionListener value="#{feedback.kommentar_kompetenzen}" target="#{receivedFeedbackBackingBean.selectedFeedbackComment}" />
-					</p:commandButton>
+	            	<p:commandButton actionListener="#{receivedFeedbackBackingBean.selectedFeedbackComment(feedback.kommentar_kompetenzen)}" update=":f1:kommentarText" oncomplete="PF('kommentarDialog').show();" icon="ui-icon-comment" rendered="#{not empty feedback.kommentar_kompetenzen}"/>
 			    </p:column>
 			</p:dataTable>
 			<p:dialog header="Kommentar" widgetVar="kommentarDialog" resizable="false" width="250" showEffect="fade" hideEffect="fade">  
-	              <h:outputText id="kommentarText" value="#{receivedFeedbackBackingBean.selectedFeedbackComment}" /> 
+	              <h:outputText id="kommentarText" value="#{receivedFeedbackModelBean.selectedFeedbackComment}" /> 
 	    	</p:dialog>
     	</h:form>
 	</h:body>

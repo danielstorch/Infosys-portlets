@@ -40,4 +40,28 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
 		}
 		return feedbacks;
 	}
+	
+	public int averageContribution(long student_id, int feedback_runden_nr) {
+		List<Feedback> feedbacks = new ArrayList<Feedback>();
+		
+		try {
+			feedbacks = FeedbackUtil.findByStudent_idAndFeedback_runden_nr(student_id, feedback_runden_nr);
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int average = 0;
+		for( Feedback f: feedbacks )
+		{
+			average += f.getBeitrag();
+		}
+		
+		if(average != 0) {
+			average /= feedbacks.size();
+		}else {
+			average = -1;
+		}
+		return average;
+	}
 }

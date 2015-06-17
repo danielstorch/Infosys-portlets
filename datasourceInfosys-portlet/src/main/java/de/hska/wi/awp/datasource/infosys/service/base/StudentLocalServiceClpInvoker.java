@@ -41,14 +41,16 @@ public class StudentLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName82;
-    private String[] _methodParameterTypes82;
-    private String _methodName83;
-    private String[] _methodParameterTypes83;
     private String _methodName88;
     private String[] _methodParameterTypes88;
     private String _methodName89;
     private String[] _methodParameterTypes89;
+    private String _methodName94;
+    private String[] _methodParameterTypes94;
+    private String _methodName95;
+    private String[] _methodParameterTypes95;
+    private String _methodName96;
+    private String[] _methodParameterTypes96;
 
     public StudentLocalServiceClpInvoker() {
         _methodName0 = "addStudent";
@@ -133,21 +135,25 @@ public class StudentLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Student"
             };
 
-        _methodName82 = "getBeanIdentifier";
+        _methodName88 = "getBeanIdentifier";
 
-        _methodParameterTypes82 = new String[] {  };
+        _methodParameterTypes88 = new String[] {  };
 
-        _methodName83 = "setBeanIdentifier";
-
-        _methodParameterTypes83 = new String[] { "java.lang.String" };
-
-        _methodName88 = "findByProjectId";
-
-        _methodParameterTypes88 = new String[] { "long" };
-
-        _methodName89 = "findByStudenthskaId";
+        _methodName89 = "setBeanIdentifier";
 
         _methodParameterTypes89 = new String[] { "java.lang.String" };
+
+        _methodName94 = "findByProjectId";
+
+        _methodParameterTypes94 = new String[] { "long" };
+
+        _methodName95 = "findByStudenthskaId";
+
+        _methodParameterTypes95 = new String[] { "java.lang.String" };
+
+        _methodName96 = "getStudentNameByStudenthskaId";
+
+        _methodParameterTypes96 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -239,26 +245,31 @@ public class StudentLocalServiceClpInvoker {
             return StudentLocalServiceUtil.updateStudent((de.hska.wi.awp.datasource.infosys.model.Student) arguments[0]);
         }
 
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+        if (_methodName88.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
             return StudentLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName83.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+        if (_methodName89.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
             StudentLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
             return StudentLocalServiceUtil.findByProjectId(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName95.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
             return StudentLocalServiceUtil.findByStudenthskaId((java.lang.String) arguments[0]);
+        }
+
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+            return StudentLocalServiceUtil.getStudentNameByStudenthskaId((java.lang.String) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

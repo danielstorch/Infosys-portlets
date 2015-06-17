@@ -16,6 +16,7 @@ import de.hska.wi.awp.datasource.infosys.model.BewertungskriteriumClp;
 import de.hska.wi.awp.datasource.infosys.model.FeedbackClp;
 import de.hska.wi.awp.datasource.infosys.model.Geplante_arbeitClp;
 import de.hska.wi.awp.datasource.infosys.model.ProjectClp;
+import de.hska.wi.awp.datasource.infosys.model.RolleClp;
 import de.hska.wi.awp.datasource.infosys.model.StatusberichteClp;
 import de.hska.wi.awp.datasource.infosys.model.StatusueberblickClp;
 import de.hska.wi.awp.datasource.infosys.model.StudentClp;
@@ -116,6 +117,10 @@ public class ClpSerializer {
             return translateInputProject(oldModel);
         }
 
+        if (oldModelClassName.equals(RolleClp.class.getName())) {
+            return translateInputRolle(oldModel);
+        }
+
         if (oldModelClassName.equals(StatusberichteClp.class.getName())) {
             return translateInputStatusberichte(oldModel);
         }
@@ -192,6 +197,16 @@ public class ClpSerializer {
         ProjectClp oldClpModel = (ProjectClp) oldModel;
 
         BaseModel<?> newModel = oldClpModel.getProjectRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputRolle(BaseModel<?> oldModel) {
+        RolleClp oldClpModel = (RolleClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getRolleRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -396,6 +411,41 @@ public class ClpSerializer {
         if (oldModelClassName.equals(
                     "de.hska.wi.awp.datasource.infosys.model.impl.ProjectImpl")) {
             return translateOutputProject(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.RolleImpl")) {
+            return translateOutputRolle(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -670,6 +720,11 @@ public class ClpSerializer {
         }
 
         if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchRolleException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchRolleException();
+        }
+
+        if (className.equals(
                     "de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException")) {
             return new de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException();
         }
@@ -739,6 +794,16 @@ public class ClpSerializer {
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
         newModel.setProjectRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputRolle(BaseModel<?> oldModel) {
+        RolleClp newModel = new RolleClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setRolleRemoteModel(oldModel);
 
         return newModel;
     }

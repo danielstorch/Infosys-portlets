@@ -279,6 +279,12 @@ public class FeedbackLocalServiceWrapper implements FeedbackLocalService,
             feedback_runden_nr);
     }
 
+    @Override
+    public int averageContribution(long student_id, int feedback_runden_nr) {
+        return _feedbackLocalService.averageContribution(student_id,
+            feedback_runden_nr);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

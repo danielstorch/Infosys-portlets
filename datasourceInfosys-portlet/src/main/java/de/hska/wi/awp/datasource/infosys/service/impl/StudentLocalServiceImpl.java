@@ -57,4 +57,22 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 	
 		return student;
 	}
+	
+	public String getStudentNameByStudenthskaId(String studenthskaId) {
+		
+		Student student = null;
+		
+		try {
+			student = StudentUtil.findByStudenthskaId(studenthskaId);
+		} catch (NoSuchStudentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return student.getFirstName() + " " + student.getLastName();
+	}
+	
 }

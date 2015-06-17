@@ -41,10 +41,12 @@ public class BewertungskriteriumLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName82;
-    private String[] _methodParameterTypes82;
-    private String _methodName83;
-    private String[] _methodParameterTypes83;
+    private String _methodName88;
+    private String[] _methodParameterTypes88;
+    private String _methodName89;
+    private String[] _methodParameterTypes89;
+    private String _methodName94;
+    private String[] _methodParameterTypes94;
 
     public BewertungskriteriumLocalServiceClpInvoker() {
         _methodName0 = "addBewertungskriterium";
@@ -129,13 +131,17 @@ public class BewertungskriteriumLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium"
             };
 
-        _methodName82 = "getBeanIdentifier";
+        _methodName88 = "getBeanIdentifier";
 
-        _methodParameterTypes82 = new String[] {  };
+        _methodParameterTypes88 = new String[] {  };
 
-        _methodName83 = "setBeanIdentifier";
+        _methodName89 = "setBeanIdentifier";
 
-        _methodParameterTypes83 = new String[] { "java.lang.String" };
+        _methodParameterTypes89 = new String[] { "java.lang.String" };
+
+        _methodName94 = "getAllBewertungskriterium";
+
+        _methodParameterTypes94 = new String[] {  };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -227,16 +233,21 @@ public class BewertungskriteriumLocalServiceClpInvoker {
             return BewertungskriteriumLocalServiceUtil.updateBewertungskriterium((de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium) arguments[0]);
         }
 
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+        if (_methodName88.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
             return BewertungskriteriumLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName83.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+        if (_methodName89.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
             BewertungskriteriumLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
+        }
+
+        if (_methodName94.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+            return BewertungskriteriumLocalServiceUtil.getAllBewertungskriterium();
         }
 
         throw new UnsupportedOperationException();

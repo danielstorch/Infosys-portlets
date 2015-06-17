@@ -22,11 +22,14 @@ import org.primefaces.model.menu.MenuModel;
 
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.model.Project;
+import de.hska.wi.awp.datasource.infosys.model.Rolle;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.RolleLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 
 /**
@@ -96,13 +99,28 @@ public class NavigationBackingBean implements Serializable{
 			for(int j = 0; j < studentsOfGroupe.size(); j++) {
 				String studentLastName = studentsOfGroupe.get(j).getLastName();
 				String studentFirstName = studentsOfGroupe.get(j).getFirstName();
+				
+				Long studentRoleId = studentsOfGroupe.get(j).getRole();
+				if(studentRoleId != 0) {
+					String studentRole = null;
+					try {
+						studentRole = RolleLocalServiceUtil.getRolle(studentRoleId).getShortName();
+					} catch (PortalException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SystemException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					studentLastName += " ("+studentRole+")";
+				}
+				
 				DefaultMenuItem studentMenuItem = new DefaultMenuItem(studentFirstName + " " + studentLastName);
 				
 				studentMenuItem.setAjax(false);
 				studentMenuItem.setCommand("#{navigationBackingBean.studentSelected}");
 				studentMenuItem.setParam("studenthskaId", studentsOfGroupe.get(j).getStudenthskaId());
 				
-				studentMenuItem.setIcon("qualiteatsmanager");
 				studentSubMenu.addElement(studentMenuItem);
 			}
 			

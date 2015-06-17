@@ -41,10 +41,10 @@ public class Geplante_arbeitLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName82;
-    private String[] _methodParameterTypes82;
-    private String _methodName83;
-    private String[] _methodParameterTypes83;
+    private String _methodName88;
+    private String[] _methodParameterTypes88;
+    private String _methodName89;
+    private String[] _methodParameterTypes89;
 
     public Geplante_arbeitLocalServiceClpInvoker() {
         _methodName0 = "addGeplante_arbeit";
@@ -129,13 +129,13 @@ public class Geplante_arbeitLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit"
             };
 
-        _methodName82 = "getBeanIdentifier";
+        _methodName88 = "getBeanIdentifier";
 
-        _methodParameterTypes82 = new String[] {  };
+        _methodParameterTypes88 = new String[] {  };
 
-        _methodName83 = "setBeanIdentifier";
+        _methodName89 = "setBeanIdentifier";
 
-        _methodParameterTypes83 = new String[] { "java.lang.String" };
+        _methodParameterTypes89 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -227,13 +227,13 @@ public class Geplante_arbeitLocalServiceClpInvoker {
             return Geplante_arbeitLocalServiceUtil.updateGeplante_arbeit((de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit) arguments[0]);
         }
 
-        if (_methodName82.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes82, parameterTypes)) {
+        if (_methodName88.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
             return Geplante_arbeitLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName83.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes83, parameterTypes)) {
+        if (_methodName89.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
             Geplante_arbeitLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;

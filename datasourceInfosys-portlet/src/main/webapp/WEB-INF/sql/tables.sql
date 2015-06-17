@@ -38,6 +38,12 @@ create table datasourceInfosys_Project (
 	id_ LONG not null primary key
 );
 
+create table datasourceInfosys_Rolle (
+	id_ LONG not null primary key,
+	shortName VARCHAR(75) null,
+	name VARCHAR(75) null
+);
+
 create table datasourceInfosys_Statusberichte (
 	id_ LONG not null primary key,
 	project_id LONG,
