@@ -49,6 +49,8 @@ public class FeedbackLocalServiceClpInvoker {
     private String[] _methodParameterTypes94;
     private String _methodName95;
     private String[] _methodParameterTypes95;
+    private String _methodName96;
+    private String[] _methodParameterTypes96;
 
     public FeedbackLocalServiceClpInvoker() {
         _methodName0 = "addFeedback";
@@ -145,9 +147,13 @@ public class FeedbackLocalServiceClpInvoker {
 
         _methodParameterTypes94 = new String[] { "long", "int" };
 
-        _methodName95 = "averageContribution";
+        _methodName95 = "averageContributionOfStudent";
 
         _methodParameterTypes95 = new String[] { "long", "int" };
+
+        _methodName96 = "averageContributionOfPorject";
+
+        _methodParameterTypes96 = new String[] { "long", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -259,7 +265,13 @@ public class FeedbackLocalServiceClpInvoker {
 
         if (_methodName95.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
-            return FeedbackLocalServiceUtil.averageContribution(((Long) arguments[0]).longValue(),
+            return FeedbackLocalServiceUtil.averageContributionOfStudent(((Long) arguments[0]).longValue(),
+                ((Integer) arguments[1]).intValue());
+        }
+
+        if (_methodName96.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+            return FeedbackLocalServiceUtil.averageContributionOfPorject(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue());
         }
 

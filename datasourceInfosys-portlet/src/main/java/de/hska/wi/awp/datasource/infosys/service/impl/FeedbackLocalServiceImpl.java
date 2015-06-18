@@ -1,11 +1,14 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
+import de.hska.wi.awp.datasource.infosys.model.Student;
+import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.base.FeedbackLocalServiceBaseImpl;
 import de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackUtil;
 
@@ -41,7 +44,7 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
 		return feedbacks;
 	}
 	
-	public int averageContribution(long student_id, int feedback_runden_nr) {
+	public int averageContributionOfStudent(long student_id, int feedback_runden_nr) {
 		List<Feedback> feedbacks = new ArrayList<Feedback>();
 		
 		try {
@@ -63,5 +66,17 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
 			average = -1;
 		}
 		return average;
+	}
+	
+	public LinkedHashMap averageContributionOfPorject(long project_id, int feedback_runden_nr) {
+		List<Student> studentsOfGroupe = StudentLocalServiceUtil.findByProjectId(project_id);
+		LinkedHashMap<String,Integer> contribution = new LinkedHashMap();
+		
+		for( Student s: studentsOfGroupe )
+		{
+			contribution.put(s.getFirstName() +" " + s.getLastName(), averageContributionOfStudent(s.getId(),feedback_runden_nr));
+		}
+
+		return contribution;
 	}
 }

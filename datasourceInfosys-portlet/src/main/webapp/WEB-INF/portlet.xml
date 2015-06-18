@@ -14,7 +14,7 @@
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>MockData</title>
+			<title>Infosys - MockData</title>
 			<short-title>MockData</short-title>
 			<keywords>MockData</keywords>
 		</portlet-info>
@@ -41,14 +41,14 @@
 		</init-param>
 		<init-param>
 			<name>javax.portlet.faces.defaultViewId.view</name>
-			<value>/views/receivedFeedback/receivedFeedback.xhtml</value>
+			<value>/views/receivedFeedback/receivedFeedbackViewMode.xhtml</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>ReceivedFeedback</title>
+			<title>Infosys - Feedback (SP)</title>
 			<short-title>ReceivedFeedback</short-title>
 			<keywords>ReceivedFeedback</keywords>
 		</portlet-info>
@@ -84,7 +84,7 @@
 			<mime-type>text/html</mime-type>
 		</supports>
 		<portlet-info>
-			<title>Navigation</title>
+			<title>Infosys - Navigation</title>
 			<short-title>Navigation</short-title>
 			<keywords>Navigation</keywords>
 		</portlet-info>

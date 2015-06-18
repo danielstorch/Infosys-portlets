@@ -98,6 +98,75 @@ public class ProjectUtil {
     }
 
     /**
+    * Returns the project where projecthskaId = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchProjectException} if it could not be found.
+    *
+    * @param projecthskaId the projecthska ID
+    * @return the matching project
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchProjectException if a matching project could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Project findByProjecthskaId(
+        java.lang.String projecthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchProjectException {
+        return getPersistence().findByProjecthskaId(projecthskaId);
+    }
+
+    /**
+    * Returns the project where projecthskaId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    *
+    * @param projecthskaId the projecthska ID
+    * @return the matching project, or <code>null</code> if a matching project could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Project fetchByProjecthskaId(
+        java.lang.String projecthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().fetchByProjecthskaId(projecthskaId);
+    }
+
+    /**
+    * Returns the project where projecthskaId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    *
+    * @param projecthskaId the projecthska ID
+    * @param retrieveFromCache whether to use the finder cache
+    * @return the matching project, or <code>null</code> if a matching project could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Project fetchByProjecthskaId(
+        java.lang.String projecthskaId, boolean retrieveFromCache)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence()
+                   .fetchByProjecthskaId(projecthskaId, retrieveFromCache);
+    }
+
+    /**
+    * Removes the project where projecthskaId = &#63; from the database.
+    *
+    * @param projecthskaId the projecthska ID
+    * @return the project that was removed
+    * @throws SystemException if a system exception occurred
+    */
+    public static de.hska.wi.awp.datasource.infosys.model.Project removeByProjecthskaId(
+        java.lang.String projecthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchProjectException {
+        return getPersistence().removeByProjecthskaId(projecthskaId);
+    }
+
+    /**
+    * Returns the number of projects where projecthskaId = &#63;.
+    *
+    * @param projecthskaId the projecthska ID
+    * @return the number of matching projects
+    * @throws SystemException if a system exception occurred
+    */
+    public static int countByProjecthskaId(java.lang.String projecthskaId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getPersistence().countByProjecthskaId(projecthskaId);
+    }
+
+    /**
     * Caches the project in the entity cache if it is enabled.
     *
     * @param project the project

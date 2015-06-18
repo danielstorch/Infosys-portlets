@@ -242,5 +242,9 @@ public interface FeedbackLocalService extends BaseLocalService,
     public java.util.List<de.hska.wi.awp.datasource.infosys.model.Feedback> findByStudent_idAndFeedback_runden_nr(
         long student_id, int feedback_runden_nr);
 
-    public int averageContribution(long student_id, int feedback_runden_nr);
+    public int averageContributionOfStudent(long student_id,
+        int feedback_runden_nr);
+
+    public java.util.LinkedHashMap averageContributionOfPorject(
+        long project_id, int feedback_runden_nr);
 }

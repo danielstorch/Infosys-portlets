@@ -2,7 +2,7 @@
 <!DOCTYPE display PUBLIC "-//Liferay//DTD Display 6.2.0//EN" "http://www.liferay.com/dtd/liferay-display_6_2_0.dtd">
 
 <display>
-	<category name="AWP Bewertung">
+	<category name="AWP Bewertung Infosys">
 		<portlet id="ReceivedFeedback" />
 		<portlet id="Navigation" />
 		<portlet id="MockData" />

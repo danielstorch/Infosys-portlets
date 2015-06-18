@@ -270,6 +270,12 @@ public class ProjectLocalServiceWrapper implements ProjectLocalService,
         return _projectLocalService.invokeMethod(name, parameterTypes, arguments);
     }
 
+    @Override
+    public de.hska.wi.awp.datasource.infosys.model.Project findByProjecthskaId(
+        java.lang.String projecthskaId) {
+        return _projectLocalService.findByProjecthskaId(projecthskaId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

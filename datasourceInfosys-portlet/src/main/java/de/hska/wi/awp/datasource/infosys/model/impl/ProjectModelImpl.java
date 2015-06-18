@@ -66,7 +66,11 @@ public class ProjectModelImpl extends BaseModelImpl<Project>
     public static final boolean FINDER_CACHE_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.finder.cache.enabled.de.hska.wi.awp.datasource.infosys.model.Project"),
             true);
-    public static final boolean COLUMN_BITMASK_ENABLED = false;
+    public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
+                "value.object.column.bitmask.enabled.de.hska.wi.awp.datasource.infosys.model.Project"),
+            true);
+    public static long PROJECTHSKAID_COLUMN_BITMASK = 1L;
+    public static long ID_COLUMN_BITMASK = 2L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.de.hska.wi.awp.datasource.infosys.model.Project"));
     private static ClassLoader _classLoader = Project.class.getClassLoader();
@@ -75,7 +79,9 @@ public class ProjectModelImpl extends BaseModelImpl<Project>
         };
     private String _name;
     private String _projecthskaId;
+    private String _originalProjecthskaId;
     private long _id;
+    private long _columnBitmask;
     private Project _escapedModel;
 
     public ProjectModelImpl() {
@@ -210,7 +216,17 @@ public class ProjectModelImpl extends BaseModelImpl<Project>
 
     @Override
     public void setProjecthskaId(String projecthskaId) {
+        _columnBitmask |= PROJECTHSKAID_COLUMN_BITMASK;
+
+        if (_originalProjecthskaId == null) {
+            _originalProjecthskaId = _projecthskaId;
+        }
+
         _projecthskaId = projecthskaId;
+    }
+
+    public String getOriginalProjecthskaId() {
+        return GetterUtil.getString(_originalProjecthskaId);
     }
 
     @JSON
@@ -222,6 +238,10 @@ public class ProjectModelImpl extends BaseModelImpl<Project>
     @Override
     public void setId(long id) {
         _id = id;
+    }
+
+    public long getColumnBitmask() {
+        return _columnBitmask;
     }
 
     @Override
@@ -301,6 +321,11 @@ public class ProjectModelImpl extends BaseModelImpl<Project>
 
     @Override
     public void resetOriginalValues() {
+        ProjectModelImpl projectModelImpl = this;
+
+        projectModelImpl._originalProjecthskaId = projectModelImpl._projecthskaId;
+
+        projectModelImpl._columnBitmask = 0;
     }
 
     @Override

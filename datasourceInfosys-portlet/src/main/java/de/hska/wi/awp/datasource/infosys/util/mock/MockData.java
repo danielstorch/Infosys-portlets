@@ -18,7 +18,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.model.Role;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 
-import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackModelBean;
+import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackStudentModelBean;
 import de.hska.wi.awp.datasource.infosys.model.Allgemeines;
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;

@@ -5,6 +5,8 @@ create index IX_D07760FE on datasourceInfosys_Feedback (student_id, feedback_run
 
 create index IX_F5BE8712 on datasourceInfosys_Geplante_arbeit (statusbericht_id);
 
+create index IX_AB53CB4B on datasourceInfosys_Project (projecthskaId);
+
 create index IX_7C7A28A2 on datasourceInfosys_Statusberichte (project_id);
 
 create index IX_47B53F90 on datasourceInfosys_Statusueberblick (statusbericht_id);

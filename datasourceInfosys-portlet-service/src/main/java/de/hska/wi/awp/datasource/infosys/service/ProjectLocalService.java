@@ -238,4 +238,7 @@ public interface ProjectLocalService extends BaseLocalService,
     public java.lang.Object invokeMethod(java.lang.String name,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
+
+    public de.hska.wi.awp.datasource.infosys.model.Project findByProjecthskaId(
+        java.lang.String projecthskaId);
 }

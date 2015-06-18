@@ -269,9 +269,16 @@ public class FeedbackLocalServiceUtil {
             feedback_runden_nr);
     }
 
-    public static int averageContribution(long student_id,
+    public static int averageContributionOfStudent(long student_id,
         int feedback_runden_nr) {
-        return getService().averageContribution(student_id, feedback_runden_nr);
+        return getService()
+                   .averageContributionOfStudent(student_id, feedback_runden_nr);
+    }
+
+    public static java.util.LinkedHashMap averageContributionOfPorject(
+        long project_id, int feedback_runden_nr) {
+        return getService()
+                   .averageContributionOfPorject(project_id, feedback_runden_nr);
     }
 
     public static void clearService() {

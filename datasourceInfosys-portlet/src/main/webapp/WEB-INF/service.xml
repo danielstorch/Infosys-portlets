@@ -23,6 +23,10 @@
         <column name="name" type="String"></column>
         <column name="projecthskaId" type="String"></column>
         <column name="id" type="long" primary="true"></column>
+        <!-- Finder methods -->
+        <finder name="ProjecthskaId" return-type="Project">
+          	<finder-column name="projecthskaId"/>
+        </finder>
     </entity>
     <entity name="Statusberichte" local-service="true">
         <column name="id" type="long" primary="true"></column>

@@ -280,8 +280,16 @@ public class FeedbackLocalServiceWrapper implements FeedbackLocalService,
     }
 
     @Override
-    public int averageContribution(long student_id, int feedback_runden_nr) {
-        return _feedbackLocalService.averageContribution(student_id,
+    public int averageContributionOfStudent(long student_id,
+        int feedback_runden_nr) {
+        return _feedbackLocalService.averageContributionOfStudent(student_id,
+            feedback_runden_nr);
+    }
+
+    @Override
+    public java.util.LinkedHashMap averageContributionOfPorject(
+        long project_id, int feedback_runden_nr) {
+        return _feedbackLocalService.averageContributionOfPorject(project_id,
             feedback_runden_nr);
     }
 

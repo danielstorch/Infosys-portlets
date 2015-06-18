@@ -262,6 +262,11 @@ public class ProjectLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static de.hska.wi.awp.datasource.infosys.model.Project findByProjecthskaId(
+        java.lang.String projecthskaId) {
+        return getService().findByProjecthskaId(projecthskaId);
+    }
+
     public static void clearService() {
         _service = null;
     }

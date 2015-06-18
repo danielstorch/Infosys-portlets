@@ -14,11 +14,14 @@ import javax.portlet.faces.event.EventNavigationResult;
 import com.liferay.faces.bridge.event.EventPayloadWrapper;
 
 import de.hska.wi.awp.datasource.infosys.bean.navigation.NavigationBackingBean;
-import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackModelBean;
+import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackStudentModelBean;
+import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackProjectModelBean;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectUtil;
 
 public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
 
@@ -36,9 +39,12 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
  				value = ((EventPayloadWrapper) value).getWrapped();
  			}
 
- 			String hskaId = (String) value;
- 			ReceivedFeedbackModelBean receivedFeedbackModelBean = getReceivedFeedbackModelBean(facesContext);
- 			receivedFeedbackModelBean.setStudent(StudentLocalServiceUtil.findByStudenthskaId(hskaId));
+ 			String studenthskaId = (String) value;
+ 			ReceivedFeedbackStudentModelBean receivedFeedbackStudentModelBean = getReceivedFeedbackStudentModelBean(facesContext);
+ 			receivedFeedbackStudentModelBean.setSelectedStudent(StudentLocalServiceUtil.findByStudenthskaId(studenthskaId));
+ 			
+ 			ReceivedFeedbackProjectModelBean receivedFeedbackProjectModelBean = getReceivedFeedbackProjectModelBean(facesContext);
+ 			receivedFeedbackProjectModelBean.setSelectedProject(null);
 
  			String fromAction = null;
  			String outcome = "ipc.studentSelected";
@@ -55,9 +61,12 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
  				value = ((EventPayloadWrapper) value).getWrapped();
  			}
 
- 			String hskaId = (String) value;
- 			ReceivedFeedbackModelBean receivedFeedbackModelBean = getReceivedFeedbackModelBean(facesContext);
- 			receivedFeedbackModelBean.setStudent(null);
+ 			String projecthskaId = (String) value;
+ 			ReceivedFeedbackStudentModelBean receivedFeedbackStudentModelBean = getReceivedFeedbackStudentModelBean(facesContext);
+ 			receivedFeedbackStudentModelBean.setSelectedStudent(null);
+ 			
+ 			ReceivedFeedbackProjectModelBean receivedFeedbackProjectModelBean = getReceivedFeedbackProjectModelBean(facesContext);
+ 			receivedFeedbackProjectModelBean.setSelectedProject(ProjectLocalServiceUtil.findByProjecthskaId(projecthskaId));
 
  			String fromAction = null;
  			String outcome = "ipc.projectSelected";
@@ -67,12 +76,21 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
          return eventNavigationResult;
 	}
 	
-	protected ReceivedFeedbackModelBean getReceivedFeedbackModelBean(FacesContext facesContext) {
-		String elExpression = "#{receivedFeedbackModelBean}";
+	protected ReceivedFeedbackStudentModelBean getReceivedFeedbackStudentModelBean(FacesContext facesContext) {
+		String elExpression = "#{receivedFeedbackStudentModelBean}";
 		ELContext elContext = facesContext.getELContext();
 		ValueExpression valueExpression = facesContext.getApplication().getExpressionFactory().createValueExpression(
-				elContext, elExpression, ReceivedFeedbackModelBean.class);
+				elContext, elExpression, ReceivedFeedbackStudentModelBean.class);
 
-		return (ReceivedFeedbackModelBean) valueExpression.getValue(elContext);
+		return (ReceivedFeedbackStudentModelBean) valueExpression.getValue(elContext);
+	}
+	
+	protected ReceivedFeedbackProjectModelBean getReceivedFeedbackProjectModelBean(FacesContext facesContext) {
+		String elExpression = "#{receivedFeedbackProjectModelBean}";
+		ELContext elContext = facesContext.getELContext();
+		ValueExpression valueExpression = facesContext.getApplication().getExpressionFactory().createValueExpression(
+				elContext, elExpression, ReceivedFeedbackProjectModelBean.class);
+
+		return (ReceivedFeedbackProjectModelBean) valueExpression.getValue(elContext);
 	}
 }

@@ -48,6 +48,8 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
     private String[] _methodParameterTypes19;
     private String _methodName20;
     private String[] _methodParameterTypes20;
+    private String _methodName21;
+    private String[] _methodParameterTypes21;
 
     public FeedbackLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -146,9 +148,13 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
 
         _methodParameterTypes19 = new String[] { "long", "int" };
 
-        _methodName20 = "averageContribution";
+        _methodName20 = "averageContributionOfStudent";
 
         _methodParameterTypes20 = new String[] { "long", "int" };
+
+        _methodName21 = "averageContributionOfPorject";
+
+        _methodParameterTypes21 = new String[] { "long", "int" };
     }
 
     @Override
@@ -687,7 +693,8 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
     }
 
     @Override
-    public int averageContribution(long student_id, int feedback_runden_nr) {
+    public int averageContributionOfStudent(long student_id,
+        int feedback_runden_nr) {
         Object returnObj = null;
 
         try {
@@ -706,5 +713,28 @@ public class FeedbackLocalServiceClp implements FeedbackLocalService {
         }
 
         return ((Integer) returnObj).intValue();
+    }
+
+    @Override
+    public java.util.LinkedHashMap averageContributionOfPorject(
+        long project_id, int feedback_runden_nr) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName21,
+                    _methodParameterTypes21,
+                    new Object[] { project_id, feedback_runden_nr });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.LinkedHashMap) ClpSerializer.translateOutput(returnObj);
     }
 }
