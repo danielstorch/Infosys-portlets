@@ -45,6 +45,8 @@ public class Statusbericht_detailLocalServiceClpInvoker {
     private String[] _methodParameterTypes100;
     private String _methodName101;
     private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public Statusbericht_detailLocalServiceClpInvoker() {
         _methodName0 = "addStatusbericht_detail";
@@ -136,6 +138,10 @@ public class Statusbericht_detailLocalServiceClpInvoker {
         _methodName101 = "setBeanIdentifier";
 
         _methodParameterTypes101 = new String[] { "java.lang.String" };
+
+        _methodName106 = "findByProjecthskaId";
+
+        _methodParameterTypes106 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -237,6 +243,11 @@ public class Statusbericht_detailLocalServiceClpInvoker {
             Statusbericht_detailLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
+        }
+
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+            return Statusbericht_detailLocalServiceUtil.findByProjecthskaId(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

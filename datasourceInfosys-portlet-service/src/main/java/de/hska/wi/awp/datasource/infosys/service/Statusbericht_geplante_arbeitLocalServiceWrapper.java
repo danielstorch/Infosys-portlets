@@ -277,6 +277,12 @@ public class Statusbericht_geplante_arbeitLocalServiceWrapper
             parameterTypes, arguments);
     }
 
+    @Override
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit> findByStatusbericht_id(
+        long statusbericht_id) {
+        return _statusbericht_geplante_arbeitLocalService.findByStatusbericht_id(statusbericht_id);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

@@ -1,6 +1,15 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.liferay.portal.kernel.exception.SystemException;
+
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit;
+import de.hska.wi.awp.datasource.infosys.model.Statusberichte;
 import de.hska.wi.awp.datasource.infosys.service.base.Statusbericht_geplante_arbeitLocalServiceBaseImpl;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_geplante_arbeitUtil;
+import de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichteUtil;
 
 /**
  * The implementation of the statusbericht_geplante_arbeit local service.
@@ -23,4 +32,15 @@ public class Statusbericht_geplante_arbeitLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalServiceUtil} to access the statusbericht_geplante_arbeit local service.
      */
+	public List<Statusbericht_geplante_arbeit> findByStatusbericht_id(long statusbericht_id) {
+		List<Statusbericht_geplante_arbeit> statusbericht_geplante_arbeit = new ArrayList<Statusbericht_geplante_arbeit>();
+		
+		try {
+			statusbericht_geplante_arbeit = Statusbericht_geplante_arbeitUtil.findByStatusbericht_id(statusbericht_id);
+		} catch (SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return statusbericht_geplante_arbeit;
+	}
 }

@@ -262,6 +262,11 @@ public class StatusberichteLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusberichte> findByProjectId(
+        long project_id) {
+        return getService().findByProjectId(project_id);
+    }
+
     public static void clearService() {
         _service = null;
     }

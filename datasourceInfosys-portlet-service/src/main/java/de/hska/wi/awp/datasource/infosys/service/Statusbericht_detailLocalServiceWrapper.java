@@ -277,6 +277,12 @@ public class Statusbericht_detailLocalServiceWrapper
             parameterTypes, arguments);
     }
 
+    @Override
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByProjecthskaId(
+        long statusbericht_id) {
+        return _statusbericht_detailLocalService.findByProjecthskaId(statusbericht_id);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

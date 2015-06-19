@@ -45,6 +45,8 @@ public class Statusbericht_geplante_arbeitLocalServiceClpInvoker {
     private String[] _methodParameterTypes100;
     private String _methodName101;
     private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public Statusbericht_geplante_arbeitLocalServiceClpInvoker() {
         _methodName0 = "addStatusbericht_geplante_arbeit";
@@ -136,6 +138,10 @@ public class Statusbericht_geplante_arbeitLocalServiceClpInvoker {
         _methodName101 = "setBeanIdentifier";
 
         _methodParameterTypes101 = new String[] { "java.lang.String" };
+
+        _methodName106 = "findByStatusbericht_id";
+
+        _methodParameterTypes106 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -237,6 +243,11 @@ public class Statusbericht_geplante_arbeitLocalServiceClpInvoker {
             Statusbericht_geplante_arbeitLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
+        }
+
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
+            return Statusbericht_geplante_arbeitLocalServiceUtil.findByStatusbericht_id(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

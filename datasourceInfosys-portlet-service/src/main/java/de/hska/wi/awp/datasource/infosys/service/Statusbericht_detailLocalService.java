@@ -239,4 +239,7 @@ public interface Statusbericht_detailLocalService extends BaseLocalService,
     public java.lang.Object invokeMethod(java.lang.String name,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
+
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByProjecthskaId(
+        long statusbericht_id);
 }

@@ -275,6 +275,12 @@ public class StatusberichteLocalServiceWrapper
             arguments);
     }
 
+    @Override
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusberichte> findByProjectId(
+        long project_id) {
+        return _statusberichteLocalService.findByProjectId(project_id);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

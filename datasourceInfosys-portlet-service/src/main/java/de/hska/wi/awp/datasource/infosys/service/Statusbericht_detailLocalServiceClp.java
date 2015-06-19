@@ -45,6 +45,8 @@ public class Statusbericht_detailLocalServiceClp
     private String[] _methodParameterTypes16;
     private String _methodName17;
     private String[] _methodParameterTypes17;
+    private String _methodName19;
+    private String[] _methodParameterTypes19;
 
     public Statusbericht_detailLocalServiceClp(
         InvokableLocalService invokableLocalService) {
@@ -139,6 +141,10 @@ public class Statusbericht_detailLocalServiceClp
         _methodName17 = "setBeanIdentifier";
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
+
+        _methodName19 = "findByProjecthskaId";
+
+        _methodParameterTypes19 = new String[] { "long" };
     }
 
     @Override
@@ -658,5 +664,27 @@ public class Statusbericht_detailLocalServiceClp
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByProjecthskaId(
+        long statusbericht_id) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName19,
+                    _methodParameterTypes19, new Object[] { statusbericht_id });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail) ClpSerializer.translateOutput(returnObj);
     }
 }
