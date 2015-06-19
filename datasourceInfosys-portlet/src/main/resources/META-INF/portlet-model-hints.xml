@@ -1,16 +1,6 @@
 <?xml version="1.0"?>
 
 <model-hints>
-	<model name="de.hska.wi.awp.datasource.infosys.model.Allgemeines">
-		<field name="id" type="long" />
-		<field name="statusbericht_id" type="long" />
-		<field name="probleme_risiken" type="String" />
-		<field name="massnahmen" type="String" />
-		<field name="situation" type="String">
-			<hint name="max-length">500</hint>
-		</field>
-		<field name="gruende" type="String" />
-	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium">
 		<field name="id" type="long" />
 		<field name="name" type="String" />
@@ -26,13 +16,6 @@
 		<field name="kommentar_beitrag" type="String" />
 		<field name="beitrag" type="int" />
 	</model>
-	<model name="de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit">
-		<field name="id" type="long" />
-		<field name="statusbericht_id" type="long" />
-		<field name="verantwortlicher" type="long" />
-		<field name="arbeit" type="String" />
-		<field name="bis_wann" type="Date" />
-	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Project">
 		<field name="name" type="String" />
 		<field name="projecthskaId" type="String" />
@@ -43,23 +26,41 @@
 		<field name="shortName" type="String" />
 		<field name="name" type="String" />
 	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail">
+		<field name="id" type="long" />
+		<field name="text" type="String">
+			<hint name="max-length">500</hint>
+		</field>
+		<field name="statusbericht_id" type="long" />
+		<field name="statusbericht_detail_punkt_id" type="long" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail_punkt">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit">
+		<field name="id" type="long" />
+		<field name="aktivitaet" type="String" />
+		<field name="bis_wann" type="Date" />
+		<field name="statusbericht_id" type="long" />
+		<field name="verantwortlicher" type="long" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_info">
+		<field name="id" type="long" />
+		<field name="bemerkung" type="String" />
+		<field name="status" type="int" />
+		<field name="statusbericht_id" type="long" />
+		<field name="statusbericht_info_punkt_id" type="long" />
+	</model>
+	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_info_punkt">
+		<field name="id" type="long" />
+		<field name="name" type="String" />
+	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Statusberichte">
 		<field name="id" type="long" />
 		<field name="project_id" type="long" />
 		<field name="datum" type="Date" />
 		<field name="kalenderwoche" type="int" />
-	</model>
-	<model name="de.hska.wi.awp.datasource.infosys.model.Statusueberblick">
-		<field name="id" type="long" />
-		<field name="statusbericht_id" type="long" />
-		<field name="qualitaet_status" type="String" />
-		<field name="qualitaet_text" type="String" />
-		<field name="kosten_text" type="String" />
-		<field name="kosten_status" type="String" />
-		<field name="aufwand_status" type="String" />
-		<field name="aufwand_text" type="String" />
-		<field name="termine_status" type="String" />
-		<field name="termine_text" type="String" />
 	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Student">
 		<field name="firstName" type="String" />

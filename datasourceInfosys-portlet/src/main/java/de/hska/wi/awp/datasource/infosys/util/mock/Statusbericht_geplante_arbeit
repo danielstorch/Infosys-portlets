@@ -1,0 +1,404 @@
+{
+"Statusbericht_geplante_arbeit":
+[
+  {
+    "id":"100",
+    "aktivitaet":"Arbeitsprotkolle Uebersicht",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"135",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"101",
+    "aktivitaet":"Excel Export Wochenberichte",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"135",
+    "verantwortlicher":"103"
+  },
+  {
+    "id":"102",
+    "aktivitaet":"Notenverwaltung",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"135",
+    "verantwortlicher":"100"
+  },
+  {
+    "id":"103",
+    "aktivitaet":"Statusbericht ansehen",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"135",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"104",
+    "aktivitaet":"Kundengespraeche organisieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"134",
+    "verantwortlicher":"121"
+  },
+  {
+    "id":"105",
+    "aktivitaet":"Treffen mit dem Kunden organisieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"133",
+    "verantwortlicher":"107"
+  },
+  {
+    "id":"106",
+    "aktivitaet":"Arbeitsplaene erstellen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"133",
+    "verantwortlicher":"125"
+  },
+  {
+    "id":"107",
+    "aktivitaet":"diverse Dinge programmieren",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"133",
+    "verantwortlicher":"127"
+  },
+  {
+    "id":"108",
+    "aktivitaet":"Mit Betreuern besprechen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"109"
+  },
+  {
+    "id":"109",
+    "aktivitaet":"Irgendwoher Hilfe holen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"114"
+  },
+  {
+    "id":"110",
+    "aktivitaet":"Telefonjoker waehlen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"120"
+  },
+  {
+    "id":"111",
+    "aktivitaet":"50-50 Joker nutzen",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"109"
+  },
+  {
+    "id":"112",
+    "aktivitaet":"Die Startseite muss programmiert und reviewed werden",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"114"
+  },
+  {
+    "id":"113",
+    "aktivitaet":"Grosse Taetigkeit ausfuehren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"120"
+  },
+  {
+    "id":"114",
+    "aktivitaet":"kleine Taetigkeit ausfuehren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"109"
+  },
+  {
+    "id":"115",
+    "aktivitaet":"mit dem kompletten Team um Hilfe flehen weil gar nichts mehr klappt",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"114"
+  },
+  {
+    "id":"116",
+    "aktivitaet":"rest Aufrufe programmieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"130",
+    "verantwortlicher":"120"
+  },
+  {
+    "id":"117",
+    "aktivitaet":"Hilfe Datei schreiben",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"129",
+    "verantwortlicher":"116"
+  },
+  {
+    "id":"118",
+    "aktivitaet":"fuer die Dokumentation eine Gliederung erstellen und soweit moeglich mit Daten fuellen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"129",
+    "verantwortlicher":"117"
+  },
+  {
+    "id":"119",
+    "aktivitaet":"programmieren",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"129",
+    "verantwortlicher":"118"
+  },
+  {
+    "id":"120",
+    "aktivitaet":"Design erstellen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"128",
+    "verantwortlicher":"115"
+  },
+  {
+    "id":"121",
+    "aktivitaet":"Mockups erstellen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"128",
+    "verantwortlicher":"123"
+  },
+  {
+    "id":"122",
+    "aktivitaet":"Review terminieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"128",
+    "verantwortlicher":"124"
+  },
+  {
+    "id":"123",
+    "aktivitaet":"Dokumentation schreiben und komtrollieren",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"128",
+    "verantwortlicher":"119"
+  },
+  {
+    "id":"124",
+    "aktivitaet":"den Programmcode kommentieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"128",
+    "verantwortlicher":"115"
+  },
+  {
+    "id":"125",
+    "aktivitaet":"Hilfedateien schreiben",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"127",
+    "verantwortlicher":"111"
+  },
+  {
+    "id":"126",
+    "aktivitaet":"Programmieren",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"127",
+    "verantwortlicher":"112"
+  },
+  {
+    "id":"127",
+    "aktivitaet":"Informationen einholen",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"127",
+    "verantwortlicher":"113"
+  },
+  {
+    "id":"128",
+    "aktivitaet":"in das Framework einarbeiten und erste Gehversuche machen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"126",
+    "verantwortlicher":"106"
+  },
+  {
+    "id":"129",
+    "aktivitaet":"Entwicklungsumgebung aufsetzen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"126",
+    "verantwortlicher":"108"
+  },
+  {
+    "id":"130",
+    "aktivitaet":"woechentliche Termine mit dem Kunden ausmachen",
+    "bis_wann":"25.05.2011",
+    "statusbericht_id":"126",
+    "verantwortlicher":"106"
+  },
+  {
+    "id":"131",
+    "aktivitaet":"Programmfertigstellung feiern",
+    "bis_wann":"05.06.2011",
+    "statusbericht_id":"126",
+    "verantwortlicher":"108"
+  },
+  {
+    "id":"132",
+    "aktivitaet":"Geplante Arbeit Nummer 1",
+    "bis_wann":"06.06.2011",
+    "statusbericht_id":"124",
+    "verantwortlicher":"125"
+  },
+  {
+    "id":"133",
+    "aktivitaet":"Geplante Arbeit Nummer 2",
+    "bis_wann":"07.06.2011",
+    "statusbericht_id":"123",
+    "verantwortlicher":"122"
+  },
+  {
+    "id":"134",
+    "aktivitaet":"Geplante Arbeit Nummer 3",
+    "bis_wann":"08.06.2011",
+    "statusbericht_id":"122",
+    "verantwortlicher":"109"
+  },
+  {
+    "id":"135",
+    "aktivitaet":"Geplante Arbeit Nummer 4",
+    "bis_wann":"09.06.2011",
+    "statusbericht_id":"121",
+    "verantwortlicher":"117"
+  },
+  {
+    "id":"136",
+    "aktivitaet":"Geplante Arbeit Nummer 5",
+    "bis_wann":"10.06.2011",
+    "statusbericht_id":"120",
+    "verantwortlicher":"123"
+  },
+  {
+    "id":"137",
+    "aktivitaet":"Geplante Arbeit Nummer 6",
+    "bis_wann":"11.06.2011",
+    "statusbericht_id":"119",
+    "verantwortlicher":"112"
+  },
+  {
+    "id":"138",
+    "aktivitaet":"Geplante Arbeit Nummer 7",
+    "bis_wann":"12.06.2011",
+    "statusbericht_id":"118",
+    "verantwortlicher":"108"
+  },
+  {
+    "id":"139",
+    "aktivitaet":"Geplante Arbeit Nummer 8",
+    "bis_wann":"13.06.2011",
+    "statusbericht_id":"117",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"140",
+    "aktivitaet":"Geplante Arbeit Nummer 9",
+    "bis_wann":"14.06.2011",
+    "statusbericht_id":"116",
+    "verantwortlicher":"127"
+  },
+  {
+    "id":"141",
+    "aktivitaet":"Geplante Arbeit Nummer 10",
+    "bis_wann":"15.06.2011",
+    "statusbericht_id":"115",
+    "verantwortlicher":"121"
+  },
+  {
+    "id":"142",
+    "aktivitaet":"Geplante Arbeit Nummer 11",
+    "bis_wann":"16.06.2011",
+    "statusbericht_id":"114",
+    "verantwortlicher":"120"
+  },
+  {
+    "id":"143",
+    "aktivitaet":"Geplante Arbeit Nummer 12",
+    "bis_wann":"17.06.2011",
+    "statusbericht_id":"113",
+    "verantwortlicher":"116"
+  },
+  {
+    "id":"144",
+    "aktivitaet":"Geplante Arbeit Nummer 13",
+    "bis_wann":"18.06.2011",
+    "statusbericht_id":"112",
+    "verantwortlicher":"115"
+  },
+  {
+    "id":"145",
+    "aktivitaet":"Geplante Arbeit Nummer 14",
+    "bis_wann":"19.06.2011",
+    "statusbericht_id":"111",
+    "verantwortlicher":"111"
+  },
+  {
+    "id":"146",
+    "aktivitaet":"Geplante Arbeit Nummer 15",
+    "bis_wann":"20.06.2011",
+    "statusbericht_id":"110",
+    "verantwortlicher":"106"
+  },
+  {
+    "id":"147",
+    "aktivitaet":"Geplante Arbeit Nummer 16",
+    "bis_wann":"21.06.2011",
+    "statusbericht_id":"109",
+    "verantwortlicher":"101"
+  },
+  {
+    "id":"148",
+    "aktivitaet":"Geplante Arbeit Nummer 17",
+    "bis_wann":"22.06.2011",
+    "statusbericht_id":"108",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"149",
+    "aktivitaet":"Geplante Arbeit Nummer 18",
+    "bis_wann":"23.06.2011",
+    "statusbericht_id":"107",
+    "verantwortlicher":"103"
+  },
+  {
+    "id":"150",
+    "aktivitaet":"Geplante Arbeit Nummer 19",
+    "bis_wann":"24.06.2011",
+    "statusbericht_id":"106",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"151",
+    "aktivitaet":"Geplante Arbeit Nummer 20",
+    "bis_wann":"25.06.2011",
+    "statusbericht_id":"105",
+    "verantwortlicher":"110"
+  },
+  {
+    "id":"152",
+    "aktivitaet":"Geplante Arbeit Nummer 21",
+    "bis_wann":"26.06.2011",
+    "statusbericht_id":"104",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"153",
+    "aktivitaet":"Geplante Arbeit Nummer 22",
+    "bis_wann":"27.06.2011",
+    "statusbericht_id":"103",
+    "verantwortlicher":"103"
+  },
+  {
+    "id":"154",
+    "aktivitaet":"Geplante Arbeit Nummer 23",
+    "bis_wann":"28.06.2011",
+    "statusbericht_id":"102",
+    "verantwortlicher":"101"
+  },
+  {
+    "id":"155",
+    "aktivitaet":"Geplante Arbeit Nummer 24",
+    "bis_wann":"29.06.2011",
+    "statusbericht_id":"101",
+    "verantwortlicher":"102"
+  },
+  {
+    "id":"156",
+    "aktivitaet":"Geplante Arbeit Nummer 25",
+    "bis_wann":"30.06.2011",
+    "statusbericht_id":"100",
+    "verantwortlicher":"102"
+  }
+]
+}

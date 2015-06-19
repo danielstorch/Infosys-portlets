@@ -1,30 +1,36 @@
 <?xml version="1.0"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-	<bean id="de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.AllgemeinesLocalServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.AllgemeinesService" class="de.hska.wi.awp.datasource.infosys.service.impl.AllgemeinesServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.BewertungskriteriumLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService" class="de.hska.wi.awp.datasource.infosys.service.impl.BewertungskriteriumServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.FeedbackLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.FeedbackLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.FeedbackService" class="de.hska.wi.awp.datasource.infosys.service.impl.FeedbackServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistenceImpl" parent="basePersistence" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Geplante_arbeitLocalServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitService" class="de.hska.wi.awp.datasource.infosys.service.impl.Geplante_arbeitServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Geplante_arbeitPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Geplante_arbeitPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.ProjectLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.ProjectLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.ProjectService" class="de.hska.wi.awp.datasource.infosys.service.impl.ProjectServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.RolleLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.RolleLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.RolleService" class="de.hska.wi.awp.datasource.infosys.service.impl.RolleServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_detailLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_detailServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detailPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detailPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_detail_punktLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_detail_punktServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detail_punktPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detail_punktPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_geplante_arbeitLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_geplante_arbeitServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_geplante_arbeitPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_geplante_arbeitPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_infoLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_infoServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_infoPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_infoPersistenceImpl" parent="basePersistence" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_info_punktLocalServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktService" class="de.hska.wi.awp.datasource.infosys.service.impl.Statusbericht_info_punktServiceImpl" />
+	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_info_punktPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_info_punktPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusberichteLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusberichteService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusberichteServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistenceImpl" parent="basePersistence" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusueberblickLocalServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.StatusueberblickService" class="de.hska.wi.awp.datasource.infosys.service.impl.StatusueberblickServiceImpl" />
-	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.StatusueberblickPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.StatusueberblickPersistenceImpl" parent="basePersistence" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StudentLocalService" class="de.hska.wi.awp.datasource.infosys.service.impl.StudentLocalServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.StudentService" class="de.hska.wi.awp.datasource.infosys.service.impl.StudentServiceImpl" />
 	<bean id="de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistence" class="de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistenceImpl" parent="basePersistence" />

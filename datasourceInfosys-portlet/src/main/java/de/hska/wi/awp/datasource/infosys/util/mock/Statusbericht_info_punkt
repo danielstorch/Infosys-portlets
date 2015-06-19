@@ -1,0 +1,21 @@
+{
+"Statusbericht_info_punkt":
+[
+  {
+    "id":"100",
+    "name":"Termine"
+  },
+  {
+    "id":"101",
+    "name":"Aufwand"
+  },
+  {
+    "id":"102",
+    "name":"Kosten"
+  },
+  {
+    "id":"103",
+    "name":"Qualität"
+  }
+]
+}

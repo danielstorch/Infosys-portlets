@@ -1,0 +1,21 @@
+{
+"Statusbericht_detail_punkt":
+[
+  {
+    "id":"100",
+    "name":"Situation"
+  },
+  {
+    "id":"101",
+    "name":"Erkennbare Probleme/Risiken"
+  },
+  {
+    "id":"102",
+    "name":"Gründe"
+  },
+  {
+    "id":"103",
+    "name":"Ergriffene Maßnamen"
+  }
+]
+}

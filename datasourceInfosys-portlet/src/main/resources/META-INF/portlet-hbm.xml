@@ -2,27 +2,18 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping default-lazy="false" auto-import="false">
-	<import class="de.hska.wi.awp.datasource.infosys.model.Allgemeines" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Feedback" />
-	<import class="de.hska.wi.awp.datasource.infosys.model.Geplante_arbeit" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Project" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Rolle" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail_punkt" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Statusbericht_info" />
+	<import class="de.hska.wi.awp.datasource.infosys.model.Statusbericht_info_punkt" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Statusberichte" />
-	<import class="de.hska.wi.awp.datasource.infosys.model.Statusueberblick" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Student" />
 	<import class="de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback" />
-	<class name="de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl" table="datasourceInfosys_Allgemeines">
-		<cache usage="read-write" />
-		<id name="id" column="id_" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="probleme_risiken" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="massnahmen" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="situation" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="gruende" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumImpl" table="datasourceInfosys_Bewertungskriterium">
 		<cache usage="read-write" />
 		<id name="id" column="id_" type="long">
@@ -44,16 +35,6 @@
 		<property name="kommentar_beitrag" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="beitrag" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
-	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Geplante_arbeitImpl" table="datasourceInfosys_Geplante_arbeit">
-		<cache usage="read-write" />
-		<id name="id" column="id_" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="verantwortlicher" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="arbeit" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="bis_wann" type="org.hibernate.type.TimestampType" />
-	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.ProjectImpl" table="datasourceInfosys_Project">
 		<cache usage="read-write" />
 		<id name="id" column="id_" type="long">
@@ -70,6 +51,49 @@
 		<property name="shortName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detailImpl" table="datasourceInfosys_Statusbericht_detail">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="text" type="com.liferay.portal.dao.orm.hibernate.StringType" column="text_" />
+		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusbericht_detail_punkt_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detail_punktImpl" table="datasourceInfosys_Statusbericht_detail_punkt">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_geplante_arbeitImpl" table="datasourceInfosys_Statusbericht_geplante_arbeit">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="aktivitaet" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="bis_wann" type="org.hibernate.type.TimestampType" />
+		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="verantwortlicher" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_infoImpl" table="datasourceInfosys_Statusbericht_info">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="bemerkung" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="statusbericht_info_punkt_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_info_punktImpl" table="datasourceInfosys_Statusbericht_info_punkt">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl" table="datasourceInfosys_Statusberichte">
 		<cache usage="read-write" />
 		<id name="id" column="id_" type="long">
@@ -78,21 +102,6 @@
 		<property name="project_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
 		<property name="datum" type="org.hibernate.type.TimestampType" />
 		<property name="kalenderwoche" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
-	</class>
-	<class name="de.hska.wi.awp.datasource.infosys.model.impl.StatusueberblickImpl" table="datasourceInfosys_Statusueberblick">
-		<cache usage="read-write" />
-		<id name="id" column="id_" type="long">
-			<generator class="assigned" />
-		</id>
-		<property name="statusbericht_id" type="com.liferay.portal.dao.orm.hibernate.LongType" />
-		<property name="qualitaet_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="qualitaet_text" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="kosten_text" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="kosten_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="aufwand_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="aufwand_text" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="termine_status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
-		<property name="termine_text" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 	</class>
 	<class name="de.hska.wi.awp.datasource.infosys.model.impl.StudentImpl" table="datasourceInfosys_Student">
 		<cache usage="read-write" />

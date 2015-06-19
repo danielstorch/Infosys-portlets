@@ -41,12 +41,12 @@ public class Teilnote_feedbackLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public Teilnote_feedbackLocalServiceClpInvoker() {
         _methodName0 = "addTeilnote_feedback";
@@ -131,17 +131,17 @@ public class Teilnote_feedbackLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName94 = "findByFeedback_idAndBewertungskriterium_id";
+        _methodName106 = "findByFeedback_idAndBewertungskriterium_id";
 
-        _methodParameterTypes94 = new String[] { "long", "int" };
+        _methodParameterTypes106 = new String[] { "long", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -233,20 +233,20 @@ public class Teilnote_feedbackLocalServiceClpInvoker {
             return Teilnote_feedbackLocalServiceUtil.updateTeilnote_feedback((de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return Teilnote_feedbackLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             Teilnote_feedbackLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue());
         }

@@ -1,12 +1,3 @@
-create table datasourceInfosys_Allgemeines (
-	id_ LONG not null primary key,
-	statusbericht_id LONG,
-	probleme_risiken VARCHAR(75) null,
-	massnahmen VARCHAR(75) null,
-	situation VARCHAR(500) null,
-	gruende VARCHAR(75) null
-);
-
 create table datasourceInfosys_Bewertungskriterium (
 	id_ LONG not null primary key,
 	name VARCHAR(75) null,
@@ -24,14 +15,6 @@ create table datasourceInfosys_Feedback (
 	beitrag INTEGER
 );
 
-create table datasourceInfosys_Geplante_arbeit (
-	id_ LONG not null primary key,
-	statusbericht_id LONG,
-	verantwortlicher LONG,
-	arbeit VARCHAR(75) null,
-	bis_wann DATE null
-);
-
 create table datasourceInfosys_Project (
 	name VARCHAR(75) null,
 	projecthskaId VARCHAR(75) null,
@@ -41,6 +24,39 @@ create table datasourceInfosys_Project (
 create table datasourceInfosys_Rolle (
 	id_ LONG not null primary key,
 	shortName VARCHAR(75) null,
+	name VARCHAR(75) null
+);
+
+create table datasourceInfosys_Statusbericht_detail (
+	id_ LONG not null primary key,
+	text_ VARCHAR(500) null,
+	statusbericht_id LONG,
+	statusbericht_detail_punkt_id LONG
+);
+
+create table datasourceInfosys_Statusbericht_detail_punkt (
+	id_ LONG not null primary key,
+	name VARCHAR(75) null
+);
+
+create table datasourceInfosys_Statusbericht_geplante_arbeit (
+	id_ LONG not null primary key,
+	aktivitaet VARCHAR(75) null,
+	bis_wann DATE null,
+	statusbericht_id LONG,
+	verantwortlicher LONG
+);
+
+create table datasourceInfosys_Statusbericht_info (
+	id_ LONG not null primary key,
+	bemerkung VARCHAR(75) null,
+	status INTEGER,
+	statusbericht_id LONG,
+	statusbericht_info_punkt_id LONG
+);
+
+create table datasourceInfosys_Statusbericht_info_punkt (
+	id_ LONG not null primary key,
 	name VARCHAR(75) null
 );
 
@@ -72,19 +88,6 @@ create table datasourceInfosys_Student (
 	studenthskaId VARCHAR(75) null,
 	matnr LONG,
 	role LONG
-);
-
-create table datasourceInfosys_Students_Projects (
-	projectId LONG not null,
-	studentId LONG not null,
-	primary key (projectId, studentId)
-);
-
-create table datasourceInfosys_Teilnote (
-	id_ LONG not null primary key,
-	feedback_id LONG,
-	note INTEGER,
-	kategorie LONG
 );
 
 create table datasourceInfosys_Teilnote_feedback (

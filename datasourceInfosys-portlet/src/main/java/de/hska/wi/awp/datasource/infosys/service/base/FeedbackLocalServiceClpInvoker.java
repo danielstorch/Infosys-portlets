@@ -41,16 +41,16 @@ public class FeedbackLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
-    private String _methodName95;
-    private String[] _methodParameterTypes95;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
+    private String _methodName107;
+    private String[] _methodParameterTypes107;
+    private String _methodName108;
+    private String[] _methodParameterTypes108;
 
     public FeedbackLocalServiceClpInvoker() {
         _methodName0 = "addFeedback";
@@ -135,25 +135,25 @@ public class FeedbackLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Feedback"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName94 = "findByStudent_idAndFeedback_runden_nr";
+        _methodName106 = "findByStudent_idAndFeedback_runden_nr";
 
-        _methodParameterTypes94 = new String[] { "long", "int" };
+        _methodParameterTypes106 = new String[] { "long", "int" };
 
-        _methodName95 = "averageContributionOfStudent";
+        _methodName107 = "averageContributionOfStudent";
 
-        _methodParameterTypes95 = new String[] { "long", "int" };
+        _methodParameterTypes107 = new String[] { "long", "int" };
 
-        _methodName96 = "averageContributionOfPorject";
+        _methodName108 = "averageContributionOfPorject";
 
-        _methodParameterTypes96 = new String[] { "long", "int" };
+        _methodParameterTypes108 = new String[] { "long", "int" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -245,32 +245,32 @@ public class FeedbackLocalServiceClpInvoker {
             return FeedbackLocalServiceUtil.updateFeedback((de.hska.wi.awp.datasource.infosys.model.Feedback) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return FeedbackLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             FeedbackLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue());
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+        if (_methodName107.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
             return FeedbackLocalServiceUtil.averageContributionOfStudent(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue());
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName108.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
             return FeedbackLocalServiceUtil.averageContributionOfPorject(((Long) arguments[0]).longValue(),
                 ((Integer) arguments[1]).intValue());
         }

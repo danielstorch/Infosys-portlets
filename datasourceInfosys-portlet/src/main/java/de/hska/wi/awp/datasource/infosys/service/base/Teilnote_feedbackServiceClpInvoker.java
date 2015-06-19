@@ -9,30 +9,30 @@ import java.util.Arrays;
  * @generated
  */
 public class Teilnote_feedbackServiceClpInvoker {
-    private String _methodName72;
-    private String[] _methodParameterTypes72;
-    private String _methodName73;
-    private String[] _methodParameterTypes73;
+    private String _methodName84;
+    private String[] _methodParameterTypes84;
+    private String _methodName85;
+    private String[] _methodParameterTypes85;
 
     public Teilnote_feedbackServiceClpInvoker() {
-        _methodName72 = "getBeanIdentifier";
+        _methodName84 = "getBeanIdentifier";
 
-        _methodParameterTypes72 = new String[] {  };
+        _methodParameterTypes84 = new String[] {  };
 
-        _methodName73 = "setBeanIdentifier";
+        _methodName85 = "setBeanIdentifier";
 
-        _methodParameterTypes73 = new String[] { "java.lang.String" };
+        _methodParameterTypes85 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
         Object[] arguments) throws Throwable {
-        if (_methodName72.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes72, parameterTypes)) {
+        if (_methodName84.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes84, parameterTypes)) {
             return Teilnote_feedbackServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName73.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes73, parameterTypes)) {
+        if (_methodName85.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes85, parameterTypes)) {
             Teilnote_feedbackServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;

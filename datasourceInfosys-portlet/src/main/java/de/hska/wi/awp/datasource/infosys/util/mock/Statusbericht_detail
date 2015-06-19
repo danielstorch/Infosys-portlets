@@ -1,0 +1,869 @@
+{
+"Statusbericht_detail":
+[
+  {
+    "id":"100",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"100",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"101",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"100",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"102",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"100",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"103",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"100",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"104",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"101",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"105",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"101",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"106",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"101",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"107",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"101",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"108",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"102",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"109",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"102",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"110",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"102",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"111",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"102",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"112",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"103",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"113",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"103",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"114",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"103",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"115",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"103",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"116",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"104",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"117",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"104",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"118",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"104",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"119",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"104",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"120",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"105",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"121",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"105",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"122",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"105",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"123",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"105",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"124",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"106",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"125",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"106",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"126",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"106",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"127",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"106",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"128",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"107",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"129",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"107",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"130",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"107",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"131",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"107",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"132",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"108",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"133",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"108",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"134",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"108",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"135",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"108",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"136",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"109",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"137",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"109",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"138",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"109",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"139",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"109",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"140",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"110",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"141",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"110",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"142",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"110",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"143",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"110",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"144",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"111",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"145",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"111",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"146",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"111",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"147",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"111",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"148",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"112",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"149",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"112",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"150",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"112",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"151",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"112",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"152",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"113",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"153",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"113",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"154",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"113",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"155",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"113",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"156",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"114",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"157",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"114",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"158",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"114",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"159",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"114",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"160",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"115",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"161",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"115",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"162",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"115",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"163",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"115",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"164",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"116",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"165",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"116",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"166",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"116",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"167",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"116",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"168",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"117",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"169",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"117",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"170",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"117",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"171",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"117",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"172",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"118",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"173",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"118",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"174",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"118",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"175",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"118",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"176",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"119",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"177",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"119",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"178",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"119",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"179",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"119",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"180",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"120",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"181",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"120",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"182",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"120",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"183",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"120",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"184",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"121",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"185",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"121",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"186",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"121",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"187",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"121",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"188",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"122",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"189",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"122",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"190",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"122",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"191",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"122",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"192",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"123",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"193",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"123",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"194",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"123",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"195",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"123",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"196",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"124",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"197",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"124",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"198",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"124",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"199",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"124",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"200",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"125",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"201",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"125",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"202",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"125",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"203",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"125",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"204",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"126",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"205",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"126",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"206",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"126",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"207",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"126",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"208",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"127",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"209",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"127",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"210",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"127",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"211",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"127",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"212",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"128",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"213",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"128",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"214",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"128",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"215",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"128",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"216",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"129",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"217",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"129",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"218",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"129",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"219",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"129",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"220",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"130",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"221",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"130",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"222",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"130",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"223",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"130",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"224",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"131",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"225",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"131",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"226",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"131",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"227",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"131",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"228",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"132",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"229",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"132",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"230",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"132",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"231",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"132",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"232",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"133",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"233",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"133",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"234",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"133",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"235",
+    "text":"Beispieltext der die Ergriffenen Massnahmen beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"133",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"236",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"134",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"237",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"134",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"238",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"134",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"239",
+    "text":"laut csv der aktuellste Beispieltext der die Ergriffenen Massnahmen (Projekt 106)  beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"134",
+    "statusbericht_detail_punkt_id":"103"
+  },
+  {
+    "id":"240",
+    "text":"Beispieltext der die Situation beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"135",
+    "statusbericht_detail_punkt_id":"100"
+  },
+  {
+    "id":"241",
+    "text":"Beispieltext der die erkennbaren Probleme beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"135",
+    "statusbericht_detail_punkt_id":"101"
+  },
+  {
+    "id":"242",
+    "text":"Beispieltext der die Gruende beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"135",
+    "statusbericht_detail_punkt_id":"102"
+  },
+  {
+    "id":"243",
+    "text":"laut csv der aktuellste Beispieltext der die Ergriffenen Massnahmen (Projekt 100)  beschreibt und nicht zu kurz sein sollte",
+    "statusbericht_id":"135",
+    "statusbericht_detail_punkt_id":"103"
+  }
+]
+}

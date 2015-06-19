@@ -19,14 +19,16 @@ import com.liferay.portal.service.persistence.UserPersistence;
 
 import de.hska.wi.awp.datasource.infosys.model.Rolle;
 import de.hska.wi.awp.datasource.infosys.service.RolleLocalService;
-import de.hska.wi.awp.datasource.infosys.service.persistence.AllgemeinesPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.BewertungskriteriumPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.FeedbackPersistence;
-import de.hska.wi.awp.datasource.infosys.service.persistence.Geplante_arbeitPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.RollePersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detailPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detail_punktPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_geplante_arbeitPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_infoPersistence;
+import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_info_punktPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StatusberichtePersistence;
-import de.hska.wi.awp.datasource.infosys.service.persistence.StatusueberblickPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.StudentPersistence;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Teilnote_feedbackPersistence;
 
@@ -50,12 +52,6 @@ import javax.sql.DataSource;
  */
 public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     implements RolleLocalService, IdentifiableBean {
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService allgemeinesLocalService;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.AllgemeinesService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.AllgemeinesService allgemeinesService;
-    @BeanReference(type = AllgemeinesPersistence.class)
-    protected AllgemeinesPersistence allgemeinesPersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalService bewertungskriteriumLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumService.class)
@@ -68,12 +64,6 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     protected de.hska.wi.awp.datasource.infosys.service.FeedbackService feedbackService;
     @BeanReference(type = FeedbackPersistence.class)
     protected FeedbackPersistence feedbackPersistence;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalService geplante_arbeitLocalService;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitService geplante_arbeitService;
-    @BeanReference(type = Geplante_arbeitPersistence.class)
-    protected Geplante_arbeitPersistence geplante_arbeitPersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.ProjectLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.ProjectLocalService projectLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.ProjectService.class)
@@ -86,18 +76,42 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     protected de.hska.wi.awp.datasource.infosys.service.RolleService rolleService;
     @BeanReference(type = RollePersistence.class)
     protected RollePersistence rollePersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalService statusbericht_detailLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailService statusbericht_detailService;
+    @BeanReference(type = Statusbericht_detailPersistence.class)
+    protected Statusbericht_detailPersistence statusbericht_detailPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktLocalService statusbericht_detail_punktLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktService statusbericht_detail_punktService;
+    @BeanReference(type = Statusbericht_detail_punktPersistence.class)
+    protected Statusbericht_detail_punktPersistence statusbericht_detail_punktPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalService statusbericht_geplante_arbeitLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitService statusbericht_geplante_arbeitService;
+    @BeanReference(type = Statusbericht_geplante_arbeitPersistence.class)
+    protected Statusbericht_geplante_arbeitPersistence statusbericht_geplante_arbeitPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalService statusbericht_infoLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoService statusbericht_infoService;
+    @BeanReference(type = Statusbericht_infoPersistence.class)
+    protected Statusbericht_infoPersistence statusbericht_infoPersistence;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktLocalService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktLocalService statusbericht_info_punktLocalService;
+    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktService.class)
+    protected de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktService statusbericht_info_punktService;
+    @BeanReference(type = Statusbericht_info_punktPersistence.class)
+    protected Statusbericht_info_punktPersistence statusbericht_info_punktPersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalService statusberichteLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusberichteService.class)
     protected de.hska.wi.awp.datasource.infosys.service.StatusberichteService statusberichteService;
     @BeanReference(type = StatusberichtePersistence.class)
     protected StatusberichtePersistence statusberichtePersistence;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalService statusueberblickLocalService;
-    @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StatusueberblickService.class)
-    protected de.hska.wi.awp.datasource.infosys.service.StatusueberblickService statusueberblickService;
-    @BeanReference(type = StatusueberblickPersistence.class)
-    protected StatusueberblickPersistence statusueberblickPersistence;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StudentLocalService.class)
     protected de.hska.wi.awp.datasource.infosys.service.StudentLocalService studentLocalService;
     @BeanReference(type = de.hska.wi.awp.datasource.infosys.service.StudentService.class)
@@ -340,63 +354,6 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     }
 
     /**
-     * Returns the allgemeines local service.
-     *
-     * @return the allgemeines local service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService getAllgemeinesLocalService() {
-        return allgemeinesLocalService;
-    }
-
-    /**
-     * Sets the allgemeines local service.
-     *
-     * @param allgemeinesLocalService the allgemeines local service
-     */
-    public void setAllgemeinesLocalService(
-        de.hska.wi.awp.datasource.infosys.service.AllgemeinesLocalService allgemeinesLocalService) {
-        this.allgemeinesLocalService = allgemeinesLocalService;
-    }
-
-    /**
-     * Returns the allgemeines remote service.
-     *
-     * @return the allgemeines remote service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.AllgemeinesService getAllgemeinesService() {
-        return allgemeinesService;
-    }
-
-    /**
-     * Sets the allgemeines remote service.
-     *
-     * @param allgemeinesService the allgemeines remote service
-     */
-    public void setAllgemeinesService(
-        de.hska.wi.awp.datasource.infosys.service.AllgemeinesService allgemeinesService) {
-        this.allgemeinesService = allgemeinesService;
-    }
-
-    /**
-     * Returns the allgemeines persistence.
-     *
-     * @return the allgemeines persistence
-     */
-    public AllgemeinesPersistence getAllgemeinesPersistence() {
-        return allgemeinesPersistence;
-    }
-
-    /**
-     * Sets the allgemeines persistence.
-     *
-     * @param allgemeinesPersistence the allgemeines persistence
-     */
-    public void setAllgemeinesPersistence(
-        AllgemeinesPersistence allgemeinesPersistence) {
-        this.allgemeinesPersistence = allgemeinesPersistence;
-    }
-
-    /**
      * Returns the bewertungskriterium local service.
      *
      * @return the bewertungskriterium local service
@@ -507,63 +464,6 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
      */
     public void setFeedbackPersistence(FeedbackPersistence feedbackPersistence) {
         this.feedbackPersistence = feedbackPersistence;
-    }
-
-    /**
-     * Returns the geplante_arbeit local service.
-     *
-     * @return the geplante_arbeit local service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalService getGeplante_arbeitLocalService() {
-        return geplante_arbeitLocalService;
-    }
-
-    /**
-     * Sets the geplante_arbeit local service.
-     *
-     * @param geplante_arbeitLocalService the geplante_arbeit local service
-     */
-    public void setGeplante_arbeitLocalService(
-        de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitLocalService geplante_arbeitLocalService) {
-        this.geplante_arbeitLocalService = geplante_arbeitLocalService;
-    }
-
-    /**
-     * Returns the geplante_arbeit remote service.
-     *
-     * @return the geplante_arbeit remote service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitService getGeplante_arbeitService() {
-        return geplante_arbeitService;
-    }
-
-    /**
-     * Sets the geplante_arbeit remote service.
-     *
-     * @param geplante_arbeitService the geplante_arbeit remote service
-     */
-    public void setGeplante_arbeitService(
-        de.hska.wi.awp.datasource.infosys.service.Geplante_arbeitService geplante_arbeitService) {
-        this.geplante_arbeitService = geplante_arbeitService;
-    }
-
-    /**
-     * Returns the geplante_arbeit persistence.
-     *
-     * @return the geplante_arbeit persistence
-     */
-    public Geplante_arbeitPersistence getGeplante_arbeitPersistence() {
-        return geplante_arbeitPersistence;
-    }
-
-    /**
-     * Sets the geplante_arbeit persistence.
-     *
-     * @param geplante_arbeitPersistence the geplante_arbeit persistence
-     */
-    public void setGeplante_arbeitPersistence(
-        Geplante_arbeitPersistence geplante_arbeitPersistence) {
-        this.geplante_arbeitPersistence = geplante_arbeitPersistence;
     }
 
     /**
@@ -679,6 +579,291 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     }
 
     /**
+     * Returns the statusbericht_detail local service.
+     *
+     * @return the statusbericht_detail local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalService getStatusbericht_detailLocalService() {
+        return statusbericht_detailLocalService;
+    }
+
+    /**
+     * Sets the statusbericht_detail local service.
+     *
+     * @param statusbericht_detailLocalService the statusbericht_detail local service
+     */
+    public void setStatusbericht_detailLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalService statusbericht_detailLocalService) {
+        this.statusbericht_detailLocalService = statusbericht_detailLocalService;
+    }
+
+    /**
+     * Returns the statusbericht_detail remote service.
+     *
+     * @return the statusbericht_detail remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailService getStatusbericht_detailService() {
+        return statusbericht_detailService;
+    }
+
+    /**
+     * Sets the statusbericht_detail remote service.
+     *
+     * @param statusbericht_detailService the statusbericht_detail remote service
+     */
+    public void setStatusbericht_detailService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailService statusbericht_detailService) {
+        this.statusbericht_detailService = statusbericht_detailService;
+    }
+
+    /**
+     * Returns the statusbericht_detail persistence.
+     *
+     * @return the statusbericht_detail persistence
+     */
+    public Statusbericht_detailPersistence getStatusbericht_detailPersistence() {
+        return statusbericht_detailPersistence;
+    }
+
+    /**
+     * Sets the statusbericht_detail persistence.
+     *
+     * @param statusbericht_detailPersistence the statusbericht_detail persistence
+     */
+    public void setStatusbericht_detailPersistence(
+        Statusbericht_detailPersistence statusbericht_detailPersistence) {
+        this.statusbericht_detailPersistence = statusbericht_detailPersistence;
+    }
+
+    /**
+     * Returns the statusbericht_detail_punkt local service.
+     *
+     * @return the statusbericht_detail_punkt local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktLocalService getStatusbericht_detail_punktLocalService() {
+        return statusbericht_detail_punktLocalService;
+    }
+
+    /**
+     * Sets the statusbericht_detail_punkt local service.
+     *
+     * @param statusbericht_detail_punktLocalService the statusbericht_detail_punkt local service
+     */
+    public void setStatusbericht_detail_punktLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktLocalService statusbericht_detail_punktLocalService) {
+        this.statusbericht_detail_punktLocalService = statusbericht_detail_punktLocalService;
+    }
+
+    /**
+     * Returns the statusbericht_detail_punkt remote service.
+     *
+     * @return the statusbericht_detail_punkt remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktService getStatusbericht_detail_punktService() {
+        return statusbericht_detail_punktService;
+    }
+
+    /**
+     * Sets the statusbericht_detail_punkt remote service.
+     *
+     * @param statusbericht_detail_punktService the statusbericht_detail_punkt remote service
+     */
+    public void setStatusbericht_detail_punktService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_detail_punktService statusbericht_detail_punktService) {
+        this.statusbericht_detail_punktService = statusbericht_detail_punktService;
+    }
+
+    /**
+     * Returns the statusbericht_detail_punkt persistence.
+     *
+     * @return the statusbericht_detail_punkt persistence
+     */
+    public Statusbericht_detail_punktPersistence getStatusbericht_detail_punktPersistence() {
+        return statusbericht_detail_punktPersistence;
+    }
+
+    /**
+     * Sets the statusbericht_detail_punkt persistence.
+     *
+     * @param statusbericht_detail_punktPersistence the statusbericht_detail_punkt persistence
+     */
+    public void setStatusbericht_detail_punktPersistence(
+        Statusbericht_detail_punktPersistence statusbericht_detail_punktPersistence) {
+        this.statusbericht_detail_punktPersistence = statusbericht_detail_punktPersistence;
+    }
+
+    /**
+     * Returns the statusbericht_geplante_arbeit local service.
+     *
+     * @return the statusbericht_geplante_arbeit local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalService getStatusbericht_geplante_arbeitLocalService() {
+        return statusbericht_geplante_arbeitLocalService;
+    }
+
+    /**
+     * Sets the statusbericht_geplante_arbeit local service.
+     *
+     * @param statusbericht_geplante_arbeitLocalService the statusbericht_geplante_arbeit local service
+     */
+    public void setStatusbericht_geplante_arbeitLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalService statusbericht_geplante_arbeitLocalService) {
+        this.statusbericht_geplante_arbeitLocalService = statusbericht_geplante_arbeitLocalService;
+    }
+
+    /**
+     * Returns the statusbericht_geplante_arbeit remote service.
+     *
+     * @return the statusbericht_geplante_arbeit remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitService getStatusbericht_geplante_arbeitService() {
+        return statusbericht_geplante_arbeitService;
+    }
+
+    /**
+     * Sets the statusbericht_geplante_arbeit remote service.
+     *
+     * @param statusbericht_geplante_arbeitService the statusbericht_geplante_arbeit remote service
+     */
+    public void setStatusbericht_geplante_arbeitService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitService statusbericht_geplante_arbeitService) {
+        this.statusbericht_geplante_arbeitService = statusbericht_geplante_arbeitService;
+    }
+
+    /**
+     * Returns the statusbericht_geplante_arbeit persistence.
+     *
+     * @return the statusbericht_geplante_arbeit persistence
+     */
+    public Statusbericht_geplante_arbeitPersistence getStatusbericht_geplante_arbeitPersistence() {
+        return statusbericht_geplante_arbeitPersistence;
+    }
+
+    /**
+     * Sets the statusbericht_geplante_arbeit persistence.
+     *
+     * @param statusbericht_geplante_arbeitPersistence the statusbericht_geplante_arbeit persistence
+     */
+    public void setStatusbericht_geplante_arbeitPersistence(
+        Statusbericht_geplante_arbeitPersistence statusbericht_geplante_arbeitPersistence) {
+        this.statusbericht_geplante_arbeitPersistence = statusbericht_geplante_arbeitPersistence;
+    }
+
+    /**
+     * Returns the statusbericht_info local service.
+     *
+     * @return the statusbericht_info local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalService getStatusbericht_infoLocalService() {
+        return statusbericht_infoLocalService;
+    }
+
+    /**
+     * Sets the statusbericht_info local service.
+     *
+     * @param statusbericht_infoLocalService the statusbericht_info local service
+     */
+    public void setStatusbericht_infoLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalService statusbericht_infoLocalService) {
+        this.statusbericht_infoLocalService = statusbericht_infoLocalService;
+    }
+
+    /**
+     * Returns the statusbericht_info remote service.
+     *
+     * @return the statusbericht_info remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoService getStatusbericht_infoService() {
+        return statusbericht_infoService;
+    }
+
+    /**
+     * Sets the statusbericht_info remote service.
+     *
+     * @param statusbericht_infoService the statusbericht_info remote service
+     */
+    public void setStatusbericht_infoService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoService statusbericht_infoService) {
+        this.statusbericht_infoService = statusbericht_infoService;
+    }
+
+    /**
+     * Returns the statusbericht_info persistence.
+     *
+     * @return the statusbericht_info persistence
+     */
+    public Statusbericht_infoPersistence getStatusbericht_infoPersistence() {
+        return statusbericht_infoPersistence;
+    }
+
+    /**
+     * Sets the statusbericht_info persistence.
+     *
+     * @param statusbericht_infoPersistence the statusbericht_info persistence
+     */
+    public void setStatusbericht_infoPersistence(
+        Statusbericht_infoPersistence statusbericht_infoPersistence) {
+        this.statusbericht_infoPersistence = statusbericht_infoPersistence;
+    }
+
+    /**
+     * Returns the statusbericht_info_punkt local service.
+     *
+     * @return the statusbericht_info_punkt local service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktLocalService getStatusbericht_info_punktLocalService() {
+        return statusbericht_info_punktLocalService;
+    }
+
+    /**
+     * Sets the statusbericht_info_punkt local service.
+     *
+     * @param statusbericht_info_punktLocalService the statusbericht_info_punkt local service
+     */
+    public void setStatusbericht_info_punktLocalService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktLocalService statusbericht_info_punktLocalService) {
+        this.statusbericht_info_punktLocalService = statusbericht_info_punktLocalService;
+    }
+
+    /**
+     * Returns the statusbericht_info_punkt remote service.
+     *
+     * @return the statusbericht_info_punkt remote service
+     */
+    public de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktService getStatusbericht_info_punktService() {
+        return statusbericht_info_punktService;
+    }
+
+    /**
+     * Sets the statusbericht_info_punkt remote service.
+     *
+     * @param statusbericht_info_punktService the statusbericht_info_punkt remote service
+     */
+    public void setStatusbericht_info_punktService(
+        de.hska.wi.awp.datasource.infosys.service.Statusbericht_info_punktService statusbericht_info_punktService) {
+        this.statusbericht_info_punktService = statusbericht_info_punktService;
+    }
+
+    /**
+     * Returns the statusbericht_info_punkt persistence.
+     *
+     * @return the statusbericht_info_punkt persistence
+     */
+    public Statusbericht_info_punktPersistence getStatusbericht_info_punktPersistence() {
+        return statusbericht_info_punktPersistence;
+    }
+
+    /**
+     * Sets the statusbericht_info_punkt persistence.
+     *
+     * @param statusbericht_info_punktPersistence the statusbericht_info_punkt persistence
+     */
+    public void setStatusbericht_info_punktPersistence(
+        Statusbericht_info_punktPersistence statusbericht_info_punktPersistence) {
+        this.statusbericht_info_punktPersistence = statusbericht_info_punktPersistence;
+    }
+
+    /**
      * Returns the statusberichte local service.
      *
      * @return the statusberichte local service
@@ -733,63 +918,6 @@ public abstract class RolleLocalServiceBaseImpl extends BaseLocalServiceImpl
     public void setStatusberichtePersistence(
         StatusberichtePersistence statusberichtePersistence) {
         this.statusberichtePersistence = statusberichtePersistence;
-    }
-
-    /**
-     * Returns the statusueberblick local service.
-     *
-     * @return the statusueberblick local service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalService getStatusueberblickLocalService() {
-        return statusueberblickLocalService;
-    }
-
-    /**
-     * Sets the statusueberblick local service.
-     *
-     * @param statusueberblickLocalService the statusueberblick local service
-     */
-    public void setStatusueberblickLocalService(
-        de.hska.wi.awp.datasource.infosys.service.StatusueberblickLocalService statusueberblickLocalService) {
-        this.statusueberblickLocalService = statusueberblickLocalService;
-    }
-
-    /**
-     * Returns the statusueberblick remote service.
-     *
-     * @return the statusueberblick remote service
-     */
-    public de.hska.wi.awp.datasource.infosys.service.StatusueberblickService getStatusueberblickService() {
-        return statusueberblickService;
-    }
-
-    /**
-     * Sets the statusueberblick remote service.
-     *
-     * @param statusueberblickService the statusueberblick remote service
-     */
-    public void setStatusueberblickService(
-        de.hska.wi.awp.datasource.infosys.service.StatusueberblickService statusueberblickService) {
-        this.statusueberblickService = statusueberblickService;
-    }
-
-    /**
-     * Returns the statusueberblick persistence.
-     *
-     * @return the statusueberblick persistence
-     */
-    public StatusueberblickPersistence getStatusueberblickPersistence() {
-        return statusueberblickPersistence;
-    }
-
-    /**
-     * Sets the statusueberblick persistence.
-     *
-     * @param statusueberblickPersistence the statusueberblick persistence
-     */
-    public void setStatusueberblickPersistence(
-        StatusueberblickPersistence statusueberblickPersistence) {
-        this.statusueberblickPersistence = statusueberblickPersistence;
     }
 
     /**

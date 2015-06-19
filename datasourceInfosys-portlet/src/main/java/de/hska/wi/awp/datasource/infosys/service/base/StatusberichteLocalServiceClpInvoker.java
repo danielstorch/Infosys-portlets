@@ -41,10 +41,10 @@ public class StatusberichteLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
 
     public StatusberichteLocalServiceClpInvoker() {
         _methodName0 = "addStatusberichte";
@@ -129,13 +129,13 @@ public class StatusberichteLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Statusberichte"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -227,13 +227,13 @@ public class StatusberichteLocalServiceClpInvoker {
             return StatusberichteLocalServiceUtil.updateStatusberichte((de.hska.wi.awp.datasource.infosys.model.Statusberichte) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return StatusberichteLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             StatusberichteLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;

@@ -11,14 +11,16 @@ import com.liferay.portal.kernel.util.PropsUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.BaseModel;
 
-import de.hska.wi.awp.datasource.infosys.model.AllgemeinesClp;
 import de.hska.wi.awp.datasource.infosys.model.BewertungskriteriumClp;
 import de.hska.wi.awp.datasource.infosys.model.FeedbackClp;
-import de.hska.wi.awp.datasource.infosys.model.Geplante_arbeitClp;
 import de.hska.wi.awp.datasource.infosys.model.ProjectClp;
 import de.hska.wi.awp.datasource.infosys.model.RolleClp;
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_detailClp;
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail_punktClp;
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeitClp;
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_infoClp;
+import de.hska.wi.awp.datasource.infosys.model.Statusbericht_info_punktClp;
 import de.hska.wi.awp.datasource.infosys.model.StatusberichteClp;
-import de.hska.wi.awp.datasource.infosys.model.StatusueberblickClp;
 import de.hska.wi.awp.datasource.infosys.model.StudentClp;
 import de.hska.wi.awp.datasource.infosys.model.Teilnote_feedbackClp;
 
@@ -97,20 +99,12 @@ public class ClpSerializer {
 
         String oldModelClassName = oldModelClass.getName();
 
-        if (oldModelClassName.equals(AllgemeinesClp.class.getName())) {
-            return translateInputAllgemeines(oldModel);
-        }
-
         if (oldModelClassName.equals(BewertungskriteriumClp.class.getName())) {
             return translateInputBewertungskriterium(oldModel);
         }
 
         if (oldModelClassName.equals(FeedbackClp.class.getName())) {
             return translateInputFeedback(oldModel);
-        }
-
-        if (oldModelClassName.equals(Geplante_arbeitClp.class.getName())) {
-            return translateInputGeplante_arbeit(oldModel);
         }
 
         if (oldModelClassName.equals(ProjectClp.class.getName())) {
@@ -121,12 +115,31 @@ public class ClpSerializer {
             return translateInputRolle(oldModel);
         }
 
-        if (oldModelClassName.equals(StatusberichteClp.class.getName())) {
-            return translateInputStatusberichte(oldModel);
+        if (oldModelClassName.equals(Statusbericht_detailClp.class.getName())) {
+            return translateInputStatusbericht_detail(oldModel);
         }
 
-        if (oldModelClassName.equals(StatusueberblickClp.class.getName())) {
-            return translateInputStatusueberblick(oldModel);
+        if (oldModelClassName.equals(
+                    Statusbericht_detail_punktClp.class.getName())) {
+            return translateInputStatusbericht_detail_punkt(oldModel);
+        }
+
+        if (oldModelClassName.equals(
+                    Statusbericht_geplante_arbeitClp.class.getName())) {
+            return translateInputStatusbericht_geplante_arbeit(oldModel);
+        }
+
+        if (oldModelClassName.equals(Statusbericht_infoClp.class.getName())) {
+            return translateInputStatusbericht_info(oldModel);
+        }
+
+        if (oldModelClassName.equals(
+                    Statusbericht_info_punktClp.class.getName())) {
+            return translateInputStatusbericht_info_punkt(oldModel);
+        }
+
+        if (oldModelClassName.equals(StatusberichteClp.class.getName())) {
+            return translateInputStatusberichte(oldModel);
         }
 
         if (oldModelClassName.equals(StudentClp.class.getName())) {
@@ -152,16 +165,6 @@ public class ClpSerializer {
         return newList;
     }
 
-    public static Object translateInputAllgemeines(BaseModel<?> oldModel) {
-        AllgemeinesClp oldClpModel = (AllgemeinesClp) oldModel;
-
-        BaseModel<?> newModel = oldClpModel.getAllgemeinesRemoteModel();
-
-        newModel.setModelAttributes(oldClpModel.getModelAttributes());
-
-        return newModel;
-    }
-
     public static Object translateInputBewertungskriterium(
         BaseModel<?> oldModel) {
         BewertungskriteriumClp oldClpModel = (BewertungskriteriumClp) oldModel;
@@ -177,16 +180,6 @@ public class ClpSerializer {
         FeedbackClp oldClpModel = (FeedbackClp) oldModel;
 
         BaseModel<?> newModel = oldClpModel.getFeedbackRemoteModel();
-
-        newModel.setModelAttributes(oldClpModel.getModelAttributes());
-
-        return newModel;
-    }
-
-    public static Object translateInputGeplante_arbeit(BaseModel<?> oldModel) {
-        Geplante_arbeitClp oldClpModel = (Geplante_arbeitClp) oldModel;
-
-        BaseModel<?> newModel = oldClpModel.getGeplante_arbeitRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -213,20 +206,64 @@ public class ClpSerializer {
         return newModel;
     }
 
-    public static Object translateInputStatusberichte(BaseModel<?> oldModel) {
-        StatusberichteClp oldClpModel = (StatusberichteClp) oldModel;
+    public static Object translateInputStatusbericht_detail(
+        BaseModel<?> oldModel) {
+        Statusbericht_detailClp oldClpModel = (Statusbericht_detailClp) oldModel;
 
-        BaseModel<?> newModel = oldClpModel.getStatusberichteRemoteModel();
+        BaseModel<?> newModel = oldClpModel.getStatusbericht_detailRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
         return newModel;
     }
 
-    public static Object translateInputStatusueberblick(BaseModel<?> oldModel) {
-        StatusueberblickClp oldClpModel = (StatusueberblickClp) oldModel;
+    public static Object translateInputStatusbericht_detail_punkt(
+        BaseModel<?> oldModel) {
+        Statusbericht_detail_punktClp oldClpModel = (Statusbericht_detail_punktClp) oldModel;
 
-        BaseModel<?> newModel = oldClpModel.getStatusueberblickRemoteModel();
+        BaseModel<?> newModel = oldClpModel.getStatusbericht_detail_punktRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputStatusbericht_geplante_arbeit(
+        BaseModel<?> oldModel) {
+        Statusbericht_geplante_arbeitClp oldClpModel = (Statusbericht_geplante_arbeitClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getStatusbericht_geplante_arbeitRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputStatusbericht_info(BaseModel<?> oldModel) {
+        Statusbericht_infoClp oldClpModel = (Statusbericht_infoClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getStatusbericht_infoRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputStatusbericht_info_punkt(
+        BaseModel<?> oldModel) {
+        Statusbericht_info_punktClp oldClpModel = (Statusbericht_info_punktClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getStatusbericht_info_punktRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
+    public static Object translateInputStatusberichte(BaseModel<?> oldModel) {
+        StatusberichteClp oldClpModel = (StatusberichteClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getStatusberichteRemoteModel();
 
         newModel.setModelAttributes(oldClpModel.getModelAttributes());
 
@@ -269,41 +306,6 @@ public class ClpSerializer {
         String oldModelClassName = oldModelClass.getName();
 
         if (oldModelClassName.equals(
-                    "de.hska.wi.awp.datasource.infosys.model.impl.AllgemeinesImpl")) {
-            return translateOutputAllgemeines(oldModel);
-        } else if (oldModelClassName.endsWith("Clp")) {
-            try {
-                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
-
-                Method getClpSerializerClassMethod = oldModelClass.getMethod(
-                        "getClpSerializerClass");
-
-                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
-
-                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
-
-                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
-                        BaseModel.class);
-
-                Class<?> oldModelModelClass = oldModel.getModelClass();
-
-                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
-                        oldModelModelClass.getSimpleName() + "RemoteModel");
-
-                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
-
-                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
-                        oldRemoteModel);
-
-                return newModel;
-            } catch (Throwable t) {
-                if (_log.isInfoEnabled()) {
-                    _log.info("Unable to translate " + oldModelClassName, t);
-                }
-            }
-        }
-
-        if (oldModelClassName.equals(
                     "de.hska.wi.awp.datasource.infosys.model.impl.BewertungskriteriumImpl")) {
             return translateOutputBewertungskriterium(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
@@ -341,41 +343,6 @@ public class ClpSerializer {
         if (oldModelClassName.equals(
                     "de.hska.wi.awp.datasource.infosys.model.impl.FeedbackImpl")) {
             return translateOutputFeedback(oldModel);
-        } else if (oldModelClassName.endsWith("Clp")) {
-            try {
-                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
-
-                Method getClpSerializerClassMethod = oldModelClass.getMethod(
-                        "getClpSerializerClass");
-
-                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
-
-                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
-
-                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
-                        BaseModel.class);
-
-                Class<?> oldModelModelClass = oldModel.getModelClass();
-
-                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
-                        oldModelModelClass.getSimpleName() + "RemoteModel");
-
-                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
-
-                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
-                        oldRemoteModel);
-
-                return newModel;
-            } catch (Throwable t) {
-                if (_log.isInfoEnabled()) {
-                    _log.info("Unable to translate " + oldModelClassName, t);
-                }
-            }
-        }
-
-        if (oldModelClassName.equals(
-                    "de.hska.wi.awp.datasource.infosys.model.impl.Geplante_arbeitImpl")) {
-            return translateOutputGeplante_arbeit(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -479,8 +446,8 @@ public class ClpSerializer {
         }
 
         if (oldModelClassName.equals(
-                    "de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl")) {
-            return translateOutputStatusberichte(oldModel);
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detailImpl")) {
+            return translateOutputStatusbericht_detail(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -514,8 +481,148 @@ public class ClpSerializer {
         }
 
         if (oldModelClassName.equals(
-                    "de.hska.wi.awp.datasource.infosys.model.impl.StatusueberblickImpl")) {
-            return translateOutputStatusueberblick(oldModel);
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detail_punktImpl")) {
+            return translateOutputStatusbericht_detail_punkt(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_geplante_arbeitImpl")) {
+            return translateOutputStatusbericht_geplante_arbeit(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_infoImpl")) {
+            return translateOutputStatusbericht_info(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_info_punktImpl")) {
+            return translateOutputStatusbericht_info_punkt(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals(
+                    "de.hska.wi.awp.datasource.infosys.model.impl.StatusberichteImpl")) {
+            return translateOutputStatusberichte(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -695,11 +802,6 @@ public class ClpSerializer {
         }
 
         if (className.equals(
-                    "de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException")) {
-            return new de.hska.wi.awp.datasource.infosys.NoSuchAllgemeinesException();
-        }
-
-        if (className.equals(
                     "de.hska.wi.awp.datasource.infosys.NoSuchBewertungskriteriumException")) {
             return new de.hska.wi.awp.datasource.infosys.NoSuchBewertungskriteriumException();
         }
@@ -707,11 +809,6 @@ public class ClpSerializer {
         if (className.equals(
                     "de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException")) {
             return new de.hska.wi.awp.datasource.infosys.NoSuchFeedbackException();
-        }
-
-        if (className.equals(
-                    "de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException")) {
-            return new de.hska.wi.awp.datasource.infosys.NoSuchGeplante_arbeitException();
         }
 
         if (className.equals(
@@ -725,13 +822,33 @@ public class ClpSerializer {
         }
 
         if (className.equals(
-                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException")) {
-            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException();
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException();
         }
 
         if (className.equals(
-                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException")) {
-            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusueberblickException();
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detail_punktException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detail_punktException();
+        }
+
+        if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_geplante_arbeitException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_geplante_arbeitException();
+        }
+
+        if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_infoException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_infoException();
+        }
+
+        if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_info_punktException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_info_punktException();
+        }
+
+        if (className.equals(
+                    "de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException")) {
+            return new de.hska.wi.awp.datasource.infosys.NoSuchStatusberichteException();
         }
 
         if (className.equals(
@@ -745,16 +862,6 @@ public class ClpSerializer {
         }
 
         return throwable;
-    }
-
-    public static Object translateOutputAllgemeines(BaseModel<?> oldModel) {
-        AllgemeinesClp newModel = new AllgemeinesClp();
-
-        newModel.setModelAttributes(oldModel.getModelAttributes());
-
-        newModel.setAllgemeinesRemoteModel(oldModel);
-
-        return newModel;
     }
 
     public static Object translateOutputBewertungskriterium(
@@ -774,16 +881,6 @@ public class ClpSerializer {
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
         newModel.setFeedbackRemoteModel(oldModel);
-
-        return newModel;
-    }
-
-    public static Object translateOutputGeplante_arbeit(BaseModel<?> oldModel) {
-        Geplante_arbeitClp newModel = new Geplante_arbeitClp();
-
-        newModel.setModelAttributes(oldModel.getModelAttributes());
-
-        newModel.setGeplante_arbeitRemoteModel(oldModel);
 
         return newModel;
     }
@@ -808,22 +905,67 @@ public class ClpSerializer {
         return newModel;
     }
 
+    public static Object translateOutputStatusbericht_detail(
+        BaseModel<?> oldModel) {
+        Statusbericht_detailClp newModel = new Statusbericht_detailClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setStatusbericht_detailRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputStatusbericht_detail_punkt(
+        BaseModel<?> oldModel) {
+        Statusbericht_detail_punktClp newModel = new Statusbericht_detail_punktClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setStatusbericht_detail_punktRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputStatusbericht_geplante_arbeit(
+        BaseModel<?> oldModel) {
+        Statusbericht_geplante_arbeitClp newModel = new Statusbericht_geplante_arbeitClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setStatusbericht_geplante_arbeitRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputStatusbericht_info(
+        BaseModel<?> oldModel) {
+        Statusbericht_infoClp newModel = new Statusbericht_infoClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setStatusbericht_infoRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputStatusbericht_info_punkt(
+        BaseModel<?> oldModel) {
+        Statusbericht_info_punktClp newModel = new Statusbericht_info_punktClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setStatusbericht_info_punktRemoteModel(oldModel);
+
+        return newModel;
+    }
+
     public static Object translateOutputStatusberichte(BaseModel<?> oldModel) {
         StatusberichteClp newModel = new StatusberichteClp();
 
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
         newModel.setStatusberichteRemoteModel(oldModel);
-
-        return newModel;
-    }
-
-    public static Object translateOutputStatusueberblick(BaseModel<?> oldModel) {
-        StatusueberblickClp newModel = new StatusueberblickClp();
-
-        newModel.setModelAttributes(oldModel.getModelAttributes());
-
-        newModel.setStatusueberblickRemoteModel(oldModel);
 
         return newModel;
     }

@@ -1,0 +1,1006 @@
+{
+"Statusbericht_info":
+[
+  {
+    "id":"100",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"100",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"101",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"100",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"102",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"100",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"103",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"101",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"104",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"101",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"105",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"101",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"106",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"101",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"107",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"102",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"108",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"102",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"109",
+    "bemerkung":"Die Kosten koennten leicht steigen",
+    "status":"0",
+    "statusbericht_id":"102",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"110",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"102",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"111",
+    "bemerkung":"Einige Ziele werden nicht erreicht",
+    "status":"0",
+    "statusbericht_id":"103",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"112",
+    "bemerkung":"Die Aufwaende sind viel zu hoch",
+    "status":"-1",
+    "statusbericht_id":"103",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"113",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"103",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"114",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"103",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"115",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"104",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"116",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"104",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"117",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"104",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"118",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"104",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"119",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"105",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"120",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"105",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"121",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"105",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"122",
+    "bemerkung":"Die Qualitaet leidet sehr stark",
+    "status":"-1",
+    "statusbericht_id":"105",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"123",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"106",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"124",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"106",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"125",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"106",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"126",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"106",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"127",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"107",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"128",
+    "bemerkung":"Es koennte zu einem Aufwandsengpass werden",
+    "status":"0",
+    "statusbericht_id":"107",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"129",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"107",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"130",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"107",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"131",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"108",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"132",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"108",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"133",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"108",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"134",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"108",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"135",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"109",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"136",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"109",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"137",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"109",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"138",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"109",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"139",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"110",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"140",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"110",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"141",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"110",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"142",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"110",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"143",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"111",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"144",
+    "bemerkung":"Die Kosten koennten leicht steigen",
+    "status":"0",
+    "statusbericht_id":"111",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"145",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"111",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"146",
+    "bemerkung":"Einige Ziele werden nicht erreicht",
+    "status":"0",
+    "statusbericht_id":"111",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"147",
+    "bemerkung":"Die Aufwaende sind viel zu hoch",
+    "status":"-1",
+    "statusbericht_id":"112",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"148",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"112",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"149",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"112",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"150",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"112",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"151",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"113",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"152",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"113",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"153",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"113",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"154",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"113",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"155",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"114",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"156",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"114",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"157",
+    "bemerkung":"Die Qualitaet leidet sehr stark",
+    "status":"-1",
+    "statusbericht_id":"114",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"158",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"114",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"159",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"115",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"160",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"115",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"161",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"115",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"162",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"115",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"163",
+    "bemerkung":"Es koennte zu einem Aufwandsengpass werden",
+    "status":"0",
+    "statusbericht_id":"116",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"164",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"116",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"165",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"116",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"166",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"116",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"167",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"117",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"168",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"117",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"169",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"117",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"170",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"117",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"171",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"118",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"172",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"118",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"173",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"118",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"174",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"118",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"175",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"119",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"176",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"119",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"177",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"119",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"178",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"119",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"179",
+    "bemerkung":"Die Kosten koennten leicht steigen",
+    "status":"0",
+    "statusbericht_id":"120",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"180",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"120",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"181",
+    "bemerkung":"Einige Ziele werden nicht erreicht",
+    "status":"0",
+    "statusbericht_id":"120",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"182",
+    "bemerkung":"Die Aufwaende sind viel zu hoch",
+    "status":"-1",
+    "statusbericht_id":"120",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"183",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"121",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"184",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"121",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"185",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"121",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"186",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"121",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"187",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"122",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"188",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"122",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"189",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"122",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"190",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"122",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"191",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"123",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"192",
+    "bemerkung":"Die Qualitaet leidet sehr stark",
+    "status":"-1",
+    "statusbericht_id":"123",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"193",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"123",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"194",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"123",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"195",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"124",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"196",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"124",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"197",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"124",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"198",
+    "bemerkung":"Es koennte zu einem Aufwandsengpass werden",
+    "status":"0",
+    "statusbericht_id":"124",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"199",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"125",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"200",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"125",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"201",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"125",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"202",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"125",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"203",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"126",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"204",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"126",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"205",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"126",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"206",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"126",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"207",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"127",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"208",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"127",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"209",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"127",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"210",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"127",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"211",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"128",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"212",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"128",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"213",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"128",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"214",
+    "bemerkung":"Die Kosten koennten leicht steigen",
+    "status":"0",
+    "statusbericht_id":"128",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"215",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"129",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"216",
+    "bemerkung":"Einige Ziele werden nicht erreicht",
+    "status":"0",
+    "statusbericht_id":"129",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"217",
+    "bemerkung":"Die Aufwaende sind viel zu hoch",
+    "status":"-1",
+    "statusbericht_id":"129",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"218",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"129",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"219",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"130",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"220",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"130",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"221",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"130",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"222",
+    "bemerkung":"Die Kosten sind drastisch gestiegen",
+    "status":"-1",
+    "statusbericht_id":"130",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"223",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"131",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"224",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"131",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"225",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"131",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"226",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"131",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"227",
+    "bemerkung":"Die Qualitaet leidet sehr stark",
+    "status":"-1",
+    "statusbericht_id":"132",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"228",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"132",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"229",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"132",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"230",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"132",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"231",
+    "bemerkung":"Keine Qualitätsmängeln erkennbar",
+    "status":"1",
+    "statusbericht_id":"133",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"232",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"133",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"233",
+    "bemerkung":"Es koennte zu einem Aufwandsengpass werden",
+    "status":"0",
+    "statusbericht_id":"133",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"234",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"133",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"235",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"134",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"236",
+    "bemerkung":"Die angesetzten Ziele werden eingehalten",
+    "status":"1",
+    "statusbericht_id":"134",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"237",
+    "bemerkung":"Es sind keine Aufwandsengpässe absehbar",
+    "status":"1",
+    "statusbericht_id":"134",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"238",
+    "bemerkung":"Die Kosten sind im vorgesehen Rahmen",
+    "status":"1",
+    "statusbericht_id":"134",
+    "statusbericht_info_punkt_id":"103"
+  },
+  {
+    "id":"239",
+    "bemerkung":"passt soweit",
+    "status":"0",
+    "statusbericht_id":"135",
+    "statusbericht_info_punkt_id":"100"
+  },
+  {
+    "id":"240",
+    "bemerkung":"Aufwand ist im gruenen Bereich",
+    "status":"1",
+    "statusbericht_id":"135",
+    "statusbericht_info_punkt_id":"101"
+  },
+  {
+    "id":"241",
+    "bemerkung":"Kosten passen",
+    "status":"1",
+    "statusbericht_id":"135",
+    "statusbericht_info_punkt_id":"102"
+  },
+  {
+    "id":"242",
+    "bemerkung":"Kleine Qualitätsmängeln sind erkennbar",
+    "status":"0",
+    "statusbericht_id":"135",
+    "statusbericht_info_punkt_id":"103"
+  }
+]
+}

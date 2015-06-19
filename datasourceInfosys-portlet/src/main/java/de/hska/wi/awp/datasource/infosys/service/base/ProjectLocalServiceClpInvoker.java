@@ -41,12 +41,12 @@ public class ProjectLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
 
     public ProjectLocalServiceClpInvoker() {
         _methodName0 = "addProject";
@@ -131,17 +131,17 @@ public class ProjectLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Project"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName94 = "findByProjecthskaId";
+        _methodName106 = "findByProjecthskaId";
 
-        _methodParameterTypes94 = new String[] { "java.lang.String" };
+        _methodParameterTypes106 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -233,20 +233,20 @@ public class ProjectLocalServiceClpInvoker {
             return ProjectLocalServiceUtil.updateProject((de.hska.wi.awp.datasource.infosys.model.Project) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return ProjectLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             ProjectLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return ProjectLocalServiceUtil.findByProjecthskaId((java.lang.String) arguments[0]);
         }
 

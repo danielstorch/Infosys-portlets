@@ -56,12 +56,24 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 	private String selectedFeedbackComment;
 	private List<Bewertungskriterium> allBewrtungskriterium;
 	
-	
+	/**
+     * This does not work
+     * Setting the attribute allFeedbacksOfStudent in the init method does not work. selectedStudent which comes from the event is always null
+     */
 	@PostConstruct
     public void init() {
+		//Student is always null at this point
+		if(this.selectedStudent != null) {
+			allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(this.selectedStudent.getPrimaryKey(), this.feedbackRoundNr);
+		}
+		System.out.println("Student in PostConstruct " + selectedStudent);
 		setAllBewrtungskriterium(BewertungskriteriumLocalServiceUtil.getAllBewertungskriterium());
 	}
 	
+	/**
+     * THIS WORKS!!
+     * Calling this method in my receivedFeedbackStudent.xhtml
+     */	
 	public List<Feedback> getAllFeedbackOfStudent(){
 		List<Feedback> allFeedbacksOfStudent = new ArrayList<Feedback>();
 		if(this.selectedStudent != null) {

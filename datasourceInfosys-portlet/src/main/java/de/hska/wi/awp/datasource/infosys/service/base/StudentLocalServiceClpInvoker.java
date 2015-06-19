@@ -41,16 +41,16 @@ public class StudentLocalServiceClpInvoker {
     private String[] _methodParameterTypes14;
     private String _methodName15;
     private String[] _methodParameterTypes15;
-    private String _methodName88;
-    private String[] _methodParameterTypes88;
-    private String _methodName89;
-    private String[] _methodParameterTypes89;
-    private String _methodName94;
-    private String[] _methodParameterTypes94;
-    private String _methodName95;
-    private String[] _methodParameterTypes95;
-    private String _methodName96;
-    private String[] _methodParameterTypes96;
+    private String _methodName100;
+    private String[] _methodParameterTypes100;
+    private String _methodName101;
+    private String[] _methodParameterTypes101;
+    private String _methodName106;
+    private String[] _methodParameterTypes106;
+    private String _methodName107;
+    private String[] _methodParameterTypes107;
+    private String _methodName108;
+    private String[] _methodParameterTypes108;
 
     public StudentLocalServiceClpInvoker() {
         _methodName0 = "addStudent";
@@ -135,25 +135,25 @@ public class StudentLocalServiceClpInvoker {
                 "de.hska.wi.awp.datasource.infosys.model.Student"
             };
 
-        _methodName88 = "getBeanIdentifier";
+        _methodName100 = "getBeanIdentifier";
 
-        _methodParameterTypes88 = new String[] {  };
+        _methodParameterTypes100 = new String[] {  };
 
-        _methodName89 = "setBeanIdentifier";
+        _methodName101 = "setBeanIdentifier";
 
-        _methodParameterTypes89 = new String[] { "java.lang.String" };
+        _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName94 = "findByProjectId";
+        _methodName106 = "findByProjectId";
 
-        _methodParameterTypes94 = new String[] { "long" };
+        _methodParameterTypes106 = new String[] { "long" };
 
-        _methodName95 = "findByStudenthskaId";
+        _methodName107 = "findByStudenthskaId";
 
-        _methodParameterTypes95 = new String[] { "java.lang.String" };
+        _methodParameterTypes107 = new String[] { "java.lang.String" };
 
-        _methodName96 = "getStudentNameByStudenthskaId";
+        _methodName108 = "getStudentNameByStudenthskaId";
 
-        _methodParameterTypes96 = new String[] { "java.lang.String" };
+        _methodParameterTypes108 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -245,30 +245,30 @@ public class StudentLocalServiceClpInvoker {
             return StudentLocalServiceUtil.updateStudent((de.hska.wi.awp.datasource.infosys.model.Student) arguments[0]);
         }
 
-        if (_methodName88.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes88, parameterTypes)) {
+        if (_methodName100.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes100, parameterTypes)) {
             return StudentLocalServiceUtil.getBeanIdentifier();
         }
 
-        if (_methodName89.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes89, parameterTypes)) {
+        if (_methodName101.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes101, parameterTypes)) {
             StudentLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
-        if (_methodName94.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes94, parameterTypes)) {
+        if (_methodName106.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return StudentLocalServiceUtil.findByProjectId(((Long) arguments[0]).longValue());
         }
 
-        if (_methodName95.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes95, parameterTypes)) {
+        if (_methodName107.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes107, parameterTypes)) {
             return StudentLocalServiceUtil.findByStudenthskaId((java.lang.String) arguments[0]);
         }
 
-        if (_methodName96.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes96, parameterTypes)) {
+        if (_methodName108.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes108, parameterTypes)) {
             return StudentLocalServiceUtil.getStudentNameByStudenthskaId((java.lang.String) arguments[0]);
         }
 
