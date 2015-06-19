@@ -1,10 +1,14 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchProjectException;
 import de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_infoException;
 import de.hska.wi.awp.datasource.infosys.model.Statusbericht_info;
+import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.base.Statusbericht_infoLocalServiceBaseImpl;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_infoUtil;
 
@@ -29,19 +33,15 @@ public class Statusbericht_infoLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalServiceUtil} to access the statusbericht_info local service.
      */
-	public Statusbericht_info findByStatusbericht_id(Long statusbericht_id) {
-		Statusbericht_info statusbericht_info = null;
+	public List<Statusbericht_info> findByStatusbericht_id(Long statusbericht_id) {
+		List<Statusbericht_info> statusbericht_info = new ArrayList<Statusbericht_info>();
 		
 		try {
 			statusbericht_info = Statusbericht_infoUtil.findByStatusbericht_id(statusbericht_id);
-		} catch (NoSuchStatusbericht_infoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	
 		return statusbericht_info;
 	}

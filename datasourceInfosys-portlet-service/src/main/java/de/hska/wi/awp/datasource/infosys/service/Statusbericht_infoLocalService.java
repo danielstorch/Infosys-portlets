@@ -240,6 +240,6 @@ public interface Statusbericht_infoLocalService extends BaseLocalService,
         java.lang.String[] parameterTypes, java.lang.Object[] arguments)
         throws java.lang.Throwable;
 
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_info findByStatusbericht_id(
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_info> findByStatusbericht_id(
         java.lang.Long statusbericht_id);
 }

@@ -277,7 +277,7 @@ public class Statusbericht_infoLocalServiceWrapper
     }
 
     @Override
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_info findByStatusbericht_id(
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_info> findByStatusbericht_id(
         java.lang.Long statusbericht_id) {
         return _statusbericht_infoLocalService.findByStatusbericht_id(statusbericht_id);
     }

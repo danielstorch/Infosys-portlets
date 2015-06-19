@@ -81,7 +81,7 @@
         <column name="statusbericht_id" type="long"></column>
         <column name="statusbericht_info_punkt_id" type="long"></column>
         <!-- Finder methods -->
-        <finder name="Statusbericht_id" return-type="Statusbericht_info">
+        <finder name="Statusbericht_id" return-type="Collection">
           	<finder-column name="statusbericht_id"/>
         </finder>
     </entity>
