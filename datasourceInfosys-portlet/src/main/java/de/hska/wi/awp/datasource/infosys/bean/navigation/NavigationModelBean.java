@@ -29,6 +29,7 @@ import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
  * The ModelBean for the Navigations Portlet.
  * Retrieves all projects in the @PostConstruct method and sets the attribute
  * It also contains the selected MenuItem to retain the active state
+ * 
  * @author Daniel Storch
  */
 

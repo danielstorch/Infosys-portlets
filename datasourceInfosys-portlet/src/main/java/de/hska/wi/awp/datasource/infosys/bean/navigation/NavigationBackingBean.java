@@ -83,6 +83,9 @@ public class NavigationBackingBean implements Serializable{
 		actionResponse.setEvent(qName, eventPayload);
 	}
 	
+	/**
+     * Setter for the Injection
+     */
 	public void setNavigationModelBean(NavigationModelBean navigationModelBean) {
 		this.navigationModelBean = navigationModelBean;
 	}

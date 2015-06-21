@@ -37,6 +37,12 @@ import de.hska.wi.awp.datasource.infosys.service.StatusberichteLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil;
 
+/**
+ * Mocks the InfosysData
+ * Should be deleted when there are REST-Apis available
+ * 
+ * @author Daniel Storch
+ */
 public class MockData {
 	
 	/**
