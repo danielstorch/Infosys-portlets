@@ -32,7 +32,7 @@ public class Teilnote_feedbackLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil} to access the teilnote_feedback local service.
      */
-	public Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(long feedback_id, int bewertungskriterium_id) {
+	public Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(long feedback_id, long bewertungskriterium_id) {
 		Teilnote_feedback teilnote_feedback = null;
 		try {
 			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);

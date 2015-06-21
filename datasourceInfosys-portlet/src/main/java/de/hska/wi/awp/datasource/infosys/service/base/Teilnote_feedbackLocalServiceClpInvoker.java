@@ -141,7 +141,7 @@ public class Teilnote_feedbackLocalServiceClpInvoker {
 
         _methodName106 = "findByFeedback_idAndBewertungskriterium_id";
 
-        _methodParameterTypes106 = new String[] { "long", "int" };
+        _methodParameterTypes106 = new String[] { "long", "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -248,7 +248,7 @@ public class Teilnote_feedbackLocalServiceClpInvoker {
         if (_methodName106.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
             return Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(((Long) arguments[0]).longValue(),
-                ((Integer) arguments[1]).intValue());
+                ((Long) arguments[1]).longValue());
         }
 
         throw new UnsupportedOperationException();

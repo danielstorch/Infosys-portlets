@@ -241,5 +241,5 @@ public interface Teilnote_feedbackLocalService extends BaseLocalService,
         throws java.lang.Throwable;
 
     public de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
-        long feedback_id, int bewertungskriterium_id);
+        long feedback_id, long bewertungskriterium_id);
 }

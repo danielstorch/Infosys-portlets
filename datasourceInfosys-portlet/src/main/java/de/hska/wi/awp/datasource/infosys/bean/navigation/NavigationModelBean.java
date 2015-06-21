@@ -84,7 +84,7 @@ public class NavigationModelBean {
 			for(int j = 0; j < studentsOfGroupe.size(); j++) {
 				String studentLastName = studentsOfGroupe.get(j).getLastName();
 				String studentFirstName = studentsOfGroupe.get(j).getFirstName();
-				/*
+				
 				Long studentRoleId = studentsOfGroupe.get(j).getRole();
 				if(studentRoleId != 0) {
 					String studentRole = null;
@@ -99,7 +99,7 @@ public class NavigationModelBean {
 					}
 					studentLastName += " ("+studentRole+")";
 				}
-				*/
+				
 				DefaultMenuItem studentMenuItem = new DefaultMenuItem(studentFirstName + " " + studentLastName);
 				
 				studentMenuItem.setAjax(false);

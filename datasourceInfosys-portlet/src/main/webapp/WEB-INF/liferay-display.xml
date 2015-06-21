@@ -6,6 +6,5 @@
 		<portlet id="ReceivedFeedback" />
 		<portlet id="Navigation" />
 		<portlet id="MockData" />
-		<portlet id="PortletGuide" />
 	</category>
 </display>

@@ -77,14 +77,18 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 	public List<Feedback> getAllFeedbackOfStudent(){
 		List<Feedback> allFeedbacksOfStudent = new ArrayList<Feedback>();
 		if(this.selectedStudent != null) {
-			allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(this.selectedStudent.getPrimaryKey(), this.feedbackRoundNr);
+			allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(this.selectedStudent.getPrimaryKey(), feedbackRoundNr);
 		}
 		return allFeedbacksOfStudent;
 	}
 	
-	public int getTeilnoteOfFeedback(long feedback_id, int bewertungskriterium_id){
-		if(this.selectedStudent.getStudenthskaId().endsWith("wema1043")) {
-			return Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id).getNote();
+	public int getTeilnoteOfFeedback(long feedback_id, long bewertungskriterium_id){
+		Teilnote_feedback teilnoteOfFeedback = null;
+		if(this.selectedStudent != null) {
+			teilnoteOfFeedback = Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
+		}
+		if(teilnoteOfFeedback != null) {
+			return teilnoteOfFeedback.getNote();
 		}
 		return 0;
 	}

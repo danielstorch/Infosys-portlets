@@ -1,5 +1,6 @@
 package de.hska.wi.awp.datasource.infosys.bean.receivedfeedback;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -17,23 +18,26 @@ import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
 
 @ManagedBean(name = "receivedFeedbackProjectModelBean")
 @SessionScoped
-public class ReceivedFeedbackProjectModelBean {
+public class ReceivedFeedbackProjectModelBean implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8317788674222552215L;
 	private Project selectedProject;
 	private PieChartModel contributionChartModel;
+	private int feedbackRoundNr = 1;
 	
 	private PieChartModel initBarModel() {
 		PieChartModel contributionChartModel = new PieChartModel();
-		contributionChartModel.setTitle("Durchschnittlicher Beitrag der Studenten");
 	    contributionChartModel.setShowDataLabels(true);
 	    contributionChartModel.setLegendPosition("w");
 	    contributionChartModel.setFill(false);
 	        
         LinkedHashMap<String,Integer> contribution = new LinkedHashMap();
         if(this.selectedProject != null) {
-        	contribution = FeedbackLocalServiceUtil.averageContributionOfPorject(this.selectedProject.getId(),1);
+        	contribution = FeedbackLocalServiceUtil.averageContributionOfPorject(this.selectedProject.getId(),feedbackRoundNr);
         }
-        System.out.println(contribution);
         
         for (Entry<String, Integer> entry : contribution.entrySet()) {
         	contributionChartModel.set(entry.getKey(), entry.getValue());
@@ -57,5 +61,15 @@ public class ReceivedFeedbackProjectModelBean {
 
 	public void setContributionChartModel(PieChartModel contributionChartModel) {
 		this.contributionChartModel = contributionChartModel;
+	}
+
+
+	public int getFeedbackRoundNr() {
+		return feedbackRoundNr;
+	}
+
+
+	public void setFeedbackRoundNr(int feedbackRoundNr) {
+		this.feedbackRoundNr = feedbackRoundNr;
 	}
 }

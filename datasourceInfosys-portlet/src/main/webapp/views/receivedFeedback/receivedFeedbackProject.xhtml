@@ -11,7 +11,27 @@
 	<h:head />
 	<h:body>
 		<h:form id="f2">
-			    <p:chart type="pie" model="#{receivedFeedbackProjectModelBean.contributionChartModel}"/>
+		<p:toolbar style="height:30px">
+		        <p:toolbarGroup align="left">  
+		        	<h:outputText value="Durchschnittlicher Beitrag der Studenten"/> 
+		        	
+		        	<span class="ui-separator">
+                		<span class="ui-icon ui-icon-grip-dotted-vertical" />
+            		</span>
+		        	 
+		        	 <p:commandButton id="downloadLink" value="Download PDF" ajax="false">
+	    				<p:fileDownload value="#{receivedFeedbackProjectBackingBean.getReceivedFeebackPDF()}" />
+	  				</p:commandButton>
+	   	 		</p:toolbarGroup> 
+		        <p:toolbarGroup align="right"> 
+		            <p:selectOneMenu id="feedbackRunde" value="#{receivedFeedbackProjectModelBean.feedbackRoundNr}" style="width:100px">
+		            	<f:selectItem itemLabel="Runde 1" itemValue="1" />
+		            	<f:selectItem itemLabel="Runde 2" itemValue="2" />
+		            	<p:ajax update="contributionPie" />
+		       	 	</p:selectOneMenu>
+	   	 		</p:toolbarGroup> 
+			</p:toolbar>
+			<p:chart id= "contributionPie" type="pie" model="#{receivedFeedbackProjectModelBean.contributionChartModel}"/>
     	</h:form>
 	</h:body>
 </f:view>

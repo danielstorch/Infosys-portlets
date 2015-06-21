@@ -144,7 +144,7 @@ public class Teilnote_feedbackLocalServiceClp
 
         _methodName19 = "findByFeedback_idAndBewertungskriterium_id";
 
-        _methodParameterTypes19 = new String[] { "long", "int" };
+        _methodParameterTypes19 = new String[] { "long", "long" };
     }
 
     @Override
@@ -665,7 +665,7 @@ public class Teilnote_feedbackLocalServiceClp
 
     @Override
     public de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(
-        long feedback_id, int bewertungskriterium_id) {
+        long feedback_id, long bewertungskriterium_id) {
         Object returnObj = null;
 
         try {
