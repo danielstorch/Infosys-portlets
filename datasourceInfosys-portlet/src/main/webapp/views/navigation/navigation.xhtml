@@ -10,8 +10,19 @@
 >
 	<h:head />
 	<h:body>
-          <h:form>
-         	 <p:panelMenu model="#{navigationModelBean.menuModel}"/>
+          <h:form >
+         	 <p:panelMenu>
+         	 	<c:forEach items="#{navigationModelBean.allProjects}" var="project">
+		    			<p:submenu label="#{project.name}">
+            				<p:menuitem value="#{project.name}" ajax="false" actionListener="#{navigationBackingBean.groupSelected(project.projecthskaId)}" styleClass="#{navigationModelBean.selectedMenuItem == project.projecthskaId ? 'ui-state-active' : ''}"/>
+            				<p:submenu label="Students">
+	            				<c:forEach items="#{navigationModelBean.getStudentsOfProject(project.id)}" var="student">
+	            					<p:menuitem value="#{student.firstName} #{student.lastName}" ajax="false" actionListener="#{navigationBackingBean.studentSelected(student.studenthskaId)}" styleClass="#{navigationModelBean.selectedMenuItem == student.studenthskaId ? 'ui-state-active' : ''}"/>
+	            				</c:forEach>
+            				</p:submenu>
+        				</p:submenu>
+				</c:forEach>
+    		</p:panelMenu>
           </h:form>
 	</h:body>
 </f:view>

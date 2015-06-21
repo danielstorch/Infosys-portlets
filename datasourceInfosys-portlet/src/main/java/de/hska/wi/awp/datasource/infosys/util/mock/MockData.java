@@ -1,10 +1,6 @@
 package de.hska.wi.awp.datasource.infosys.util.mock;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;

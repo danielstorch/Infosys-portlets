@@ -1,30 +1,31 @@
 package de.hska.wi.awp.datasource.infosys.event;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.faces.context.FacesContext;
 import javax.portlet.Event;
-import javax.portlet.EventResponse;
 import javax.portlet.faces.BridgeEventHandler;
 import javax.portlet.faces.event.EventNavigationResult;
 
 import com.liferay.faces.bridge.event.EventPayloadWrapper;
 
-import de.hska.wi.awp.datasource.infosys.bean.navigation.NavigationBackingBean;
-import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackStudentModelBean;
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackProjectModelBean;
-import de.hska.wi.awp.datasource.infosys.model.Feedback;
-import de.hska.wi.awp.datasource.infosys.model.Student;
-import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
+import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackStudentModelBean;
 import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.persistence.ProjectUtil;
 
+/**
+ * EventHandler of the receivedFeedback-Portlet
+ * @author Daniel Storch
+ */
 public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
 
+	/**
+	 * Handles the retrieved Event
+	 * Either student event ipc.studentSelected or project event ipc.projectSelected
+	 */
 	@Override
 	public EventNavigationResult handleEvent(FacesContext facesContext, Event event) {
 		 EventNavigationResult eventNavigationResult = null;
@@ -39,6 +40,9 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
  				value = ((EventPayloadWrapper) value).getWrapped();
  			}
 
+            //Finds the Student object and sets it in the StudentModelBean
+            //Sets the Porject null in the ProjectModelBean
+            //This way we can choose between the views in one portlet
  			String studenthskaId = (String) value;
  			ReceivedFeedbackStudentModelBean receivedFeedbackStudentModelBean = getReceivedFeedbackStudentModelBean(facesContext);
  			receivedFeedbackStudentModelBean.setSelectedStudent(StudentLocalServiceUtil.findByStudenthskaId(studenthskaId));
@@ -61,6 +65,9 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
  				value = ((EventPayloadWrapper) value).getWrapped();
  			}
 
+            //Finds the Project object and sets it in the ProjectModelBean
+            //Sets the Student null in the StudentModelBean
+            //This way we can choose between the views in one portlet
  			String projecthskaId = (String) value;
  			ReceivedFeedbackStudentModelBean receivedFeedbackStudentModelBean = getReceivedFeedbackStudentModelBean(facesContext);
  			receivedFeedbackStudentModelBean.setSelectedStudent(null);
@@ -76,6 +83,9 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
          return eventNavigationResult;
 	}
 	
+	/**
+	 * Gets the ReceivedFeedbackStudentModelBean
+	 */
 	protected ReceivedFeedbackStudentModelBean getReceivedFeedbackStudentModelBean(FacesContext facesContext) {
 		String elExpression = "#{receivedFeedbackStudentModelBean}";
 		ELContext elContext = facesContext.getELContext();
@@ -85,6 +95,9 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
 		return (ReceivedFeedbackStudentModelBean) valueExpression.getValue(elContext);
 	}
 	
+	/**
+	 * Gets the ReceivedFeedbackProjectModelBean
+	 */
 	protected ReceivedFeedbackProjectModelBean getReceivedFeedbackProjectModelBean(FacesContext facesContext) {
 		String elExpression = "#{receivedFeedbackProjectModelBean}";
 		ELContext elContext = facesContext.getELContext();

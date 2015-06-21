@@ -1,36 +1,17 @@
 package de.hska.wi.awp.datasource.infosys.bean.navigation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.portlet.ActionResponse;
 import javax.xml.namespace.QName;
 
-import org.primefaces.event.MenuActionEvent;
-import org.primefaces.model.menu.MenuItem;
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
-
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
-
-import de.hska.wi.awp.datasource.infosys.model.Project;
-import de.hska.wi.awp.datasource.infosys.model.Rolle;
-import de.hska.wi.awp.datasource.infosys.model.Student;
-import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.RolleLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 
 /**
  * The BackingBean for the Navigations Portlet.
@@ -54,12 +35,19 @@ public class NavigationBackingBean implements Serializable{
 	private static final Logger logger = LoggerFactory.getLogger(NavigationBackingBean.class);
 	
 	/**
+     * Injecting navigationModelBean
+     */
+	@ManagedProperty(name = "navigationModelBean", value = "#{navigationModelBean}")
+	private NavigationModelBean navigationModelBean;
+	
+	/**
      * Sends a event when an group got clicked.
      * The event parameter is the hskaid of the project.
+     * Sets the selectedMenuItem for the acitveState
+     * @param String hskaId from the menuItem to retrieve the parameter
      */
-	public void groupSelected(ActionEvent event) {
-		 MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
-		 String hskaId = menuItem.getParams().get("projecthskaId").get(0);
+	public void groupSelected(String hskaId) {
+		 navigationModelBean.setSelectedMenuItem(hskaId);
 		 System.out.println("projecthskaId got selected: "+hskaId);
 		 
 		 sendEvent(hskaId, "ipc.projectSelected");
@@ -67,12 +55,12 @@ public class NavigationBackingBean implements Serializable{
 	
 	/**
      * Sends a event when an student got clicked.
-     * The event parameter is the hskaid of the student.
-     * @param actionEvent from the menuItem to retrieve the parameter
+     * The event parameter is the hskaId of the student.
+     * Sets the selectedMenuItem for the acitveState
+     * @param String hskaId from the menuItem to retrieve the parameter
      */
-	public void studentSelected(ActionEvent event) {
-		 MenuItem menuItem = ((MenuActionEvent) event).getMenuItem();
-		 String hskaId = menuItem.getParams().get("studenthskaId").get(0);
+	public void studentSelected(String hskaId) {
+		 navigationModelBean.setSelectedMenuItem(hskaId);
 		 System.out.println("studenthskaId got selected: "+hskaId);
 		 
 		 sendEvent(hskaId, "ipc.studentSelected");
@@ -93,5 +81,9 @@ public class NavigationBackingBean implements Serializable{
 
 		System.out.println("EventName "+ eventName + " with value: " + value +" got send");
 		actionResponse.setEvent(qName, eventPayload);
+	}
+	
+	public void setNavigationModelBean(NavigationModelBean navigationModelBean) {
+		this.navigationModelBean = navigationModelBean;
 	}
 }

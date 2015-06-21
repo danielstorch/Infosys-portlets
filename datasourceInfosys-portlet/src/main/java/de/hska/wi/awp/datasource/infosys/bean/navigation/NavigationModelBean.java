@@ -1,11 +1,13 @@
 package de.hska.wi.awp.datasource.infosys.bean.navigation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.model.menu.DefaultMenuItem;
 import org.primefaces.model.menu.DefaultMenuModel;
@@ -25,99 +27,72 @@ import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 
 /**
  * The ModelBean for the Navigations Portlet.
- * It dynamically generates the navigation-menu the data in the DB.
- *
+ * Retrieves all projects in the @PostConstruct method and sets the attribute
+ * It also contains the selected MenuItem to retain the active state
  * @author Daniel Storch
  */
 
 @ManagedBean(name = "navigationModelBean")
-@RequestScoped
-public class NavigationModelBean {
+@SessionScoped
+public class NavigationModelBean implements Serializable{
 	
 	 /**
+	 * Serializable
+	 */
+	private static final long serialVersionUID = 1141179050804862311L;
+
+	/**
      * Logger Util
      */
 	private static final Logger logger = LoggerFactory.getLogger(NavigationModelBean.class);
 	
 	/**
-     * Menu model
+     * All Projects of this semester
      */
-	private MenuModel menuModel;
+	private List<Project> allProjects;
 	
 	/**
-     * This method generates the menu.
-     * setCommand and setParam are there to retrieve information when an menuItem got clicked
+     * Selected MenuItem to retain the State
+     * This value is either the studenthskaId or the grouphskaId
+     */
+	private String selectedMenuItem;
+	
+	/**
+     * Gets all projects and sets the attribute allProjects
      */
 	@PostConstruct
     public void init() {
-		menuModel = new DefaultMenuModel();
       
-		List<Project> allProjects = new ArrayList<Project>();
 		try {
-			allProjects = ProjectLocalServiceUtil.getProjects(0, ProjectLocalServiceUtil.getProjectsCount());
-			System.out.println("Projects count "+ProjectLocalServiceUtil.getProjectsCount());
+			this.allProjects = ProjectLocalServiceUtil.getProjects(0, ProjectLocalServiceUtil.getProjectsCount());
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			logger.error(e);
 			e.printStackTrace();
 		}
-		
-		
-		for(int i = 0; i < allProjects.size(); i++) {
-			DefaultSubMenu groupMenu = new DefaultSubMenu(allProjects.get(i).getName());
-			DefaultMenuItem groupMenuItem = new DefaultMenuItem(allProjects.get(i).getName());
-			//TODO: STRING Generalisieren
-			DefaultSubMenu studentSubMenu = new DefaultSubMenu("Students");
-			
-			//Ajax doesn't work with IPC https://www.liferay.com/de/community/forums/-/message_boards/message/29973568
-			groupMenuItem.setAjax(false);
-			groupMenuItem.setId(allProjects.get(i).getProjecthskaId());
-			groupMenuItem.setCommand("#{navigationBackingBean.groupSelected}");
-			groupMenuItem.setParam("projecthskaId", allProjects.get(i).getProjecthskaId());
-			
-			groupMenu.addElement(groupMenuItem);
-			groupMenu.addElement(studentSubMenu);
-			
-			List<Student> studentsOfGroupe = StudentLocalServiceUtil.findByProjectId(allProjects.get(i).getPrimaryKey());
-			System.out.println("Project "+ allProjects.get(i).getName() + " has "+studentsOfGroupe.size() + " Students");
-			
-			for(int j = 0; j < studentsOfGroupe.size(); j++) {
-				String studentLastName = studentsOfGroupe.get(j).getLastName();
-				String studentFirstName = studentsOfGroupe.get(j).getFirstName();
-				
-				Long studentRoleId = studentsOfGroupe.get(j).getRole();
-				if(studentRoleId != 0) {
-					String studentRole = null;
-					try {
-						studentRole = RolleLocalServiceUtil.getRolle(studentRoleId).getShortName();
-					} catch (PortalException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SystemException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					studentLastName += " ("+studentRole+")";
-				}
-				
-				DefaultMenuItem studentMenuItem = new DefaultMenuItem(studentFirstName + " " + studentLastName);
-				
-				studentMenuItem.setAjax(false);
-				studentMenuItem.setCommand("#{navigationBackingBean.studentSelected}");
-				studentMenuItem.setParam("studenthskaId", studentsOfGroupe.get(j).getStudenthskaId());
-				
-				studentSubMenu.addElement(studentMenuItem);
-			}
-			
-			menuModel.addElement(groupMenu);
-		}
 	}
 	
-	public MenuModel getMenuModel() {
-		return menuModel;
+	/**
+	 * This method gets invoked from the navigation.xhtml to generate the student menuItem
+     * @param project_id to get all students of an project
+     */
+	public List<Student> getStudentsOfProject(long project_Id){
+		return StudentLocalServiceUtil.findByProjectId(project_Id);
+	}
+	
+	public String getSelectedMenuItem() {
+		return selectedMenuItem;
 	}
 
-	public void setMenuModel(MenuModel menuModel) {
-		this.menuModel = menuModel;
+	public void setSelectedMenuItem(String selectedMenuItem) {
+		this.selectedMenuItem = selectedMenuItem;
+	}
+
+	public List<Project> getAllProjects() {
+		return allProjects;
+	}
+
+	public void setAllProjects(List<Project> allProjects) {
+		this.allProjects = allProjects;
 	}
 }

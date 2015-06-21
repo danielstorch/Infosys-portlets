@@ -2,32 +2,20 @@ package de.hska.wi.awp.datasource.infosys.bean.receivedfeedback;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
-
-import org.primefaces.model.chart.Axis;
-import org.primefaces.model.chart.AxisType;
-import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.ChartSeries;
 
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
-import de.hska.wi.awp.datasource.infosys.model.Project;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.model.Teilnote_feedback;
 import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil;
 
@@ -50,29 +38,39 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
      */	
 	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackStudentModelBean.class);
 	
-	private List<Feedback> allFeedbacksOfStudent;
+	/**
+     * Contains the selected student from the Navigation-Portlet
+     */	
 	private Student selectedStudent;
+	
+	/**
+     * Current chosen round number
+     * Default is round number 1
+     */	
 	private int feedbackRoundNr = 1;
+	
+	/**
+     * Contains the currently selected feedback comment
+     */
 	private String selectedFeedbackComment;
+	
+	/**
+     * List of all criteria
+     */
 	private List<Bewertungskriterium> allBewrtungskriterium;
 	
 	/**
-     * This does not work
-     * Setting the attribute allFeedbacksOfStudent in the init method does not work. selectedStudent which comes from the event is always null
+     * Sets all criteria
      */
 	@PostConstruct
     public void init() {
-		//Student is always null at this point
-		if(this.selectedStudent != null) {
-			allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(this.selectedStudent.getPrimaryKey(), this.feedbackRoundNr);
-		}
-		System.out.println("Student in PostConstruct " + selectedStudent);
 		setAllBewrtungskriterium(BewertungskriteriumLocalServiceUtil.getAllBewertungskriterium());
 	}
 	
 	/**
-     * THIS WORKS!!
-     * Calling this method in my receivedFeedbackStudent.xhtml
+     * Gets all feedback of the selected Student
+     * Selected student is null when invoking this method for the first time
+     * Gets invoked from receivedFeedbackStudent.xhtml
      */	
 	public List<Feedback> getAllFeedbackOfStudent(){
 		List<Feedback> allFeedbacksOfStudent = new ArrayList<Feedback>();
@@ -82,7 +80,12 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 		return allFeedbacksOfStudent;
 	}
 	
+	/**
+     * Gets the grade of Feedback criteria
+     * returning -2 if we don't find any, since the data is mocked right now
+     */	
 	public int getTeilnoteOfFeedback(long feedback_id, long bewertungskriterium_id){
+		
 		Teilnote_feedback teilnoteOfFeedback = null;
 		if(this.selectedStudent != null) {
 			teilnoteOfFeedback = Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
@@ -90,23 +93,20 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 		if(teilnoteOfFeedback != null) {
 			return teilnoteOfFeedback.getNote();
 		}
-		return 0;
+		//TODO remove when mocking data is not necessary any more
+		return -2;
 	}
 	
+	/**
+     * Gets the averageContribution of a Student
+     * If there is no Contribution, -1 gets returned
+     */	
 	public int averageContribution() {
 		int averageContribution = -1;
 		if(this.selectedStudent != null) {
 			averageContribution = FeedbackLocalServiceUtil.averageContributionOfStudent(this.selectedStudent.getId(), this.feedbackRoundNr);
 		}
 		return averageContribution;
-	}
-	
-	public List<Feedback> getAllFeedbacksOfStudent() {
-		return allFeedbacksOfStudent;
-	}
-
-	public void setAllFeedbacksOfStudent(List<Feedback> allFeedbacksOfStudent) {
-		this.allFeedbacksOfStudent = allFeedbacksOfStudent;
 	}
 
 	public int getFeedbackRoundNr() {
