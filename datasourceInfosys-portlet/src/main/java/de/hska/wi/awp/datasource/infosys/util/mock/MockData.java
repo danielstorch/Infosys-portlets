@@ -1,6 +1,9 @@
 package de.hska.wi.awp.datasource.infosys.util.mock;
 
 import java.io.InputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -45,11 +48,6 @@ import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUt
  */
 public class MockData {
 	
-	/**
-     * Logger Util
-     */	
-	private static final Logger logger = LoggerFactory.getLogger(MockData.class);
-	
 	public static void DeleteAllMockData() throws SystemException, PortalException {
 		deleteProjectMockData();
 		deleteStudentMockData();
@@ -84,7 +82,6 @@ public class MockData {
 		List<Rolle> allRolle = RolleLocalServiceUtil.getRolles(0, RolleLocalServiceUtil.getRollesCount());
 		
 		for(int zl = 0; zl < allRolle.size(); zl++) {
-			System.out.println("Delete Rolle ID: " +allRolle.get(zl).getPrimaryKey());
 			RolleLocalServiceUtil.deleteRolle(allRolle.get(zl).getPrimaryKey());
 		}
 		
@@ -96,7 +93,6 @@ public class MockData {
 		List<Bewertungskriterium> allBewertungskriterium = BewertungskriteriumLocalServiceUtil.getBewertungskriteriums(0, BewertungskriteriumLocalServiceUtil.getBewertungskriteriumsCount());
 		
 		for(int zl = 0; zl < allBewertungskriterium.size(); zl++) {
-			System.out.println("Delete Bewertungskriterium ID: " +allBewertungskriterium.get(zl).getPrimaryKey());
 			BewertungskriteriumLocalServiceUtil.deleteBewertungskriterium(allBewertungskriterium.get(zl).getPrimaryKey());
 		}
 		
@@ -108,7 +104,6 @@ public class MockData {
 		List<Statusberichte> allStatusberichte = StatusberichteLocalServiceUtil.getStatusberichtes(0, StatusberichteLocalServiceUtil.getStatusberichtesCount());
 		
 		for(int zl = 0; zl < allStatusberichte.size(); zl++) {
-			System.out.println("Delete Statusbericht ID: " +allStatusberichte.get(zl).getPrimaryKey());
 			StatusberichteLocalServiceUtil.deleteStatusberichte(allStatusberichte.get(zl).getPrimaryKey());
 		}
 		
@@ -142,7 +137,6 @@ public class MockData {
 		List<Student> alleStudents = StudentLocalServiceUtil.getStudents(0, StudentLocalServiceUtil.getStudentsCount());
 		
 		for(int zl = 0; zl < alleStudents.size(); zl++) {
-			System.out.println("Delete Student FirstName: " +alleStudents.get(zl).getFirstName());
 			StudentLocalServiceUtil.deleteStudent(alleStudents.get(zl).getPrimaryKey());
 		}
 		
@@ -288,15 +282,17 @@ public class MockData {
 
 			JSONArray statusbericht_geplante_arbeitJsonArray = jsonObject.getJSONArray("Statusbericht_geplante_arbeit");		
 			System.out.println("count Statusbericht_geplante_arbeit: " + statusbericht_geplante_arbeitJsonArray.length());
-			
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 			for (int j = 0; j < statusbericht_geplante_arbeitJsonArray.length(); j++) {
 
 				JSONObject statusbericht_geplante_arbeitJSONObject = statusbericht_geplante_arbeitJsonArray.getJSONObject(j);
-				Statusbericht_geplante_arbeit statusbericht_info_punkt = Statusbericht_geplante_arbeitLocalServiceUtil.createStatusbericht_geplante_arbeit(statusbericht_geplante_arbeitJSONObject.getLong("id"));
-				//statusbericht_info_punkt.setBis_wann(statusbericht_geplante_arbeitJSONObject.getDate("bis_wann")); //TODO
-				statusbericht_info_punkt.setStatusbericht_id(statusbericht_geplante_arbeitJSONObject.getLong("statusbericht_id"));
-				statusbericht_info_punkt.setVerantwortlicher(statusbericht_geplante_arbeitJSONObject.getLong("verantwortlicher"));
-				Statusbericht_geplante_arbeitLocalServiceUtil.addStatusbericht_geplante_arbeit(statusbericht_info_punkt);
+				Statusbericht_geplante_arbeit statusbericht_geplante_arbeit = Statusbericht_geplante_arbeitLocalServiceUtil.createStatusbericht_geplante_arbeit(statusbericht_geplante_arbeitJSONObject.getLong("id"));
+				Date bisWannDate = dateFormat.parse(statusbericht_geplante_arbeitJSONObject.getString("bis_wann"));
+				statusbericht_geplante_arbeit.setBis_wann(bisWannDate);
+				statusbericht_geplante_arbeit.setAktivitaet(statusbericht_geplante_arbeitJSONObject.getString("aktivitaet"));
+				statusbericht_geplante_arbeit.setStatusbericht_id(statusbericht_geplante_arbeitJSONObject.getLong("statusbericht_id"));
+				statusbericht_geplante_arbeit.setVerantwortlicher(statusbericht_geplante_arbeitJSONObject.getLong("verantwortlicher"));
+				Statusbericht_geplante_arbeitLocalServiceUtil.addStatusbericht_geplante_arbeit(statusbericht_geplante_arbeit);
 			}	
 		}
 	}
@@ -432,13 +428,14 @@ public class MockData {
 			
 			JSONArray statusberichteJsonArray = jsonObject.getJSONArray("Statusbericht");		
 			System.out.println("count statusberichte: " + statusberichteJsonArray.length());
-			
+			DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 			for (int j = 0; j < statusberichteJsonArray.length(); j++) {
 				
 				JSONObject statusberichtJSONObject = statusberichteJsonArray.getJSONObject(j);
 				Statusberichte statusberichte = StatusberichteLocalServiceUtil.createStatusberichte(statusberichtJSONObject.getLong("id"));
 				statusberichte.setProject_id(statusberichtJSONObject.getLong("projekt_id"));
-			//	statusbericht.setDatum(statusberichtJSONObject.getString("datum"));
+				Date datumDate = dateFormat.parse(statusberichtJSONObject.getString("datum"));
+				statusberichte.setDatum(datumDate);
 				statusberichte.setKalenderwoche(statusberichtJSONObject.getInt("kw"));
 				StatusberichteLocalServiceUtil.addStatusberichte(statusberichte);
 			}

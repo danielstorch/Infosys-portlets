@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.model.Student;
@@ -32,25 +34,39 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil} to access the feedback local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(FeedbackLocalServiceImpl.class);
+	
 	public List<Feedback> findByStudent_idAndFeedback_runden_nr(long student_id, int feedback_runden_nr) {
+		log.debug("BEGIN: findByStudent_idAndFeedback_runden_nr");
+		
 		List<Feedback> feedbacks = new ArrayList<Feedback>();
 		
 		try {
 			feedbacks = FeedbackUtil.findByStudent_idAndFeedback_runden_nr(student_id, feedback_runden_nr);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: findByStudent_idAndFeedback_runden_nr");
 		return feedbacks;
 	}
 	
 	public int averageContributionOfStudent(long student_id, int feedback_runden_nr) {
+		log.debug("BEGIN: averageContributionOfStudent");
+		
 		List<Feedback> feedbacks = new ArrayList<Feedback>();
 		
 		try {
 			feedbacks = FeedbackUtil.findByStudent_idAndFeedback_runden_nr(student_id, feedback_runden_nr);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 		
@@ -65,10 +81,15 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
 		}else {
 			average = -1;
 		}
+		
+		log.debug("END: averageContributionOfStudent");
+		
 		return average;
 	}
 	
 	public LinkedHashMap averageContributionOfPorject(long project_id, int feedback_runden_nr) {
+		log.debug("BEGIN: averageContributionOfPorject");
+		
 		List<Student> studentsOfGroupe = StudentLocalServiceUtil.findByProjectId(project_id);
 		LinkedHashMap<String,Integer> contribution = new LinkedHashMap();
 		
@@ -77,6 +98,7 @@ public class FeedbackLocalServiceImpl extends FeedbackLocalServiceBaseImpl {
 			contribution.put(s.getFirstName() +" " + s.getLastName(), averageContributionOfStudent(s.getId(),feedback_runden_nr));
 		}
 
+		log.debug("END: averageContributionOfPorject");
 		return contribution;
 	}
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchProjectException;
 import de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_infoException;
@@ -33,16 +35,26 @@ public class Statusbericht_infoLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Statusbericht_infoLocalServiceUtil} to access the statusbericht_info local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(Statusbericht_infoLocalServiceImpl.class);
+	
 	public List<Statusbericht_info> findByStatusbericht_id(Long statusbericht_id) {
+		log.debug("BEGIN: findByStatusbericht_id");
+		
 		List<Statusbericht_info> statusbericht_info = new ArrayList<Statusbericht_info>();
 		
 		try {
 			statusbericht_info = Statusbericht_infoUtil.findByStatusbericht_id(statusbericht_id);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 	
+		log.debug("END: findByStatusbericht_id");
 		return statusbericht_info;
 	}
 }

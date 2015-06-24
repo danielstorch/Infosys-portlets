@@ -25,8 +25,9 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfPage;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackProjectBackingBean;
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
 import de.hska.wi.awp.datasource.infosys.model.Project;
@@ -43,9 +44,15 @@ import de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUt
 public class ReceivedFeedbackToPDF {
 
 	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackToPDF.class);
+	
+	/**
 	 * This method creates the whole Feedback PDF
 	 */
 	public static DefaultStreamedContent CreateFeedbackPDF(int roundNr, Project project) throws IOException, DocumentException {
+		log.debug("BEGIN: CreateFeedbackPDF");
 		
 		// various fonts
         BaseFont bf_helv = BaseFont.createFont(BaseFont.HELVETICA, "Cp1252", false);
@@ -130,7 +137,7 @@ public class ReceivedFeedbackToPDF {
 	        PdfPTable pdfTableComment = new PdfPTable(2);
 	        
 	        //Header cell for the beitrag comments
-	        PdfPCell cell = new PdfPCell(new Phrase("Beitrag Kommenta", headerCellFont));
+	        PdfPCell cell = new PdfPCell(new Phrase("Beitrag Kommentar", headerCellFont));
     		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
     		pdfTableComment.addCell(cell);
     		
@@ -221,6 +228,8 @@ public class ReceivedFeedbackToPDF {
         document.close();
         file.close();
 
+        log.debug("END: CreateFeedbackPDF");
+        
         return new DefaultStreamedContent(new FileInputStream(pdfFile), "application/pdf", fileName);
 	}
 	 

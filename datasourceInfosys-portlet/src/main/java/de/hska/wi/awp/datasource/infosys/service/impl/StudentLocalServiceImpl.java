@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchStudentException;
 import de.hska.wi.awp.datasource.infosys.model.Student;
@@ -30,35 +32,52 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil} to access the student local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(StudentLocalServiceImpl.class);
+	
 	public List<Student> findByProjectId(long project_id) {
+		log.debug("BEGIN: findByProjectId");
+		
 		List<Student> students = new ArrayList<Student>();
 		
 		try {
 			students = StudentUtil.findByProject_id(project_id);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: findByProjectId");
 		return students;
 	}
 	
 	public Student findByStudenthskaId(String studenthskaId) {
+		log.debug("BEGIN: findByStudenthskaId");
+		
 		Student student = null;
 		
 		try {
 			student = StudentUtil.findByStudenthskaId(studenthskaId);
 		} catch (NoSuchStudentException e) {
 			// TODO Auto-generated catch block
+			log.error("es wurden keine Fields für die studenthskaId: " + studenthskaId +" gefunden");
 			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 	
+		log.debug("END: findByStudenthskaId");
 		return student;
 	}
 	
 	public String getStudentNameByStudenthskaId(String studenthskaId) {
+		log.debug("BEGIN: getStudentNameByStudenthskaId");
 		
 		Student student = null;
 		
@@ -66,12 +85,15 @@ public class StudentLocalServiceImpl extends StudentLocalServiceBaseImpl {
 			student = StudentUtil.findByStudenthskaId(studenthskaId);
 		} catch (NoSuchStudentException e) {
 			// TODO Auto-generated catch block
+			log.error("es wurden keine Fields für die studenthskaId: " + studenthskaId +" gefunden");
 			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 	
+		log.debug("END: getStudentNameByStudenthskaId");
 		return student.getFirstName() + " " + student.getLastName();
 	}
 	

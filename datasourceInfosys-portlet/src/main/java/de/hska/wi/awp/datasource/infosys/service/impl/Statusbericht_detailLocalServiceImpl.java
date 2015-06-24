@@ -1,6 +1,8 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException;
 import de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail;
@@ -29,19 +31,29 @@ public class Statusbericht_detailLocalServiceImpl
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Statusbericht_detailLocalServiceUtil} to access the statusbericht_detail local service.
      */
 	
-	public Statusbericht_detail findByProjecthskaId(long statusbericht_id) {
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(Statusbericht_detailLocalServiceImpl.class);
+	
+	public Statusbericht_detail findByStatusbericht_id(long statusbericht_id) {
+		log.debug("BEGIN: findByStatusbericht_id");
+		
 		Statusbericht_detail statusbericht_detail = null;
 		
 		try {
 			statusbericht_detail = Statusbericht_detailUtil.findByStatusbericht_id(statusbericht_id);
 		} catch (NoSuchStatusbericht_detailException e) {
 			// TODO Auto-generated catch block
+			log.error("es wurden keine Fields für die statusbericht_id: " + statusbericht_id + " gefunden");
 			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 	
+		log.debug("END: findByStatusbericht_id");
 		return statusbericht_detail;
 	}
 }

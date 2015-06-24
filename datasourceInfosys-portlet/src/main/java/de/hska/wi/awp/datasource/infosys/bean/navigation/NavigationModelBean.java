@@ -1,28 +1,19 @@
 package de.hska.wi.awp.datasource.infosys.bean.navigation;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
-
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.model.Project;
 import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil;
-import de.hska.wi.awp.datasource.infosys.service.RolleLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 
 /**
@@ -45,7 +36,7 @@ public class NavigationModelBean implements Serializable{
 	/**
      * Logger Util
      */
-	private static final Logger logger = LoggerFactory.getLogger(NavigationModelBean.class);
+	private static final Log log = LogFactoryUtil.getLog(NavigationModelBean.class);
 	
 	/**
      * All Projects of this semester
@@ -63,14 +54,17 @@ public class NavigationModelBean implements Serializable{
      */
 	@PostConstruct
     public void init() {
-      
+		log.debug("BEGIN: init");
+		
 		try {
 			this.allProjects = ProjectLocalServiceUtil.getProjects(0, ProjectLocalServiceUtil.getProjectsCount());
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
-			logger.error(e);
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: init");
 	}
 	
 	/**

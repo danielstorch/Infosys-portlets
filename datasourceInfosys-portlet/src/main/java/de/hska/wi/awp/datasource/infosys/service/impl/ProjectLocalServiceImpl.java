@@ -1,6 +1,8 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchProjectException;
 import de.hska.wi.awp.datasource.infosys.model.Project;
@@ -28,19 +30,29 @@ public class ProjectLocalServiceImpl extends ProjectLocalServiceBaseImpl {
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.ProjectLocalServiceUtil} to access the project local service.
      */
 	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(ProjectLocalServiceImpl.class);
+	
 	public Project findByProjecthskaId(String projecthskaId) {
+		log.debug("BEGIN: findByProjecthskaId");
+		
 		Project project = null;
 		
 		try {
 			project = ProjectUtil.findByProjecthskaId(projecthskaId);
 		} catch (NoSuchProjectException e) {
 			// TODO Auto-generated catch block
+			log.error("es wurden keine Fields für die projecthskaId: " + projecthskaId + " gefunden");
 			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
 	
+		log.debug("END: findByProjecthskaId");
 		return project;
 	}
 	

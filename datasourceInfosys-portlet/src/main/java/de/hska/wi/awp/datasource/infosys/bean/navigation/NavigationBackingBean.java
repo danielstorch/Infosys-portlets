@@ -10,8 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.portlet.ActionResponse;
 import javax.xml.namespace.QName;
 
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 /**
  * The BackingBean for the Navigations Portlet.
@@ -32,7 +32,7 @@ public class NavigationBackingBean implements Serializable{
 	 /**
      * Logger Util
      */
-	private static final Logger logger = LoggerFactory.getLogger(NavigationBackingBean.class);
+	private static final Log log = LogFactoryUtil.getLog(NavigationBackingBean.class);
 	
 	/**
      * Injecting navigationModelBean
@@ -47,10 +47,13 @@ public class NavigationBackingBean implements Serializable{
      * @param String hskaId from the menuItem to retrieve the parameter
      */
 	public void groupSelected(String hskaId) {
+		 log.debug("BEGIN: groupSelected");
+		 
 		 navigationModelBean.setSelectedMenuItem(hskaId);
 		 System.out.println("projecthskaId got selected: "+hskaId);
-		 
 		 sendEvent(hskaId, "ipc.projectSelected");
+		 
+		 log.debug("END: groupSelected");
 	}
 	
 	/**
@@ -60,10 +63,13 @@ public class NavigationBackingBean implements Serializable{
      * @param String hskaId from the menuItem to retrieve the parameter
      */
 	public void studentSelected(String hskaId) {
-		 navigationModelBean.setSelectedMenuItem(hskaId);
-		 System.out.println("studenthskaId got selected: "+hskaId);
-		 
-		 sendEvent(hskaId, "ipc.studentSelected");
+		log.debug("BEGIN: studentSelected");
+		
+		navigationModelBean.setSelectedMenuItem(hskaId);
+		System.out.println("studenthskaId got selected: "+hskaId);
+		sendEvent(hskaId, "ipc.studentSelected");
+		
+		log.debug("END: studentSelected");
 	}	
 	
 	/**
@@ -72,6 +78,7 @@ public class NavigationBackingBean implements Serializable{
      * @param eventName is the name of the event specified in the portlet.xml
      */
 	private void sendEvent(String value, String eventName) {
+		log.debug("BEGIN: sendEvent");
 		
 		QName qName = new QName("http://liferay.com/events", eventName);
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -81,6 +88,8 @@ public class NavigationBackingBean implements Serializable{
 
 		System.out.println("EventName "+ eventName + " with value: " + value +" got send");
 		actionResponse.setEvent(qName, eventPayload);
+		
+		log.debug("EventName "+ eventName + " with value: " + value +" got send \nEND: sendEvent");
 	}
 	
 	/**

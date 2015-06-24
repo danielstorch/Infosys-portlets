@@ -29,7 +29,7 @@ create table datasourceInfosys_Rolle (
 
 create table datasourceInfosys_Statusbericht_detail (
 	id_ LONG not null primary key,
-	text_ VARCHAR(500) null,
+	text_ VARCHAR(1000) null,
 	statusbericht_id LONG,
 	statusbericht_detail_punkt_id LONG
 );
@@ -41,7 +41,7 @@ create table datasourceInfosys_Statusbericht_detail_punkt (
 
 create table datasourceInfosys_Statusbericht_geplante_arbeit (
 	id_ LONG not null primary key,
-	aktivitaet VARCHAR(75) null,
+	aktivitaet VARCHAR(1000) null,
 	bis_wann DATE null,
 	statusbericht_id LONG,
 	verantwortlicher LONG

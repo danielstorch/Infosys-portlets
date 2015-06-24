@@ -8,8 +8,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.model.Feedback;
@@ -36,7 +36,7 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 	/**
      * Logger Util
      */	
-	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackStudentModelBean.class);
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackStudentModelBean.class);
 	
 	/**
      * Contains the selected student from the Navigation-Portlet
@@ -65,6 +65,7 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 	@PostConstruct
     public void init() {
 		setAllBewrtungskriterium(BewertungskriteriumLocalServiceUtil.getAllBewertungskriterium());
+		System.out.println(BewertungskriteriumLocalServiceUtil.getAllBewertungskriterium());
 	}
 	
 	/**
@@ -73,19 +74,24 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
      * Gets invoked from receivedFeedbackStudent.xhtml
      */	
 	public List<Feedback> getAllFeedbackOfStudent(){
+		log.debug("BEGIN: getAllFeedbackOfStudent");
+		
 		List<Feedback> allFeedbacksOfStudent = new ArrayList<Feedback>();
 		if(this.selectedStudent != null) {
 			allFeedbacksOfStudent = FeedbackLocalServiceUtil.findByStudent_idAndFeedback_runden_nr(this.selectedStudent.getPrimaryKey(), feedbackRoundNr);
 		}
+		
+		log.debug("END: getAllFeedbackOfStudent");
 		return allFeedbacksOfStudent;
 	}
 	
 	/**
      * Gets the grade of Feedback criteria
-     * returning -2 if we don't find any, since the data is mocked right now
+     * returning 0 if we don't find any, since the data is mocked right now
      */	
 	public int getTeilnoteOfFeedback(long feedback_id, long bewertungskriterium_id){
-		
+		log.debug("BEGIN: getTeilnoteOfFeedback");
+		/*
 		Teilnote_feedback teilnoteOfFeedback = null;
 		if(this.selectedStudent != null) {
 			teilnoteOfFeedback = Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
@@ -93,8 +99,12 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
 		if(teilnoteOfFeedback != null) {
 			return teilnoteOfFeedback.getNote();
 		}
+		
+		log.debug("END: getTeilnoteOfFeedback");
 		//TODO remove when mocking data is not necessary any more
-		return -2;
+		 * *
+		 */
+		return 0;
 	}
 	
 	/**
@@ -102,10 +112,14 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
      * If there is no Contribution, -1 gets returned
      */	
 	public int averageContribution() {
+		log.debug("BEGIN: averageContribution");
+		
 		int averageContribution = -1;
 		if(this.selectedStudent != null) {
 			averageContribution = FeedbackLocalServiceUtil.averageContributionOfStudent(this.selectedStudent.getId(), this.feedbackRoundNr);
 		}
+		
+		log.debug("END: averageContribution");
 		return averageContribution;
 	}
 

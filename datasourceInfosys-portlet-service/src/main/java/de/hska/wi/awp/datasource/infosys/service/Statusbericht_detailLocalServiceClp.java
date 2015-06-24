@@ -142,7 +142,7 @@ public class Statusbericht_detailLocalServiceClp
 
         _methodParameterTypes17 = new String[] { "java.lang.String" };
 
-        _methodName19 = "findByProjecthskaId";
+        _methodName19 = "findByStatusbericht_id";
 
         _methodParameterTypes19 = new String[] { "long" };
     }
@@ -667,7 +667,7 @@ public class Statusbericht_detailLocalServiceClp
     }
 
     @Override
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByProjecthskaId(
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id(
         long statusbericht_id) {
         Object returnObj = null;
 

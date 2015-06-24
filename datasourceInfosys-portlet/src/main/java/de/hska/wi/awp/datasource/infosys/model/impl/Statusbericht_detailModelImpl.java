@@ -54,7 +54,7 @@ public class Statusbericht_detailModelImpl extends BaseModelImpl<Statusbericht_d
             { "statusbericht_id", Types.BIGINT },
             { "statusbericht_detail_punkt_id", Types.BIGINT }
         };
-    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Statusbericht_detail (id_ LONG not null primary key,text_ VARCHAR(500) null,statusbericht_id LONG,statusbericht_detail_punkt_id LONG)";
+    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Statusbericht_detail (id_ LONG not null primary key,text_ VARCHAR(1000) null,statusbericht_id LONG,statusbericht_detail_punkt_id LONG)";
     public static final String TABLE_SQL_DROP = "drop table datasourceInfosys_Statusbericht_detail";
     public static final String ORDER_BY_JPQL = " ORDER BY statusbericht_detail.id ASC";
     public static final String ORDER_BY_SQL = " ORDER BY datasourceInfosys_Statusbericht_detail.id_ ASC";

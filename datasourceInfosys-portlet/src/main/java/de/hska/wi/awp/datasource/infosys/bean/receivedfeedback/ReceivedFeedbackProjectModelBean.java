@@ -9,8 +9,8 @@ import javax.faces.bean.SessionScoped;
 
 import org.primefaces.model.chart.PieChartModel;
 
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.model.Project;
 import de.hska.wi.awp.datasource.infosys.service.FeedbackLocalServiceUtil;
@@ -35,7 +35,7 @@ public class ReceivedFeedbackProjectModelBean implements Serializable{
 	/**
      * Logger Util
      */	
-	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackProjectModelBean.class);
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackProjectModelBean.class);
 	
 	/**
 	 * This is the selected Porject from the NavigationPortlet
@@ -60,6 +60,8 @@ public class ReceivedFeedbackProjectModelBean implements Serializable{
 	 * average contribution of all Students from the selected Project
 	 */
 	private PieChartModel initPieChartModel() {
+		log.debug("BEGIN: initPieChartModel");
+		
 		PieChartModel contributionChartModel = new PieChartModel();
 	    contributionChartModel.setShowDataLabels(true);
 	    contributionChartModel.setLegendPosition("w");
@@ -74,6 +76,7 @@ public class ReceivedFeedbackProjectModelBean implements Serializable{
         	contributionChartModel.set(entry.getKey(), entry.getValue());
         }
 	    
+        log.debug("END: initPieChartModel");
 	    return contributionChartModel;
     }
 

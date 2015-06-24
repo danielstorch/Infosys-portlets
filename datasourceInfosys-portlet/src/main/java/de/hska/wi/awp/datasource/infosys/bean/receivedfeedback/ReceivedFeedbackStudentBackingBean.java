@@ -10,8 +10,8 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.DefaultStreamedContent;
 
 import com.itextpdf.text.DocumentException;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.pdf.ReceivedFeedbackToPDF;
@@ -35,7 +35,7 @@ public class ReceivedFeedbackStudentBackingBean implements Serializable {
 	/**
      * Logger Util
      */	
-	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackStudentBackingBean.class);
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackStudentBackingBean.class);
 	
 	/**
      * Injecting receivedFeedbackStudentModelBean
@@ -47,8 +47,12 @@ public class ReceivedFeedbackStudentBackingBean implements Serializable {
      * Invoking the method which creates the FeebackPDF
      */
 	public DefaultStreamedContent getReceivedFeebackPDF() throws IOException, DocumentException, SystemException {
+		log.debug("BEGIN: getReceivedFeebackPDF");
+		
 		int roundNr = receivedFeedbackStudentModelBean.getFeedbackRoundNr();
 		Project project = ProjectLocalServiceUtil.fetchProject(receivedFeedbackStudentModelBean.getSelectedStudent().getProject_id());
+		
+		log.debug("END: getReceivedFeebackPDF");
 		return ReceivedFeedbackToPDF.CreateFeedbackPDF(roundNr, project);
 	}
 	

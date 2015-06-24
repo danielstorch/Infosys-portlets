@@ -56,7 +56,7 @@ public class Statusbericht_geplante_arbeitModelImpl extends BaseModelImpl<Status
             { "statusbericht_id", Types.BIGINT },
             { "verantwortlicher", Types.BIGINT }
         };
-    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Statusbericht_geplante_arbeit (id_ LONG not null primary key,aktivitaet VARCHAR(75) null,bis_wann DATE null,statusbericht_id LONG,verantwortlicher LONG)";
+    public static final String TABLE_SQL_CREATE = "create table datasourceInfosys_Statusbericht_geplante_arbeit (id_ LONG not null primary key,aktivitaet VARCHAR(1000) null,bis_wann DATE null,statusbericht_id LONG,verantwortlicher LONG)";
     public static final String TABLE_SQL_DROP = "drop table datasourceInfosys_Statusbericht_geplante_arbeit";
     public static final String ORDER_BY_JPQL = " ORDER BY statusbericht_geplante_arbeit.id ASC";
     public static final String ORDER_BY_SQL = " ORDER BY datasourceInfosys_Statusbericht_geplante_arbeit.id_ ASC";

@@ -29,7 +29,7 @@
 	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail">
 		<field name="id" type="long" />
 		<field name="text" type="String">
-			<hint name="max-length">500</hint>
+			<hint name="max-length">1000</hint>
 		</field>
 		<field name="statusbericht_id" type="long" />
 		<field name="statusbericht_detail_punkt_id" type="long" />
@@ -40,7 +40,9 @@
 	</model>
 	<model name="de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit">
 		<field name="id" type="long" />
-		<field name="aktivitaet" type="String" />
+		<field name="aktivitaet" type="String">
+			<hint name="max-length">1000</hint>
+		</field>
 		<field name="bis_wann" type="Date" />
 		<field name="statusbericht_id" type="long" />
 		<field name="verantwortlicher" type="long" />

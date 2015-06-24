@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
+import de.hska.wi.awp.datasource.infosys.event.ReceivedFeedbackEventHandler;
 import de.hska.wi.awp.datasource.infosys.model.Bewertungskriterium;
 import de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil;
 import de.hska.wi.awp.datasource.infosys.service.base.BewertungskriteriumLocalServiceBaseImpl;
@@ -30,14 +33,25 @@ public class BewertungskriteriumLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.BewertungskriteriumLocalServiceUtil} to access the bewertungskriterium local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(BewertungskriteriumLocalServiceImpl.class);
+	
 	public List<Bewertungskriterium> getAllBewertungskriterium(){
+		log.debug("BEGIN: getAllBewertungskriterium");
+		
 		List<Bewertungskriterium> allBewertungskriterium = new ArrayList<Bewertungskriterium>();
 		try {
 			allBewertungskriterium = BewertungskriteriumLocalServiceUtil.getBewertungskriteriums(0, BewertungskriteriumLocalServiceUtil.getBewertungskriteriumsCount());
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: getAllBewertungskriterium");
 		return allBewertungskriterium;
 	}
 }

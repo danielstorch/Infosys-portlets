@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.model.Statusbericht_geplante_arbeit;
 import de.hska.wi.awp.datasource.infosys.model.Statusberichte;
@@ -32,15 +34,26 @@ public class Statusbericht_geplante_arbeitLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Statusbericht_geplante_arbeitLocalServiceUtil} to access the statusbericht_geplante_arbeit local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(Statusbericht_geplante_arbeitLocalServiceImpl.class);
+	
 	public List<Statusbericht_geplante_arbeit> findByStatusbericht_id(long statusbericht_id) {
+		log.debug("BEGIN: findByStatusbericht_id");
+		
 		List<Statusbericht_geplante_arbeit> statusbericht_geplante_arbeit = new ArrayList<Statusbericht_geplante_arbeit>();
 		
 		try {
 			statusbericht_geplante_arbeit = Statusbericht_geplante_arbeitUtil.findByStatusbericht_id(statusbericht_id);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: findByStatusbericht_id");
 		return statusbericht_geplante_arbeit;
 	}
 }

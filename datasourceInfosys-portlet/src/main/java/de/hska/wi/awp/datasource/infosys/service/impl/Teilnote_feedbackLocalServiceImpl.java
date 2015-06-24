@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchTeilnote_feedbackException;
 import de.hska.wi.awp.datasource.infosys.model.Student;
@@ -32,17 +34,29 @@ public class Teilnote_feedbackLocalServiceImpl
      *
      * Never reference this interface directly. Always use {@link de.hska.wi.awp.datasource.infosys.service.Teilnote_feedbackLocalServiceUtil} to access the teilnote_feedback local service.
      */
+	
+	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(Teilnote_feedbackLocalServiceImpl.class);
+	
 	public Teilnote_feedback findByFeedback_idAndBewertungskriterium_id(long feedback_id, long bewertungskriterium_id) {
+		log.debug("BEGIN: findByFeedback_idAndBewertungskriterium_id");
+		
 		Teilnote_feedback teilnote_feedback = null;
 		try {
-			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
+			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, feedback_id);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
+			log.error("es wurden keine Fields für die feedback_id: " + feedback_id + " und feedback_id: "+ feedback_id +" gefunden");
 			e.printStackTrace();
 		} catch (NoSuchTeilnote_feedbackException e) {
 			// TODO Auto-generated catch block
+			log.error(e);
 			e.printStackTrace();
 		}
+		
+		log.debug("END: findByFeedback_idAndBewertungskriterium_id");
 		return teilnote_feedback;
 	}
 }

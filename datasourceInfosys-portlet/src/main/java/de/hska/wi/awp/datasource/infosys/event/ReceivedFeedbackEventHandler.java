@@ -10,6 +10,8 @@ import javax.portlet.faces.BridgeEventHandler;
 import javax.portlet.faces.event.EventNavigationResult;
 
 import com.liferay.faces.bridge.event.EventPayloadWrapper;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackProjectModelBean;
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.ReceivedFeedbackStudentModelBean;
@@ -23,11 +25,18 @@ import de.hska.wi.awp.datasource.infosys.service.StudentLocalServiceUtil;
 public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
 
 	/**
+     * Logger Util
+     */	
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackEventHandler.class);
+	
+	/**
 	 * Handles the retrieved Event
 	 * Either student event ipc.studentSelected or project event ipc.projectSelected
 	 */
 	@Override
 	public EventNavigationResult handleEvent(FacesContext facesContext, Event event) {
+		log.debug("BEGIN: handleEvent");
+		
 		 EventNavigationResult eventNavigationResult = null;
          String eventQName = event.getQName().toString();
 
@@ -80,6 +89,7 @@ public class ReceivedFeedbackEventHandler implements BridgeEventHandler{
  			eventNavigationResult = new EventNavigationResult(fromAction, outcome);
          }
          
+         log.debug("END: handleEvent");
          return eventNavigationResult;
 	}
 	

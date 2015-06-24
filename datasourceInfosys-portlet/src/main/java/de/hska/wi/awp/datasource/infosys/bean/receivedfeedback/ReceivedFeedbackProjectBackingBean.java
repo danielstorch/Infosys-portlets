@@ -10,8 +10,8 @@ import javax.faces.bean.RequestScoped;
 import org.primefaces.model.DefaultStreamedContent;
 
 import com.itextpdf.text.DocumentException;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.bean.receivedfeedback.pdf.ReceivedFeedbackToPDF;
 
@@ -32,7 +32,7 @@ public class ReceivedFeedbackProjectBackingBean implements Serializable{
 	/**
      * Logger Util
      */	
-	private static final Logger logger = LoggerFactory.getLogger(ReceivedFeedbackProjectBackingBean.class);
+	private static final Log log = LogFactoryUtil.getLog(ReceivedFeedbackProjectBackingBean.class);
 	
 	/**
      * Injecting receivedFeedbackProjectModelBean

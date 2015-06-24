@@ -139,7 +139,7 @@ public class Statusbericht_detailLocalServiceClpInvoker {
 
         _methodParameterTypes101 = new String[] { "java.lang.String" };
 
-        _methodName106 = "findByProjecthskaId";
+        _methodName106 = "findByStatusbericht_id";
 
         _methodParameterTypes106 = new String[] { "long" };
     }
@@ -247,7 +247,7 @@ public class Statusbericht_detailLocalServiceClpInvoker {
 
         if (_methodName106.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes106, parameterTypes)) {
-            return Statusbericht_detailLocalServiceUtil.findByProjecthskaId(((Long) arguments[0]).longValue());
+            return Statusbericht_detailLocalServiceUtil.findByStatusbericht_id(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();
