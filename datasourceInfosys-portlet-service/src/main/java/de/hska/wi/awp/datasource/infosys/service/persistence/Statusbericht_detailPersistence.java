@@ -24,52 +24,132 @@ public interface Statusbericht_detailPersistence extends BasePersistence<Statusb
      */
 
     /**
-    * Returns the statusbericht_detail where statusbericht_id = &#63; or throws a {@link de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException} if it could not be found.
+    * Returns all the statusbericht_details where statusbericht_id = &#63;.
     *
     * @param statusbericht_id the statusbericht_id
-    * @return the matching statusbericht_detail
+    * @return the matching statusbericht_details
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail> findByStatusbericht_id(
+        long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns a range of all the statusbericht_details where statusbericht_id = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detailModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param start the lower bound of the range of statusbericht_details
+    * @param end the upper bound of the range of statusbericht_details (not inclusive)
+    * @return the range of matching statusbericht_details
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail> findByStatusbericht_id(
+        long statusbericht_id, int start, int end)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns an ordered range of all the statusbericht_details where statusbericht_id = &#63;.
+    *
+    * <p>
+    * Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set. If <code>orderByComparator</code> is specified, then the query will include the given ORDER BY logic. If <code>orderByComparator</code> is absent and pagination is required (<code>start</code> and <code>end</code> are not {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS}), then the query will include the default ORDER BY logic from {@link de.hska.wi.awp.datasource.infosys.model.impl.Statusbericht_detailModelImpl}. If both <code>orderByComparator</code> and pagination are absent, for performance reasons, the query will not have an ORDER BY clause and the returned result set will be sorted on by the primary key in an ascending order.
+    * </p>
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param start the lower bound of the range of statusbericht_details
+    * @param end the upper bound of the range of statusbericht_details (not inclusive)
+    * @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+    * @return the ordered range of matching statusbericht_details
+    * @throws SystemException if a system exception occurred
+    */
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail> findByStatusbericht_id(
+        long statusbericht_id, int start, int end,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the first statusbericht_detail in the ordered set where statusbericht_id = &#63;.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching statusbericht_detail
     * @throws de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException if a matching statusbericht_detail could not be found
     * @throws SystemException if a system exception occurred
     */
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id(
-        long statusbericht_id)
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id_First(
+        long statusbericht_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException;
 
     /**
-    * Returns the statusbericht_detail where statusbericht_id = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+    * Returns the first statusbericht_detail in the ordered set where statusbericht_id = &#63;.
     *
     * @param statusbericht_id the statusbericht_id
-    * @return the matching statusbericht_detail, or <code>null</code> if a matching statusbericht_detail could not be found
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the first matching statusbericht_detail, or <code>null</code> if a matching statusbericht_detail could not be found
     * @throws SystemException if a system exception occurred
     */
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail fetchByStatusbericht_id(
-        long statusbericht_id)
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail fetchByStatusbericht_id_First(
+        long statusbericht_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
-    * Returns the statusbericht_detail where statusbericht_id = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+    * Returns the last statusbericht_detail in the ordered set where statusbericht_id = &#63;.
     *
     * @param statusbericht_id the statusbericht_id
-    * @param retrieveFromCache whether to use the finder cache
-    * @return the matching statusbericht_detail, or <code>null</code> if a matching statusbericht_detail could not be found
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching statusbericht_detail
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException if a matching statusbericht_detail could not be found
     * @throws SystemException if a system exception occurred
     */
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail fetchByStatusbericht_id(
-        long statusbericht_id, boolean retrieveFromCache)
-        throws com.liferay.portal.kernel.exception.SystemException;
-
-    /**
-    * Removes the statusbericht_detail where statusbericht_id = &#63; from the database.
-    *
-    * @param statusbericht_id the statusbericht_id
-    * @return the statusbericht_detail that was removed
-    * @throws SystemException if a system exception occurred
-    */
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail removeByStatusbericht_id(
-        long statusbericht_id)
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id_Last(
+        long statusbericht_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
         throws com.liferay.portal.kernel.exception.SystemException,
             de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException;
+
+    /**
+    * Returns the last statusbericht_detail in the ordered set where statusbericht_id = &#63;.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the last matching statusbericht_detail, or <code>null</code> if a matching statusbericht_detail could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail fetchByStatusbericht_id_Last(
+        long statusbericht_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException;
+
+    /**
+    * Returns the statusbericht_details before and after the current statusbericht_detail in the ordered set where statusbericht_id = &#63;.
+    *
+    * @param id the primary key of the current statusbericht_detail
+    * @param statusbericht_id the statusbericht_id
+    * @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+    * @return the previous, current, and next statusbericht_detail
+    * @throws de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException if a statusbericht_detail with the primary key could not be found
+    * @throws SystemException if a system exception occurred
+    */
+    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail[] findByStatusbericht_id_PrevAndNext(
+        long id, long statusbericht_id,
+        com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+        throws com.liferay.portal.kernel.exception.SystemException,
+            de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException;
+
+    /**
+    * Removes all the statusbericht_details where statusbericht_id = &#63; from the database.
+    *
+    * @param statusbericht_id the statusbericht_id
+    * @throws SystemException if a system exception occurred
+    */
+    public void removeByStatusbericht_id(long statusbericht_id)
+        throws com.liferay.portal.kernel.exception.SystemException;
 
     /**
     * Returns the number of statusbericht_details where statusbericht_id = &#63;.

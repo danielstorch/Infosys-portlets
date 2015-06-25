@@ -262,7 +262,7 @@ public class Statusbericht_detailLocalServiceUtil {
         return getService().invokeMethod(name, parameterTypes, arguments);
     }
 
-    public static de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id(
+    public static java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail> findByStatusbericht_id(
         long statusbericht_id) {
         return getService().findByStatusbericht_id(statusbericht_id);
     }

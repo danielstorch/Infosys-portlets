@@ -1,11 +1,15 @@
 package de.hska.wi.awp.datasource.infosys.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 import de.hska.wi.awp.datasource.infosys.NoSuchStatusbericht_detailException;
 import de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail;
+import de.hska.wi.awp.datasource.infosys.model.Student;
 import de.hska.wi.awp.datasource.infosys.service.base.Statusbericht_detailLocalServiceBaseImpl;
 import de.hska.wi.awp.datasource.infosys.service.persistence.Statusbericht_detailUtil;
 
@@ -36,17 +40,13 @@ public class Statusbericht_detailLocalServiceImpl
      */	
 	private static final Log log = LogFactoryUtil.getLog(Statusbericht_detailLocalServiceImpl.class);
 	
-	public Statusbericht_detail findByStatusbericht_id(long statusbericht_id) {
+	public List<Statusbericht_detail> findByStatusbericht_id(long statusbericht_id) {
 		log.debug("BEGIN: findByStatusbericht_id");
 		
-		Statusbericht_detail statusbericht_detail = null;
+		List<Statusbericht_detail> statusbericht_detail = new ArrayList<Statusbericht_detail>();
 		
 		try {
 			statusbericht_detail = Statusbericht_detailUtil.findByStatusbericht_id(statusbericht_id);
-		} catch (NoSuchStatusbericht_detailException e) {
-			// TODO Auto-generated catch block
-			log.error("es wurden keine Fields für die statusbericht_id: " + statusbericht_id + " gefunden");
-			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			log.error(e);

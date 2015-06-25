@@ -667,7 +667,7 @@ public class Statusbericht_detailLocalServiceClp
     }
 
     @Override
-    public de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail findByStatusbericht_id(
+    public java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail> findByStatusbericht_id(
         long statusbericht_id) {
         Object returnObj = null;
 
@@ -685,6 +685,6 @@ public class Statusbericht_detailLocalServiceClp
             }
         }
 
-        return (de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail) ClpSerializer.translateOutput(returnObj);
+        return (java.util.List<de.hska.wi.awp.datasource.infosys.model.Statusbericht_detail>) ClpSerializer.translateOutput(returnObj);
     }
 }
