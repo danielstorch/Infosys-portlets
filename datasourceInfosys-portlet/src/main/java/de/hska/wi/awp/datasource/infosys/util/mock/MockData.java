@@ -460,7 +460,8 @@ public class MockData {
 			
 			JSONArray teilnote_feedbackJsonArray = jsonObject.getJSONArray("Teilnote_feedback");
 			System.out.println("count teilnote_feedback: " + teilnote_feedbackJsonArray.length());
-			
+			long lastId = 0;
+			long lastFeedBackId = 0;
 			for(int x = 0; x < teilnote_feedbackJsonArray.length(); x++) {
 				
 				JSONObject teilnoteJSONObject = teilnote_feedbackJsonArray.getJSONObject(x);
@@ -469,6 +470,37 @@ public class MockData {
 				teilnote_feedback.setNote(teilnoteJSONObject.getInt("note"));
 				teilnote_feedback.setBewertungskriterium_id(teilnoteJSONObject.getLong("bewertungskriterium_id"));
 				Teilnote_feedbackLocalServiceUtil.addTeilnote_feedback(teilnote_feedback);
+				
+				lastId = teilnoteJSONObject.getLong("id");
+				lastFeedBackId = teilnoteJSONObject.getLong("feedback_id");
+			}
+			
+			//Um "NotFoundError" zu vermeiden, erstelle ich neue 180 Teilnote für die mockdaten. Diese in JSON daten für jedes Teammitglied zu erfinden war zu aufwändig.
+			lastId += 1;
+			lastFeedBackId += 1;
+			long bewertungskriterium_id = 100;
+			int count = 0;
+			for(int x = 0; x < 180; x++) {
+				Teilnote_feedback teilnote_feedback = Teilnote_feedbackLocalServiceUtil.createTeilnote_feedback(lastId);
+				teilnote_feedback.setFeedback_id(lastFeedBackId);
+				teilnote_feedback.setNote(0);
+				teilnote_feedback.setBewertungskriterium_id(bewertungskriterium_id);
+				Teilnote_feedbackLocalServiceUtil.addTeilnote_feedback(teilnote_feedback);
+				
+				if(bewertungskriterium_id == 108 ) {
+					bewertungskriterium_id = 100;
+				}else {
+					bewertungskriterium_id += 2;
+				}
+				
+				if(count == 4) {
+					lastFeedBackId++;
+					count = 0;
+				}else {
+					count++;
+				}
+				lastId++;
+				
 			}
 		}
 	}

@@ -91,20 +91,14 @@ public class ReceivedFeedbackStudentModelBean implements Serializable{
      */	
 	public int getTeilnoteOfFeedback(long feedback_id, long bewertungskriterium_id){
 		log.debug("BEGIN: getTeilnoteOfFeedback");
-		/*
+		
 		Teilnote_feedback teilnoteOfFeedback = null;
 		if(this.selectedStudent != null) {
 			teilnoteOfFeedback = Teilnote_feedbackLocalServiceUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
 		}
-		if(teilnoteOfFeedback != null) {
-			return teilnoteOfFeedback.getNote();
-		}
 		
 		log.debug("END: getTeilnoteOfFeedback");
-		//TODO remove when mocking data is not necessary any more
-		 * *
-		 */
-		return 0;
+		return teilnoteOfFeedback.getNote();
 	}
 	
 	/**

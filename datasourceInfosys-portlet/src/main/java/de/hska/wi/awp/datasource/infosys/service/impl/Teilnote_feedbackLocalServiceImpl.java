@@ -45,7 +45,7 @@ public class Teilnote_feedbackLocalServiceImpl
 		
 		Teilnote_feedback teilnote_feedback = null;
 		try {
-			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, feedback_id);
+			teilnote_feedback = Teilnote_feedbackUtil.findByFeedback_idAndBewertungskriterium_id(feedback_id, bewertungskriterium_id);
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			log.error("es wurden keine Fields für die feedback_id: " + feedback_id + " und feedback_id: "+ feedback_id +" gefunden");
