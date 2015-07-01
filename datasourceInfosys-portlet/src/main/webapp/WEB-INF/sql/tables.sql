@@ -67,19 +67,6 @@ create table datasourceInfosys_Statusberichte (
 	kalenderwoche INTEGER
 );
 
-create table datasourceInfosys_Statusueberblick (
-	id_ LONG not null primary key,
-	statusbericht_id LONG,
-	qualitaet_status VARCHAR(75) null,
-	qualitaet_text VARCHAR(75) null,
-	kosten_text VARCHAR(75) null,
-	kosten_status VARCHAR(75) null,
-	aufwand_status VARCHAR(75) null,
-	aufwand_text VARCHAR(75) null,
-	termine_status VARCHAR(75) null,
-	termine_text VARCHAR(75) null
-);
-
 create table datasourceInfosys_Student (
 	firstName VARCHAR(75) null,
 	lastName VARCHAR(75) null,

@@ -92,6 +92,8 @@ public class ReceivedFeedbackToPDF {
         frontPageSubTitle.setAlignment(Element.ALIGN_CENTER);
         document.add(frontPageSubTitle);
         
+        //TODO: auf dem server werdend die bilder nicht gefunden, dahert wurden sie erstmal auskommentiert.
+        /*
         //Sets image of the FrontPage
         if(Image.getInstance(ReceivedFeedbackToPDF.class.getResource("logo_hska.png")) != null) {
         	Image imgHSKA = Image.getInstance(ReceivedFeedbackToPDF.class.getResource("logo_hska.png"));
@@ -106,7 +108,7 @@ public class ReceivedFeedbackToPDF {
             imgHWB.setAbsolutePosition(PageSize.A4.getWidth() - 300,(PageSize.A4.getHeight() - imgHWB.getScaledHeight()) / 2);
             document.add(imgHWB);
         }
-        
+        */
         //Document information
         document.addAuthor("Daniel Storch");
         document.addCreationDate();

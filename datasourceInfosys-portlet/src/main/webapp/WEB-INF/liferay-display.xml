@@ -5,6 +5,9 @@
 	<category name="AWP Bewertung Infosys">
 		<portlet id="ReceivedFeedback" />
 		<portlet id="Navigation" />
+		<portlet id="Statusreports" />
+	</category>
+	<category name="category.hidden">
 		<portlet id="MockData" />
 	</category>
 </display>

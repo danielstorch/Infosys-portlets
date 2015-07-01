@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head />
+	<h:body>
+		<h:form rendered="#{empty statusreportsModelBean.selectedProject}">
+		<h:outputText value="Bitte wählen Sie einen Studenten oder eine Gruppe"></h:outputText>
+		</h:form>
+		<h:form rendered="#{not empty statusreportsModelBean.selectedProject}">
+			
+			<p:scrollPanel mode="native" style="height:300px">
+				<p:accordionPanel value="#{statusreportsModelBean.reportheader}"
+					var="Statusreport" multiple="true">
+
+					<p:tab
+						title="Kalenderwoche: #{Statusreport.kalenderwoche} - #{Statusreport.datum}"
+						titleStyle="font-size:16px;height:20px;top-padding:0px;margin:0px;line-height:24px">
+
+						<p:dataTable
+							value="#{statusreportsModelBean.getReportinfos(Statusreport.id)}"
+							var="info" id="infotbl">
+							<f:facet name="header">Statusüberblick:</f:facet>
+							<p:column headerText="Merkmal" width="20%">
+								<h:outputText
+									value="#{statusreportsModelBean.getInfopoint(info.statusbericht_info_punkt_id).name} " />
+							</p:column>
+							<p:column headerText="Status" width="15%">
+								<h:outputText value="im plan" rendered="#{info.status == '1'}" />
+								<h:outputText value="kritisch" rendered="#{info.status == '0'}" />
+								<h:outputText value="sehr kritisch"
+									rendered="#{info.status == '-1'}" />
+							</p:column>
+							<p:column headerText="Bemerkung">
+								<h:outputText value="#{info.bemerkung}"></h:outputText>
+							</p:column>
+						</p:dataTable>
+
+						<p:dataTable
+							value="#{statusreportsModelBean.getReportdetails(Statusreport.id)}"
+							var="detail" id="detailtbl">
+							<f:facet name="header">Allgemeines</f:facet>
+
+							<p:column headerText="Merkmal" width="20%">
+								<h:outputText
+									value="#{statusreportsModelBean.getDetailpoint(detail.statusbericht_detail_punkt_id).name} " />
+							</p:column>
+							<p:column headerText="Bemerkung">
+								<h:outputText value="#{detail.text}"></h:outputText>
+							</p:column>
+						</p:dataTable>
+
+
+						<p:dataTable
+							value="#{statusreportsModelBean.getPlannedwork(Statusreport.id)}"
+							var="arbeit" id="worktbl">
+							<f:facet name="header">Geplante Arbeiten:</f:facet>
+
+							<p:column headerText="Bearbeiter" width="20%">
+								<h:outputText
+									value="#{statusreportsModelBean.getStudent(arbeit.verantwortlicher).firstName} " />
+								<h:outputText
+									value="#{statusreportsModelBean.getStudent(arbeit.verantwortlicher).lastName}" />
+							</p:column>
+							<p:column headerText="Arbeit">
+								<h:outputText value="#{arbeit.aktivitaet}"></h:outputText>
+							</p:column>
+							<p:column headerText="fällig bis" width="20%">
+								<h:outputText value="#{arbeit.bis_wann}">
+									<f:convertDateTime type="both" pattern="dd.MM.yyyy" />
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+						
+				<br/>
+
+			<p:commandButton id="downloadLink" value="Download PDF" ajax="false">
+	    				<p:fileDownload value="#{statusreportsBackingBean.getStatusreportsPDF(Statusreport.id)}" />
+	  		</p:commandButton>
+
+					</p:tab>
+				</p:accordionPanel>
+			</p:scrollPanel>
+		</h:form>
+	</h:body>
+</f:view>

@@ -9,6 +9,9 @@
 >
 	<h:head />
 	<h:body>
+		<h:form rendered="#{empty receivedFeedbackStudentModelBean.selectedStudent and empty receivedFeedbackProjectModelBean.selectedProject}">
+			<h:outputText value="Bitte wählen Sie einen Studenten oder eine Gruppe"></h:outputText>
+		</h:form>
 		<h:panelGroup id="wrapperPanel">
     		<h:panelGroup id="student" rendered="#{not empty receivedFeedbackStudentModelBean.selectedStudent}">
        			<ui:include src="receivedFeedbackStudent.xhtml" />

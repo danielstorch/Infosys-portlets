@@ -3,6 +3,11 @@
 
 <liferay-portlet-app>
 	<portlet>
+		<portlet-name>Statusreports</portlet-name>
+		<requires-namespaced-parameters>false</requires-namespaced-parameters>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+	</portlet>
+	<portlet>
 		<portlet-name>ReceivedFeedback</portlet-name>
 		<requires-namespaced-parameters>false</requires-namespaced-parameters>
 		<header-portlet-css>/css/main.css</header-portlet-css>
